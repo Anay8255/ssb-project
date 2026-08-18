@@ -1,0 +1,83 @@
+/* ==========================================================================
+   SSB INFRA — NRI & GLOBAL INVESTOR DESK STYLES
+   ========================================================================== */
+
+.nri-hero {
+  position: relative;
+  padding: 8rem 0 5rem 0;
+  background: linear-gradient(135deg, rgba(7, 13, 20, 0.9) 0%, rgba(13, 27, 42, 0.8) 100%),
+              url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  color: #FFF;
+}
+
+.currency-converter-card {
+  background: #FFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-xl);
+  margin-bottom: 4rem;
+  color: var(--color-text-title);
+}
+
+.currency-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.curr-btn {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.curr-btn.active {
+  background: var(--color-primary);
+  color: #FFF;
+  border-color: var(--color-primary);
+}
+
+.nri-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.nri-card {
+  background: #FFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.nri-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-gold);
+}
+
+.nri-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: var(--color-gold-subtle);
+  color: var(--color-gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}

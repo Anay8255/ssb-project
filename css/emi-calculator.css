@@ -1,0 +1,175 @@
+/* ==========================================================================
+   SSB INFRA — SMART EMI & INVESTMENT CALCULATOR STYLES
+   ========================================================================== */
+
+.calculator-wrapper {
+  background: #FFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  margin: 3rem 0;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+}
+
+.calc-controls {
+  padding: 3rem;
+  background: #FFF;
+}
+
+.slider-group {
+  margin-bottom: 2rem;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.slider-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.slider-val-badge {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 1.05rem;
+}
+
+.calc-range {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: #E2E8F0;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.calc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  border: 2px solid #FFF;
+  transition: transform var(--transition-fast);
+}
+
+.calc-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Calculator Output Summary Box */
+.calc-results {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: #FFF;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.emi-featured-card {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-gold-border);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+}
+
+.emi-featured-card span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gold-light);
+}
+
+.emi-featured-card h2 {
+  color: #FFF;
+  font-size: 3rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+}
+
+.breakdown-row span:first-child {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.breakdown-row span:last-child {
+  font-weight: 700;
+  color: #FFF;
+}
+
+.calc-disclaimer {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  border-left: 2px solid var(--color-gold);
+  padding-left: 0.75rem;
+}
+
+/* Amortization Table */
+.amortization-card {
+  background: #FFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  margin-top: 2rem;
+}
+
+.amort-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.amort-table th {
+  background: var(--color-bg);
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--color-text-title);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.amort-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text-main);
+}
+
+.amort-table tr:hover td {
+  background: rgba(197, 168, 128, 0.05);
+}
+
+@media (max-width: 900px) {
+  .calc-grid { grid-template-columns: 1fr; }
+}

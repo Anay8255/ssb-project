@@ -620,63 +620,26 @@ class AppRouter {
     }
 
     return projects.map(p => `
-      <div class="pro-project-card slow-reveal">
-        <div class="pro-card-image-wrap">
-          <img src="${p.featuredImage}" alt="${p.title}" class="pro-card-img" loading="lazy">
-          <div class="pro-card-image-overlay"></div>
-          
-          <div class="pro-card-top-row">
-            <span class="pro-status-badge ${p.status === 'Completed' ? 'status-completed' : (p.status === 'Ongoing' ? 'status-ongoing' : 'status-upcoming')}">
-              <span class="pro-status-dot"></span> ${p.status.toUpperCase()}
-            </span>
-            <span class="pro-rera-badge">
-              ✓ RERA APPROVED
-            </span>
-          </div>
-
-          <div class="pro-card-img-footer">
-            <span class="pro-location-tag">📍 ${p.locationName || p.city}</span>
-          </div>
+      <div class="simple-project-card slow-reveal">
+        <div class="simple-card-image">
+          <img src="${p.featuredImage}" alt="${p.title}" loading="lazy">
+          <span class="simple-status-tag ${p.status === 'Completed' ? 'tag-completed' : 'tag-ongoing'}">
+            ${p.status}
+          </span>
         </div>
 
-        <div class="pro-card-body">
-          <div style="margin-bottom: 0.75rem;">
-            <span class="pro-category-label">${p.category.toUpperCase()} TOWNSHIP</span>
-            <h3 class="pro-card-title">${p.title}</h3>
-            <p class="pro-card-desc">${p.tagline}</p>
-          </div>
+        <div class="simple-card-content">
+          <div class="simple-card-meta">${p.city} · ${p.category}</div>
+          <h3 class="simple-card-title">${p.title}</h3>
+          <p class="simple-card-desc">${p.tagline}</p>
 
-          <div class="pro-specs-bar">
-            <div class="pro-spec-item">
-              <span class="spec-val">${p.totalLandArea || 'Master Plan'}</span>
-              <span class="spec-lbl">Land Area</span>
-            </div>
-            <div class="pro-spec-divider"></div>
-            <div class="pro-spec-item">
-              <span class="spec-val">${p.totalUnitsCount || '300+'} Units</span>
-              <span class="spec-lbl">Capacity</span>
-            </div>
-            <div class="pro-spec-divider"></div>
-            <div class="pro-spec-item">
-              <span class="spec-val">${p.city.split(',')[0]}</span>
-              <span class="spec-lbl">City</span>
-            </div>
-          </div>
-
-          <div class="pro-card-footer">
-            <div class="pro-price-box">
-              <span class="pro-price-title">STARTING FROM</span>
-              <span class="pro-price-amount">${p.priceDisplay || 'On Request'}</span>
-            </div>
-
-            <div class="pro-actions-group">
-              <a href="#/projects/${p.slug}" class="pro-btn-primary">
-                View Project ↗
-              </a>
-              <button class="pro-btn-secondary" onclick="window.openEnquiryModal('${p.id}', 'Brochure')" title="Brochure">
-                Brochure
-              </button>
-            </div>
+          <div class="simple-card-actions">
+            <a href="#/projects/${p.slug}" class="simple-btn-primary">
+              Know More ↗
+            </a>
+            <button class="simple-btn-outline" onclick="window.openEnquiryModal('${p.id}', 'Brochure')">
+              Brochure
+            </button>
           </div>
         </div>
       </div>

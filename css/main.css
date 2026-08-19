@@ -315,14 +315,14 @@
   60% { transform: translate(-50%, -5px); }
 }
 
-/* 3. EXACT STATS STRIP WITH TERRACOTTA GRADIENT & SERIF COUNTING NUMBERS */
+/* 3. EXACT STATS STRIP WITH EXECUTIVE EMERALD GRADIENT & SERIF COUNTING NUMBERS */
 .stats-strip-terracotta {
   position: relative;
-  background: linear-gradient(90deg, #E25D2F 0%, #D85025 30%, #C4431B 65%, #A6300E 100%);
+  background: linear-gradient(90deg, #047857 0%, #065F46 40%, #044E38 80%, #023A29 100%);
   padding: 4.5rem 0;
   color: #FFFFFF;
   overflow: hidden;
-  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .stats-dot-overlay {

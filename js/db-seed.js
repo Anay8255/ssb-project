@@ -253,12 +253,12 @@ const SEED_DATA = {
 
   // Journey Timeline
   journey: [
-    { year: "2013", status: "Completed", title: "Founded in Varanasi", desc: "SSB Group is established under the vision of Mr. Ram Gopal Singh." },
-    { year: "2015", status: "Completed", title: "First residential delivery", desc: "Early residential development handed over to its first families." },
-    { year: "2018", status: "Completed", title: "Affordable housing", desc: "Shree Sai City EWS / PMAY phase delivered." },
-    { year: "2021", status: "Ongoing", title: "Group housing at scale", desc: "Shree Sai City Group Housing launched with modern formwork construction." },
-    { year: "2024", status: "Ongoing", title: "Sai Gaon", desc: "A planned residential neighbourhood on the Varanasi growth corridor." },
-    { year: "2026", status: "Upcoming", title: "Lucknow expansion", desc: "Pratham marks the group's entry into the Lucknow market." }
+    { year: "2013", status: "Completed", title: "Inception in Varanasi", desc: "SSB Group was established under the vision of Mr. Ram Gopal Singh to engineer high-integrity real estate." },
+    { year: "2015", status: "Completed", title: "Maiden Residential Handover", desc: "Successfully delivered our inaugural residential community, welcoming its first homeowner families." },
+    { year: "2018", status: "Completed", title: "Accessible Housing Milestone", desc: "Delivered the dedicated affordable housing sector under the Shree Sai City EWS / PMAY initiative." },
+    { year: "2021", status: "Ongoing", title: "Monolithic Formwork Era", desc: "Launched Shree Sai City Group Housing with advanced aluminum formwork for rapid, seismic-resilient construction." },
+    { year: "2024", status: "Ongoing", title: "Flagship Township: Sai Gaon", desc: "Unveiled an eco-planned gated township strategically situated along Varanasi's premier development corridor." },
+    { year: "2026", status: "Upcoming", title: "Capital Expansion: Lucknow", desc: "Marked strategic growth into Lucknow with 'Pratham', a state-of-the-art mixed-use commercial destination." }
   ],
 
   // Official Leadership

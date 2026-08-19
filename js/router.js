@@ -75,6 +75,12 @@ class AppRouter {
     } else {
       this.render404Page();
     }
+
+    // Immediately trigger scroll reveal observer & timeline fill animation
+    setTimeout(() => {
+      if (window.initSlowScrollReveal) window.initSlowScrollReveal();
+      if (window.initTimelineScrollAnimation) window.initTimelineScrollAnimation();
+    }, 40);
   }
 
   // 1. HOMEPAGE (MATCHING ALL SCREENSHOTS 1, 2, 3 & 4 PRECISELY)
@@ -95,14 +101,14 @@ class AppRouter {
         <div class="hero-container">
           <div class="hero-content-box">
             <span class="hero-eyebrow-text">
-              STAY BLESSED · SINCE 2013
+              RERA CERTIFIED · EST. 2013
             </span>
             <h1 class="hero-main-title">
-              <span>Building Spaces.</span>
-              <span>Creating Legacies.</span>
+              <span>Architecting Distinction.</span>
+              <span>Elevating Urban Living.</span>
             </h1>
             <p class="hero-description">
-              Since 2013, SSB Group has been creating thoughtfully planned residential and commercial spaces across Eastern Uttar Pradesh, with a commitment to quality, transparency and customer trust.
+              For over a decade, SSB Group has pioneered landmark residential townships and commercial destinations across Eastern Uttar Pradesh — engineered with architectural precision, structural integrity, and enduring value.
             </p>
             <div class="hero-btn-row">
               <a href="#/projects" class="btn-hero-primary">
@@ -200,7 +206,7 @@ class AppRouter {
         </div>
       </section>
 
-      <!-- EXACT "ABOUT SSB GROUP" SECTION (MATCHING SCREENSHOT 4) WITH DELAYED SLOW REVEAL -->
+      <!-- EXACT "ABOUT SSB GROUP" SECTION WITH DELAYED SLOW REVEAL -->
       <section class="about-ssb-strip" id="about-ssb-section">
         <div class="container">
           <div class="about-ssb-grid">
@@ -209,7 +215,7 @@ class AppRouter {
               <span class="about-ssb-eyebrow">ABOUT SSB GROUP</span>
               <h2 class="about-ssb-heading">A Legacy Built on Trust</h2>
               <p class="about-ssb-desc">
-                SSB Group is a real-estate development company focused on acquiring, planning and developing residential and commercial spaces across Eastern Uttar Pradesh. Founded in Varanasi in 2013 under the vision of Mr. Ram Gopal Singh, the group has grown with a philosophy centered on quality, innovation, professionalism and customer trust.
+                SSB Group is a premier real-estate and infrastructure enterprise acquiring, master-planning, and delivering residential and commercial landmarks across Eastern Uttar Pradesh. Founded in Varanasi in 2013 under the visionary leadership of Mr. Ram Gopal Singh, the company operates on structural discipline, modern formwork engineering, absolute legal transparency, and lifelong customer trust.
               </p>
             </div>
 
@@ -326,23 +332,30 @@ class AppRouter {
         </div>
       </section>
 
-      <!-- Historical Journey (2013 to 2026) -->
-      <section class="journey-section">
+      <!-- Historical Journey (From 2013 to today) -->
+      <section id="journey" class="section-padding" style="background: var(--sand); padding: 5rem 0;">
         <div class="container">
-          <div class="section-head">
-            <span class="eyebrow">Our Journey</span>
-            <h2>Milestones from 2013 to 2026</h2>
+          <div class="section-header text-center" style="text-align: center; margin-bottom: 3.5rem;">
+            <span class="section-subtitle" style="color: var(--brand); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">OUR JOURNEY</span>
+            <h2 class="section-title" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 3rem; color: var(--ink); font-weight: 600;">From 2013 to today</h2>
           </div>
 
-          <div class="timeline-list">
+          <div class="timeline-container">
+            <div class="timeline-fill-line" id="timeline-fill-line"></div>
             ${journey.map(j => `
-              <div class="timeline-card">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                  <span class="timeline-year">${j.year}</span>
-                  <span class="badge ${j.status === 'Completed' ? 'badge-success' : 'badge-brand'}">${j.status}</span>
+              <div class="timeline-item slow-reveal">
+                <div class="timeline-dot-wrap">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-dot-pulse"></div>
                 </div>
-                <h4 style="font-size: 1.15rem; color: var(--ink); margin-bottom: 0.35rem;">${j.title}</h4>
-                <p style="color: var(--ink-muted); font-size: 0.88rem; line-height: 1.55;">${j.desc}</p>
+                <div class="timeline-content">
+                  <div class="timeline-card-header">
+                    <span class="timeline-year">${j.year}</span>
+                    <span class="timeline-status-badge ${j.status.toLowerCase().includes('complete') ? 'completed' : j.status.toLowerCase().includes('progress') ? 'in-progress' : 'upcoming'}">${j.status.toUpperCase()}</span>
+                  </div>
+                  <h3 class="timeline-card-title">${j.title}</h3>
+                  <p class="timeline-card-desc">${j.desc}</p>
+                </div>
               </div>
             `).join('')}
           </div>
@@ -397,9 +410,9 @@ class AppRouter {
       window.initPresenceMap();
     }
 
-    // Initialize Slow Smooth Scroll Reveal Observer
-    if (window.initSlowScrollReveal) {
-      window.initSlowScrollReveal();
+    // Initialize Timeline Scroll Animation
+    if (window.initTimelineAnimation) {
+      window.initTimelineAnimation();
     }
   }
 
@@ -435,27 +448,313 @@ class AppRouter {
     `).join('');
   }
 
-  // 2. ABOUT US PAGE
+  // 2. ABOUT US PAGE (COMPREHENSIVE & REWORDED FROM SSBINFRAPROJECT.COM/ABOUT)
   renderAboutPage() {
-    this.renderHomePage();
-    const aboutElem = document.getElementById('about-ssb-section');
-    if (aboutElem) aboutElem.scrollIntoView({ behavior: 'smooth' });
+    const journey = window.store?.state?.journey || [];
+    const founder = window.store?.state?.leadership?.[0] || {
+      name: "Mr. Ram Gopal Singh",
+      designation: "Founder, Chairman & Managing Director",
+      quote: "We do not sell buildings. We hand over the place where a family's next thirty years will happen.",
+      photoUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+    };
+
+    window.scrollTo(0, 0);
+
+    this.appContainer.innerHTML = `
+      <!-- Combined Grand Page Hero Banner with Full Cover Background Image -->
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.92) 100%), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 6rem 0; position: relative; overflow: hidden; background-attachment: scroll;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        
+        <div class="container" style="position: relative; z-index: 2;">
+          <!-- Top Title & Badge -->
+          <div style="margin-bottom: 4rem;">
+            <span class="badge" style="margin-bottom: 1.25rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.35); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px; display: inline-block;">
+              About SSB Group
+            </span>
+            <h1 style="color: #FFF; font-size: 3.6rem; line-height: 1.12; max-width: 900px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1.25rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+              From a Vision Born in Varanasi to Eastern UP's Landmark Developer
+            </h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.2rem; max-width: 760px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+              Rooted in Varanasi's rich heritage, SSB Group has evolved into a premier real-estate and infrastructure force — pioneering master-planned townships, monolithic group housing, and commercial centers built on structural integrity and lifelong buyer trust.
+            </p>
+          </div>
+
+          <!-- Integrated "Who We Are & 3 Core Fundamentals" Sub-Section Covered by Background Image -->
+          <div style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 3.5rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start;">
+              <div>
+                <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #60A5FA; display: block; margin-bottom: 0.75rem;">WHO WE ARE</span>
+                <h2 style="font-size: 2.2rem; color: #FFF; margin-top: 0.25rem; line-height: 1.25; font-family: var(--font-heading); font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                  A Development Pioneer Anchored by Three Core Fundamentals
+                </h2>
+                <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); line-height: 1.75; margin-top: 1.25rem;">
+                  Established in Varanasi in 2013, SSB Group is an integrated real estate development firm specializing in strategic land acquisition, master-planned residential enclaves, high-rise apartments, and modern commercial hubs across Eastern Uttar Pradesh. Founded under the leadership of Mr. Ram Gopal Singh, our growth is guided by uncompromising craftsmanship, engineering innovation, and absolute buyer transparency.
+                </p>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); padding: 1.75rem; border-radius: var(--r-lg); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.2s, background 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'; this.style.background='rgba(255, 255, 255, 0.14)'" onmouseleave="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.08)'">
+                  <span style="font-family: var(--font-serif); font-size: 2.2rem; color: #60A5FA; font-weight: 700;">01</span>
+                  <h3 style="font-size: 1.3rem; color: #FFF; margin: 0.35rem 0 0.25rem 0;">Quality Without Compromise</h3>
+                  <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
+                    Premium-grade construction materials, rigorous structural oversight, and immaculate interior and exterior finish held to a single unyielding standard.
+                  </p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); padding: 1.75rem; border-radius: var(--r-lg); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.2s, background 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'; this.style.background='rgba(255, 255, 255, 0.14)'" onmouseleave="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.08)'">
+                  <span style="font-family: var(--font-serif); font-size: 2.2rem; color: #60A5FA; font-weight: 700;">02</span>
+                  <h3 style="font-size: 1.3rem; color: #FFF; margin: 0.35rem 0 0.25rem 0;">Engineering Innovation</h3>
+                  <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
+                    Deployment of advanced monolithic aluminum formwork, intelligent space planning, and eco-friendly infrastructure systems where they create real value.
+                  </p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); padding: 1.75rem; border-radius: var(--r-lg); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.2s, background 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'; this.style.background='rgba(255, 255, 255, 0.14)'" onmouseleave="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.08)'">
+                  <span style="font-family: var(--font-serif); font-size: 2.2rem; color: #60A5FA; font-weight: 700;">03</span>
+                  <h3 style="font-size: 1.3rem; color: #FFF; margin: 0.35rem 0 0.25rem 0;">Operational Professionalism</h3>
+                  <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
+                    Complete legal documentation, transparent pricing, guaranteed possession schedules, and dedicated post-handover customer support teams.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Evolutionary Timeline / Where It All Began -->
+      <section style="padding: 5rem 0; background: var(--sand-light);">
+        <div class="container">
+          <div style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem auto;">
+            <span class="eyebrow">OUR EVOLUTION</span>
+            <h2 style="font-size: 2.4rem; color: var(--ink); margin-top: 0.35rem;">Where It All Began</h2>
+            <p style="color: var(--ink-muted); font-size: 1.05rem; margin-top: 0.5rem;">
+              Varanasi, 2013. A single development, a dedicated core team, and the vision of Mr. Ram Gopal Singh.
+            </p>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-fill-line" id="timeline-fill-line"></div>
+            ${journey.map(j => `
+              <div class="timeline-item slow-reveal">
+                <div class="timeline-dot-wrap">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-dot-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                  <div class="timeline-card-header">
+                    <span class="timeline-year">${j.year}</span>
+                    <span class="timeline-status-badge ${j.status.toLowerCase().includes('complete') ? 'completed' : j.status.toLowerCase().includes('progress') ? 'in-progress' : 'upcoming'}">${j.status.toUpperCase()}</span>
+                  </div>
+                  <h3 class="timeline-card-title">${j.title}</h3>
+                  <p class="timeline-card-desc">${j.desc}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+
+      <!-- Founder's Life Chapters Section -->
+      <section style="padding: 5rem 0; background: #FFF;" id="founder-chapters">
+        <div class="container">
+          <div style="display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3.5rem; align-items: start;">
+            <div>
+              <img src="${founder.photoUrl}" alt="${founder.name}" style="width: 100%; border-radius: var(--r-xl); aspect-ratio: 4/5; object-fit: cover; border: 1px solid var(--border);">
+              <div style="margin-top: 1.5rem;">
+                <h3 style="font-size: 1.6rem; color: var(--ink); font-family: var(--font-display);">${founder.name}</h3>
+                <p style="color: var(--brand); font-weight: 600; font-size: 0.95rem; margin-top: 0.25rem;">${founder.designation}</p>
+              </div>
+            </div>
+
+            <div>
+              <span class="eyebrow">THE FOUNDER'S JOURNEY</span>
+              <h2 style="font-size: 2.4rem; color: var(--ink); margin-top: 0.35rem; margin-bottom: 2rem;">
+                A Builder's Life, Written Across Five Chapters
+              </h2>
+
+              <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+                <div style="border-left: 3px solid var(--brand); padding-left: 1.25rem;">
+                  <h3 style="font-size: 1.25rem; color: var(--brand);">Chapter 1: The Genesis</h3>
+                  <p style="font-size: 0.975rem; color: var(--ink-muted); line-height: 1.65; margin-top: 0.35rem;">
+                    Born and raised in ancient Varanasi, Mr. Ram Gopal Singh was motivated by a core conviction: that Eastern Uttar Pradesh deserved thoughtfully engineered developments built with the same warmth and dedication a family invests in their own sanctuary.
+                  </p>
+                </div>
+
+                <div style="border-left: 3px solid var(--brand); padding-left: 1.25rem;">
+                  <h3 style="font-size: 1.25rem; color: var(--brand);">Chapter 2: The Core Vision</h3>
+                  <p style="font-size: 0.975rem; color: var(--ink-muted); line-height: 1.65; margin-top: 0.35rem;">
+                    To architect accessible, beautifully integrated residential neighborhoods and commercial centers that blend modern amenities with honest pricing, growing methodically without ever sacrificing craftsmanship.
+                  </p>
+                </div>
+
+                <div style="border-left: 3px solid var(--brand); padding-left: 1.25rem;">
+                  <h3 style="font-size: 1.25rem; color: var(--brand);">Chapter 3: Foundational Ethos</h3>
+                  <p style="font-size: 0.975rem; color: var(--ink-muted); line-height: 1.65; margin-top: 0.35rem;">
+                    Uncompromising material standards, customer-first service, total clarity in title deeds and contracts, environmental consciousness, and giving back to the regional community that nurtured the company.
+                  </p>
+                </div>
+
+                <div style="border-left: 3px solid var(--brand); padding-left: 1.25rem;">
+                  <h3 style="font-size: 1.25rem; color: var(--brand);">Chapter 4: Scaling the Enterprise</h3>
+                  <p style="font-size: 0.975rem; color: var(--ink-muted); line-height: 1.65; margin-top: 0.35rem;">
+                    What originated as a single residential project in Varanasi has expanded into a multi-city portfolio encompassing plotted townships, high-rise apartments, PMAY housing, and retail plazas.
+                  </p>
+                </div>
+
+                <div style="border-left: 3px solid var(--brand); padding-left: 1.25rem;">
+                  <h3 style="font-size: 1.25rem; color: var(--brand);">Chapter 5: Horizon & Regional Expansion</h3>
+                  <p style="font-size: 0.975rem; color: var(--ink-muted); line-height: 1.65; margin-top: 0.35rem;">
+                    Extending SSB Group's developmental footprint into Chandauli, Mirzapur, Ghazipur, Azamgarh, and Mau — anchored by the flagship 'Pratham' mixed-use development in Lucknow.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Founder Quote Band -->
+      <section style="background: linear-gradient(135deg, var(--brand) 0%, #B83A14 100%); color: #FFF; padding: 4.5rem 0; text-align: center;">
+        <div class="container" style="max-width: 900px;">
+          <div style="font-size: 3rem; opacity: 0.6; line-height: 1;">“</div>
+          <blockquote style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1.35; margin-bottom: 1.25rem;">
+            “We do not sell buildings. We hand over the sanctuary where a family's next thirty years will unfold.”
+          </blockquote>
+          <p style="font-size: 1.05rem; opacity: 0.9; font-weight: 500;">
+            — Mr. Ram Gopal Singh, Founder & Managing Director
+          </p>
+        </div>
+      </section>
+
+      <!-- Founder Video Library Grid -->
+      <section style="padding: 5rem 0; background: var(--sand-light);">
+        <div class="container">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span class="eyebrow">FOUNDER VIDEO LIBRARY</span>
+              <h2 style="font-size: 2.2rem; color: var(--ink); margin-top: 0.25rem;">In His Own Words</h2>
+            </div>
+            <a href="#/media" class="btn btn-outline">Watch All Media & Videos &rarr;</a>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.75rem;">
+            <div style="background: #FFF; border-radius: var(--r-lg); border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'" onmouseleave="this.style.transform='translateY(0)'">
+              <div style="background: linear-gradient(135deg, #2c2523 0%, #151110 100%); height: 180px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <button style="width: 54px; height: 54px; border-radius: 50%; background: var(--brand); color: #FFF; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(224,84,43,0.4);" onclick="alert('Playing: Founder Message 2026')">▶</button>
+                <span style="position: absolute; bottom: 10px; right: 12px; background: rgba(0,0,0,0.7); color: #FFF; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">6:12</span>
+              </div>
+              <div style="padding: 1.25rem;">
+                <span class="eyebrow" style="font-size: 0.75rem;">FOUNDER MESSAGES</span>
+                <h3 style="font-size: 1.15rem; color: var(--ink); margin-top: 0.25rem;">Founder's Message 2026</h3>
+                <p style="font-size: 0.875rem; color: var(--ink-muted); margin-top: 0.25rem;">Mr. Ram Gopal Singh</p>
+              </div>
+            </div>
+
+            <div style="background: #FFF; border-radius: var(--r-lg); border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'" onmouseleave="this.style.transform='translateY(0)'">
+              <div style="background: linear-gradient(135deg, #2c2523 0%, #151110 100%); height: 180px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <button style="width: 54px; height: 54px; border-radius: 50%; background: var(--brand); color: #FFF; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(224,84,43,0.4);" onclick="alert('Playing: Sai Gaon Township Walkthrough')">▶</button>
+                <span style="position: absolute; bottom: 10px; right: 12px; background: rgba(0,0,0,0.7); color: #FFF; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">4:38</span>
+              </div>
+              <div style="padding: 1.25rem;">
+                <span class="eyebrow" style="font-size: 0.75rem;">PROJECT VISITS</span>
+                <h3 style="font-size: 1.15rem; color: var(--ink); margin-top: 0.25rem;">Walkthrough — Sai Gaon Township</h3>
+                <p style="font-size: 0.875rem; color: var(--ink-muted); margin-top: 0.25rem;">On-Site Inspection with MD</p>
+              </div>
+            </div>
+
+            <div style="background: #FFF; border-radius: var(--r-lg); border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'" onmouseleave="this.style.transform='translateY(0)'">
+              <div style="background: linear-gradient(135deg, #2c2523 0%, #151110 100%); height: 180px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <button style="width: 54px; height: 54px; border-radius: 50%; background: var(--brand); color: #FFF; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(224,84,43,0.4);" onclick="alert('Playing: Pratham Lucknow Launch')">▶</button>
+                <span style="position: absolute; bottom: 10px; right: 12px; background: rgba(0,0,0,0.7); color: #FFF; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">9:05</span>
+              </div>
+              <div style="padding: 1.25rem;">
+                <span class="eyebrow" style="font-size: 0.75rem;">PROJECT LAUNCHES</span>
+                <h3 style="font-size: 1.15rem; color: var(--ink); margin-top: 0.25rem;">Launch — Pratham, Lucknow</h3>
+                <p style="font-size: 0.875rem; color: var(--ink-muted); margin-top: 0.25rem;">Commercial Plaza Keynote Address</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Four Non-Negotiables -->
+      <section style="padding: 5rem 0; background: #FFF;">
+        <div class="container">
+          <div style="text-align: center; max-width: 700px; margin: 0 auto 3rem auto;">
+            <span class="eyebrow">FOUNDER'S PRINCIPLES</span>
+            <h2 style="font-size: 2.4rem; color: var(--ink); margin-top: 0.35rem;">Four Non-Negotiables</h2>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+            <div style="background: var(--sand-light); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; text-align: center;">
+              <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--brand); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1.25rem auto;">🛡️</div>
+              <h3 style="font-size: 1.3rem; color: var(--ink); margin-bottom: 0.5rem;">Unwavering Trust</h3>
+              <p style="font-size: 0.9rem; color: var(--ink-muted); line-height: 1.6;">100% UP-RERA registered projects, verified title deeds, and clean legal documentation.</p>
+            </div>
+
+            <div style="background: var(--sand-light); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; text-align: center;">
+              <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--brand); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1.25rem auto;">✨</div>
+              <h3 style="font-size: 1.3rem; color: var(--ink); margin-bottom: 0.5rem;">Superior Quality</h3>
+              <p style="font-size: 0.9rem; color: var(--ink-muted); line-height: 1.6;">Monolithic concrete formwork, branded fittings, and structural longevity.</p>
+            </div>
+
+            <div style="background: var(--sand-light); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; text-align: center;">
+              <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--brand); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1.25rem auto;">🤝</div>
+              <h3 style="font-size: 1.3rem; color: var(--ink); margin-bottom: 0.5rem;">Buyer-Centric Care</h3>
+              <p style="font-size: 0.9rem; color: var(--ink-muted); line-height: 1.6;">Chauffeur site visit pickups, live construction tracking, and transparent pricing.</p>
+            </div>
+
+            <div style="background: var(--sand-light); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; text-align: center;">
+              <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--brand); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1.25rem auto;">👥</div>
+              <h3 style="font-size: 1.3rem; color: var(--ink); margin-bottom: 0.5rem;">Regional Impact</h3>
+              <p style="font-size: 0.9rem; color: var(--ink-muted); line-height: 1.6;">Creating sustainable urban infrastructure and job opportunities across Eastern UP.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Call to Action Banner -->
+      <section style="background: var(--ink); color: #FFF; padding: 6rem 0; text-align: center; position: relative;">
+        <div class="container" style="max-width: 750px;">
+          <h2 style="color: #FFF; font-size: 2.6rem; margin-bottom: 1rem; font-family: var(--font-display);">
+            Come Experience What We've Built
+          </h2>
+          <p style="color: rgba(255,255,255,0.85); font-size: 1.15rem; margin-bottom: 2rem;">
+            Schedule an exclusive site visit with our team, walk our developments, and evaluate our construction quality firsthand.
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="#/projects" class="btn btn-primary" style="padding: 0.85rem 2rem; font-size: 1rem;">Explore Projects</a>
+            <button class="btn btn-outline" style="color: #FFF; border-color: rgba(255,255,255,0.4); padding: 0.85rem 2rem; font-size: 1rem;" onclick="window.openSiteVisitModal()">
+              🚗 Book a Chauffeur Site Visit
+            </button>
+          </div>
+        </div>
+      </section>
+    `;
   }
 
   // 3. PROJECTS PORTFOLIO
   renderProjectsPage() {
     const projects = window.store?.state?.projects || [];
     this.appContainer.innerHTML = `
-      <div style="padding: 8rem 0 5rem 0;">
-        <div class="container">
-          <div class="section-head text-center" style="text-align: center; max-width: 750px; margin: 0 auto 3.5rem auto;">
-            <span class="eyebrow">Our Projects</span>
-            <h1 style="font-size: 2.85rem; margin-top: 0.35rem;">Addresses shaped around real life</h1>
-            <p style="color: var(--ink-muted); font-size: 1.05rem; margin-top: 0.5rem;">
-              Residential neighbourhoods and commercial destinations across Varanasi and Lucknow.
-            </p>
-          </div>
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            PORTFOLIO & TOWNSHIPS
+          </span>
+          <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            Addresses Shaped Around Real Life
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 680px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+            Explore master-planned residential townships, monolithic group housing developments, and integrated commercial centers across Varanasi and Lucknow.
+          </p>
+        </div>
+      </section>
 
+      <div style="padding-bottom: 6rem;">
+        <div class="container">
           <div class="projects-grid">
             ${this.renderProjectCardsHtml(projects)}
           </div>
@@ -473,11 +772,14 @@ class AppRouter {
     }
 
     this.appContainer.innerHTML = `
-      <section style="background: var(--ink); color: #FFF; padding: 9rem 0 4rem 0;">
-        <div class="container">
-          <span class="badge badge-brand" style="margin-bottom: 0.75rem;">${project.status} · ${project.city}</span>
-          <h1 style="color: #FFF; font-size: 3.2rem; margin-bottom: 0.5rem;">${project.title}</h1>
-          <p style="color: rgba(255,255,255,0.85); font-size: 1.15rem; max-width: 750px; margin-bottom: 2rem;">
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.9) 100%), url('${project.heroImage || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=85'}') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 52vh; display: flex; align-items: flex-end; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            ${project.status} · ${project.city}
+          </span>
+          <h1 style="color: #FFF; font-size: 3.4rem; line-height: 1.12; font-family: var(--font-heading); font-weight: 700; margin-bottom: 0.75rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">${project.title}</h1>
+          <p style="color: rgba(255,255,255,0.92); font-size: 1.2rem; max-width: 780px; margin-bottom: 2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
             ${project.tagline}
           </p>
 
@@ -485,10 +787,10 @@ class AppRouter {
             <button class="btn btn-primary" onclick="window.openSiteVisitModal('${project.id}')">
               🚗 Book a Site Visit
             </button>
-            <button class="btn btn-outline" style="color: #FFF; border-color: rgba(255,255,255,0.4);" onclick="window.openEnquiryModal('${project.id}', 'Brochure')">
+            <button class="btn btn-outline" style="color: #FFF; border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);" onclick="window.openEnquiryModal('${project.id}', 'Brochure')">
               📥 Download Brochure to WhatsApp
             </button>
-            <a href="#/emi-calculator" class="btn btn-ghost-warm">
+            <a href="#/emi-calculator" class="btn btn-ghost-warm" style="color: #FFF; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);">
               🧮 EMI Calculator
             </a>
           </div>
@@ -497,7 +799,7 @@ class AppRouter {
 
       <div class="container" style="padding: 4rem 0 6rem 0;">
         <!-- RERA Trust Box -->
-        <div style="background: #FFF; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap: 1.5rem; margin-bottom: 3.5rem;">
+        <div style="background: #FFF; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3.5rem;">
           <div>
             <span class="eyebrow">Official Registration</span>
             <h3 style="font-size: 1.35rem; color: var(--ink);">100% UP-RERA Registered</h3>
@@ -555,16 +857,23 @@ class AppRouter {
   renderLeadershipPage() {
     const leaders = window.store?.state?.leadership || [];
     this.appContainer.innerHTML = `
-      <div style="padding: 8rem 0 5rem 0;">
-        <div class="container">
-          <div class="section-head text-center" style="text-align: center; max-width: 700px; margin: 0 auto 4rem auto;">
-            <span class="eyebrow">Leadership</span>
-            <h1 style="font-size: 2.85rem;">The People Behind SSB</h1>
-            <p style="color: var(--ink-muted); font-size: 1.05rem; margin-top: 0.5rem;">
-              A founder-led company, guided by decades of combined experience in real estate, finance and delivery.
-            </p>
-          </div>
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            FOUNDER & LEADERSHIP
+          </span>
+          <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            The Visionaries Behind SSB
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 680px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+            A founder-led company guided by decades of combined experience in civil engineering, finance, and master planning.
+          </p>
+        </div>
+      </section>
 
+      <div style="padding-bottom: 6rem;">
+        <div class="container">
           <div style="display: flex; flex-direction: column; gap: 3.5rem;">
             ${leaders.map((l, idx) => `
               <div style="display: grid; grid-template-columns: ${idx % 2 === 0 ? '0.7fr 1.3fr' : '1.3fr 0.7fr'}; gap: 3rem; align-items: center; background: #FFF; padding: 2.5rem; border-radius: var(--r-xl); border: 1px solid var(--border);">
@@ -592,16 +901,23 @@ class AppRouter {
   // 7. MEDIA
   renderMediaPage() {
     this.appContainer.innerHTML = `
-      <div style="padding: 8rem 0 5rem 0;">
-        <div class="container">
-          <div class="section-head text-center" style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem auto;">
-            <span class="eyebrow">Media & Events</span>
-            <h1 style="font-size: 2.85rem;">SSB in the News</h1>
-            <p style="color: var(--ink-muted); font-size: 1.05rem; margin-top: 0.5rem;">
-              Press releases, media mentions, and community handover ceremonies.
-            </p>
-          </div>
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            PRESS & ANNOUNCEMENTS
+          </span>
+          <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            SSB Group in the News
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 680px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+            Press releases, media features, regional development updates, and home handover ceremonies.
+          </p>
+        </div>
+      </section>
 
+      <div style="padding-bottom: 6rem;">
+        <div class="container">
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem;">
             <div style="background: #FFF; padding: 2rem; border-radius: var(--r-lg); border: 1px solid var(--border);">
               <span class="eyebrow">Regional Business Daily · 12 May 2026</span>
@@ -627,11 +943,16 @@ class AppRouter {
   // 8. INVESTORS & NRI
   renderNriCornerPage() {
     this.appContainer.innerHTML = `
-      <section style="background: var(--ink); color: #FFF; padding: 9rem 0 4rem 0;">
-        <div class="container">
-          <span class="badge badge-brand" style="margin-bottom: 0.75rem;">Global NRI & Investor Desk</span>
-          <h1 style="color: #FFF; font-size: 3rem; margin-bottom: 0.75rem;">Investing in Eastern Uttar Pradesh</h1>
-          <p style="color: rgba(255,255,255,0.85); font-size: 1.15rem; max-width: 750px;">
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 50vh; display: flex; align-items: flex-end; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            GLOBAL PATRONS & INVESTORS
+          </span>
+          <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            Investing in Eastern Uttar Pradesh
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 720px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
             Complete regulatory assistance under FEMA/RBI, multi-currency valuations, and remote property management for global patrons.
           </p>
         </div>
@@ -650,15 +971,23 @@ class AppRouter {
   // 9. EMI CALCULATOR
   renderEmiCalculatorPage() {
     this.appContainer.innerHTML = `
-      <div style="padding: 8rem 0 5rem 0;">
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            FINANCIAL ADVISORY
+          </span>
+          <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            Smart EMI & Loan Calculator
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 680px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+            Calculate your monthly installment, principal vs. interest breakdown, and amortization schedule.
+          </p>
+        </div>
+      </section>
+
+      <div style="padding-bottom: 6rem;">
         <div class="container">
-          <div class="section-head text-center" style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem auto;">
-            <span class="eyebrow">Financial Calculator</span>
-            <h1 style="font-size: 2.85rem;">Smart EMI & Loan Calculator</h1>
-            <p style="color: var(--ink-muted); font-size: 1.05rem; margin-top: 0.5rem;">
-              Calculate your monthly installment, principal vs. interest breakdown, and amortization schedule.
-            </p>
-          </div>
           <div id="emi-calc-mount"></div>
         </div>
       </div>
@@ -673,16 +1002,23 @@ class AppRouter {
   renderConstructionUpdatesPage() {
     const projects = window.store?.state?.projects || [];
     this.appContainer.innerHTML = `
-      <div style="padding: 8rem 0 5rem 0;">
-        <div class="container">
-          <div class="section-head text-center" style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem auto;">
-            <span class="eyebrow">Transparency</span>
-            <h1 style="font-size: 2.85rem;">Live Construction Tracking</h1>
-            <p style="color: var(--ink-muted); font-size: 1.05rem; margin-top: 0.5rem;">
-              Verified stage-by-stage structural milestone logs for our homebuyers.
-            </p>
-          </div>
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            TRANSPARENCY & TRACKING
+          </span>
+          <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            Live Construction Tracking
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 680px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+            Verified stage-by-stage structural milestone logs for our homebuyers.
+          </p>
+        </div>
+      </section>
 
+      <div style="padding-bottom: 6rem;">
+        <div class="container">
           ${projects.map(p => `
             <div style="margin-bottom: 3.5rem;">
               <h2 style="font-size: 1.75rem; color: var(--ink); margin-bottom: 0.25rem;">${p.title} (${p.city})</h2>
@@ -701,16 +1037,23 @@ class AppRouter {
   renderCertificationsPage() {
     const certs = window.store?.state?.certifications || [];
     this.appContainer.innerHTML = `
-      <div style="padding: 8rem 0 5rem 0;">
-        <div class="container">
-          <div class="section-head text-center" style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem auto;">
-            <span class="eyebrow">Legal & Compliance</span>
-            <h1 style="font-size: 2.85rem;">Certifications & Registrations</h1>
-            <p style="color: var(--ink-muted); font-size: 1.05rem; margin-top: 0.5rem;">
-              Verified government approvals, ISO quality standards, and tourism registrations.
-            </p>
-          </div>
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            COMPLIANCE & STANDARDS
+          </span>
+          <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            Certifications & Legal Compliance
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 680px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+            Verified government approvals, ISO quality standards, UP-RERA registrations, and tourism accreditations.
+          </p>
+        </div>
+      </section>
 
+      <div style="padding-bottom: 6rem;">
+        <div class="container">
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
             ${certs.map(c => `
               <div style="background: #FFF; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; text-align: center;">
@@ -733,15 +1076,23 @@ class AppRouter {
     };
 
     this.appContainer.innerHTML = `
-      <div style="padding: 8rem 0 5rem 0;">
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+            HEADQUARTERS & DESK
+          </span>
+          <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            Connect with SSB Group
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 680px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+            Visit our corporate office in Varanasi Cantonment or schedule a site visit with our team.
+          </p>
+        </div>
+      </section>
+
+      <div style="padding-bottom: 6rem;">
         <div class="container">
-          <div class="section-head text-center" style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem auto;">
-            <span class="eyebrow">Get in Touch</span>
-            <h1 style="font-size: 2.85rem;">Connect with SSB Group</h1>
-            <p style="color: var(--ink-muted); font-size: 1.05rem; margin-top: 0.5rem;">
-              Visit our corporate office in Varanasi or request a site visit with our senior team.
-            </p>
-          </div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
             <div>

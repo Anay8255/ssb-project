@@ -29,7 +29,7 @@ window.initPresenceMap = function() {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Custom Terracotta SVG Pin Icon
+    // Custom Sapphire Blue SVG Pin Icon
     const customIcon = L.divIcon({
       className: 'custom-map-pin',
       html: `
@@ -37,12 +37,12 @@ window.initPresenceMap = function() {
           width: 32px;
           height: 32px;
           border-radius: 50% 50% 50% 0;
-          background: #E0542B;
+          background: #2563EB;
           transform: rotate(-45deg);
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 12px rgba(224, 84, 43, 0.45);
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
           border: 2px solid #FFFFFF;
         ">
           <div style="width: 10px; height: 10px; background: #FFFFFF; border-radius: 50%;"></div>
@@ -57,8 +57,8 @@ window.initPresenceMap = function() {
     const varanasiMarker = L.marker([25.3176, 82.9739], { icon: customIcon }).addTo(map);
     varanasiMarker.bindPopup(`
       <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 4px;">
-        <strong style="color: #E0542B; font-size: 1.05rem;">Varanasi (Headquarters)</strong><br>
-        <span style="font-size: 0.85rem; color: #1B1918;">• Sai Gaon (Residential)<br>• Shree Sai City Group Housing<br>• Shree Sai City EWS / PMAY</span>
+        <strong style="color: #2563EB; font-size: 1.05rem;">Varanasi (Headquarters)</strong><br>
+        <span style="font-size: 0.85rem; color: #0F172A;">• Sai Gaon (Residential)<br>• Shree Sai City Group Housing<br>• Shree Sai City EWS / PMAY</span>
       </div>
     `);
 
@@ -66,8 +66,8 @@ window.initPresenceMap = function() {
     const lucknowMarker = L.marker([26.8467, 80.9462], { icon: customIcon }).addTo(map);
     lucknowMarker.bindPopup(`
       <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 4px;">
-        <strong style="color: #E0542B; font-size: 1.05rem;">Lucknow (New Expansion)</strong><br>
-        <span style="font-size: 0.85rem; color: #1B1918;">• Pratham (Commercial & Mixed-Use)</span>
+        <strong style="color: #2563EB; font-size: 1.05rem;">Lucknow (New Expansion)</strong><br>
+        <span style="font-size: 0.85rem; color: #0F172A;">• Pratham (Commercial & Mixed-Use)</span>
       </div>
     `);
 
@@ -86,6 +86,17 @@ window.initSlowScrollReveal = function() {
   const elementsToReveal = document.querySelectorAll('.slow-reveal:not(.revealed)');
   if (!elementsToReveal || elementsToReveal.length === 0) return;
 
+  // Immediately reveal elements that are already within or near the viewport
+  elementsToReveal.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 100 && rect.bottom > -50) {
+      el.classList.add('revealed');
+    }
+  });
+
+  const remaining = document.querySelectorAll('.slow-reveal:not(.revealed)');
+  if (remaining.length === 0) return;
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -94,11 +105,46 @@ window.initSlowScrollReveal = function() {
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.05,
+    rootMargin: '100px 0px 100px 0px'
   });
 
-  elementsToReveal.forEach(el => observer.observe(el));
+  remaining.forEach(el => observer.observe(el));
+};
+
+// 2b. Scroll-Driven Timeline Line Fill & Node Animation
+window.initTimelineScrollAnimation = function() {
+  const timelineContainer = document.querySelector('.timeline-container');
+  const fillLine = document.getElementById('timeline-fill-line');
+  if (!timelineContainer || !fillLine) return;
+
+  const updateTimelineProgress = () => {
+    const rect = timelineContainer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Calculate scroll progress through timeline
+    const totalHeight = rect.height;
+    const startPoint = windowHeight * 0.7;
+    const currentScrollPos = startPoint - rect.top;
+    
+    let progress = Math.max(0, Math.min(1, currentScrollPos / totalHeight));
+    fillLine.style.height = `${(progress * 100).toFixed(1)}%`;
+
+    // Activate individual node dots and cards as fill line reaches them
+    const items = timelineContainer.querySelectorAll('.timeline-item');
+    items.forEach(item => {
+      const itemRect = item.getBoundingClientRect();
+      if (itemRect.top < windowHeight * 0.75) {
+        item.classList.add('active');
+        item.classList.add('revealed');
+      }
+    });
+  };
+
+  window.removeEventListener('scroll', window._timelineScrollHandler || function(){});
+  window._timelineScrollHandler = updateTimelineProgress;
+  window.addEventListener('scroll', window._timelineScrollHandler, { passive: true });
+  updateTimelineProgress();
 };
 
 // 3. Scroll-Triggered Animated Counter Engine
@@ -190,9 +236,28 @@ function initApp() {
   setTimeout(() => {
     if (window.initScrollCounterAnimation) window.initScrollCounterAnimation();
     if (window.initPresenceMap) window.initPresenceMap();
-    if (window.initSlowScrollReveal) window.initSlowScrollReveal();
+    if (window.initTimelineAnimation) window.initTimelineAnimation();
   }, 150);
 }
+
+// Timeline Scroll Reveal Observer
+window.initTimelineAnimation = function() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  if (!timelineItems.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  timelineItems.forEach(item => observer.observe(item));
+};
 
 // Ensure execution whether DOMContentLoaded already fired or not
 if (document.readyState === 'loading') {

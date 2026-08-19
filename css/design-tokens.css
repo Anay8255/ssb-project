@@ -1,39 +1,40 @@
 /* ==========================================================================
-   SSB GROUP — DESIGN SYSTEM & EXACT BRAND TOKENS
-   Reference: ssbinfraproject.com | Warm Apricot Cream, Deep Merlot Wine & Terracotta
+   SSB GROUP — DESIGN SYSTEM & LUXURY LIGHT PALETTE
+   Theme: Executive Royal Blue & Midnight Slate Navy on Light Pearl Slate
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Exact Terracotta Brand Tone */
-  --brand: #DC5A32;
-  --brand-hover: #C4431B;
-  --brand-subtle: rgba(220, 90, 50, 0.08);
-  --brand-border: rgba(220, 90, 50, 0.22);
+  /* Executive Royal Sapphire Blue Brand Accent */
+  --brand: #2563EB;
+  --brand-hover: #1D4ED8;
+  --brand-subtle: rgba(37, 99, 235, 0.08);
+  --brand-border: rgba(37, 99, 235, 0.25);
 
-  /* Deep Merlot / Wine Title Tone */
-  --ink-merlot: #3D181D;
-  --ink: #231B1A;
-  --ink-light: #3D3330;
-  --ink-muted: #6E6660;
+  /* Midnight Slate Navy Title & Typography Tones */
+  --ink-merlot: #0F172A;
+  --ink: #0F172A;
+  --ink-light: #1E293B;
+  --ink-muted: #475569;
 
-  /* Exact Warm Apricot Cream Backgrounds */
-  --sand: #F9F1EB;
-  --sand-muted: #F3EAE2;
+  /* Crisp Light Pearl Slate Backgrounds */
+  --sand: #F8FAFC;
+  --sand-muted: #F1F5F9;
+  --sand-light: #F8FAFC;
   --surface: #FFFFFF;
-  --border: #E8DDD5;
-  --border-light: #F0E7DF;
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
 
-  /* Accent & Functional */
-  --gold: #C59B27;
-  --gold-subtle: rgba(197, 155, 39, 0.1);
-  --success: #15803D;
-  --success-bg: rgba(21, 128, 61, 0.08);
-  --warning: #D97706;
-  --warning-bg: rgba(217, 119, 6, 0.08);
-  --danger: #DC2626;
-  --danger-bg: rgba(220, 38, 38, 0.08);
+  /* Metallic Champagne Gold & Functional Accents */
+  --gold: #D97706;
+  --gold-subtle: rgba(217, 119, 6, 0.1);
+  --success: #16A34A;
+  --success-bg: rgba(22, 163, 74, 0.08);
+  --warning: #EA580C;
+  --warning-bg: rgba(234, 88, 12, 0.08);
+  --danger: #E11D48;
+  --danger-bg: rgba(225, 29, 72, 0.08);
 
   /* Typography Scale */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -41,12 +42,12 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Elevation Shadows */
-  --shadow-xs: 0 1px 2px rgba(61, 24, 29, 0.03);
-  --shadow-sm: 0 2px 6px rgba(61, 24, 29, 0.05);
-  --shadow-md: 0 8px 20px rgba(61, 24, 29, 0.07);
-  --shadow-lg: 0 16px 36px rgba(61, 24, 29, 0.09);
-  --shadow-pill: 0 6px 24px rgba(61, 24, 29, 0.08);
-  --shadow-brand: 0 10px 24px -4px rgba(220, 90, 50, 0.35);
+  --shadow-xs: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 10px 25px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.09);
+  --shadow-pill: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --shadow-brand: 0 10px 24px -4px rgba(37, 99, 235, 0.35);
 
   /* Radii */
   --r-sm: 8px;

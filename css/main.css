@@ -170,6 +170,26 @@
   overflow: hidden;
 }
 
+.page-hero-banner {
+  position: relative;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8rem 0 4rem 0 !important;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .page-hero-banner {
+    min-height: 80vh;
+    height: auto;
+    padding: 9rem 0 4rem 0 !important;
+  }
+}
+
 .hero-dot-grid {
   position: absolute;
   inset: 0;

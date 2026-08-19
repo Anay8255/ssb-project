@@ -461,64 +461,20 @@ class AppRouter {
     window.scrollTo(0, 0);
 
     this.appContainer.innerHTML = `
-      <!-- Combined Grand Page Hero Banner with Full Cover Background Image -->
-      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.92) 100%), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 6rem 0; position: relative; overflow: hidden; background-attachment: scroll;">
+      <!-- Hero Header Banner with Full Cover Background Image (100vh Full Desktop Frame) -->
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         
-        <div class="container" style="position: relative; z-index: 2;">
-          <!-- Top Title & Badge -->
-          <div style="margin-bottom: 4rem;">
-            <span class="badge" style="margin-bottom: 1.25rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.35); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px; display: inline-block;">
-              About SSB Group
-            </span>
-            <h1 style="color: #FFF; font-size: 3.6rem; line-height: 1.12; max-width: 900px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1.25rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-              From a Vision Born in Varanasi to Eastern UP's Landmark Developer
-            </h1>
-            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.2rem; max-width: 760px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
-              Rooted in Varanasi's rich heritage, SSB Group has evolved into a premier real-estate and infrastructure force — pioneering master-planned townships, monolithic group housing, and commercial centers built on structural integrity and lifelong buyer trust.
-            </p>
-          </div>
-
-          <!-- Integrated "Who We Are & 3 Core Fundamentals" Sub-Section Covered by Background Image -->
-          <div style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 3.5rem;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start;">
-              <div>
-                <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #60A5FA; display: block; margin-bottom: 0.75rem;">WHO WE ARE</span>
-                <h2 style="font-size: 2.2rem; color: #FFF; margin-top: 0.25rem; line-height: 1.25; font-family: var(--font-heading); font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
-                  A Development Pioneer Anchored by Three Core Fundamentals
-                </h2>
-                <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); line-height: 1.75; margin-top: 1.25rem;">
-                  Established in Varanasi in 2013, SSB Group is an integrated real estate development firm specializing in strategic land acquisition, master-planned residential enclaves, high-rise apartments, and modern commercial hubs across Eastern Uttar Pradesh. Founded under the leadership of Mr. Ram Gopal Singh, our growth is guided by uncompromising craftsmanship, engineering innovation, and absolute buyer transparency.
-                </p>
-              </div>
-
-              <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); padding: 1.75rem; border-radius: var(--r-lg); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.2s, background 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'; this.style.background='rgba(255, 255, 255, 0.14)'" onmouseleave="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.08)'">
-                  <span style="font-family: var(--font-serif); font-size: 2.2rem; color: #60A5FA; font-weight: 700;">01</span>
-                  <h3 style="font-size: 1.3rem; color: #FFF; margin: 0.35rem 0 0.25rem 0;">Quality Without Compromise</h3>
-                  <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
-                    Premium-grade construction materials, rigorous structural oversight, and immaculate interior and exterior finish held to a single unyielding standard.
-                  </p>
-                </div>
-
-                <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); padding: 1.75rem; border-radius: var(--r-lg); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.2s, background 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'; this.style.background='rgba(255, 255, 255, 0.14)'" onmouseleave="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.08)'">
-                  <span style="font-family: var(--font-serif); font-size: 2.2rem; color: #60A5FA; font-weight: 700;">02</span>
-                  <h3 style="font-size: 1.3rem; color: #FFF; margin: 0.35rem 0 0.25rem 0;">Engineering Innovation</h3>
-                  <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
-                    Deployment of advanced monolithic aluminum formwork, intelligent space planning, and eco-friendly infrastructure systems where they create real value.
-                  </p>
-                </div>
-
-                <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); padding: 1.75rem; border-radius: var(--r-lg); border: 1px solid rgba(255, 255, 255, 0.18); transition: transform 0.2s, background 0.2s;" onmouseenter="this.style.transform='translateY(-3px)'; this.style.background='rgba(255, 255, 255, 0.14)'" onmouseleave="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.08)'">
-                  <span style="font-family: var(--font-serif); font-size: 2.2rem; color: #60A5FA; font-weight: 700;">03</span>
-                  <h3 style="font-size: 1.3rem; color: #FFF; margin: 0.35rem 0 0.25rem 0;">Operational Professionalism</h3>
-                  <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
-                    Complete legal documentation, transparent pricing, guaranteed possession schedules, and dedicated post-handover customer support teams.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+          <span class="badge" style="margin-bottom: 1.25rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.35); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px; display: inline-block;">
+            About SSB Group
+          </span>
+          <h1 style="color: #FFF; font-size: 3.8rem; line-height: 1.12; max-width: 950px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1.25rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            From a Vision Born in Varanasi to Eastern UP's Landmark Developer
+          </h1>
+          <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; max-width: 780px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+            Rooted in Varanasi's rich heritage, SSB Group has evolved into a premier real-estate and infrastructure force — pioneering master-planned townships, monolithic group housing, and commercial centers built on structural integrity and lifelong buyer trust.
+          </p>
         </div>
       </section>
 

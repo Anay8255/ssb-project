@@ -206,39 +206,113 @@ class AppRouter {
         </div>
       </section>
 
-      <!-- EXACT "ABOUT SSB GROUP" SECTION WITH DELAYED SLOW REVEAL -->
-      <section class="about-ssb-strip" id="about-ssb-section">
+      <!-- ROMA BUILDERS STYLE "ABOUT US" SECTION LAYOUT -->
+      <section class="roma-about-section" id="about-ssb-section">
         <div class="container">
-          <div class="about-ssb-grid">
-            <!-- Left Column: Story -->
-            <div class="about-ssb-left slow-reveal">
-              <span class="about-ssb-eyebrow">ABOUT SSB GROUP</span>
-              <h2 class="about-ssb-heading">A Legacy Built on Trust</h2>
-              <p class="about-ssb-desc">
-                SSB Group is a premier real-estate and infrastructure enterprise acquiring, master-planning, and delivering residential and commercial landmarks across Eastern Uttar Pradesh. Founded in Varanasi in 2013 under the visionary leadership of Mr. Ram Gopal Singh, the company operates on structural discipline, modern formwork engineering, absolute legal transparency, and lifelong customer trust.
-              </p>
-            </div>
+          <!-- Background Architectural Wireframe Grids -->
+          <div class="wireframe-bg-tl"></div>
+          <div class="wireframe-bg-br"></div>
 
-            <!-- Right Column: 3 Pillar Cards + Action Link -->
-            <div class="about-ssb-right">
-              <div class="about-pillar-cards">
-                <div class="about-pillar-card slow-reveal slow-reveal-delay-1">
-                  <div class="about-pillar-num">01</div>
-                  <div class="about-pillar-title">Quality</div>
+          <div class="roma-about-grid">
+            <!-- Left Column: Floating Composite Image Collage -->
+            <div class="roma-collage-wrapper slow-reveal">
+              <!-- 1. Arch Image (Left) -->
+              <div class="roma-arch-img-box">
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Engineer" class="roma-arch-img" />
+              </div>
+
+              <!-- 2. Tall Rectangular Image (Top Right) -->
+              <div class="roma-rect-img-box">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=85" alt="SSB Site Construction" class="roma-rect-img" />
+              </div>
+
+              <!-- 3. Floating Circular Badge (Center Overlap) -->
+              <div class="roma-circular-badge">
+                <div class="circular-text-svg">
+                  <svg viewBox="0 0 120 120" width="120" height="120">
+                    <path id="circlePath" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" fill="none" />
+                    <text font-size="10.5" font-weight="700" fill="#FFFFFF" letter-spacing="2">
+                      <textPath href="#circlePath" startOffset="0%">
+                        YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •
+                      </textPath>
+                    </text>
+                  </svg>
                 </div>
-                <div class="about-pillar-card slow-reveal slow-reveal-delay-2">
-                  <div class="about-pillar-num">02</div>
-                  <div class="about-pillar-title">Innovation</div>
-                </div>
-                <div class="about-pillar-card slow-reveal slow-reveal-delay-3">
-                  <div class="about-pillar-num">03</div>
-                  <div class="about-pillar-title">Professionalism</div>
+                <div class="circular-badge-center">
+                  <span class="badge-years-num">13<sup>+</sup></span>
                 </div>
               </div>
 
-              <div class="slow-reveal slow-reveal-delay-3" style="margin-top: 1.85rem;">
-                <a href="#/about" class="about-story-link">
-                  Discover Our Story &rarr;
+              <!-- 4. Floating Rating Card (Bottom Right) -->
+              <div class="roma-rating-card">
+                <div class="rating-num">4.8</div>
+                <div class="rating-avatars">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Buyer" class="avatar-img" />
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Buyer" class="avatar-img" />
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Buyer" class="avatar-img" />
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" alt="Buyer" class="avatar-img" />
+                </div>
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-text">1200+ Satisfied Families</div>
+              </div>
+
+              <!-- 5. Mini Gallery Thumbnails (Bottom Left) -->
+              <div class="roma-mini-gallery">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=200&q=80" alt="Site 1" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=200&q=80" alt="Site 2" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=200&q=80" alt="Site 3" class="mini-thumb" />
+              </div>
+            </div>
+
+            <!-- Right Column: Content Text & Bullet Points -->
+            <div class="roma-content-wrapper slow-reveal slow-reveal-delay-1">
+              <div class="roma-eyebrow-line">
+                <span class="roma-eyebrow">ABOUT US</span>
+                <span class="roma-accent-line"></span>
+              </div>
+
+              <h2 class="roma-heading">
+                Credibility is like a city. It's not built in a day.
+              </h2>
+
+              <p class="roma-desc">
+                We are one of the pioneers and leading builders in Varanasi serving as a harbinger of affordable housing by delivering quality homes without compromise.
+              </p>
+
+              <p class="roma-desc">
+                Today, SSB Group's landmark developments grace the city's most strategic locations, blending superior construction quality, timeless architecture, and thoughtfully planned living spaces. Every project is enriched with world-class amenities, vibrant surroundings, and exceptional value, delivering an unmatched lifestyle experience.
+              </p>
+
+              <p class="roma-quote">
+                Our journey is built on trust, driven by excellence, and inspired by the promise of a better tomorrow.
+              </p>
+
+              <div class="roma-divider"></div>
+
+              <div class="roma-features-list">
+                <div class="roma-feature-item">
+                  <div class="roma-feature-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                  </div>
+                  <span class="roma-feature-text">Trusted by a growing community of happy homeowners</span>
+                </div>
+
+                <div class="roma-feature-item">
+                  <div class="roma-feature-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <span class="roma-feature-text">Focus on quality construction, legal clarity, and on-time delivery</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.85rem;">
+                <a href="#/about" class="roma-know-more-btn">
+                  Know More <span class="arrow-icon">↗</span>
                 </a>
               </div>
             </div>
@@ -475,6 +549,114 @@ class AppRouter {
           <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; max-width: 780px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">
             Rooted in Varanasi's rich heritage, SSB Group has evolved into a premier real-estate and infrastructure force — pioneering master-planned townships, monolithic group housing, and commercial centers built on structural integrity and lifelong buyer trust.
           </p>
+        </div>
+      </section>
+
+      <!-- ROMA BUILDERS STYLE "ABOUT US" SECTION LAYOUT -->
+      <section class="roma-about-section" id="about-ssb-page-section">
+        <div class="container">
+          <!-- Background Architectural Wireframe Grids -->
+          <div class="wireframe-bg-tl"></div>
+          <div class="wireframe-bg-br"></div>
+
+          <div class="roma-about-grid">
+            <!-- Left Column: Floating Composite Image Collage -->
+            <div class="roma-collage-wrapper slow-reveal">
+              <!-- 1. Arch Image (Left) -->
+              <div class="roma-arch-img-box">
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Engineer" class="roma-arch-img" />
+              </div>
+
+              <!-- 2. Tall Rectangular Image (Top Right) -->
+              <div class="roma-rect-img-box">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=85" alt="SSB Site Construction" class="roma-rect-img" />
+              </div>
+
+              <!-- 3. Floating Circular Badge (Center Overlap) -->
+              <div class="roma-circular-badge">
+                <div class="circular-text-svg">
+                  <svg viewBox="0 0 120 120" width="120" height="120">
+                    <path id="circlePath2" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" fill="none" />
+                    <text font-size="10.5" font-weight="700" fill="#FFFFFF" letter-spacing="2">
+                      <textPath href="#circlePath2" startOffset="0%">
+                        YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •
+                      </textPath>
+                    </text>
+                  </svg>
+                </div>
+                <div class="circular-badge-center">
+                  <span class="badge-years-num">13<sup>+</sup></span>
+                </div>
+              </div>
+
+              <!-- 4. Floating Rating Card (Bottom Right) -->
+              <div class="roma-rating-card">
+                <div class="rating-num">4.8</div>
+                <div class="rating-avatars">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Buyer" class="avatar-img" />
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Buyer" class="avatar-img" />
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Buyer" class="avatar-img" />
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" alt="Buyer" class="avatar-img" />
+                </div>
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-text">1200+ Satisfied Families</div>
+              </div>
+
+              <!-- 5. Mini Gallery Thumbnails (Bottom Left) -->
+              <div class="roma-mini-gallery">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=200&q=80" alt="Site 1" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=200&q=80" alt="Site 2" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=200&q=80" alt="Site 3" class="mini-thumb" />
+              </div>
+            </div>
+
+            <!-- Right Column: Content Text & Bullet Points -->
+            <div class="roma-content-wrapper slow-reveal slow-reveal-delay-1">
+              <div class="roma-eyebrow-line">
+                <span class="roma-eyebrow">ABOUT US</span>
+                <span class="roma-accent-line"></span>
+              </div>
+
+              <h2 class="roma-heading">
+                Credibility is like a city. It's not built in a day.
+              </h2>
+
+              <p class="roma-desc">
+                We are one of the pioneers and leading builders in Varanasi serving as a harbinger of affordable housing by delivering quality homes without compromise.
+              </p>
+
+              <p class="roma-desc">
+                Today, SSB Group's landmark developments grace the city's most strategic locations, blending superior construction quality, timeless architecture, and thoughtfully planned living spaces. Every project is enriched with world-class amenities, vibrant surroundings, and exceptional value, delivering an unmatched lifestyle experience.
+              </p>
+
+              <p class="roma-quote">
+                Our journey is built on trust, driven by excellence, and inspired by the promise of a better tomorrow.
+              </p>
+
+              <div class="roma-divider"></div>
+
+              <div class="roma-features-list">
+                <div class="roma-feature-item">
+                  <div class="roma-feature-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                  </div>
+                  <span class="roma-feature-text">Trusted by a growing community of happy homeowners</span>
+                </div>
+
+                <div class="roma-feature-item">
+                  <div class="roma-feature-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <span class="roma-feature-text">Focus on quality construction, legal clarity, and on-time delivery</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

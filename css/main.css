@@ -164,7 +164,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 10rem 0 6rem 0;
-  background: linear-gradient(180deg, rgba(35, 27, 26, 0.35) 0%, rgba(35, 27, 26, 0.82) 100%),
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.88) 100%),
               url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat;
   color: #FFFFFF;
   overflow: hidden;
@@ -569,8 +569,8 @@
   background: #FFFFFF;
   border-radius: 20px;
   padding: 2.25rem 1.65rem;
-  border: 1px solid rgba(232, 221, 213, 0.7);
-  box-shadow: 0 4px 18px rgba(61, 24, 29, 0.03);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -580,7 +580,7 @@
 
 .about-pillar-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(61, 24, 29, 0.07);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
   border-color: var(--brand-border);
 }
 

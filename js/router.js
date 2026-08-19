@@ -620,48 +620,63 @@ class AppRouter {
     }
 
     return projects.map(p => `
-      <div class="luxury-project-card slow-reveal">
-        <div class="luxury-card-media">
-          <img src="${p.featuredImage}" alt="${p.title}" class="luxury-card-img" loading="lazy">
+      <div class="pro-project-card slow-reveal">
+        <div class="pro-card-image-wrap">
+          <img src="${p.featuredImage}" alt="${p.title}" class="pro-card-img" loading="lazy">
+          <div class="pro-card-image-overlay"></div>
           
-          <div class="luxury-card-badges-top">
-            <span class="luxury-status-badge ${p.status === 'Completed' ? 'badge-success' : (p.status === 'Ongoing' ? 'badge-brand' : 'badge-warning')}">
-              <span class="status-dot"></span> ${p.status.toUpperCase()}
+          <div class="pro-card-top-row">
+            <span class="pro-status-badge ${p.status === 'Completed' ? 'status-completed' : (p.status === 'Ongoing' ? 'status-ongoing' : 'status-upcoming')}">
+              <span class="pro-status-dot"></span> ${p.status.toUpperCase()}
             </span>
-            <span class="luxury-city-badge">
-              📍 ${p.city.split(',')[0]}
+            <span class="pro-rera-badge">
+              ✓ RERA APPROVED
             </span>
           </div>
 
-          <div class="luxury-card-scrim-bar">
-            <span class="scrim-spec-item">📐 ${p.totalLandArea || 'Master Planned'}</span>
-            <span class="scrim-spec-item">🏢 ${p.totalUnitsCount || 'Multiple'} Units</span>
-            <span class="scrim-spec-item">📜 ${p.reraNumber ? 'RERA Approved' : 'Approved'}</span>
+          <div class="pro-card-img-footer">
+            <span class="pro-location-tag">📍 ${p.locationName || p.city}</span>
           </div>
         </div>
 
-        <div class="luxury-card-content">
-          <div class="luxury-card-category">${p.category.toUpperCase()} · TOWNSHIP & RESIDENCES</div>
-          <h3 class="luxury-card-title">${p.title}</h3>
-          <p class="luxury-card-tagline">${p.tagline}</p>
+        <div class="pro-card-body">
+          <div style="margin-bottom: 0.75rem;">
+            <span class="pro-category-label">${p.category.toUpperCase()} TOWNSHIP</span>
+            <h3 class="pro-card-title">${p.title}</h3>
+            <p class="pro-card-desc">${p.tagline}</p>
+          </div>
 
-          <div class="luxury-card-price-row">
-            <div>
-              <span class="price-label">STARTING PRICE</span>
-              <span class="price-value">${p.priceDisplay || 'On Request'}</span>
+          <div class="pro-specs-bar">
+            <div class="pro-spec-item">
+              <span class="spec-val">${p.totalLandArea || 'Master Plan'}</span>
+              <span class="spec-lbl">Land Area</span>
+            </div>
+            <div class="pro-spec-divider"></div>
+            <div class="pro-spec-item">
+              <span class="spec-val">${p.totalUnitsCount || '300+'} Units</span>
+              <span class="spec-lbl">Capacity</span>
+            </div>
+            <div class="pro-spec-divider"></div>
+            <div class="pro-spec-item">
+              <span class="spec-val">${p.city.split(',')[0]}</span>
+              <span class="spec-lbl">City</span>
             </div>
           </div>
 
-          <div class="luxury-card-divider"></div>
+          <div class="pro-card-footer">
+            <div class="pro-price-box">
+              <span class="pro-price-title">STARTING FROM</span>
+              <span class="pro-price-amount">${p.priceDisplay || 'On Request'}</span>
+            </div>
 
-          <div class="luxury-card-actions">
-            <a href="#/projects/${p.slug}" class="luxury-btn-primary">
-              Know More <span class="arrow-icon">↗</span>
-            </a>
-            <button class="luxury-btn-secondary" onclick="window.openEnquiryModal('${p.id}', 'Brochure')">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Brochure
-            </button>
+            <div class="pro-actions-group">
+              <a href="#/projects/${p.slug}" class="pro-btn-primary">
+                View Project ↗
+              </a>
+              <button class="pro-btn-secondary" onclick="window.openEnquiryModal('${p.id}', 'Brochure')" title="Brochure">
+                Brochure
+              </button>
+            </div>
           </div>
         </div>
       </div>

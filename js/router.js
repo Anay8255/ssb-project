@@ -335,6 +335,132 @@ class AppRouter {
         </div>
       </section>
 
+      <!-- ROMA BUILDERS STYLE "SPOTLIGHT TOWNSHIP" SECTION -->
+      <section class="roma-spotlight-section">
+        <div class="container">
+          <div class="roma-spotlight-grid">
+            <div class="roma-spotlight-img-wrap slow-reveal">
+              <span class="roma-spotlight-badge">FEATURED TOWNSHIP</span>
+              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=85" alt="Shree Sai City Township" class="roma-spotlight-img">
+            </div>
+
+            <div class="slow-reveal slow-reveal-delay-1">
+              <div class="roma-eyebrow-line">
+                <span class="roma-eyebrow">SHREE SAI CITY</span>
+                <span class="roma-accent-line"></span>
+              </div>
+              <h2 class="roma-heading" style="font-size: 2.35rem;">
+                A Landmark Destination Designed for Lifestyle, Leisure, and Long-Term Value
+              </h2>
+              <p class="roma-desc">
+                Shree Sai City is more than a real estate development — it is a thoughtfully planned destination where modern living, entertainment, and investment potential come together. Designed with future-ready infrastructure and iconic architecture.
+              </p>
+
+              <div class="roma-spotlight-stats">
+                <div class="spotlight-stat-item">
+                  <div class="spotlight-stat-num">4<sup>+</sup></div>
+                  <div class="spotlight-stat-label">Landmark Projects</div>
+                </div>
+                <div class="spotlight-stat-item">
+                  <div class="spotlight-stat-num">1.2k<sup>+</sup></div>
+                  <div class="spotlight-stat-label">Units Planned</div>
+                </div>
+                <div class="spotlight-stat-item">
+                  <div class="spotlight-stat-num">3X</div>
+                  <div class="spotlight-stat-label">Growth Value</div>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.5rem;">
+                <a href="#/projects/shree-sai-city-group-housing" class="roma-know-more-btn">
+                  Know More & Master Plan <span class="arrow-icon">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROMA BUILDERS STYLE "FIND YOUR DREAM HOME" BANNER -->
+      <section class="roma-dream-home-banner">
+        <div class="container" style="position: relative; z-index: 2;">
+          <h2 class="roma-dream-title">Find Your Dream Home!!</h2>
+          <p class="roma-dream-subtitle">
+            Explore thoughtfully designed residential spaces and master-planned group housing built for modern family living in Varanasi and Lucknow.
+          </p>
+          <a href="#/projects" class="roma-dream-btn">
+            Explore All Projects ↗
+          </a>
+        </div>
+      </section>
+
+      <!-- ROMA BUILDERS STYLE "WATCH & EXPLORE OUR PROPERTIES" VIRTUAL WALKTHROUGHS -->
+      <section class="roma-videos-section">
+        <div class="container">
+          <div style="text-align: center; max-width: 750px; margin: 0 auto;">
+            <div class="roma-eyebrow-line" style="justify-content: center;">
+              <span class="roma-eyebrow">VIRTUAL TOURS</span>
+              <span class="roma-accent-line"></span>
+            </div>
+            <h2 class="roma-heading">Experience Projects Before You Visit</h2>
+            <p class="roma-desc" style="font-size: 1.05rem;">
+              Step inside SSB Group’s developments through our property video walkthroughs and aerial drone updates.
+            </p>
+          </div>
+
+          <div class="roma-videos-grid">
+            <div class="roma-video-card slow-reveal">
+              <div class="roma-video-frame">
+                <iframe src="https://www.youtube.com/embed/3oZCFkqRBws" title="Sai Gaon Walkthrough" allowfullscreen></iframe>
+              </div>
+              <div class="roma-video-body">
+                <h3 class="roma-video-title">Sai Gaon Township Walkthrough</h3>
+                <span class="roma-video-location">Varanasi · Master Planned</span>
+              </div>
+            </div>
+
+            <div class="roma-video-card slow-reveal slow-reveal-delay-1">
+              <div class="roma-video-frame">
+                <iframe src="https://www.youtube.com/embed/4UL4sKPit7Y" title="Group Housing Construction" allowfullscreen></iframe>
+              </div>
+              <div class="roma-video-body">
+                <h3 class="roma-video-title">Shree Sai City Group Housing</h3>
+                <span class="roma-video-location">Ramnagar, Varanasi · High-Rise</span>
+              </div>
+            </div>
+
+            <div class="roma-video-card slow-reveal slow-reveal-delay-2">
+              <div class="roma-video-frame">
+                <iframe src="https://www.youtube.com/embed/Wjbu5pR_enE" title="Pratham Commercial Lucknow" allowfullscreen></iframe>
+              </div>
+              <div class="roma-video-body">
+                <h3 class="roma-video-title">Pratham Commercial & Retail</h3>
+                <span class="roma-video-location">Lucknow · Commercial Hub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROMA BUILDERS STYLE INFINITE MARQUEE TICKER -->
+      <section class="roma-marquee-section">
+        <div class="roma-marquee-track">
+          <div class="roma-marquee-item">HIGH ROI INVESTMENT <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">RERA APPROVED DEVELOPMENTS <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">100% LEGAL CLARITY <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">ON-TIME DELIVERY GUARANTEE <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">PREMIUM LIFESTYLE AMENITIES <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">STRUCTURAL INTEGRITY & QUALITY <span class="dot-divider"></span></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="roma-marquee-item">HIGH ROI INVESTMENT <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">RERA APPROVED DEVELOPMENTS <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">100% LEGAL CLARITY <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">ON-TIME DELIVERY GUARANTEE <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">PREMIUM LIFESTYLE AMENITIES <span class="dot-divider"></span></div>
+          <div class="roma-marquee-item">STRUCTURAL INTEGRITY & QUALITY <span class="dot-divider"></span></div>
+        </div>
+      </section>
+
       <!-- Founder Spotlight (Direct from Live Site) -->
       <section class="founder-section" id="about">
         <div class="container">

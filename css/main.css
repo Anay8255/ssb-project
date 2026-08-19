@@ -1577,3 +1577,260 @@
     height: 44px;
   }
 }
+
+/* ==========================================================================
+   ROMA BUILDERS ADDITIONAL HOMEPAGE SECTIONS
+   ========================================================================== */
+
+/* 1. Landmark Spotlight Township Section */
+.roma-spotlight-section {
+  padding: 6rem 0;
+  background: var(--sand-muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.roma-spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.roma-spotlight-img-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid #FFFFFF;
+}
+
+.roma-spotlight-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.roma-spotlight-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--brand);
+  color: #FFFFFF;
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.35);
+}
+
+.roma-spotlight-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.spotlight-stat-item {
+  text-align: center;
+}
+
+.spotlight-stat-num {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.spotlight-stat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 2. "Find Your Dream Home" Callout Banner */
+.roma-dream-home-banner {
+  background: linear-gradient(135deg, #047857 0%, #065F46 100%);
+  padding: 4.5rem 0;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.roma-dream-home-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.roma-dream-title {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.roma-dream-subtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 650px;
+  margin: 0 auto 2rem auto;
+}
+
+.roma-dream-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  color: var(--brand);
+  padding: 0.9rem 2.25rem;
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.roma-dream-btn:hover {
+  transform: translateY(-3px);
+  background: var(--sand-muted);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* 3. Property Video Walkthroughs Section */
+.roma-videos-section {
+  padding: 6.5rem 0;
+  background: var(--sand);
+}
+
+.roma-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.roma-video-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roma-video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.roma-video-frame {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.roma-video-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.roma-video-body {
+  padding: 1.35rem 1.5rem;
+}
+
+.roma-video-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.roma-video-location {
+  font-size: 0.825rem;
+  color: var(--brand);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 4. Infinite Marquee Ticker */
+.roma-marquee-section {
+  background: var(--ink);
+  padding: 1.25rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.roma-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.roma-marquee-item {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.roma-marquee-item .dot-divider {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand);
+  display: inline-block;
+}
+
+@media (max-width: 992px) {
+  .roma-spotlight-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .roma-videos-grid {
+    grid-template-columns: 1fr;
+  }
+  .roma-dream-title {
+    font-size: 2.2rem;
+  }
+}

@@ -466,7 +466,7 @@ class AppRouter {
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1.25rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.35); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px; display: inline-block;">
+          <span class="badge" style="margin-bottom: 1.25rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px; display: inline-block;">
             About SSB Group
           </span>
           <h1 style="color: #FFF; font-size: 3.8rem; line-height: 1.12; max-width: 950px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1.25rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -697,7 +697,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             PORTFOLIO & TOWNSHIPS
           </span>
           <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -731,7 +731,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.9) 100%), url('${project.heroImage || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=85'}') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 52vh; display: flex; align-items: flex-end; overflow: hidden;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             ${project.status} · ${project.city}
           </span>
           <h1 style="color: #FFF; font-size: 3.4rem; line-height: 1.12; font-family: var(--font-heading); font-weight: 700; margin-bottom: 0.75rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">${project.title}</h1>
@@ -816,7 +816,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             FOUNDER & LEADERSHIP
           </span>
           <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -860,7 +860,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             PRESS & ANNOUNCEMENTS
           </span>
           <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -902,7 +902,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 50vh; display: flex; align-items: flex-end; overflow: hidden;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             GLOBAL PATRONS & INVESTORS
           </span>
           <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -930,7 +930,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             FINANCIAL ADVISORY
           </span>
           <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -961,7 +961,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             TRANSPARENCY & TRACKING
           </span>
           <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -996,7 +996,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             COMPLIANCE & STANDARDS
           </span>
           <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -1035,7 +1035,7 @@ class AppRouter {
       <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF; padding: 10rem 0 5rem 0; position: relative; min-height: 48vh; display: flex; align-items: flex-end; overflow: hidden; margin-bottom: 4rem;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(37, 99, 235, 0.3); color: #93C5FD; border: 1px solid rgba(147, 197, 253, 0.4); padding: 6px 14px; border-radius: 20px;">
+          <span class="badge" style="margin-bottom: 1rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px;">
             HEADQUARTERS & DESK
           </span>
           <h1 style="color: #FFF; font-size: 3.2rem; line-height: 1.15; max-width: 800px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">

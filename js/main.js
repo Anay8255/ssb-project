@@ -29,7 +29,7 @@ window.initPresenceMap = function() {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Custom Sapphire Blue SVG Pin Icon
+    // Custom Executive Emerald SVG Pin Icon
     const customIcon = L.divIcon({
       className: 'custom-map-pin',
       html: `
@@ -37,12 +37,12 @@ window.initPresenceMap = function() {
           width: 32px;
           height: 32px;
           border-radius: 50% 50% 50% 0;
-          background: #2563EB;
+          background: #047857;
           transform: rotate(-45deg);
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
+          box-shadow: 0 4px 12px rgba(4, 120, 87, 0.45);
           border: 2px solid #FFFFFF;
         ">
           <div style="width: 10px; height: 10px; background: #FFFFFF; border-radius: 50%;"></div>
@@ -57,8 +57,8 @@ window.initPresenceMap = function() {
     const varanasiMarker = L.marker([25.3176, 82.9739], { icon: customIcon }).addTo(map);
     varanasiMarker.bindPopup(`
       <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 4px;">
-        <strong style="color: #2563EB; font-size: 1.05rem;">Varanasi (Headquarters)</strong><br>
-        <span style="font-size: 0.85rem; color: #0F172A;">• Sai Gaon (Residential)<br>• Shree Sai City Group Housing<br>• Shree Sai City EWS / PMAY</span>
+        <strong style="color: #047857; font-size: 1.05rem;">Varanasi (Headquarters)</strong><br>
+        <span style="font-size: 0.85rem; color: #18181B;">• Sai Gaon (Residential)<br>• Shree Sai City Group Housing<br>• Shree Sai City EWS / PMAY</span>
       </div>
     `);
 
@@ -66,8 +66,8 @@ window.initPresenceMap = function() {
     const lucknowMarker = L.marker([26.8467, 80.9462], { icon: customIcon }).addTo(map);
     lucknowMarker.bindPopup(`
       <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 4px;">
-        <strong style="color: #2563EB; font-size: 1.05rem;">Lucknow (New Expansion)</strong><br>
-        <span style="font-size: 0.85rem; color: #0F172A;">• Pratham (Commercial & Mixed-Use)</span>
+        <strong style="color: #047857; font-size: 1.05rem;">Lucknow (New Expansion)</strong><br>
+        <span style="font-size: 0.85rem; color: #18181B;">• Pratham (Commercial & Mixed-Use)</span>
       </div>
     `);
 

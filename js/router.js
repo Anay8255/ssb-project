@@ -218,26 +218,24 @@ class AppRouter {
             <div class="roma-collage-wrapper slow-reveal">
               <!-- 1. Arch Image (Left) -->
               <div class="roma-arch-img-box">
-                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Engineer" class="roma-arch-img" />
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=85" alt="SSB Civil Engineer" class="roma-arch-img" />
               </div>
 
               <!-- 2. Tall Rectangular Image (Top Right) -->
               <div class="roma-rect-img-box">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=85" alt="SSB Site Construction" class="roma-rect-img" />
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Site" class="roma-rect-img" />
               </div>
 
               <!-- 3. Floating Circular Badge (Center Overlap) -->
               <div class="roma-circular-badge">
-                <div class="circular-text-svg">
-                  <svg viewBox="0 0 120 120" width="120" height="120">
-                    <path id="circlePath" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" fill="none" />
-                    <text font-size="10.5" font-weight="700" fill="#FFFFFF" letter-spacing="2">
-                      <textPath href="#circlePath" startOffset="0%">
-                        YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •
-                      </textPath>
-                    </text>
-                  </svg>
-                </div>
+                <svg viewBox="0 0 110 110" width="106" height="106" style="position: absolute; inset: 0; animation: rotateCircle 25s linear infinite;">
+                  <path id="circlePath1" d="M 55, 55 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
+                  <text font-size="9" font-weight="700" fill="#FFFFFF" letter-spacing="1.8">
+                    <textPath href="#circlePath1" startOffset="0%">
+                      YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •
+                    </textPath>
+                  </text>
+                </svg>
                 <div class="circular-badge-center">
                   <span class="badge-years-num">13<sup>+</sup></span>
                 </div>
@@ -258,9 +256,9 @@ class AppRouter {
 
               <!-- 5. Mini Gallery Thumbnails (Bottom Left) -->
               <div class="roma-mini-gallery">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=200&q=80" alt="Site 1" class="mini-thumb" />
-                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=200&q=80" alt="Site 2" class="mini-thumb" />
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=200&q=80" alt="Site 3" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=300&q=80" alt="Site 1" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=300&q=80" alt="Site 2" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=300&q=80" alt="Site 3" class="mini-thumb" />
               </div>
             </div>
 
@@ -564,26 +562,24 @@ class AppRouter {
             <div class="roma-collage-wrapper slow-reveal">
               <!-- 1. Arch Image (Left) -->
               <div class="roma-arch-img-box">
-                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Engineer" class="roma-arch-img" />
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=85" alt="SSB Civil Engineer" class="roma-arch-img" />
               </div>
 
               <!-- 2. Tall Rectangular Image (Top Right) -->
               <div class="roma-rect-img-box">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=85" alt="SSB Site Construction" class="roma-rect-img" />
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Site" class="roma-rect-img" />
               </div>
 
               <!-- 3. Floating Circular Badge (Center Overlap) -->
               <div class="roma-circular-badge">
-                <div class="circular-text-svg">
-                  <svg viewBox="0 0 120 120" width="120" height="120">
-                    <path id="circlePath2" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" fill="none" />
-                    <text font-size="10.5" font-weight="700" fill="#FFFFFF" letter-spacing="2">
-                      <textPath href="#circlePath2" startOffset="0%">
-                        YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •
-                      </textPath>
-                    </text>
-                  </svg>
-                </div>
+                <svg viewBox="0 0 110 110" width="106" height="106" style="position: absolute; inset: 0; animation: rotateCircle 25s linear infinite;">
+                  <path id="circlePath2" d="M 55, 55 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
+                  <text font-size="9" font-weight="700" fill="#FFFFFF" letter-spacing="1.8">
+                    <textPath href="#circlePath2" startOffset="0%">
+                      YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •
+                    </textPath>
+                  </text>
+                </svg>
                 <div class="circular-badge-center">
                   <span class="badge-years-num">13<sup>+</sup></span>
                 </div>
@@ -604,9 +600,9 @@ class AppRouter {
 
               <!-- 5. Mini Gallery Thumbnails (Bottom Left) -->
               <div class="roma-mini-gallery">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=200&q=80" alt="Site 1" class="mini-thumb" />
-                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=200&q=80" alt="Site 2" class="mini-thumb" />
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=200&q=80" alt="Site 3" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=300&q=80" alt="Site 1" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=300&q=80" alt="Site 2" class="mini-thumb" />
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=300&q=80" alt="Site 3" class="mini-thumb" />
               </div>
             </div>
 

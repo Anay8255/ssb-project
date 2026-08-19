@@ -329,7 +329,7 @@ class AppRouter {
             </p>
           </div>
 
-          <div class="projects-grid">
+          <div class="projects-grid-luxury">
             ${this.renderProjectCardsHtml(projects)}
           </div>
         </div>
@@ -620,24 +620,46 @@ class AppRouter {
     }
 
     return projects.map(p => `
-      <div class="project-card">
-        <div class="card-img-wrap">
-          <img src="${p.featuredImage}" alt="${p.title}" loading="lazy">
-          <span class="badge ${p.status === 'Completed' ? 'badge-success' : (p.status === 'Ongoing' ? 'badge-brand' : 'badge-warning')} card-badge-status">
-            ${p.status}
-          </span>
+      <div class="luxury-project-card slow-reveal">
+        <div class="luxury-card-media">
+          <img src="${p.featuredImage}" alt="${p.title}" class="luxury-card-img" loading="lazy">
+          
+          <div class="luxury-card-badges-top">
+            <span class="luxury-status-badge ${p.status === 'Completed' ? 'badge-success' : (p.status === 'Ongoing' ? 'badge-brand' : 'badge-warning')}">
+              <span class="status-dot"></span> ${p.status.toUpperCase()}
+            </span>
+            <span class="luxury-city-badge">
+              📍 ${p.city.split(',')[0]}
+            </span>
+          </div>
+
+          <div class="luxury-card-scrim-bar">
+            <span class="scrim-spec-item">📐 ${p.totalLandArea || 'Master Planned'}</span>
+            <span class="scrim-spec-item">🏢 ${p.totalUnitsCount || 'Multiple'} Units</span>
+            <span class="scrim-spec-item">📜 ${p.reraNumber ? 'RERA Approved' : 'Approved'}</span>
+          </div>
         </div>
 
-        <div class="card-body">
-          <div class="card-city">${p.city} · ${p.category}</div>
-          <h3 class="card-title">${p.title}</h3>
-          <p class="card-desc">${p.tagline}</p>
-          
-          <div class="card-actions">
-            <a href="#/projects/${p.slug}" class="btn btn-primary btn-sm" style="flex: 1;">
-              Know More & Master Plan
+        <div class="luxury-card-content">
+          <div class="luxury-card-category">${p.category.toUpperCase()} · TOWNSHIP & RESIDENCES</div>
+          <h3 class="luxury-card-title">${p.title}</h3>
+          <p class="luxury-card-tagline">${p.tagline}</p>
+
+          <div class="luxury-card-price-row">
+            <div>
+              <span class="price-label">STARTING PRICE</span>
+              <span class="price-value">${p.priceDisplay || 'On Request'}</span>
+            </div>
+          </div>
+
+          <div class="luxury-card-divider"></div>
+
+          <div class="luxury-card-actions">
+            <a href="#/projects/${p.slug}" class="luxury-btn-primary">
+              Know More <span class="arrow-icon">↗</span>
             </a>
-            <button class="btn btn-ghost-warm btn-sm" onclick="window.openEnquiryModal('${p.id}', 'Brochure')">
+            <button class="luxury-btn-secondary" onclick="window.openEnquiryModal('${p.id}', 'Brochure')">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Brochure
             </button>
           </div>

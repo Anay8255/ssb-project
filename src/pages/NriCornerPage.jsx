@@ -22,13 +22,13 @@ export const NriCornerPage = () => {
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #18181B 0%, #27272A 100%)', color: '#FFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
+      <section className="subpage-hero">
         <div className="container">
           <span className="eyebrow" style={{ color: 'var(--gold)' }}>GLOBAL INVESTOR RELATIONS</span>
-          <h1 style={{ fontSize: '3rem', color: '#FFF', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
+          <h1 className="subpage-hero-title">
             NRI & Overseas Investor Desk
           </h1>
-          <p style={{ maxWidth: '720px', margin: '0 auto', color: '#A1A1AA', fontSize: '1.1rem', lineHeight: '1.6' }}>
+          <p className="subpage-hero-desc">
             Seamless foreign investment management, FEMA compliance, virtual video walkthroughs, and end-to-end rental management for non-resident Indians.
           </p>
         </div>

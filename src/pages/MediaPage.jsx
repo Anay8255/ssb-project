@@ -32,14 +32,14 @@ export const MediaPage = () => {
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
       {/* Header */}
-      <section style={{ background: 'linear-gradient(135deg, #18181B 0%, #27272A 100%)', color: '#FFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
+      <section className="subpage-hero">
         <div className="container">
           <span className="eyebrow" style={{ color: 'var(--gold)' }}>PRESS & UPDATES</span>
-          <h1 style={{ fontSize: '3rem', color: '#FFF', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
+          <h1 className="subpage-hero-title">
             Media & Coverage
           </h1>
-          <p style={{ maxWidth: '720px', margin: '0 auto', color: '#A1A1AA', fontSize: '1.1rem', lineHeight: '1.6' }}>
-            Latest press releases, architectural project spotlights, handover ceremonies, and media features covering SSB Group developments.
+          <p className="subpage-hero-desc">
+            Official announcements, media coverage, foundation stones, and handover milestone celebrations from SSB Group.
           </p>
         </div>
       </section>

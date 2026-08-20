@@ -11,13 +11,13 @@ export const AboutPage = () => {
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
       {/* Hero Header */}
-      <section style={{ background: 'linear-gradient(135deg, #18181B 0%, #27272A 100%)', color: '#FFF', padding: '5rem 0 4rem', textAlign: 'center' }}>
+      <section className="subpage-hero">
         <div className="container">
           <span className="eyebrow" style={{ color: 'var(--gold)' }}>SINCE 2013 · VARANASI</span>
-          <h1 style={{ fontSize: '3rem', color: '#FFF', marginBottom: '1.25rem', fontFamily: 'var(--font-heading)' }}>
+          <h1 className="subpage-hero-title">
             Building Spaces. Creating Legacies.
           </h1>
-          <p style={{ maxWidth: '750px', margin: '0 auto', color: '#A1A1AA', fontSize: '1.15rem', lineHeight: '1.7' }}>
+          <p className="subpage-hero-desc">
             Shree Sai Baba Infra Projects Pvt. Ltd. was founded on the sacred soil of Varanasi with a commitment to architectural excellence, statutory transparency, and unwavering customer trust.
           </p>
         </div>

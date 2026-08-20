@@ -8,13 +8,13 @@ export const LeadershipPage = () => {
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
       {/* Header */}
-      <section style={{ background: 'linear-gradient(135deg, #18181B 0%, #27272A 100%)', color: '#FFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
+      <section className="subpage-hero">
         <div className="container">
           <span className="eyebrow" style={{ color: 'var(--gold)' }}>EXECUTIVE GOVERNANCE</span>
-          <h1 style={{ fontSize: '3rem', color: '#FFF', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
+          <h1 className="subpage-hero-title">
             Leadership & Governance
           </h1>
-          <p style={{ maxWidth: '720px', margin: '0 auto', color: '#A1A1AA', fontSize: '1.1rem', lineHeight: '1.6' }}>
+          <p className="subpage-hero-desc">
             Meet the visionaries, civil engineers, and corporate leaders guiding SSB Group towards regional excellence and enduring architectural heritage.
           </p>
         </div>

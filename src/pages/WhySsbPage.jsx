@@ -9,13 +9,13 @@ export const WhySsbPage = () => {
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #18181B 0%, #27272A 100%)', color: '#FFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
+      <section className="subpage-hero">
         <div className="container">
           <span className="eyebrow" style={{ color: 'var(--gold)' }}>OUR DISTINCT ADVANTAGE</span>
-          <h1 style={{ fontSize: '3rem', color: '#FFF', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
+          <h1 className="subpage-hero-title">
             Why Choose SSB Group
           </h1>
-          <p style={{ maxWidth: '720px', margin: '0 auto', color: '#A1A1AA', fontSize: '1.1rem', lineHeight: '1.6' }}>
+          <p className="subpage-hero-desc">
             A legacy forged in Varanasi since 2013, founded upon uncompromising engineering standards, total regulatory transparency, and 100% on-time delivery guarantees.
           </p>
         </div>

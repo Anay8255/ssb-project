@@ -21,13 +21,13 @@ export const ProjectsPage = () => {
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
       {/* Header */}
-      <section style={{ background: 'linear-gradient(135deg, #18181B 0%, #27272A 100%)', color: '#FFF', padding: '4.5rem 0 3.5rem', textAlign: 'center' }}>
+      <section className="subpage-hero">
         <div className="container">
           <span className="eyebrow" style={{ color: 'var(--gold)' }}>RERA APPROVED PORTFOLIO</span>
-          <h1 style={{ fontSize: '3rem', color: '#FFF', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
+          <h1 className="subpage-hero-title">
             Our Real Estate Portfolio
           </h1>
-          <p style={{ maxWidth: '680px', margin: '0 auto', color: '#A1A1AA', fontSize: '1.1rem', lineHeight: '1.6' }}>
+          <p className="subpage-hero-desc">
             Discover our premium residential townships, monolithic high-rises, and modern commercial landmarks across Eastern Uttar Pradesh.
           </p>
         </div>

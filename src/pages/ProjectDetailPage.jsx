@@ -31,7 +31,7 @@ export const ProjectDetailPage = () => {
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
       {/* Hero Banner with Gallery Thumbnails */}
-      <section style={{ position: 'relative', background: '#0F172A', color: '#FFF', padding: '4.5rem 0 3.5rem' }}>
+      <section style={{ position: 'relative', background: '#0F172A', color: '#FFF', padding: '7.5rem 0 3.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="container">
           {/* Breadcrumbs */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#94A3B8', marginBottom: '1.5rem' }}>

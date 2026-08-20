@@ -1,0 +1,258 @@
+/* ==========================================================================
+   SSB GROUP — DESIGN SYSTEM & LUXURY NON-BLUE PALETTE
+   Theme: Executive Emerald Green & Warm Champagne Gold on Pearl Linen
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Executive Emerald Green Brand Accent */
+  --brand: #047857;
+  --brand-hover: #065F46;
+  --brand-subtle: rgba(4, 120, 87, 0.08);
+  --brand-border: rgba(4, 120, 87, 0.25);
+
+  /* Deep Rich Obsidian Charcoal Title & Typography Tones */
+  --ink-merlot: #18181B;
+  --ink: #18181B;
+  --ink-light: #27272A;
+  --ink-muted: #52525B;
+
+  /* Warm Pearl Linen & Stone Backgrounds */
+  --sand: #FAFAF9;
+  --sand-muted: #F5F5F4;
+  --sand-light: #FAFAF9;
+  --surface: #FFFFFF;
+  --border: #E7E5E4;
+  --border-light: #F5F5F4;
+
+  /* Metallic Champagne Gold & Functional Accents */
+  --gold: #D97706;
+  --gold-subtle: rgba(217, 119, 6, 0.1);
+  --success: #10B981;
+  --success-bg: rgba(16, 185, 129, 0.08);
+  --warning: #F59E0B;
+  --warning-bg: rgba(245, 158, 11, 0.08);
+  --danger: #EF4444;
+  --danger-bg: rgba(239, 68, 68, 0.08);
+
+  /* Typography Scale */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Elevation Shadows */
+  --shadow-xs: 0 1px 3px rgba(24, 24, 27, 0.04);
+  --shadow-sm: 0 4px 10px rgba(24, 24, 27, 0.05);
+  --shadow-md: 0 10px 25px rgba(24, 24, 27, 0.07);
+  --shadow-lg: 0 20px 40px rgba(24, 24, 27, 0.09);
+  --shadow-pill: 0 8px 30px rgba(24, 24, 27, 0.08);
+  --shadow-brand: 0 10px 24px -4px rgba(4, 120, 87, 0.35);
+
+  /* Radii */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 9999px;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-norm: 250ms;
+  --dur-smooth: 400ms;
+
+  --max-w: 1240px;
+}
+
+/* Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--sand);
+  color: var(--ink-muted);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--ink-merlot);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastSlide {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.fade-in {
+  animation: fadeIn var(--dur-smooth) var(--ease) forwards;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--dur-norm) var(--ease);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: #FFF;
+  box-shadow: var(--shadow-brand);
+}
+
+.btn-primary:hover {
+  background: var(--brand-hover);
+  box-shadow: 0 12px 28px -2px rgba(4, 120, 87, 0.45);
+}
+
+.btn-ink {
+  background: var(--ink);
+  color: #FFF;
+}
+
+.btn-ink:hover {
+  background: var(--ink-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--ink);
+}
+
+.btn-outline:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--brand-subtle);
+}
+
+.btn-ghost-warm {
+  background: var(--sand-muted);
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost-warm:hover {
+  background: #FFF;
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.btn-sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.825rem;
+}
+
+.btn-lg {
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--r-pill);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-brand {
+  background: var(--brand-subtle);
+  color: var(--brand);
+  border: 1px solid var(--brand-border);
+}
+
+.badge-success {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.badge-warning {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.badge-ink {
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--ink);
+}
+
+/* Typography Eyebrow */
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brand);
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}

@@ -1,40 +1,63 @@
 /* ==========================================================================
-   SSB GROUP — DESIGN SYSTEM & LUXURY NON-BLUE PALETTE
-   Theme: Executive Emerald Green & Warm Champagne Gold on Pearl Linen
+   SSB GROUP — DESIGN SYSTEM & LUXURY CORPORATE PALETTE
+   Theme: Executive Royal Navy & Warm Champagne Gold on Pearl Linen
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Executive Emerald Green Brand Accent */
-  --brand: #047857;
-  --brand-hover: #065F46;
-  --brand-subtle: rgba(4, 120, 87, 0.08);
-  --brand-border: rgba(4, 120, 87, 0.25);
+  /* Executive Royal Navy Brand Accent (Ultra-Professional, High Trust) */
+  --brand: #0F3B60;
+  --brand-hover: #092640;
+  --brand-subtle: rgba(15, 59, 96, 0.08);
+  --brand-border: rgba(15, 59, 96, 0.22);
 
   /* Deep Rich Obsidian Charcoal Title & Typography Tones */
-  --ink-merlot: #18181B;
-  --ink: #18181B;
-  --ink-light: #27272A;
-  --ink-muted: #52525B;
+  --ink-merlot: #0F172A;
+  --ink: #0F172A;
+  --ink-light: #1E293B;
+  --ink-muted: #475569;
 
-  /* Warm Pearl Linen & Stone Backgrounds */
-  --sand: #FAFAF9;
-  --sand-muted: #F5F5F4;
-  --sand-light: #FAFAF9;
+  /* Warm Pearl Slate & Crisp Stone Backgrounds */
+  --sand: #F8FAFC;
+  --sand-muted: #F1F5F9;
+  --sand-light: #F8FAFC;
   --surface: #FFFFFF;
-  --border: #E7E5E4;
-  --border-light: #F5F5F4;
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
 
   /* Metallic Champagne Gold & Functional Accents */
   --gold: #D97706;
   --gold-subtle: rgba(217, 119, 6, 0.1);
-  --success: #10B981;
-  --success-bg: rgba(16, 185, 129, 0.08);
+  --gold-border: rgba(217, 119, 6, 0.28);
+  --success: #0284C7;
+  --success-bg: rgba(2, 132, 199, 0.08);
   --warning: #F59E0B;
   --warning-bg: rgba(245, 158, 11, 0.08);
   --danger: #EF4444;
   --danger-bg: rgba(239, 68, 68, 0.08);
+
+  /* Full Compatibility & Sub-page Aliases */
+  --color-primary: var(--brand);
+  --color-primary-dark: var(--brand-hover);
+  --color-primary-subtle: var(--brand-subtle);
+  --color-gold: var(--gold);
+  --color-gold-border: var(--gold-border);
+  --color-gold-subtle: var(--gold-subtle);
+  --color-gold-light: #FBBF24;
+  --color-gold-dark: #B45309;
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-light);
+  --color-bg: var(--sand-muted);
+  --color-surface: var(--surface);
+  --color-text-main: var(--ink);
+  --color-text-title: var(--ink-merlot);
+  --color-text-muted: var(--ink-muted);
 
   /* Typography Scale */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -42,12 +65,13 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Elevation Shadows */
-  --shadow-xs: 0 1px 3px rgba(24, 24, 27, 0.04);
-  --shadow-sm: 0 4px 10px rgba(24, 24, 27, 0.05);
-  --shadow-md: 0 10px 25px rgba(24, 24, 27, 0.07);
-  --shadow-lg: 0 20px 40px rgba(24, 24, 27, 0.09);
-  --shadow-pill: 0 8px 30px rgba(24, 24, 27, 0.08);
-  --shadow-brand: 0 10px 24px -4px rgba(4, 120, 87, 0.35);
+  --shadow-xs: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 10px 25px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.09);
+  --shadow-xl: 0 20px 40px rgba(15, 23, 42, 0.12);
+  --shadow-pill: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --shadow-brand: 0 10px 24px -4px rgba(15, 59, 96, 0.35);
 
   /* Radii */
   --r-sm: 8px;
@@ -55,12 +79,19 @@
   --r-lg: 20px;
   --r-xl: 28px;
   --r-pill: 9999px;
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-full: var(--r-pill);
 
   /* Transitions */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 150ms;
   --dur-norm: 250ms;
   --dur-smooth: 400ms;
+  --transition-fast: var(--dur-fast) var(--ease);
+  --transition-normal: var(--dur-norm) var(--ease);
 
   --max-w: 1240px;
 }
@@ -165,7 +196,7 @@ img {
 
 .btn-primary:hover {
   background: var(--brand-hover);
-  box-shadow: 0 12px 28px -2px rgba(4, 120, 87, 0.45);
+  box-shadow: 0 12px 28px -2px rgba(15, 59, 96, 0.45);
 }
 
 .btn-ink {

@@ -69,8 +69,8 @@ export const MasterPlanViewer = ({ projectId }) => {
               <stop offset="100%" stopColor="#334155"/>
             </linearGradient>
             <pattern id="parkGrass" width="20" height="20" patternUnits="userSpaceOnUse">
-              <rect width="20" height="20" fill="#064E3B"/>
-              <circle cx="10" cy="10" r="1.5" fill="#047857"/>
+              <rect width="20" height="20" fill="#112233"/>
+              <circle cx="10" cy="10" r="1.5" fill="#1B3B5F"/>
             </pattern>
           </defs>
 
@@ -80,10 +80,10 @@ export const MasterPlanViewer = ({ projectId }) => {
           <text x="500" y="525" fill="#94A3B8" fontSize="14" fontWeight="700" textAnchor="middle" letterSpacing="2">60 FT WIDE ARTERIAL ACCESS ROAD</text>
 
           {/* Central Park & Pool */}
-          <rect x="340" y="80" width="320" height="340" rx="16" fill="url(#parkGrass)" stroke="#059669" strokeWidth="2"/>
+          <rect x="340" y="80" width="320" height="340" rx="16" fill="url(#parkGrass)" stroke="#1E3A8A" strokeWidth="2"/>
           <circle cx="500" cy="200" r="60" fill="#0284C7" stroke="#38BDF8" strokeWidth="4"/>
           <text x="500" y="205" fill="#FFF" fontSize="12" fontWeight="700" textAnchor="middle">INFINITY POOL</text>
-          <text x="500" y="320" fill="#6EE7B7" fontSize="14" fontWeight="700" textAnchor="middle">BOTANICAL GARDENS</text>
+          <text x="500" y="320" fill="#93C5FD" fontSize="14" fontWeight="700" textAnchor="middle">BOTANICAL GARDENS</text>
 
           {/* Clubhouse */}
           <rect x="420" y="370" width="160" height="50" rx="8" fill="#B45309" stroke="#F59E0B" strokeWidth="2"/>

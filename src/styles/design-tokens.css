@@ -1,37 +1,37 @@
 /* ==========================================================================
-   SSB GROUP — DESIGN SYSTEM & LUXURY CORPORATE PALETTE
-   Theme: Executive Royal Navy & Warm Champagne Gold on Pearl Linen
+   SSB GROUP — ENTERPRISE CORPORATE DESIGN SYSTEM
+   Theme: Executive Royal Navy & Warm Champagne Gold on Alabaster Slate
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Executive Royal Navy Brand Accent (Ultra-Professional, High Trust) */
-  --brand: #0F3B60;
-  --brand-hover: #092640;
-  --brand-subtle: rgba(15, 59, 96, 0.08);
-  --brand-border: rgba(15, 59, 96, 0.22);
+  /* Executive Royal Navy Sapphire Brand Accent */
+  --brand: #0F294A;
+  --brand-hover: #0A1C33;
+  --brand-subtle: rgba(15, 41, 74, 0.08);
+  --brand-border: rgba(15, 41, 74, 0.2);
 
-  /* Deep Rich Obsidian Charcoal Title & Typography Tones */
-  --ink-merlot: #0F172A;
+  /* Deep Rich Midnight Slate & Typography Tones */
+  --ink-merlot: #0B132A;
   --ink: #0F172A;
   --ink-light: #1E293B;
   --ink-muted: #475569;
 
-  /* Warm Pearl Slate & Crisp Stone Backgrounds */
+  /* Refined Alabaster Slate Backgrounds */
   --sand: #F8FAFC;
   --sand-muted: #F1F5F9;
-  --sand-light: #F8FAFC;
+  --sand-light: #FAFAFC;
   --surface: #FFFFFF;
   --border: #E2E8F0;
   --border-light: #F1F5F9;
 
   /* Metallic Champagne Gold & Functional Accents */
-  --gold: #D97706;
-  --gold-subtle: rgba(217, 119, 6, 0.1);
-  --gold-border: rgba(217, 119, 6, 0.28);
-  --success: #0284C7;
-  --success-bg: rgba(2, 132, 199, 0.08);
+  --gold: #C5A059;
+  --gold-subtle: rgba(197, 160, 89, 0.12);
+  --gold-border: rgba(197, 160, 89, 0.28);
+  --success: #10B981;
+  --success-bg: rgba(16, 185, 129, 0.08);
   --warning: #F59E0B;
   --warning-bg: rgba(245, 158, 11, 0.08);
   --danger: #EF4444;
@@ -64,14 +64,13 @@
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Elevation Shadows */
   --shadow-xs: 0 1px 3px rgba(15, 23, 42, 0.04);
   --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.05);
   --shadow-md: 0 10px 25px rgba(15, 23, 42, 0.07);
   --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.09);
   --shadow-xl: 0 20px 40px rgba(15, 23, 42, 0.12);
   --shadow-pill: 0 8px 30px rgba(15, 23, 42, 0.08);
-  --shadow-brand: 0 10px 24px -4px rgba(15, 59, 96, 0.35);
+  --shadow-brand: 0 10px 24px -4px rgba(15, 41, 74, 0.35);
 
   /* Radii */
   --r-sm: 8px;

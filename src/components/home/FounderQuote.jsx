@@ -42,11 +42,11 @@ export const FounderQuote = () => {
 
             {/* 3. Floating Circular Badge (Center Overlap) */}
             <div className="roma-circular-badge">
-              <svg viewBox="0 0 110 110" width="106" height="106" style={{ position: 'absolute', inset: 0, animation: 'rotateCircle 25s linear infinite' }}>
-                <path id="circlePath1" d="M 55, 55 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
-                <text fontSize="9" fontWeight="700" fill="#FFFFFF" letterSpacing="1.8">
+              <svg className="circular-text-svg" viewBox="0 0 120 120">
+                <path id="circlePath1" d="M 60, 60 m -44, 0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0" fill="none" />
+                <text fontSize="8.5" fontWeight="700" fill="#FFFFFF" letterSpacing="1.6">
                   <textPath href="#circlePath1" startOffset="0%">
-                    YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •
+                    YEARS OF EXPERIENCE • YEARS OF TRUST •
                   </textPath>
                 </text>
               </svg>

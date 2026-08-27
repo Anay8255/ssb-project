@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { useModal } from '../context/ModalContext';
 import { Search, MapPin, ShieldCheck, ArrowRight, Download, SlidersHorizontal } from 'lucide-react';
@@ -7,6 +7,7 @@ import { Search, MapPin, ShieldCheck, ArrowRight, Download, SlidersHorizontal } 
 export const ProjectsPage = () => {
   const { projects } = useStore();
   const { openEnquiryModal } = useModal();
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('ALL');
   const [search, setSearch] = useState('');
 
@@ -85,6 +86,8 @@ export const ProjectsPage = () => {
             {filtered.map((project) => (
               <div 
                 key={project.id} 
+                className="project-card"
+                onClick={() => navigate(`/projects/${project.slug}`)}
                 style={{
                   background: 'var(--surface)',
                   borderRadius: 'var(--r-xl)',
@@ -92,7 +95,9 @@ export const ProjectsPage = () => {
                   border: '1px solid var(--border)',
                   boxShadow: 'var(--shadow-sm)',
                   display: 'flex',
-                  flexDirection: 'column'
+                  flexDirection: 'column',
+                  cursor: 'pointer',
+                  transition: 'transform var(--dur-norm) var(--ease), box-shadow var(--dur-norm) var(--ease)'
                 }}
               >
                 {/* Image */}
@@ -100,7 +105,8 @@ export const ProjectsPage = () => {
                   <img 
                     src={project.featuredImage} 
                     alt={project.title} 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                    className="project-card-image"
                   />
                   <div style={{ position: 'absolute', top: '1rem', left: '1rem', display: 'flex', gap: '0.5rem' }}>
                     <span className={`badge ${project.status === 'Completed' ? 'badge-success' : 'badge-brand'}`}>
@@ -145,13 +151,16 @@ export const ProjectsPage = () => {
 
                   {/* CTA Actions */}
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem' }}>
-                    <Link to={`/projects/${project.slug}`} className="btn btn-primary" style={{ width: '100%' }}>
+                    <div className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                       <span>View Project & Plans</span>
                       <ArrowRight size={15} />
-                    </Link>
+                    </div>
                     <button 
                       className="btn btn-ghost-warm" 
-                      onClick={() => openEnquiryModal(project.title, 'Brochure Download')}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openEnquiryModal(project.title, 'Brochure Download');
+                      }}
                       title="Download E-Brochure"
                     >
                       <Download size={16} />

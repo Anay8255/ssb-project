@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useStore } from '../../context/StoreContext';
 import { useModal } from '../../context/ModalContext';
 import { ArrowRight, MapPin, CheckCircle2, ShieldCheck, Download } from 'lucide-react';
@@ -7,6 +7,7 @@ import { ArrowRight, MapPin, CheckCircle2, ShieldCheck, Download } from 'lucide-
 export const FeaturedProjects = () => {
   const { projects } = useStore();
   const { openEnquiryModal } = useModal();
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('ALL');
 
   const filteredProjects = filter === 'ALL' 
@@ -52,6 +53,7 @@ export const FeaturedProjects = () => {
             <div 
               key={project.id} 
               className="project-card"
+              onClick={() => navigate(`/projects/${project.slug}`)}
               style={{
                 background: 'var(--surface)',
                 borderRadius: 'var(--r-lg)',
@@ -60,6 +62,7 @@ export const FeaturedProjects = () => {
                 boxShadow: 'var(--shadow-sm)',
                 display: 'flex',
                 flexDirection: 'column',
+                cursor: 'pointer',
                 transition: 'transform var(--dur-norm) var(--ease), box-shadow var(--dur-norm) var(--ease)'
               }}
             >
@@ -114,13 +117,16 @@ export const FeaturedProjects = () => {
 
                 {/* CTA Buttons */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem' }}>
-                  <Link to={`/projects/${project.slug}`} className="btn btn-primary btn-sm" style={{ width: '100%' }}>
+                  <div className="btn btn-primary btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
                     <span>Explore Project</span>
                     <ArrowRight size={14} />
-                  </Link>
+                  </div>
                   <button 
                     className="btn btn-outline btn-sm" 
-                    onClick={() => openEnquiryModal(project.title, 'Brochure Download')}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openEnquiryModal(project.title, 'Brochure Download');
+                    }}
                     title="Download Brochure"
                     aria-label="Download Brochure"
                   >

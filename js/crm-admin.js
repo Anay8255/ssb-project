@@ -22,11 +22,11 @@ class AdminPortal {
       <div class="admin-layout">
         <!-- Sidebar -->
         <aside class="admin-sidebar">
-          <div class="brand-logo">
-            <div class="logo-badge">S</div>
+          <div class="brand-logo" style="display: flex; align-items: center; gap: 0.75rem;">
+            <img src="ssb-logo-official.jpg" alt="SSB Infra" style="height: 38px; width: auto; border-radius: 6px; background: #FFF; padding: 3px; object-fit: contain;">
             <div class="brand-text">
-              <span class="brand-title">SSB INFRA</span>
-              <span class="brand-sub">OPERATIONS CMS</span>
+              <span class="brand-title" style="display: block; font-weight: 700; color: #FFF; font-size: 1rem; letter-spacing: 0.05em;">SSB INFRA</span>
+              <span class="brand-sub" style="display: block; font-size: 0.725rem; color: var(--gold); font-weight: 600; letter-spacing: 0.08em;">OPERATIONS CMS</span>
             </div>
           </div>
 

@@ -10,12 +10,12 @@
 }
 
 .admin-sidebar {
-  background: var(--color-primary-dark);
+  background: #0B132A;
   color: #FFF;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(197, 168, 128, 0.2);
+  border-right: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .admin-nav {
@@ -31,17 +31,17 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--r-md);
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--dur-fast) var(--ease);
 }
 
 .admin-nav-item:hover, .admin-nav-item.active {
-  background: rgba(197, 168, 128, 0.15);
-  color: var(--color-gold-light);
+  background: rgba(197, 160, 89, 0.18);
+  color: var(--gold);
 }
 
 .admin-content {

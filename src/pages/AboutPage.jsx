@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { useModal } from '../context/ModalContext';
 import { ShieldCheck, Award, HeartHandshake, MapPin, Sparkles, Building2, CheckCircle2, Car } from 'lucide-react';
+import { InteractiveTimeline } from '../components/home/InteractiveTimeline';
 
 export const AboutPage = () => {
   const { journey, leadership } = useStore();
@@ -112,43 +113,8 @@ export const AboutPage = () => {
             </div>
           </div>
 
-          {/* Historical Journey Timeline */}
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <span className="eyebrow">OUR MILESTONES</span>
-            <h2 style={{ fontSize: '2.4rem', color: 'var(--ink)' }}>The Journey From 2013 to Today</h2>
-          </div>
-
-          <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-            {journey.map((item, idx) => (
-              <div 
-                key={idx}
-                style={{
-                  background: '#FFF',
-                  padding: '1.75rem 2rem',
-                  borderRadius: 'var(--r-lg)',
-                  border: '1px solid var(--border)',
-                  boxShadow: 'var(--shadow-xs)',
-                  display: 'grid',
-                  gridTemplateColumns: '120px 1fr',
-                  gap: '1.5rem',
-                  alignItems: 'center'
-                }}
-              >
-                <div>
-                  <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--brand)', fontFamily: 'var(--font-heading)' }}>
-                    {item.year}
-                  </span>
-                  <span className={`badge ${item.status === 'Completed' ? 'badge-success' : 'badge-warning'}`} style={{ display: 'inline-block', marginTop: '0.25rem' }}>
-                    {item.status}
-                  </span>
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '1.3rem', color: 'var(--ink)', marginBottom: '0.35rem' }}>{item.title}</h4>
-                  <p style={{ color: 'var(--ink-muted)', margin: 0, fontSize: '0.95rem', lineHeight: '1.6' }}>{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Historical Journey Interactive Timeline */}
+          <InteractiveTimeline />
 
           {/* Bottom CTA Strip */}
           <div style={{ marginTop: '4.5rem', background: '#FFF', padding: '3rem', borderRadius: 'var(--r-xl)', border: '1px solid var(--border)', textAlign: 'center' }}>

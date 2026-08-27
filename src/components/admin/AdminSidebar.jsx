@@ -27,9 +27,7 @@ export const AdminSidebar = ({ activeTab, onSelectTab }) => {
     <aside className="admin-sidebar" style={{ background: '#0F172A', color: '#FFF', width: '280px', minHeight: '100vh', padding: '2rem 1.5rem', display: 'flex', flexDirection: 'column' }}>
       {/* Brand */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1.25rem' }}>
-        <div style={{ width: '40px', height: '40px', background: 'var(--brand)', borderRadius: 'var(--r-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '1.2rem', color: '#FFF' }}>
-          S
-        </div>
+        <img src="/ssb-logo-official.jpg" alt="SSB Infra" style={{ height: '40px', width: 'auto', borderRadius: '6px', background: '#FFF', padding: '3px', objectFit: 'contain' }} />
         <div>
           <h2 style={{ fontSize: '1.1rem', color: '#FFF', margin: 0, letterSpacing: '0.05em' }}>SSB INFRA</h2>
           <span style={{ fontSize: '0.75rem', color: 'var(--gold)', fontWeight: 700, letterSpacing: '0.1em' }}>OPERATIONS CMS</span>

@@ -112,39 +112,43 @@ window.initSlowScrollReveal = function() {
   remaining.forEach(el => observer.observe(el));
 };
 
-// 2b. Scroll-Driven Timeline Line Fill & Node Animation
+// 2b. Scroll-Driven Timeline Line Fill & Node Animation Engine
 window.initTimelineScrollAnimation = function() {
-  const timelineContainer = document.querySelector('.timeline-container');
-  const fillLine = document.getElementById('timeline-fill-line');
-  if (!timelineContainer || !fillLine) return;
+  const containers = document.querySelectorAll('.timeline-container');
+  if (!containers || containers.length === 0) return;
 
-  const updateTimelineProgress = () => {
-    const rect = timelineContainer.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    
-    // Calculate scroll progress through timeline
-    const totalHeight = rect.height;
-    const startPoint = windowHeight * 0.7;
-    const currentScrollPos = startPoint - rect.top;
-    
-    let progress = Math.max(0, Math.min(1, currentScrollPos / totalHeight));
-    fillLine.style.height = `${(progress * 100).toFixed(1)}%`;
+  const updateAllTimelines = () => {
+    containers.forEach(container => {
+      const fillLine = container.querySelector('.timeline-fill-line');
+      if (!fillLine) return;
 
-    // Activate individual node dots and cards as fill line reaches them
-    const items = timelineContainer.querySelectorAll('.timeline-item');
-    items.forEach(item => {
-      const itemRect = item.getBoundingClientRect();
-      if (itemRect.top < windowHeight * 0.75) {
-        item.classList.add('active');
-        item.classList.add('revealed');
-      }
+      const rect = container.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Compute smooth scroll fill ratio through timeline bounds
+      const startOffset = windowHeight * 0.65;
+      const totalHeight = rect.height;
+      const currentPos = startOffset - rect.top;
+      
+      let progress = Math.max(0, Math.min(1, currentPos / totalHeight));
+      fillLine.style.height = `${(progress * 100).toFixed(1)}%`;
+
+      // Activate individual node dots & cards as fill line head reaches them
+      const items = container.querySelectorAll('.timeline-item');
+      items.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.top < windowHeight * 0.7) {
+          item.classList.add('active');
+          item.classList.add('revealed');
+        }
+      });
     });
   };
 
   window.removeEventListener('scroll', window._timelineScrollHandler || function(){});
-  window._timelineScrollHandler = updateTimelineProgress;
+  window._timelineScrollHandler = updateAllTimelines;
   window.addEventListener('scroll', window._timelineScrollHandler, { passive: true });
-  updateTimelineProgress();
+  updateAllTimelines();
 };
 
 // 3. Scroll-Triggered Animated Counter Engine

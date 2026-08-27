@@ -223,7 +223,7 @@ class AppRouter {
 
               <!-- 2. Tall Rectangular Image (Top Right) -->
               <div class="roma-rect-img-box">
-                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Site" class="roma-rect-img" />
+                <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Site" class="roma-rect-img" />
               </div>
 
               <!-- 3. Floating Circular Badge (Center Overlap) -->
@@ -536,6 +536,14 @@ class AppRouter {
           <div class="section-header text-center" style="text-align: center; margin-bottom: 3.5rem;">
             <span class="section-subtitle" style="color: var(--brand); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">OUR JOURNEY</span>
             <h2 class="section-title" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 3rem; color: var(--ink); font-weight: 600;">From 2013 to today</h2>
+            
+            <div class="scroll-down-indicator" onclick="document.getElementById('journey').scrollIntoView({behavior: 'smooth'})">
+              <div class="scroll-down-mouse">
+                <div class="scroll-down-wheel"></div>
+              </div>
+              <span style="font-size: 0.675rem; margin-top: 4px; letter-spacing: 0.15em;">SCROLL DOWN TO EXPLORE</span>
+              <span class="scroll-down-arrow">↓</span>
+            </div>
           </div>
 
           <div class="timeline-container">
@@ -664,7 +672,7 @@ class AppRouter {
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
-          <span class="badge" style="margin-bottom: 1.25rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(4, 120, 87, 0.35); color: #A7F3D0; border: 1px solid rgba(167, 243, 208, 0.4); padding: 6px 14px; border-radius: 20px; display: inline-block;">
+          <span class="badge" style="margin-bottom: 1.25rem; font-size: 0.825rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--gold-subtle); color: var(--gold); border: 1px solid rgba(197, 160, 89, 0.4); padding: 6px 14px; border-radius: 20px; display: inline-block;">
             About SSB Group
           </span>
           <h1 style="color: #FFF; font-size: 3.8rem; line-height: 1.12; max-width: 950px; font-family: var(--font-heading); font-weight: 700; margin-bottom: 1.25rem; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
@@ -693,7 +701,7 @@ class AppRouter {
 
               <!-- 2. Tall Rectangular Image (Top Right) -->
               <div class="roma-rect-img-box">
-                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Site" class="roma-rect-img" />
+                <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=800&q=85" alt="SSB Construction Site" class="roma-rect-img" />
               </div>
 
               <!-- 3. Floating Circular Badge (Center Overlap) -->
@@ -875,7 +883,7 @@ class AppRouter {
       </section>
 
       <!-- Founder Quote Band -->
-      <section style="background: linear-gradient(135deg, var(--brand) 0%, #B83A14 100%); color: #FFF; padding: 4.5rem 0; text-align: center;">
+      <section style="background: linear-gradient(135deg, var(--brand) 0%, var(--brand-hover) 100%); color: #FFF; padding: 4.5rem 0; text-align: center; border-top: 2px solid var(--gold);">
         <div class="container" style="max-width: 900px;">
           <div style="font-size: 3rem; opacity: 0.6; line-height: 1;">“</div>
           <blockquote style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1.35; margin-bottom: 1.25rem;">

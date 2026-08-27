@@ -60,9 +60,11 @@ export const Footer = () => {
             <h4 className="footer-heading">Legal & RERA</h4>
             <ul className="footer-links">
               <li><Link to="/certifications">Certifications</Link></li>
-              <li><Link to="/certifications">Privacy Policy</Link></li>
-              <li><Link to="/certifications">Terms & Conditions</Link></li>
-              <li><Link to="/certifications">RERA Information</Link></li>
+              <li><Link to="/legal#privacy">Privacy Policy</Link></li>
+              <li><Link to="/legal#terms">Terms & Conditions</Link></li>
+              <li><Link to="/legal#disclaimer">Disclaimer</Link></li>
+              <li><Link to="/legal#rera">RERA Information</Link></li>
+              <li><Link to="/legal#cookies">Cookie Policy</Link></li>
             </ul>
           </div>
         </div>

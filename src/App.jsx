@@ -22,6 +22,7 @@ import { NriCornerPage } from './pages/NriCornerPage';
 import { EmiCalculatorPage } from './pages/EmiCalculatorPage';
 import { ConstructionUpdatesPage } from './pages/ConstructionUpdatesPage';
 import { CertificationsPage } from './pages/CertificationsPage';
+import { LegalPage } from './pages/LegalPage';
 import { ContactPage } from './pages/ContactPage';
 import { AdminPage } from './pages/AdminPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -60,6 +61,8 @@ const AppLayout = () => {
           <Route path="/emi-calculator" element={<EmiCalculatorPage />} />
           <Route path="/construction-updates" element={<ConstructionUpdatesPage />} />
           <Route path="/certifications" element={<CertificationsPage />} />
+          <Route path="/legal" element={<LegalPage />} />
+          <Route path="/privacy-policy" element={<LegalPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/book-a-site-visit" element={<ContactPage />} />
           <Route path="/admin" element={<AdminPage />} />

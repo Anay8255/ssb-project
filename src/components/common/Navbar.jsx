@@ -76,6 +76,7 @@ export const Navbar = () => {
                 <ChevronDown size={14} />
               </span>
               <div className="dropdown-menu">
+                <Link to="/legal" className="dropdown-link">⚖️ Legal, Privacy & RERA</Link>
                 <Link to="/certifications" className="dropdown-link">📜 ISO 9001:2015 Certification</Link>
                 <Link to="/certifications" className="dropdown-link">🏛️ Incorporation Certificate</Link>
                 <Link to="/certifications" className="dropdown-link">📋 Awas Bandhu Registration</Link>
@@ -128,6 +129,7 @@ export const Navbar = () => {
           <li><Link to="/emi-calculator" className="drawer-link">EMI Calculator</Link></li>
           <li><Link to="/construction-updates" className="drawer-link">Live Progress</Link></li>
           <li><Link to="/certifications" className="drawer-link">Certifications & Trust</Link></li>
+          <li><Link to="/legal" className="drawer-link">Legal & Privacy Policy</Link></li>
           <li><Link to="/contact" className="drawer-link">Contact Us</Link></li>
           <li><Link to="/admin" className="drawer-link" style={{ color: 'var(--brand)' }}>Admin CMS & CRM</Link></li>
         </ul>

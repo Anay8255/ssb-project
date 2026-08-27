@@ -1,179 +1,117 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { useModal } from '../../context/ModalContext';
+import { ArrowRight, ChevronDown, Car } from 'lucide-react';
 
-const VIDEO_SRC   = '/videos/Drone_flying_over_luxury_duplex_202608201448_gwr_video_mvp (1).mp4';
-const FRAME_COUNT = 80;   // High fidelity frame extraction
-const CAP_W       = 1280; // Capture resolution width
-const CAP_H       = 720;  // Capture resolution height
-
-// Utility: draw image/bitmap covering the full canvas (like CSS object-fit: cover)
-function drawCover(ctx, img, canvasW, canvasH) {
-  if (!img) return;
-  const imgW = img.width || CAP_W;
-  const imgH = img.height || CAP_H;
-  const imgRatio = imgW / imgH;
-  const canvasRatio = canvasW / canvasH;
-
-  let renderW, renderH, offsetX, offsetY;
-  if (canvasRatio > imgRatio) {
-    renderW = canvasW;
-    renderH = canvasW / imgRatio;
-    offsetX = 0;
-    offsetY = (canvasH - renderH) / 2;
-  } else {
-    renderW = canvasH * imgRatio;
-    renderH = canvasH;
-    offsetX = (canvasW - renderW) / 2;
-    offsetY = 0;
-  }
-
-  ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
-}
+const VIDEO_SRC = '/videos/Drone_flying_over_luxury_duplex_202608201448_gwr_video_mvp (1).mp4';
 
 export const ScrollVideoSection = () => {
-  const sectionRef  = useRef(null);
-  const canvasRef   = useRef(null);
+  const { openSiteVisitModal } = useModal();
+  const sectionRef = useRef(null);
+  const videoRef = useRef(null);
   const progressRef = useRef(null);
-  const overlayRef  = useRef(null);
-  const hintRef     = useRef(null);
-  const rafRef      = useRef(null);
-  const frames      = useRef([]);
-  const smoothProg  = useRef(0);
-  const rawProg     = useRef(0);
+  const overlayRef = useRef(null);
+  const hintRef = useRef(null);
+  const isVisibleRef = useRef(true);
 
-  const [status, setStatus] = useState('loading');
-  const [capPct, setCapPct] = useState(0);
+  const rawProg = useRef(0);
+  const smoothProg = useRef(0);
+  const rafRef = useRef(null);
 
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  // 1. Viewport Visibility Observer (pause RAF and video when offscreen to save 100% resources)
   useEffect(() => {
-    let isMounted = true;
-    
-    // Create an offscreen video purely in memory (never rendered to DOM)
-    const video = document.createElement('video');
-    video.src = VIDEO_SRC;
-    video.muted = true;
-    video.playsInline = true;
-    video.preload = 'auto';
+    const section = sectionRef.current;
+    if (!section) return;
 
-    const offscreen = document.createElement('canvas');
-    offscreen.width = CAP_W;
-    offscreen.height = CAP_H;
-    const octx = offscreen.getContext('2d');
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (videoRef.current) {
+          if (entry.isIntersecting) {
+            videoRef.current.play().catch(() => { });
+          } else {
+            videoRef.current.pause();
+          }
+        }
+      },
+      { threshold: 0.05 }
+    );
 
-    const capture = async () => {
-      await new Promise((resolve) => {
-        if (video.readyState >= 2) { resolve(); return; }
-        video.addEventListener('canplay', resolve, { once: true });
-        video.load();
-      });
-
-      if (!isMounted) return;
-      setStatus('capturing');
-      const dur = video.duration || 5;
-      const captured = [];
-
-      for (let i = 0; i < FRAME_COUNT; i++) {
-        if (!isMounted) break;
-        const t = (i / (FRAME_COUNT - 1)) * dur;
-        video.currentTime = t;
-
-        await new Promise((resolve) => {
-          video.addEventListener('seeked', resolve, { once: true });
-        });
-
-        octx.drawImage(video, 0, 0, CAP_W, CAP_H);
-        const bmp = await createImageBitmap(offscreen);
-        captured.push(bmp);
-
-        setCapPct(Math.round(((i + 1) / FRAME_COUNT) * 100));
-      }
-
-      if (isMounted) {
-        frames.current = captured;
-        setStatus('ready');
-      }
-    };
-
-    capture().catch(console.error);
-
-    return () => {
-      isMounted = false;
-      video.src = '';
-      frames.current.forEach((bmp) => bmp.close?.());
-    };
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
+  // 2. High Performance Scroll & Lerp Animation
   useEffect(() => {
-    if (status !== 'ready') return;
+    const section = sectionRef.current;
+    const video = videoRef.current;
+    const progressEl = progressRef.current;
+    const overlayEl = overlayRef.current;
+    const hintEl = hintRef.current;
 
-    const canvas   = canvasRef.current;
-    const section  = sectionRef.current;
-    if (!canvas || !section) return;
+    if (!section) return;
 
-    const ctx = canvas.getContext('2d', { alpha: false });
+    let sectionTop = 0;
+    let scrollRange = 1;
 
-    const resize = () => {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
-      const idx = Math.min(
-        frames.current.length - 1,
-        Math.floor(smoothProg.current * (frames.current.length - 1))
-      );
-      if (frames.current[idx]) {
-        drawCover(ctx, frames.current[idx], canvas.width, canvas.height);
-      }
+    const updateMeasurements = () => {
+      const rect = section.getBoundingClientRect();
+      sectionTop = window.scrollY + rect.top;
+      scrollRange = Math.max(1, section.offsetHeight - window.innerHeight);
     };
 
-    resize();
-    window.addEventListener('resize', resize, { passive: true });
-
-    const progressEl = progressRef.current;
-    const overlayEl  = overlayRef.current;
-    const hintEl     = hintRef.current;
-    const total      = frames.current.length;
-
-    if (frames.current[0]) {
-      drawCover(ctx, frames.current[0], canvas.width, canvas.height);
-    }
+    updateMeasurements();
+    window.addEventListener('resize', updateMeasurements, { passive: true });
 
     const onScroll = () => {
-      const rect        = section.getBoundingClientRect();
-      const sectionTop  = window.scrollY + rect.top;
-      const scrolled    = window.scrollY - sectionTop;
-      const scrollRange = section.offsetHeight - window.innerHeight;
-      rawProg.current   = Math.max(0, Math.min(1, scrolled / scrollRange));
+      if (!isVisibleRef.current) return;
+      const scrolled = window.scrollY - sectionTop;
+      rawProg.current = Math.max(0, Math.min(1, scrolled / scrollRange));
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    let lastFrameIdx = -1;
-
+    // 60-120fps Smooth Damped Lerp Loop
     const tick = () => {
-      const diff = rawProg.current - smoothProg.current;
-      const absDiff = Math.abs(diff);
+      if (isVisibleRef.current) {
+        const diff = rawProg.current - smoothProg.current;
+        // Butter-smooth linear interpolation
+        smoothProg.current += diff * 0.12;
 
-      if (absDiff > 0.0001) {
-        const factor = Math.min(0.85, 0.15 + absDiff * 5);
-        smoothProg.current += diff * factor;
-      }
+        const p = smoothProg.current;
 
-      const idx = Math.min(total - 1, Math.floor(smoothProg.current * (total - 1)));
+        // 1. Subtle GPU-accelerated Parallax Zoom on Video
+        if (video) {
+          const scale = 1 + p * 0.08;
+          video.style.transform = `scale(${scale.toFixed(4)}) translate3d(0, 0, 0)`;
+        }
 
-      if (idx !== lastFrameIdx && frames.current[idx]) {
-        drawCover(ctx, frames.current[idx], canvas.width, canvas.height);
-        lastFrameIdx = idx;
-      }
+        // 2. Update Progress Bar
+        if (progressEl) {
+          progressEl.style.width = `${(p * 100).toFixed(2)}%`;
+        }
 
-      if (progressEl) {
-        progressEl.style.width = `${smoothProg.current * 100}%`;
-      }
-      const showText = smoothProg.current >= 0.35;
-      if (overlayEl) {
-        overlayEl.classList.toggle('visible', showText);
-      }
-      if (hintEl) {
-        hintEl.classList.toggle('hide', showText);
+        // 3. Reveal Text Overlay smoothly
+        const showText = p >= 0.25;
+        if (overlayEl) {
+          if (showText && !overlayEl.classList.contains('visible')) {
+            overlayEl.classList.add('visible');
+          } else if (!showText && overlayEl.classList.contains('visible')) {
+            overlayEl.classList.remove('visible');
+          }
+        }
+
+        // 4. Hide Hint
+        if (hintEl) {
+          if (p > 0.08 && !hintEl.classList.contains('hide')) {
+            hintEl.classList.add('hide');
+          } else if (p <= 0.08 && hintEl.classList.contains('hide')) {
+            hintEl.classList.remove('hide');
+          }
+        }
       }
 
       rafRef.current = requestAnimationFrame(tick);
@@ -183,52 +121,75 @@ export const ScrollVideoSection = () => {
 
     return () => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener('resize', updateMeasurements);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [status]);
+  }, []);
+
+  const handleScrollDown = () => {
+    if (!sectionRef.current) return;
+    const target = sectionRef.current.offsetTop + sectionRef.current.offsetHeight * 0.55;
+    window.scrollTo({
+      top: target,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <section
       ref={sectionRef}
       className="scroll-video-section"
-      style={{ height: '350vh', position: 'relative' }}
+      style={{ height: '220vh', position: 'relative' }}
     >
       <div className="scroll-video-sticky">
 
-        {status !== 'ready' && (
-          <div className="scroll-video-loader">
-            <div className="scroll-video-loader-box">
-              <div className="scroll-video-loader-spinner" />
-              <p className="scroll-video-loader-text">
-                {status === 'loading' ? 'Loading experience...' : `Optimizing animation... ${capPct}%`}
-              </p>
-            </div>
-          </div>
-        )}
+        {/* Hardware-Accelerated High-Performance HTML5 Background Video */}
+        <video
+          ref={videoRef}
+          src={VIDEO_SRC}
+          className="scroll-video-media"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          onLoadedData={() => setIsVideoLoaded(true)}
+          style={{
+            opacity: 1
+          }}
+        />
 
-        <canvas ref={canvasRef} className="scroll-video-canvas" />
-
+        {/* Cinematic Vignette Gradient Overlay */}
         <div className="scroll-video-gradient" />
 
+        {/* Top Scroll Indicator Line */}
         <div className="scroll-video-progress-track">
           <div ref={progressRef} className="scroll-video-progress-fill" style={{ width: '0%' }} />
         </div>
 
+        {/* Luxury Typography Overlay Content */}
         <div ref={overlayRef} className="scroll-video-overlay">
           <div className="scroll-video-content">
             <span className="scroll-video-eyebrow">SSB GROUP · EST. 2013 · VARANASI</span>
-            <h2 className="scroll-video-headline">
+            <h1 className="scroll-video-headline">
               Luxury Living,<br />
               <em>Reimagined.</em>
-            </h2>
+            </h1>
             <p className="scroll-video-subline">
-              For over a decade, pioneering landmark townships with architectural excellence across Eastern Uttar Pradesh.
+              For over a decade, pioneering landmark townships and commercial hubs with architectural excellence across Eastern Uttar Pradesh.
             </p>
             <div className="scroll-video-ctas">
               <Link to="/projects" className="scroll-video-btn-primary">
                 Explore Projects <ArrowRight size={16} />
               </Link>
+              <button
+                type="button"
+                className="scroll-video-btn-secondary"
+                onClick={() => openSiteVisitModal()}
+              >
+                <Car size={16} />
+                <span>Book Free Site Visit</span>
+              </button>
               <Link to="/contact" className="scroll-video-btn-ghost">
                 Talk to an Expert
               </Link>
@@ -236,8 +197,9 @@ export const ScrollVideoSection = () => {
           </div>
         </div>
 
-        <div ref={hintRef} className="scroll-video-hint">
-          <ChevronDown size={28} />
+        {/* Floating Scroll Indicator */}
+        <div ref={hintRef} className="scroll-video-hint" onClick={handleScrollDown} style={{ cursor: 'pointer' }}>
+          <ChevronDown size={26} />
           <span>Scroll to explore</span>
         </div>
 

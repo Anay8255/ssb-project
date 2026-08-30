@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
 import { ArrowRight, ChevronDown, Car } from 'lucide-react';
 
-const VIDEO_SRC = '/videos/Drone_flying_over_luxury_duplex_202608201448_gwr_video_mvp (1).mp4';
+const VIDEO_SRC = 'https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/background/New%20folder%20(7)/Drone_flying_over_luxury_duplex_202608201448.mp4';
 
 export const ScrollVideoSection = () => {
   const { openSiteVisitModal } = useModal();

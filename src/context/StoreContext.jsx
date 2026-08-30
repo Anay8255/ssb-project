@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { SEED_DATA } from '../data/seedData';
 
-const STORAGE_KEY = 'ssb_group_official_v17';
+const STORAGE_KEY = 'ssb_group_official_v18';
 
 const StoreContext = createContext(null);
 

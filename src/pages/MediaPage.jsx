@@ -7,25 +7,49 @@ export const MediaPage = () => {
 
   const news = [
     {
-      title: "SSB Group Unveils Sai Gaon Township on Varanasi Growth Corridor",
-      publication: "Dainik Jagran / Real Estate Bureau",
+      title: "Shree Sai City: Varanasi's First Monolithic Aluminium Formwork Green Township",
+      publication: "Construction & Infrastructure Times",
       date: "August 2026",
-      summary: "SSB Group has launched its signature eco-residential community featuring monolithic aluminium formwork construction, 70% open green landscapes, and world-class sports amenities.",
-      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
+      summary: "SSB Infra Projects is the very first in Varanasi to incorporate the monolithic Aluminum Formwork System into multi-storied RCC construction. Pouring walls and slabs simultaneously eliminates masonry, guarantees zero water seepage, resists seismic tremors, and delivers acoustic insulation across 18 acres.",
+      image: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948497295-9v1551.png",
+      tag: "Engineering & Innovation",
+      author: "SSB Technical Desk"
     },
     {
-      title: "Over 120 Families Receive Possession at Shree Sai City Affordable Housing",
-      publication: "Hindustan Live",
+      title: "Refined by Nature's Opulence: Inside Shree Sai City Group Housing Floor Plans & Architecture",
+      publication: "Varanasi Real Estate Review",
+      date: "July 2026",
+      summary: "Explore the VDA-approved and UP RERA registered (UPRERAPRJ923469) 2 BHK (1,100.08 Sq. Ft.) and 3 BHK (1,351.31 Sq. Ft.) residences designed with 100% Vastu compliance, cross-ventilation, panoramic decks, and microclimate-controlled evergreen landscaping.",
+      image: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948517426-765q1q.png",
+      tag: "Architecture & Design",
+      author: "Nishant Shekhar, Chief Architect"
+    },
+    {
+      title: "Proposed SSB Amusement Park & Luxury Resort Announced at Shree Sai City Harhua",
+      publication: "Uttar Pradesh Hospitality & Tourism",
       date: "June 2026",
-      summary: "Shree Sai Baba Infra Projects Pvt. Ltd. successfully concluded the handover ceremony for its PMAY-aligned affordable housing phase in Harhua, Varanasi.",
-      image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80"
+      summary: "Adding to the premier lifestyle at Shree Sai City, SSB Group announced the proposed SSB Amusement Park and Luxury Resort on campus, complementing the luxury Club House, Olympic-sized swimming pool, tennis court, and rooftop sky gardens.",
+      image: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948520399-r81hq7.png",
+      tag: "Township Lifestyle",
+      author: "SSB Lifestyle Desk"
     },
     {
-      title: "SSB Group Expands into Commercial Sector with Landmark Lucknow Project",
+      title: "316 KLD Sustainable Water Management & 80% Recycling Pioneered at Shree Sai City",
+      publication: "Eco Living & Green Built Environment",
+      date: "May 2026",
+      summary: "With a homegrown domestic water capacity of 316.687 KLD, Shree Sai City incorporates an advanced Sewage Treatment Plant (STP) recovering 80% water, alongside extensive rainwater harvesting and dual power supply with rooftop solar.",
+      image: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948529276-aspkwi.png",
+      tag: "Sustainability",
+      author: "Environmental Engineering Team"
+    },
+    {
+      title: "Airport Corridor Connectivity: Why Shree Sai City Harhua is Varanasi's Top Investment Hub",
       publication: "The Economic Times Realty",
       date: "April 2026",
-      summary: "Marking strategic expansion beyond Varanasi, SSB Group breaks ground on 'Pratham', a state-of-the-art commercial and retail hub in Lucknow.",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+      summary: "Strategically located at the intersection of Babatpur Airport Road and Panchkosi Road, Shree Sai City connects directly to Lal Bahadur Shastri Airport in 10 minutes, Ring Road Crossing in 15 minutes, and Cantt Junction with top schools and hospitals nearby.",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+      tag: "Market Growth",
+      author: "Investment Research Desk"
     }
   ];
 

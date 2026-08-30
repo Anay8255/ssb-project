@@ -266,12 +266,12 @@ export const SEED_DATA = {
           category: "Master Layout"
         },
         {
-          url: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948527122-9nyeu4.png",
+          url: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948528227-7x3nua.png",
           title: "Floor Plan — 2 BHK Unit Layout (1100.08 Sq. Ft.)",
           category: "Floor Plan"
         },
         {
-          url: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948528227-7x3nua.png",
+          url: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948527122-9nyeu4.png",
           title: "Floor Plan — 3 BHK Unit Layout (1351.31 Sq. Ft.)",
           category: "Floor Plan"
         },
@@ -315,9 +315,9 @@ export const SEED_DATA = {
           bathrooms: 2,
           balconies: 2,
           highlight: "Living/Dining (11'-4\" x 16'-0\"), Master Bed (11'-8\" x 10'-2\"), Bed 2 (11'-2\" x 10'-8\"), Kitchen (7'-9\" x 7'-2\"), 2 private balconies, Vastu compliant",
-          floorPlanUrl: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948527122-9nyeu4.png",
+          floorPlanUrl: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948528227-7x3nua.png",
           floorPlanImages: [
-            "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948527122-9nyeu4.png"
+            "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948528227-7x3nua.png"
           ],
           priceEstimate: "₹56 - ₹62 Lakhs"
         },
@@ -340,9 +340,9 @@ export const SEED_DATA = {
           bathrooms: 2,
           balconies: 3,
           highlight: "Living/Dining (13'-8\" x 19'-4\"), Master Bed (10'-5\" x 13'-10\"), Bed 2 (10'-0\" x 10'-4\"), Bed 3 (10'-0\" x 10'-4\"), Kitchen (7'-2\" x 10'-6\"), 3 balconies, 3-side open layout",
-          floorPlanUrl: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948528227-7x3nua.png",
+          floorPlanUrl: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948527122-9nyeu4.png",
           floorPlanImages: [
-            "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948528227-7x3nua.png"
+            "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948527122-9nyeu4.png"
           ],
           priceEstimate: "₹78 - ₹88 Lakhs"
         }

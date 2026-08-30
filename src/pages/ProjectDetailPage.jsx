@@ -2,19 +2,25 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { useModal } from '../context/ModalContext';
+import { SEED_DATA } from '../data/seedData';
 import { ReraHub } from '../components/project/ReraHub';
 import { MasterPlanViewer } from '../components/project/MasterPlanViewer';
 import { FloorPlanSwitcher } from '../components/project/FloorPlanSwitcher';
+import { ProjectGallery } from '../components/project/ProjectGallery';
 import { MilestoneTracker } from '../components/project/MilestoneTracker';
 import { AmenitiesGrid } from '../components/project/AmenitiesGrid';
-import { MapPin, ShieldCheck, Car, Download, ArrowLeft, CheckCircle2, ChevronRight, Phone } from 'lucide-react';
+import { ProjectLocationMap } from '../components/project/ProjectLocationMap';
+import { MapPin, ShieldCheck, Car, Download, ArrowLeft, CheckCircle2, ChevronRight, ChevronLeft, Phone } from 'lucide-react';
 
 export const ProjectDetailPage = () => {
   const { slug } = useParams();
   const { getProjectBySlug } = useStore();
   const { openSiteVisitModal, openEnquiryModal, openLightbox } = useModal();
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
 
-  const project = getProjectBySlug(slug);
+  const rawProject = getProjectBySlug(slug);
+  const seedProject = SEED_DATA.projects.find(p => p.slug === slug || p.id === slug || p.id === rawProject?.id);
+  const project = rawProject ? { ...seedProject, ...rawProject, gallery: seedProject?.gallery || rawProject?.gallery, heroImages: seedProject?.heroImages || rawProject?.heroImages } : seedProject;
 
   if (!project) {
     return (
@@ -28,63 +34,156 @@ export const ProjectDetailPage = () => {
     );
   }
 
+  const heroImages = (project.heroImages && project.heroImages.length > 0)
+    ? project.heroImages
+    : [project.featuredImage].filter(Boolean);
+
+  const currentHeroImg = heroImages[heroSlideIndex] || heroImages[0] || project.featuredImage;
+
+  const nextHeroSlide = () => setHeroSlideIndex((prev) => (prev + 1) % heroImages.length);
+  const prevHeroSlide = () => setHeroSlideIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
-      {/* Hero Banner with Gallery Thumbnails */}
-      <section style={{ position: 'relative', background: '#0F172A', color: '#FFF', padding: '7.5rem 0 3.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
-        <div className="container">
+      {/* Hero Banner with Full Photo Backdrop & 100% Transparent Overlay */}
+      <section style={{ 
+        position: 'relative', 
+        color: '#FFF', 
+        padding: '7.5rem 0 4.5rem', 
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        background: `linear-gradient(to right, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.45) 60%, rgba(15, 23, 42, 0.25) 100%), url(${currentHeroImg}) center/cover no-repeat`,
+        transition: 'background-image 0.5s ease',
+        overflow: 'hidden',
+        minHeight: '520px',
+        display: 'flex',
+        alignItems: 'center'
+      }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           {/* Breadcrumbs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#94A3B8', marginBottom: '1.5rem' }}>
-            <Link to="/" style={{ color: '#94A3B8' }}>Home</Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#CBD5E1', marginBottom: '1.5rem', textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>
+            <Link to="/" style={{ color: '#CBD5E1' }}>Home</Link>
             <ChevronRight size={14} />
-            <Link to="/projects" style={{ color: '#94A3B8' }}>Projects</Link>
+            <Link to="/projects" style={{ color: '#CBD5E1' }}>Projects</Link>
             <ChevronRight size={14} />
             <span style={{ color: 'var(--gold)', fontWeight: 600 }}>{project.title}</span>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
-            <div>
-              <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                <span className="badge badge-brand">{project.category}</span>
-                <span className="badge badge-success">{project.status.toUpperCase()}</span>
-              </div>
-              <h1 style={{ fontSize: '3rem', color: '#FFF', marginBottom: '0.75rem', fontFamily: 'var(--font-heading)' }}>
-                {project.title}
-              </h1>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--gold)', fontSize: '1rem', marginBottom: '1rem', fontWeight: 600 }}>
-                <MapPin size={16} />
-                <span>{project.fullAddress || project.locationName}</span>
-              </div>
-              <p style={{ color: '#CBD5E1', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem' }}>
-                {project.description}
-              </p>
-
-              {/* Action Buttons */}
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <button className="btn btn-primary btn-lg" onClick={() => openSiteVisitModal(project.title)}>
-                  <Car size={18} /> Book Chauffeur Site Tour
-                </button>
-                <button className="btn btn-ghost-warm btn-lg" onClick={() => openEnquiryModal(project.title, 'Brochure Download')}>
-                  <Download size={18} /> Instant E-Brochure
-                </button>
-              </div>
+          {/* 100% Transparent Hero Content */}
+          <div style={{ maxWidth: '850px' }}>
+            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
+              <span className="badge badge-brand">{project.category}</span>
+              <span className="badge badge-success">{project.status.toUpperCase()}</span>
+            </div>
+            <h1 style={{ fontSize: '3.4rem', color: '#FFF', marginBottom: '0.75rem', fontFamily: 'var(--font-heading)', lineHeight: 1.15, textShadow: '0 3px 15px rgba(0, 0, 0, 0.8)' }}>
+              {project.title}
+            </h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--gold)', fontSize: '1.1rem', marginBottom: '2rem', fontWeight: 600, textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}>
+              <MapPin size={18} />
+              <span>{project.fullAddress || project.locationName}</span>
             </div>
 
-            {/* Featured Hero Images */}
-            <div style={{ position: 'relative' }}>
-              <div 
-                style={{ borderRadius: 'var(--r-xl)', overflow: 'hidden', height: '360px', border: '1px solid rgba(255, 255, 255, 0.15)', cursor: 'zoom-in', boxShadow: 'var(--shadow-lg)' }}
-                onClick={() => openLightbox(project.featuredImage, project.title, project.locationName)}
-              >
-                <img 
-                  src={project.featuredImage} 
-                  alt={project.title} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
+            {/* Action Buttons */}
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <button className="btn btn-primary btn-lg" onClick={() => openSiteVisitModal(project.title)}>
+                <Car size={18} /> Book Chauffeur Site Tour
+              </button>
+              <button className="btn btn-ghost-warm btn-lg" onClick={() => openEnquiryModal(project.title, 'Brochure Download')}>
+                <Download size={18} /> Instant E-Brochure
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Hero Slider Controls (if multiple hero images) */}
+        {heroImages.length > 1 && (
+          <>
+            <button
+              onClick={prevHeroSlide}
+              aria-label="Previous Hero Image"
+              style={{
+                position: 'absolute',
+                left: '1.25rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'rgba(15, 23, 42, 0.65)',
+                color: '#FFF',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: '50%',
+                width: '42px',
+                height: '42px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                backdropFilter: 'blur(6px)',
+                zIndex: 2,
+                transition: 'background 0.2s'
+              }}
+            >
+              <ChevronLeft size={22} />
+            </button>
+
+            <button
+              onClick={nextHeroSlide}
+              aria-label="Next Hero Image"
+              style={{
+                position: 'absolute',
+                right: '1.25rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'rgba(15, 23, 42, 0.65)',
+                color: '#FFF',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: '50%',
+                width: '42px',
+                height: '42px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                backdropFilter: 'blur(6px)',
+                zIndex: 2,
+                transition: 'background 0.2s'
+              }}
+            >
+              <ChevronRight size={22} />
+            </button>
+
+            {/* Bottom dots */}
+            <div style={{
+              position: 'absolute',
+              bottom: '1.25rem',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              display: 'flex',
+              gap: '0.4rem',
+              zIndex: 2,
+              background: 'rgba(15, 23, 42, 0.6)',
+              padding: '0.35rem 0.75rem',
+              borderRadius: 'var(--r-pill)',
+              backdropFilter: 'blur(6px)',
+              border: '1px solid rgba(255, 255, 255, 0.15)'
+            }}>
+              {heroImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setHeroSlideIndex(idx)}
+                  style={{
+                    width: heroSlideIndex === idx ? '20px' : '7px',
+                    height: '7px',
+                    borderRadius: 'var(--r-pill)',
+                    background: heroSlideIndex === idx ? 'var(--brand)' : 'rgba(255, 255, 255, 0.4)',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  aria-label={`Slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       {/* Main Content Area */}
@@ -113,46 +212,92 @@ export const ProjectDetailPage = () => {
         </div>
 
         {/* Interactive Master Plan with Real-Time Unit Availability */}
-        <MasterPlanViewer projectId={project.slug || project.id} />
+        <MasterPlanViewer projectId={project.slug || project.id} project={project} />
 
         {/* Floor Plan Switcher */}
         <FloorPlanSwitcher project={project} />
 
+        {/* Project Photo & Architectural Gallery */}
+        <ProjectGallery project={project} />
+
         {/* Construction Progress Tracker */}
         <MilestoneTracker project={project} />
 
-        {/* Amenities Grid */}
-        <AmenitiesGrid amenities={project.amenities} />
+        {/* Specifications Section (if available) */}
+        {project.specifications && (
+          <div style={{ background: '#FFF', padding: '2.5rem', borderRadius: 'var(--r-xl)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)', marginBottom: '2.5rem' }}>
+            <div style={{ marginBottom: '1.75rem' }}>
+              <span className="eyebrow">QUALITY ASSURANCE & MATERIALS</span>
+              <h3 style={{ fontSize: '1.8rem', color: 'var(--ink)', margin: 0 }}>Architectural Specifications</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginTop: '0.25rem' }}>
+                Engineering details, premium material standards & construction specifications certified as per official brochure.
+              </p>
+            </div>
 
-        {/* Location & Connectivity Strip */}
-        <div style={{ background: '#FFF', padding: '2.5rem', borderRadius: 'var(--r-xl)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)', marginBottom: '2.5rem' }}>
-          <div style={{ marginBottom: '1.5rem' }}>
-            <span className="eyebrow">LOCATION & TRANSIT ADVANTAGE</span>
-            <h3 style={{ fontSize: '1.8rem', color: 'var(--ink)', margin: 0 }}>Strategic Connectivity</h3>
-            <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginTop: '0.25rem' }}>
-              Situated along Varanasi's premier growth artery, offering rapid transit to airports, schools & hubs.
-            </p>
-          </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              {project.specifications.structure && (
+                <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>🏗️ Structure</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, lineHeight: 1.5 }}>{project.specifications.structure}</p>
+                </div>
+              )}
+              {project.specifications.rooms && (
+                <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>🛋️ Rooms & Flooring</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, lineHeight: 1.5 }}>{project.specifications.rooms} | {project.specifications.commonArea}</p>
+                </div>
+              )}
+              {project.specifications.kitchen && (
+                <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>🍳 Kitchen</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, lineHeight: 1.5 }}>{project.specifications.kitchen}</p>
+                </div>
+              )}
+              {project.specifications.doorWindow && (
+                <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>🚪 Doors & Windows</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, lineHeight: 1.5 }}>{project.specifications.doorWindow}</p>
+                </div>
+              )}
+              {project.specifications.electrical && (
+                <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>⚡ Electrical</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, lineHeight: 1.5 }}>{project.specifications.electrical}</p>
+                </div>
+              )}
+              {project.specifications.toiletBathroom && (
+                <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>🚿 Toilet, Bath & Plumbing</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, lineHeight: 1.5 }}>{project.specifications.toiletBathroom}</p>
+                </div>
+              )}
+              {project.specifications.finishing && (
+                <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>🎨 Finishing & Paint</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, lineHeight: 1.5 }}>{project.specifications.finishing}</p>
+                </div>
+              )}
+              {project.specifications.staircase && (
+                <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>🪜 Staircase</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, lineHeight: 1.5 }}>{project.specifications.staircase}</p>
+                </div>
+              )}
+            </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
-            <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
-              <strong style={{ display: 'block', fontSize: '1.1rem', color: 'var(--ink)' }}>✈️ Lal Bahadur Shastri Airport</strong>
-              <span style={{ fontSize: '0.85rem', color: 'var(--brand)', fontWeight: 600 }}>15 Mins Drive (Direct Expressway)</span>
-            </div>
-            <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
-              <strong style={{ display: 'block', fontSize: '1.1rem', color: 'var(--ink)' }}>🚆 Varanasi Cantt Junction</strong>
-              <span style={{ fontSize: '0.85rem', color: 'var(--brand)', fontWeight: 600 }}>20 Mins Drive</span>
-            </div>
-            <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
-              <strong style={{ display: 'block', fontSize: '1.1rem', color: 'var(--ink)' }}>🏥 Heritage & Apex Hospitals</strong>
-              <span style={{ fontSize: '0.85rem', color: 'var(--brand)', fontWeight: 600 }}>10 Mins Emergency Transit</span>
-            </div>
-            <div style={{ background: 'var(--sand-muted)', padding: '1.25rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
-              <strong style={{ display: 'block', fontSize: '1.1rem', color: 'var(--ink)' }}>🎓 DPS & Sunbeam Schools</strong>
-              <span style={{ fontSize: '0.85rem', color: 'var(--brand)', fontWeight: 600 }}>Within 4 km Radius</span>
-            </div>
+            {project.developerPartnership && (
+              <div style={{ marginTop: '1.5rem', padding: '1rem 1.25rem', background: '#F8FAFC', borderRadius: 'var(--r-md)', border: '1px dashed var(--border)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ fontSize: '1.2rem' }}>🤝</span>
+                <span style={{ fontSize: '0.88rem', color: 'var(--ink-muted)' }}>
+                  <strong>Development Venture:</strong> {project.developerPartnership}
+                </span>
+              </div>
+            )}
           </div>
-        </div>
+        )}
+
+        {/* Interactive Location & Google Map View Section */}
+        <ProjectLocationMap project={project} />
 
         {/* Bottom Booking Action Strip */}
         <div style={{ background: 'linear-gradient(135deg, #18181B 0%, #27272A 100%)', color: '#FFF', padding: '3rem', borderRadius: 'var(--r-xl)', textAlign: 'center' }}>

@@ -30,61 +30,200 @@ export const SEED_DATA = {
       title: "Sai Gaon",
       city: "Varanasi, Uttar Pradesh",
       category: "Residential",
-      status: "Ongoing",
-      tagline: "A planned residential neighbourhood on the Varanasi growth corridor.",
-      reraNumber: "UPRERAPRJ647201",
-      reraAuthority: "Uttar Pradesh Real Estate Regulatory Authority",
-      reraQrUrl: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://up-rera.in/ProjectSummary?id=UPRERAPRJ647201",
-      startingPrice: 4850000,
-      priceDisplay: "₹48.5 Lakhs Onwards",
-      locationName: "Shivpur / Ring Road Corridor, Varanasi",
-      fullAddress: "Varanasi Growth Corridor, Near Ring Road, Varanasi, UP",
+      status: "Completed",
+      tagline: "An abode of harmony & happiness — VDA Approved township delivered on Babatpur Airport Road.",
+      reraNumber: "UPRERAPRJ13751 / UPRERAPRM31635",
+      reraAuthority: "Uttar Pradesh Real Estate Regulatory Authority (VDA Approved)",
+      reraQrUrl: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://up-rera.in/ProjectSummary?id=UPRERAPRJ13751",
+      startingPrice: 3400000,
+      priceDisplay: "Delivered & Handed Over",
+      locationName: "Babatpur Airport Road, Harhua, Varanasi",
+      fullAddress: "Babatpur Airport Road, Near Harhua Crossing, NH-56, Varanasi, UP",
+      googleMapUrl: "https://maps.app.goo.gl/Ftpevbgx1D7mNmqx6?g_st=ic",
+      googleMapEmbedUrl: "https://maps.google.com/maps?q=SSB(sai+gaon),+Sai+Gaon+SSB,+Kaazi+Sarai,+Bhatauli,+Uttar+Pradesh+221105&t=&z=15&ie=UTF8&iwloc=&output=embed",
+      geoCoordinates: { lat: 25.342706, lng: 82.981683 },
+      developerPartnership: "A Joint Venture of Shree Sai Baba Infra Projects Pvt. Ltd. & Aarani Developers Pvt. Ltd.",
+      approvalStatus: "VDA Approved (Varanasi Development Authority)",
       totalLandArea: "12.5 Acres",
       totalUnitsCount: 380,
-      featuredImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+      featuredImage: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1786948454583-w6z5b8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODY5NDg0NTQ1ODMtdzZ6NWI4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTcsImV4cCI6MjEwMjMwODQ1N30.1zCUF2vs_4XZgxd6-_UaiB1MRwOPfixHwBRnoKV3mSA",
       heroImages: [
-        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1786948454583-w6z5b8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODY5NDg0NTQ1ODMtdzZ6NWI4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTcsImV4cCI6MjEwMjMwODQ1N30.1zCUF2vs_4XZgxd6-_UaiB1MRwOPfixHwBRnoKV3mSA",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948443025-3qtprf.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDMwMjUtM3F0cHJmLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDUsImV4cCI6MjEwMjMwODQ0NX0.L5lgOnPP2ujMKC1yLR0qGbPn5N-Wj6bNX489_dD3psQ",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948444844-qundmg.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDQ4NDQtcXVuZG1nLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDYsImV4cCI6MjEwMjMwODQ0Nn0.JFWh0PIOdg0OXgWDpGjAWJZXc-tfGyt0aVSjhvPIaJI",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948441216-d11bsv.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDEyMTYtZDExYnN2LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDMsImV4cCI6MjEwMjMwODQ0M30.JAKh4QpiFzx5GZM2WYmsQkMD9JjptoECRGkMhJXUaDE"
       ],
-      description: "Sai Gaon is a thoughtfully planned residential neighbourhood in Varanasi, designed to provide contemporary family living with expansive green parks, community amenities, and rapid arterial connectivity.",
+      gallery: [
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1786948454583-w6z5b8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODY5NDg0NTQ1ODMtdzZ6NWI4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTcsImV4cCI6MjEwMjMwODQ1N30.1zCUF2vs_4XZgxd6-_UaiB1MRwOPfixHwBRnoKV3mSA",
+          title: "Sai Gaon Front Elevation & Night Facade",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948439357-jtyw42.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0MzkzNTctanR5dzQyLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDEsImV4cCI6MjEwMjMwODQ0MX0.DjOzOHiEMi1LE3P-EtANHDzsxDIUQzfFBvpWH8K5Us8",
+          title: "Grand Entrance Archway & Security Plaza",
+          category: "Campus"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948441216-d11bsv.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDEyMTYtZDExYnN2LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDMsImV4cCI6MjEwMjMwODQ0M30.JAKh4QpiFzx5GZM2WYmsQkMD9JjptoECRGkMhJXUaDE",
+          title: "Residential Towers Night Perspective",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948443025-3qtprf.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDMwMjUtM3F0cHJmLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDUsImV4cCI6MjEwMjMwODQ0NX0.L5lgOnPP2ujMKC1yLR0qGbPn5N-Wj6bNX489_dD3psQ",
+          title: "Modern Architectural Day View & Boulevard",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948444844-qundmg.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDQ4NDQtcXVuZG1nLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDYsImV4cCI6MjEwMjMwODQ0Nn0.JFWh0PIOdg0OXgWDpGjAWJZXc-tfGyt0aVSjhvPIaJI",
+          title: "Aerial 3D Master Layout & Green Belt",
+          category: "Master Layout"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948446478-ptczui.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDY0NzgtcHRjenVpLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDgsImV4cCI6MjEwMjMwODQ0OH0.0f6G5azM-QONL9xq82P5cDrrLgHra0QWO1CFk3XCeY0",
+          title: "Floor Plan — 2 BHK Type 2 (718.28 Sq. Ft.)",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948447884-t3r49r.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDc4ODQtdDNyNDlyLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDksImV4cCI6MjEwMjMwODQ0OX0.S1qEXrXC-kGCrACTwNW8Yw2JbzUiPFf9gjPM4p2mBcU",
+          title: "Floor Plan — 3 BHK Type 5 (1030.97 Sq. Ft.)",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948449178-hpp7z2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDkxNzgtaHBwN3oyLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTEsImV4cCI6MjEwMjMwODQ1MX0.AZ7if7UXRrZgaOYyW4sds5QVZ6N95hTzrga0RVABFvc",
+          title: "Floor Plan — 1 BHK Type 1 (708.26 Sq. Ft.)",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948450778-vwdprf.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NTA3NzgtdndkcHJmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTIsImV4cCI6MjEwMjMwODQ1Mn0.tGLZ-Rg_YP449Se2vIScOPDcjpcS9e2TLuT2N3x-x2A",
+          title: "Floor Plan — 2 BHK Type 3 (765.75 Sq. Ft.)",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948452049-hick9n.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NTIwNDktaGljazluLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTMsImV4cCI6MjEwMjMwODQ1M30.phebcyuDFb_afE-MzqcJ-FDwqP8yh-J9_1ZJaDUAnnc",
+          title: "Floor Plan — 2 BHK Type 4 (857.67 Sq. Ft.)",
+          category: "Floor Plan"
+        }
+      ],
+      masterPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948444844-qundmg.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDQ4NDQtcXVuZG1nLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDYsImV4cCI6MjEwMjMwODQ0Nn0.JFWh0PIOdg0OXgWDpGjAWJZXc-tfGyt0aVSjhvPIaJI",
+      description: "Sai Gaon is a prestigious VDA-approved residential township on Babatpur Airport Road, Varanasi, developed as a Joint Venture between Shree Sai Baba Infra Projects Pvt. Ltd. and Aarani Developers Pvt. Ltd. Featuring earthquake-resistant RCC frame structures, 40 ft and 30 ft wide internal roads, Vastu-friendly layouts, and complete lifestyle infrastructure, the project is completed and handed over to happy homeowners.",
+      specifications: {
+        structure: "Earthquake Resistance R.C.C. Frame Structure",
+        toiletBathroom: "Anti-skid Ceramic Tiles flooring, Wall ceramic tiles up to height of 7'-0\", Low Level PVC Cistern with European Toilet Seat",
+        rooms: "Vitrified Tiles flooring in all rooms",
+        commonArea: "Ceramic Tiles flooring in common corridors",
+        kitchen: "Anti-skid Ceramic Tiles flooring, Green Marble/Granite Counter, Ceramic Tiles up to 2'-0\" HT above counter, Stainless Steel Sink",
+        staircase: "Kota Stone Flooring with sturdy safety handrails",
+        doorWindow: "Anodised Aluminium Section for Outdoor Windows with plain glass; Internal Wooden Door Frames of Marandi Wood with Flush Door Shutters & Laminate fittings",
+        electrical: "Fire Resist ISI Mark Copper Wiring, Modular Switches and Sockets as per ISI Standard",
+        plumbing: "PVC / CPVC Pipe for plumbing piping works, premium C.P. Fittings",
+        finishing: "Weather Coat Finishing on Outside Walls, Oil Bound Distemper Inside"
+      },
       configurations: [
         {
-          id: "cfg_sg_2bhk",
-          title: "2 BHK Contemporary Home",
+          id: "cfg_sg_type1",
+          title: "Type - 1 (1 BHK Apartment)",
+          bhkType: "1 BHK",
+          superBuiltupArea: 708.26,
+          carpetArea: 490.51,
+          balconyArea: 67.27,
+          coveredAreaSqM: 45.57,
+          bedrooms: 1,
+          bathrooms: 1,
+          balconies: 2,
+          floorPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948449178-hpp7z2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDkxNzgtaHBwN3oyLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTEsImV4cCI6MjEwMjMwODQ1MX0.AZ7if7UXRrZgaOYyW4sds5QVZ6N95hTzrga0RVABFvc",
+          floorPlanImages: [
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948449178-hpp7z2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDkxNzgtaHBwN3oyLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTEsImV4cCI6MjEwMjMwODQ1MX0.AZ7if7UXRrZgaOYyW4sds5QVZ6N95hTzrga0RVABFvc"
+          ],
+          priceEstimate: "Delivered & Handed Over"
+        },
+        {
+          id: "cfg_sg_type2",
+          title: "Type - 2 (2 BHK Residence)",
           bhkType: "2 BHK",
-          superBuiltupArea: 1150,
-          carpetArea: 840,
+          superBuiltupArea: 718.28,
+          carpetArea: 499.01,
+          balconyArea: 67.70,
+          coveredAreaSqM: 46.36,
+          bedrooms: 2,
+          bathrooms: 1,
+          balconies: 3,
+          floorPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948446478-ptczui.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDY0NzgtcHRjenVpLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDgsImV4cCI6MjEwMjMwODQ0OH0.0f6G5azM-QONL9xq82P5cDrrLgHra0QWO1CFk3XCeY0",
+          floorPlanImages: [
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948446478-ptczui.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDY0NzgtcHRjenVpLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDgsImV4cCI6MjEwMjMwODQ0OH0.0f6G5azM-QONL9xq82P5cDrrLgHra0QWO1CFk3XCeY0"
+          ],
+          priceEstimate: "Delivered & Handed Over"
+        },
+        {
+          id: "cfg_sg_type3",
+          title: "Type - 3 (2 BHK Comfort Suite)",
+          bhkType: "2 BHK",
+          superBuiltupArea: 765.75,
+          carpetArea: 543.79,
+          balconyArea: 82.55,
+          coveredAreaSqM: 50.52,
+          bedrooms: 2,
+          bathrooms: 2,
+          balconies: 3,
+          floorPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948450778-vwdprf.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NTA3NzgtdndkcHJmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTIsImV4cCI6MjEwMjMwODQ1Mn0.tGLZ-Rg_YP449Se2vIScOPDcjpcS9e2TLuT2N3x-x2A",
+          floorPlanImages: [
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948450778-vwdprf.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NTA3NzgtdndkcHJmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTIsImV4cCI6MjEwMjMwODQ1Mn0.tGLZ-Rg_YP449Se2vIScOPDcjpcS9e2TLuT2N3x-x2A"
+          ],
+          priceEstimate: "Delivered & Handed Over"
+        },
+        {
+          id: "cfg_sg_type4",
+          title: "Type - 4 (2 BHK Luxury Residence)",
+          bhkType: "2 BHK",
+          superBuiltupArea: 857.67,
+          carpetArea: 676.94,
+          balconyArea: 49.83,
+          coveredAreaSqM: 62.89,
           bedrooms: 2,
           bathrooms: 2,
           balconies: 2,
-          floorPlanUrl: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
-          priceEstimate: "₹48.5 - ₹54 Lakhs"
+          floorPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948452049-hick9n.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NTIwNDktaGljazluLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTMsImV4cCI6MjEwMjMwODQ1M30.phebcyuDFb_afE-MzqcJ-FDwqP8yh-J9_1ZJaDUAnnc",
+          floorPlanImages: [
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948452049-hick9n.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NTIwNDktaGljazluLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NTMsImV4cCI6MjEwMjMwODQ1M30.phebcyuDFb_afE-MzqcJ-FDwqP8yh-J9_1ZJaDUAnnc"
+          ],
+          priceEstimate: "Delivered & Handed Over"
         },
         {
-          id: "cfg_sg_3bhk",
-          title: "3 BHK Royal Luxury Suite",
+          id: "cfg_sg_type5",
+          title: "Type - 5 (3 BHK Grand Suite)",
           bhkType: "3 BHK",
-          superBuiltupArea: 1620,
-          carpetArea: 1190,
+          superBuiltupArea: 1030.97,
+          carpetArea: 802.24,
+          balconyArea: 87.94,
+          coveredAreaSqM: 74.53,
           bedrooms: 3,
-          bathrooms: 3,
+          bathrooms: 2,
           balconies: 3,
-          floorPlanUrl: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=800&q=80",
-          priceEstimate: "₹68 - ₹75 Lakhs"
+          floorPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948447884-t3r49r.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDc4ODQtdDNyNDlyLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDksImV4cCI6MjEwMjMwODQ0OX0.S1qEXrXC-kGCrACTwNW8Yw2JbzUiPFf9gjPM4p2mBcU",
+          floorPlanImages: [
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948447884-t3r49r.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg0NDc4ODQtdDNyNDlyLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg0NDksImV4cCI6MjEwMjMwODQ0OX0.S1qEXrXC-kGCrACTwNW8Yw2JbzUiPFf9gjPM4p2mBcU"
+          ],
+          priceEstimate: "Delivered & Handed Over"
         }
       ],
       amenities: [
-        { name: "Swimming Pool", category: "Health & Sports", icon: "🏊" },
-        { name: "Community Clubhouse", category: "Leisure", icon: "🏛️" },
-        { name: "Landscaped Gardens", category: "Eco-Living", icon: "🌿" },
-        { name: "24x7 Gated Security", category: "Security", icon: "🛡️" }
+        { name: "VDA Approved Township", category: "Approval", icon: "🏛️" },
+        { name: "Hi-Tech CCTV 24x7 Security", category: "Security", icon: "📹" },
+        { name: "40 Ft & 30 Ft Wide Roads", category: "Infrastructure", icon: "🛣️" },
+        { name: "24 Hr. Water Supply", category: "Utilities", icon: "💧" },
+        { name: "24x7 Power Back-up", category: "Utilities", icon: "⚡" },
+        { name: "Ample Parking Area", category: "Convenience", icon: "🚗" },
+        { name: "Earthquake Resistant Structure", category: "Engineering", icon: "🏢" },
+        { name: "Firefighting System", category: "Safety", icon: "🧯" },
+        { name: "Vastu-Friendly Layouts", category: "Design", icon: "🧭" },
+        { name: "Professional Estate Management", category: "Management", icon: "🤝" }
       ],
-      overallProgressPct: 78,
+      overallProgressPct: 100,
       milestones: [
-        { name: "Foundation & Excavation", pct: 100, status: "COMPLETED" },
-        { name: "RCC Structure", pct: 90, status: "IN_PROGRESS" },
-        { name: "Internal Plaster & MEP", pct: 70, status: "IN_PROGRESS" },
-        { name: "Finishing & Landscaping", pct: 45, status: "IN_PROGRESS" }
+        { name: "Earthquake Resistant RCC Structure", pct: 100, status: "COMPLETED" },
+        { name: "Masonry, Plaster & MEP Works", pct: 100, status: "COMPLETED" },
+        { name: "Finishing, Doors & Landscaping", pct: 100, status: "COMPLETED" },
+        { name: "VDA Compliance & Handover to Families", pct: 100, status: "COMPLETED" }
       ]
     },
     {
@@ -164,10 +303,92 @@ export const SEED_DATA = {
       fullAddress: "Phase 2, Harhua, Varanasi, UP",
       totalLandArea: "8 Acres",
       totalUnitsCount: 450,
-      featuredImage: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80",
+      featuredImage: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1786948610097-b941ee.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODY5NDg2MTAwOTctYjk0MWVlLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTEsImV4cCI6MjEwMjMwODYxMX0.Fugl3Q1fB6RFcmItIcNzG8ZJmGI8sbMwA2CFYHyIkw0",
       heroImages: [
-        "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80"
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1786948610097-b941ee.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODY5NDg2MTAwOTctYjk0MWVlLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTEsImV4cCI6MjEwMjMwODYxMX0.Fugl3Q1fB6RFcmItIcNzG8ZJmGI8sbMwA2CFYHyIkw0",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948618109-ygpqdc.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTgxMDkteWdwcWRjLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTksImV4cCI6MjEwMjMwODYxOX0.sTIShsuPCZenVgp0DhQaq2pC6tywjHHEdKy_9X5uqwI",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948619049-dzkwls.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTkwNDktZHprd2xzLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjAsImV4cCI6MjEwMjMwODYyMH0.Jn2KpvtzXWWl9cudI5i6Im6IFEESOIvGsTYZDbXlw2o",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948623554-zguhs8.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjM1NTQtemd1aHM4LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjQsImV4cCI6MjEwMjMwODYyNH0.Z5G7k5x6ngOFG0tkJP1mK1W3ZV0-WCvUPCp8pX4iuHo",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948624233-nhbz35.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjQyMzMtbmhiejM1LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjUsImV4cCI6MjEwMjMwODYyNX0.8_gIlutInw2n8Kj9ptUOJMCT6pdQBHokV45dojy1Rcs"
       ],
+      gallery: [
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1786948610097-b941ee.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODY5NDg2MTAwOTctYjk0MWVlLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTEsImV4cCI6MjEwMjMwODYxMX0.Fugl3Q1fB6RFcmItIcNzG8ZJmGI8sbMwA2CFYHyIkw0",
+          title: "Exterior Drone Elevation & Front View",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948615341-1i5w1c.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTUzNDEtMWk1dzFjLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTYsImV4cCI6MjEwMjMwODYxNn0.n69jhHvyV57zFbr3f4LHGGmV5Wy-k5ohDkRJGatJhqc",
+          title: "Master Plan & Layout Blueprint",
+          category: "Master Layout"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948616294-kx0ypc.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTYyOTQta3gweXBjLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTgsImV4cCI6MjEwMjMwODYxOH0.bwl6HMM7g66piGbcpyc27CjggrpVL1tU3Db4BAOyRvo",
+          title: "1 BHK Detailed Floor Plan",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948618109-ygpqdc.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTgxMDkteWdwcWRjLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTksImV4cCI6MjEwMjMwODYxOX0.sTIShsuPCZenVgp0DhQaq2pC6tywjHHEdKy_9X5uqwI",
+          title: "Residential Towers Elevation",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948619049-dzkwls.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTkwNDktZHprd2xzLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjAsImV4cCI6MjEwMjMwODYyMH0.Jn2KpvtzXWWl9cudI5i6Im6IFEESOIvGsTYZDbXlw2o",
+          title: "Internal Courtyard & Access Corridors",
+          category: "Campus"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948620162-bnsegn.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjAxNjItYm5zZWduLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjEsImV4cCI6MjEwMjMwODYyMX0.6RKY556InKj-xiNdq7yHG_BwFCNLJHqqWbo6ZFFcoiA",
+          title: "Floor Plan & Architectural Layout",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948620850-kxhjy0.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjA4NTAta3hoankwLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjQsImV4cCI6MjEwMjMwODYyNH0.EZ7bQyKQ_2M9J1jZv97j8V7kkbbRVeWFocK0op4sFuw",
+          title: "Wing Structure & Walkways",
+          category: "Campus"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948623554-zguhs8.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjM1NTQtemd1aHM4LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjQsImV4cCI6MjEwMjMwODYyNH0.Z5G7k5x6ngOFG0tkJP1mK1W3ZV0-WCvUPCp8pX4iuHo",
+          title: "Community Area & Street Infrastructure",
+          category: "Campus"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948624233-nhbz35.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjQyMzMtbmhiejM1LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjUsImV4cCI6MjEwMjMwODYyNX0.8_gIlutInw2n8Kj9ptUOJMCT6pdQBHokV45dojy1Rcs",
+          title: "Exterior Building Perspective",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948625133-if56gq.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjUxMzMtaWY1NmdxLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjgsImV4cCI6MjEwMjMwODYyOH0.l-vLtVE5Vtq_iK7OV3oS23spmIkhl6oNmXnWKbfox9E",
+          title: "Ground Floor Layout & Access Plan",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948628162-nt0gmg.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjgxNjItbnQwZ21nLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MzIsImV4cCI6MjEwMjMwODYzMn0.tgjFKPbvqrG6dyK23SsRwhFWoLS1AQYO74adBmInLIQ",
+          title: "Floor Plan Detailed Schematic",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948632183-kp2bpj.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MzIxODMta3AyYnBqLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MzQsImV4cCI6MjEwMjMwODYzNH0.D8cGxEcEvSPX4qFGsprKKYq6bTM36Xbut2auMLk6kK4",
+          title: "Cluster Layout & Tower Map",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948634469-dcv8gw.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MzQ0NjktZGN2OGd3LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MzcsImV4cCI6MjEwMjMwODYzN30.OEfpgpm6PtJkSgcVhD5rrSdAfMtkqYDu5tzgWeR1SgU",
+          title: "Architectural Section View",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948637554-eemsvs.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2Mzc1NTQtZWVtc3ZzLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MzksImV4cCI6MjEwMjMwODYzOX0.vjOtNHuQVb1wKh-JJMlScKOgcN8-oX5OlweOUQLW6F8",
+          title: "Site Engineering & Utilities Plan",
+          category: "Master Layout"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948639353-x29hp7.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MzkzNTMteDI5aHA3LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2NDEsImV4cCI6MjEwMjMwODY0MX0.iaWqwTGHjfVZpH34wDqH67-Ppnon1XZyImsduPa2hC4",
+          title: "Comprehensive Phase Elevation Layout",
+          category: "Floor Plan"
+        }
+      ],
+      masterPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948615341-1i5w1c.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTUzNDEtMWk1dzFjLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTYsImV4cCI6MjEwMjMwODYxNn0.n69jhHvyV57zFbr3f4LHGGmV5Wy-k5ohDkRJGatJhqc",
       description: "Delivered under the government affordable housing mission, providing dignified, quality living to families with full infrastructure and registry.",
       configurations: [
         {
@@ -179,7 +400,11 @@ export const SEED_DATA = {
           bedrooms: 1,
           bathrooms: 1,
           balconies: 1,
-          floorPlanUrl: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
+          floorPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948616294-kx0ypc.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTYyOTQta3gweXBjLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTgsImV4cCI6MjEwMjMwODYxOH0.bwl6HMM7g66piGbcpyc27CjggrpVL1tU3Db4BAOyRvo",
+          floorPlanImages: [
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948616294-kx0ypc.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MTYyOTQta3gweXBjLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MTgsImV4cCI6MjEwMjMwODYxOH0.bwl6HMM7g66piGbcpyc27CjggrpVL1tU3Db4BAOyRvo",
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948620162-bnsegn.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg2MjAxNjItYm5zZWduLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg2MjEsImV4cCI6MjEwMjMwODYyMX0.6RKY556InKj-xiNdq7yHG_BwFCNLJHqqWbo6ZFFcoiA"
+          ],
           priceEstimate: "Delivered"
         }
       ],

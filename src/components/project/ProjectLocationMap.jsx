@@ -98,10 +98,10 @@ export const ProjectLocationMap = ({ project }) => {
             <MapPin size={14} /> Strategic Location & Transit Hub
           </div>
           <h3 style={{ fontSize: '1.85rem', color: 'var(--ink)', margin: 0, fontWeight: 700, letterSpacing: '-0.02em' }}>
-            Babatpur Airport Road Growth Corridor
+            {project.locationName || 'Varanasi Growth Corridor'}
           </h3>
           <p style={{ fontSize: '0.92rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '680px', lineHeight: 1.5 }}>
-            {project.fullAddress || 'Babatpur Airport Road, Near Harhua Crossing, NH-56, Varanasi, UP'}
+            {project.fullAddress || project.locationName || 'Varanasi, UP'}
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export const ProjectLocationMap = ({ project }) => {
               </strong>
             </div>
             <span style={{ fontSize: '0.75rem', color: 'var(--ink-muted)', fontWeight: 500 }}>
-              25.3427° N, 82.9816° E
+              {project.geoCoordinates ? `${project.geoCoordinates.lat}° N, ${project.geoCoordinates.lng}° E` : 'Varanasi, UP'}
             </span>
           </div>
 

@@ -519,38 +519,132 @@ export const SEED_DATA = {
       reraAuthority: "Uttar Pradesh Real Estate Regulatory Authority",
       reraQrUrl: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://up-rera.in/ProjectSummary?id=UPRERAPRJ519082",
       startingPrice: 3500000,
-      priceDisplay: "Coming Soon in Lucknow",
-      locationName: "Lucknow Growth Corridor, Uttar Pradesh",
-      fullAddress: "Prime Location, Lucknow, UP",
-      totalLandArea: "15 Acres",
+      priceDisplay: "Price on Request · Lucknow",
+      locationName: "High-Visibility Growth Corridor, Lucknow, Uttar Pradesh",
+      fullAddress: "Prime High-Visibility Corridor, Lucknow, Uttar Pradesh",
+      googleMapUrl: "https://maps.google.com/?q=Lucknow,+Uttar+Pradesh",
+      googleMapEmbedUrl: "https://maps.google.com/maps?q=Lucknow,+Uttar+Pradesh&t=&z=13&ie=UTF8&iwloc=&output=embed",
+      geoCoordinates: { lat: 26.8467, lng: 80.9462 },
+      totalLandArea: "15 Acres Commercial Hub",
       totalUnitsCount: 220,
-      featuredImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+      featuredImage: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
       heroImages: [
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80"
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948582911-v22xe8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODI5MTEtdjIyeGU4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODQsImV4cCI6MjEwMjMwODU4NH0.hlPTwpmgqlaFfIy2i5UGA0rNaWkDFrVBbEc9UKvHMQo",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948584190-vtay4g.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODQxOTAtdnRheTRnLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.3hXbNSUYhuCt-ICFEf7OQD74bpGQ4rFH0oX1dREue_Y",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948585742-fo2d1f.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODU3NDItZm8yZDFmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.J808qhVvhKp3uqb7FgKBniWPr-753v5naViIzSfza8g"
       ],
-      description: "Pratham is SSB Group's signature commercial and mixed-use destination in Lucknow, offering premium retail spaces, corporate suites, and world-class architecture.",
+      masterPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948585742-fo2d1f.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODU3NDItZm8yZDFmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.J808qhVvhKp3uqb7FgKBniWPr-753v5naViIzSfza8g",
+      videoWalkthroughUrl: "https://drive.google.com/file/d/16std2Yp3EChiqsSCFdEkTxiSqyYS79Pu/preview",
+      gallery: [
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
+          title: "Grand Exterior Elevation & High-Street Retail Facade",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948582911-v22xe8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODI5MTEtdjIyeGU4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODQsImV4cCI6MjEwMjMwODU4NH0.hlPTwpmgqlaFfIy2i5UGA0rNaWkDFrVBbEc9UKvHMQo",
+          title: "Commercial Promenade & Multi-Story Frontage",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948584190-vtay4g.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODQxOTAtdnRheTRnLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.3hXbNSUYhuCt-ICFEf7OQD74bpGQ4rFH0oX1dREue_Y",
+          title: "Modern Architectural Complex Perspective",
+          category: "Exterior"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948585742-fo2d1f.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODU3NDItZm8yZDFmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.J808qhVvhKp3uqb7FgKBniWPr-753v5naViIzSfza8g",
+          title: "Master Site Layout & Circulation Map",
+          category: "Master Layout"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948586481-jub2gs.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODY0ODEtanViMmdzLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODcsImV4cCI6MjEwMjMwODU4N30.pbV87ZYnyA5Ih6QV2k2l3iFQsle_o5Me97nHIlpE0Qk",
+          title: "Ground Floor Retail & Anchor Store Plan",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948587370-hgt9iv.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODczNzAtaGd0OWl2LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODgsImV4cCI6MjEwMjMwODU4OH0.nYI92iAGCIxrup1ljg31xhnu3KbZv0Wh_Krf2KNTokE",
+          title: "Upper Retail Arcade & Showroom Division",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948588015-91e127.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODgwMTUtOTFlMTI3LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1OTAsImV4cCI6MjEwMjMwODU5MH0.uy7kzBLQZI0zqE0nS37XssbA4O60A7VLJaIKdMJuhcE",
+          title: "Corporate Office Suites & Executive Floor Plan",
+          category: "Floor Plan"
+        },
+        {
+          url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948589952-eydyh0.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODk5NTItZXlkeWgwLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1OTEsImV4cCI6MjEwMjMwODU5MX0.ZFDlmpkvMWeUgRm_BOMSrFB-9e6bnGgEadRo0AVk_Js",
+          title: "Sectional Architectural Elevation & Height Schematic",
+          category: "Floor Plan"
+        }
+      ],
+      description: "Pratham marks SSB Group's expansion into Lucknow with a mixed-use commercial development designed for footfall, frontage and long-term asset value. Offering prime high-street retail spaces, anchor showroom provisions, premium corporate office suites, ample visitor parking, high-speed lift lobbies, power backup, and modern glass facade architecture on a high-visibility growth corridor.",
+      specifications: {
+        structure: "Earthquake Resistant R.C.C. Frame Structure with Flat Slab Construction & high-tensile steel reinforcement",
+        rooms: "High-traffic Vitrified Tile flooring in public corridors, escalators, and grand double-height entrance atrium",
+        commonArea: "Designer Lift Lobbies with Italian Marble/Granite cladding and energy-efficient LED ambient lighting",
+        kitchen: "Dedicated wet pantry zones and dining provisions with stainless steel wash basins and CP fittings",
+        toiletBathroom: "Anti-skid Ceramic Tiles flooring, premium Hindware/Jaquar CP sanitary fittings, automated sensor faucets",
+        staircase: "Wide safety fire-exit staircases with heavy-duty safety handrails and anti-slip stone treads",
+        doorWindow: "High-performance energy-efficient Double Glazed Toughened Glass Facade with structural silicone glazing",
+        electrical: "100% DG Power Backup for common areas & lifts, fire-resistant ISI copper wiring, separate metering for retail & office units",
+        plumbing: "Advanced PVC/CPVC plumbing network with dual-piping for treated water flushing and rainwater collection",
+        finishing: "Weather Coat Silicon Textured Exterior Finish with architectural accent LED illumination"
+      },
       configurations: [
         {
           id: "cfg_pr_retail",
-          title: "Prime Retail / Commercial Space",
-          bhkType: "Commercial Space",
-          superBuiltupArea: 800,
-          carpetArea: 650,
+          title: "High-Street Retail & Anchor Showrooms",
+          bhkType: "Retail",
+          superBuiltupArea: 850,
+          carpetArea: 620,
+          coveredArea: 690,
           bedrooms: 0,
           bathrooms: 1,
           balconies: 0,
-          floorPlanUrl: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
-          priceEstimate: "Coming Soon"
+          highlight: "Ground & First Floor high-visibility frontage, massive pedestrian footfall, double-height display windows & dedicated service access",
+          floorPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948586481-jub2gs.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODY0ODEtanViMmdzLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODcsImV4cCI6MjEwMjMwODU4N30.pbV87ZYnyA5Ih6QV2k2l3iFQsle_o5Me97nHIlpE0Qk",
+          floorPlanImages: [
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948586481-jub2gs.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODY0ODEtanViMmdzLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODcsImV4cCI6MjEwMjMwODU4N30.pbV87ZYnyA5Ih6QV2k2l3iFQsle_o5Me97nHIlpE0Qk",
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948587370-hgt9iv.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODczNzAtaGd0OWl2LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODgsImV4cCI6MjEwMjMwODU4OH0.nYI92iAGCIxrup1ljg31xhnu3KbZv0Wh_Krf2KNTokE"
+          ],
+          priceEstimate: "Price on Request"
+        },
+        {
+          id: "cfg_pr_office",
+          title: "Corporate Office Suites & Workspaces",
+          bhkType: "Office",
+          superBuiltupArea: 1250,
+          carpetArea: 920,
+          coveredArea: 1040,
+          bedrooms: 0,
+          bathrooms: 2,
+          balconies: 0,
+          highlight: "Grade-A corporate office suites with expansive glass facade views, high-speed elevators, conference room provisions & multi-level parking",
+          floorPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948588015-91e127.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODgwMTUtOTFlMTI3LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1OTAsImV4cCI6MjEwMjMwODU5MH0.uy7kzBLQZI0zqE0nS37XssbA4O60A7VLJaIKdMJuhcE",
+          floorPlanImages: [
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948588015-91e127.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODgwMTUtOTFlMTI3LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1OTAsImV4cCI6MjEwMjMwODU5MH0.uy7kzBLQZI0zqE0nS37XssbA4O60A7VLJaIKdMJuhcE",
+            "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948589952-eydyh0.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODk5NTItZXlkeWgwLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1OTEsImV4cCI6MjEwMjMwODU5MX0.ZFDlmpkvMWeUgRm_BOMSrFB-9e6bnGgEadRo0AVk_Js"
+          ],
+          priceEstimate: "Price on Request"
         }
       ],
       amenities: [
-        { name: "Grand Atrium & Elevators", category: "Infrastructure", icon: "🏛️" },
-        { name: "Ample Multi-Level Parking", category: "Infrastructure", icon: "🅿️" }
+        { name: "Ground-Floor Retail Frontage", category: "Retail & Commercial", icon: "🛍️" },
+        { name: "Ample Multi-Level Visitor Parking", category: "Convenience", icon: "🚗" },
+        { name: "100% Dual Power Backup", category: "Utilities", icon: "⚡" },
+        { name: "High-Speed Lift Lobbies & Escalators", category: "Infrastructure", icon: "🛗" },
+        { name: "Certified Fire Safety & Hydrant Network", category: "Safety", icon: "🧯" },
+        { name: "24x7 Hi-Tech CCTV Surveillance", category: "Security", icon: "🛡️" },
+        { name: "Grand Designer Atrium & Public Boulevard", category: "Leisure", icon: "🏛️" },
+        { name: "Modern Glass Facade & Architectural Lighting", category: "Engineering", icon: "🏢" }
       ],
       overallProgressPct: 15,
       milestones: [
-        { name: "Land Planning & Approvals", pct: 100, status: "COMPLETED" },
-        { name: "Site Groundbreaking", pct: 50, status: "IN_PROGRESS" }
+        { name: "Land Planning & Regulatory Approvals", pct: 100, status: "COMPLETED" },
+        { name: "Site Groundbreaking & Earthwork", pct: 50, status: "IN_PROGRESS" },
+        { name: "Civil Superstructure & Floor Slabs", pct: 0, status: "UPCOMING" },
+        { name: "Facade Glazing & Retail Handover", pct: 0, status: "UPCOMING" }
       ]
     }
   ],

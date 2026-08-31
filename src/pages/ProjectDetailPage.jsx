@@ -20,7 +20,17 @@ export const ProjectDetailPage = () => {
 
   const rawProject = getProjectBySlug(slug);
   const seedProject = SEED_DATA.projects.find(p => p.slug === slug || p.id === slug || p.id === rawProject?.id);
-  const project = rawProject ? { ...seedProject, ...rawProject, gallery: seedProject?.gallery || rawProject?.gallery, heroImages: seedProject?.heroImages || rawProject?.heroImages } : seedProject;
+  const project = rawProject ? { 
+    ...seedProject, 
+    ...rawProject, 
+    gallery: seedProject?.gallery || rawProject?.gallery, 
+    heroImages: seedProject?.heroImages || rawProject?.heroImages,
+    masterPlanUrl: seedProject?.masterPlanUrl || rawProject?.masterPlanUrl,
+    videoWalkthroughUrl: seedProject?.videoWalkthroughUrl || rawProject?.videoWalkthroughUrl,
+    configurations: seedProject?.configurations || rawProject?.configurations,
+    amenities: seedProject?.amenities || rawProject?.amenities,
+    specifications: seedProject?.specifications || rawProject?.specifications
+  } : seedProject;
 
   if (!project) {
     return (
@@ -219,6 +229,33 @@ export const ProjectDetailPage = () => {
 
         {/* Project Photo & Architectural Gallery */}
         <ProjectGallery project={project} />
+
+        {/* World-Class Amenities Grid */}
+        <AmenitiesGrid amenities={project.amenities} />
+
+        {/* Cinematic Walkthrough Video (if available) */}
+        {(project.videoWalkthroughUrl || project.videoUrl) && (
+          <div style={{ background: '#FFF', padding: '2.5rem', borderRadius: 'var(--r-xl)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)', marginBottom: '2.5rem' }}>
+            <div style={{ marginBottom: '1.75rem' }}>
+              <span className="eyebrow">CINEMATIC PROJECT SHOWCASE</span>
+              <h3 style={{ fontSize: '1.8rem', color: 'var(--ink)', margin: 0 }}>Official Walkthrough Film</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginTop: '0.25rem' }}>
+                Take an immersive guided walkthrough of {project.title}'s elevation, floor plates, and infrastructure.
+              </p>
+            </div>
+            <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--border)', background: '#000' }}>
+              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                <iframe
+                  src={project.videoWalkthroughUrl || project.videoUrl}
+                  title={`${project.title} Walkthrough Video`}
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Construction Progress Tracker */}
         <MilestoneTracker project={project} />

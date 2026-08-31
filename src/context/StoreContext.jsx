@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { SEED_DATA } from '../data/seedData';
 
-const STORAGE_KEY = 'ssb_group_official_v18';
+const STORAGE_KEY = 'ssb_group_official_v20';
 
 const StoreContext = createContext(null);
 
@@ -22,6 +22,7 @@ export const StoreProvider = ({ children }) => {
               heroImages: seedP.heroImages, 
               gallery: seedP.gallery,
               masterPlanUrl: seedP.masterPlanUrl, 
+              videoWalkthroughUrl: seedP.videoWalkthroughUrl,
               configurations: seedP.configurations,
               specifications: seedP.specifications,
               amenities: seedP.amenities

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useModal } from '../../context/ModalContext';
-import { ZoomIn, Eye, Sparkles } from 'lucide-react';
+import { ZoomIn, Eye, Sparkles, Image as ImageIcon, Layers } from 'lucide-react';
 
 export const ProjectGallery = ({ project }) => {
   const { openLightbox } = useModal();
@@ -29,28 +29,33 @@ export const ProjectGallery = ({ project }) => {
     : galleryItems.filter(i => i.category === activeCategory);
 
   return (
-    <section style={{ 
-      background: '#FFF', 
-      borderRadius: 'var(--r-xl)', 
-      padding: '2.5rem', 
-      border: '1px solid var(--border)', 
-      boxShadow: 'var(--shadow-sm)', 
-      marginBottom: '2.5rem' 
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2rem' }}>
+    <section 
+      id="gallery" 
+      style={{ 
+        background: '#FFFFFF', 
+        borderRadius: 'var(--r-2xl, 24px)', 
+        padding: '3rem', 
+        border: '1px solid rgba(226, 232, 240, 0.9)', 
+        boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
+        marginBottom: '3rem',
+        position: 'relative'
+      }}
+    >
+      {/* Header Bar */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.75rem' }}>
         <div>
-          <span className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <Sparkles size={14} color="var(--brand)" /> SEE IT UP CLOSE
-          </span>
-          <h3 style={{ fontSize: '1.8rem', color: 'var(--ink)', margin: '0.25rem 0 0 0' }}>
-            Project Photo & Architectural Gallery
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.08)', color: 'var(--brand)', padding: '0.35rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+            <ImageIcon size={13} /> High-Resolution Visual Showcase
+          </div>
+          <h3 style={{ fontSize: '2.2rem', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
+            Architectural Gallery & Drone Perspectives
           </h3>
-          <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginTop: '0.25rem' }}>
-            Browse high-resolution elevations, actual drone perspectives, blueprints and campus infrastructure ({galleryItems.length} photos)
+          <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
+            Browse certified project elevations, aerial drone photography, blueprint schematics, and construction finishes ({galleryItems.length} curated images).
           </p>
         </div>
 
-        {/* Category Filters */}
+        {/* Category Filter Pills */}
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
           {categories.map(cat => {
             const count = cat === 'All' ? galleryItems.length : galleryItems.filter(i => i.category === cat).length;
@@ -60,25 +65,31 @@ export const ProjectGallery = ({ project }) => {
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`btn btn-sm ${isActive ? 'btn-primary' : 'btn-ghost-warm'}`}
-                style={{ 
+                style={{
                   borderRadius: 'var(--r-pill)',
-                  fontSize: '0.8rem',
-                  padding: '0.4rem 0.9rem'
+                  fontSize: '0.82rem',
+                  fontWeight: 600,
+                  padding: '0.5rem 1.1rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease',
+                  border: isActive ? '1px solid var(--brand)' : '1px solid var(--border)',
+                  background: isActive ? 'var(--brand)' : '#F8FAFC',
+                  color: isActive ? '#FFFFFF' : 'var(--ink)',
+                  boxShadow: isActive ? '0 4px 12px rgba(224, 84, 43, 0.3)' : 'none'
                 }}
               >
-                {cat} <span style={{ opacity: 0.75, marginLeft: '0.25rem' }}>({count})</span>
+                {cat} <span style={{ opacity: 0.8, marginLeft: '0.25rem', fontSize: '0.75rem' }}>({count})</span>
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* Grid */}
+      {/* Editorial Responsive Grid */}
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-        gap: '1.25rem' 
+        gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))', 
+        gap: '1.5rem' 
       }}>
         {filteredItems.map((item, idx) => (
           <div
@@ -86,17 +97,27 @@ export const ProjectGallery = ({ project }) => {
             onClick={() => openLightbox(item.url, `${project.title} — ${item.title || `View ${idx + 1}`}`, item.category || project.title)}
             style={{
               position: 'relative',
-              borderRadius: 'var(--r-lg)',
+              borderRadius: 'var(--r-xl, 16px)',
               overflow: 'hidden',
               background: '#0F172A',
-              border: '1px solid var(--border)',
+              border: '1px solid rgba(226, 232, 240, 0.9)',
               cursor: 'zoom-in',
-              boxShadow: 'var(--shadow-xs)',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              aspectRatio: '4/3',
-              group: true
+              boxShadow: '0 4px 15px -3px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease',
+              aspectRatio: '4/3'
             }}
-            className="gallery-card hover-lift"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)';
+              e.currentTarget.style.boxShadow = '0 15px 30px -8px rgba(0, 0, 0, 0.15)';
+              const img = e.currentTarget.querySelector('img');
+              if (img) img.style.transform = 'scale(1.08)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 15px -3px rgba(0, 0, 0, 0.05)';
+              const img = e.currentTarget.querySelector('img');
+              if (img) img.style.transform = 'scale(1)';
+            }}
           >
             <img
               src={item.url}
@@ -106,18 +127,16 @@ export const ProjectGallery = ({ project }) => {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                transition: 'transform 0.5s ease',
+                transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
                 display: 'block'
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.06)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
             />
 
-            {/* Gradient Overlay */}
+            {/* Gradient Scrim */}
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0) 50%)',
+              background: 'linear-gradient(to top, rgba(10, 17, 32, 0.92) 0%, rgba(10, 17, 32, 0.2) 50%, rgba(10, 17, 32, 0) 100%)',
               pointerEvents: 'none'
             }} />
 
@@ -125,39 +144,40 @@ export const ProjectGallery = ({ project }) => {
             {item.category && (
               <div style={{
                 position: 'absolute',
-                top: '0.75rem',
-                left: '0.75rem',
-                background: 'rgba(15, 23, 42, 0.75)',
+                top: '0.85rem',
+                left: '0.85rem',
+                background: 'rgba(15, 23, 42, 0.85)',
                 color: '#FFF',
-                backdropFilter: 'blur(6px)',
-                padding: '0.2rem 0.6rem',
+                backdropFilter: 'blur(8px)',
+                padding: '0.25rem 0.75rem',
                 borderRadius: 'var(--r-pill)',
-                fontSize: '0.7rem',
-                fontWeight: 600,
-                border: '1px solid rgba(255, 255, 255, 0.15)'
+                fontSize: '0.72rem',
+                fontWeight: 700,
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                letterSpacing: '0.04em'
               }}>
                 {item.category}
               </div>
             )}
 
-            {/* Bottom Title & Zoom */}
+            {/* Bottom Details Bar */}
             <div style={{
               position: 'absolute',
-              bottom: '0.75rem',
-              left: '0.75rem',
-              right: '0.75rem',
+              bottom: '0.85rem',
+              left: '0.85rem',
+              right: '0.85rem',
               display: 'flex',
               justifyContent: 'space-between',
-              alignItems: 'flex-end',
+              alignItems: 'center',
               pointerEvents: 'none'
             }}>
               <p style={{
-                color: '#FFF',
-                fontSize: '0.85rem',
+                color: '#FFFFFF',
+                fontSize: '0.9rem',
                 fontWeight: 600,
                 margin: 0,
-                textShadow: '0 2px 4px rgba(0,0,0,0.8)',
-                maxWidth: '80%',
+                textShadow: '0 2px 6px rgba(0,0,0,0.8)',
+                maxWidth: '82%',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap'
@@ -166,15 +186,15 @@ export const ProjectGallery = ({ project }) => {
               </p>
 
               <span style={{
-                background: 'var(--brand)',
+                background: 'linear-gradient(135deg, var(--brand) 0%, #C4431C 100%)',
                 color: '#FFF',
                 borderRadius: '50%',
-                width: '28px',
-                height: '28px',
+                width: '32px',
+                height: '32px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                boxShadow: '0 4px 12px rgba(224, 84, 43, 0.5)',
                 flexShrink: 0
               }}>
                 <ZoomIn size={14} />

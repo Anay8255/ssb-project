@@ -71,15 +71,17 @@ export const ProjectLocationMap = ({ project }) => {
     : transitData.filter(item => item.category === activeCategory);
 
   return (
-    <div 
+    <section 
+      id="location-hub"
       className="project-map-section"
       style={{ 
         background: '#FFFFFF', 
-        padding: '2.5rem', 
-        borderRadius: 'var(--r-xl)', 
-        border: '1px solid var(--border)', 
-        boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.05)', 
-        marginBottom: '2.5rem' 
+        padding: '3rem', 
+        borderRadius: 'var(--r-2xl, 24px)', 
+        border: '1px solid rgba(226, 232, 240, 0.9)', 
+        boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
+        marginBottom: '3rem',
+        position: 'relative'
       }}
     >
       {/* Header Bar */}
@@ -88,20 +90,20 @@ export const ProjectLocationMap = ({ project }) => {
         justifyContent: 'space-between', 
         alignItems: 'flex-start', 
         flexWrap: 'wrap', 
-        gap: '1.25rem', 
-        marginBottom: '2rem',
+        gap: '1.5rem', 
+        marginBottom: '2.25rem',
         borderBottom: '1px solid var(--border)',
-        paddingBottom: '1.5rem'
+        paddingBottom: '1.75rem'
       }}>
         <div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'var(--brand)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
-            <MapPin size={14} /> Strategic Location & Transit Hub
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.08)', color: 'var(--brand)', padding: '0.35rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+            <MapPin size={13} /> Strategic Growth Corridor
           </div>
-          <h3 style={{ fontSize: '1.85rem', color: 'var(--ink)', margin: 0, fontWeight: 700, letterSpacing: '-0.02em' }}>
-            {project.locationName || 'Varanasi Growth Corridor'}
+          <h3 style={{ fontSize: '2.2rem', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
+            Strategic Location & Transit Hub
           </h3>
-          <p style={{ fontSize: '0.92rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '680px', lineHeight: 1.5 }}>
-            {project.fullAddress || project.locationName || 'Varanasi, UP'}
+          <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '680px', lineHeight: 1.5 }}>
+            {project.fullAddress || project.locationName || 'High-visibility arterial corridor with direct access to expressways, airports, and premier civic infrastructure.'}
           </p>
         </div>
 
@@ -307,6 +309,6 @@ export const ProjectLocationMap = ({ project }) => {
         </div>
 
       </div>
-    </div>
+    </section>
   );
 };

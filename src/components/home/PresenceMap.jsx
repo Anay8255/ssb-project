@@ -64,7 +64,7 @@ export const PresenceMap = () => {
       lucknowMarker.bindPopup(`
         <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 4px;">
           <strong style="color: #0F3B60; font-size: 1.05rem;">Lucknow (New Expansion)</strong><br>
-          <span style="font-size: 0.85rem; color: #18181B;">• Pratham (Commercial & Mixed-Use)</span>
+          <span style="font-size: 0.85rem; color: #18181B;">• Pratham (2 to 4 BHK Apartments)</span>
         </div>
       `);
 

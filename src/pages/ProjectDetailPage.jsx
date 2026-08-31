@@ -194,7 +194,9 @@ export const ProjectDetailPage = () => {
         {/* Key Project Specs Strip */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', background: '#FFF', padding: '1.75rem', borderRadius: 'var(--r-lg)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-xs)', marginBottom: '2.5rem' }}>
           <div>
-            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600, display: 'block' }}>Starting Price</span>
+            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600, display: 'block' }}>
+              {project.priceDisplay === 'Price on Request' ? 'Pricing' : 'Starting Price'}
+            </span>
             <strong style={{ fontSize: '1.25rem', color: 'var(--brand)' }}>{project.priceDisplay}</strong>
           </div>
           <div>

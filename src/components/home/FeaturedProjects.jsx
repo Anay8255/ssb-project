@@ -106,7 +106,9 @@ export const FeaturedProjects = () => {
                 {/* Configurations Strip */}
                 <div style={{ padding: '0.8rem 1rem', background: 'var(--sand-muted)', borderRadius: 'var(--r-md)', marginBottom: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--ink-muted)', display: 'block', fontWeight: 600 }}>Starting Price</span>
+                    <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--ink-muted)', display: 'block', fontWeight: 600 }}>
+                      {project.priceDisplay === 'Price on Request' ? 'Pricing' : 'Starting Price'}
+                    </span>
                     <strong style={{ fontSize: '1.1rem', color: 'var(--brand)' }}>{project.priceDisplay}</strong>
                   </div>
                   <div style={{ textAlign: 'right' }}>

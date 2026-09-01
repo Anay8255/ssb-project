@@ -129,16 +129,19 @@ export const MediaPage = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
               <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, background: '#000' }}>
-                <iframe 
-                  src="https://drive.google.com/file/d/16std2Yp3EChiqsSCFdEkTxiSqyYS79Pu/preview" 
-                  title="Pratham Lucknow Walkthrough Film"
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                <video 
+                  src="/projects/pratham/pratham-real-site-video.mp4"
+                  poster="/projects/pratham/pratham-site-real-1.jpeg"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain' }}
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <div style={{ padding: '1.25rem' }}>
-                <strong style={{ fontSize: '1.1rem', color: 'var(--ink)', display: 'block' }}>Pratham (Lucknow) — Official Architectural Walkthrough Film</strong>
+                <strong style={{ fontSize: '1.1rem', color: 'var(--ink)', display: 'block' }}>Pratham (Lucknow) — Official On-Site & Drone Video Footage</strong>
                 <span style={{ fontSize: '0.85rem', color: 'var(--ink-muted)' }}>High-Visibility Commercial Growth Corridor, Lucknow</span>
               </div>
             </div>

@@ -22,7 +22,7 @@ export const ProjectsPage = () => {
   return (
     <div className="fade-in" style={{ paddingBottom: '6rem' }}>
       {/* Editorial Luxury Hero */}
-      <section className="subpage-hero" style={{ padding: '7rem 0 4.5rem', background: 'linear-gradient(180deg, #0A1120 0%, #0F172A 100%)', color: '#FFF' }}>
+      <section className="subpage-hero" style={{ padding: '7rem 0 4.5rem', background: 'transparent', color: '#FFF' }}>
         <div className="container" style={{ textAlign: 'center', maxWidth: '850px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.15)', color: 'var(--gold)', padding: '0.35rem 0.95rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem', border: '1px solid rgba(224, 84, 43, 0.3)' }}>
             <Sparkles size={13} /> 100% UP-RERA VERIFIED PORTFOLIO

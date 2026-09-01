@@ -32,6 +32,7 @@ export const StoreProvider = ({ children }) => {
               gallery: seedP.gallery,
               masterPlanUrl: seedP.masterPlanUrl, 
               videoWalkthroughUrl: seedP.videoWalkthroughUrl,
+              siteVideos: seedP.siteVideos,
               configurations: seedP.configurations,
               specifications: seedP.specifications,
               amenities: seedP.amenities

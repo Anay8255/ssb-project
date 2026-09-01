@@ -13,7 +13,8 @@ import { ProjectLocationMap } from '../components/project/ProjectLocationMap';
 import {
   MapPin, ShieldCheck, Car, Download, ArrowLeft, CheckCircle2,
   ChevronRight, ChevronLeft, Phone, Play, Sparkles, Building2,
-  Ruler, Calendar, Award, Compass, Layers, Video, FileText, Check
+  Ruler, Calendar, Award, Compass, Layers, Video, FileText, Check,
+  ZoomIn, Maximize2, Eye
 } from 'lucide-react';
 
 export const ProjectDetailPage = () => {
@@ -21,6 +22,7 @@ export const ProjectDetailPage = () => {
   const { getProjectBySlug } = useStore();
   const { openSiteVisitModal, openEnquiryModal, openLightbox } = useModal();
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState(null);
   const [isStickyNavVisible, setIsStickyNavVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('overview');
 
@@ -33,6 +35,7 @@ export const ProjectDetailPage = () => {
     heroImages: seedProject?.heroImages || rawProject?.heroImages,
     masterPlanUrl: seedProject?.masterPlanUrl || rawProject?.masterPlanUrl,
     videoWalkthroughUrl: seedProject?.videoWalkthroughUrl || rawProject?.videoWalkthroughUrl,
+    siteVideos: seedProject?.siteVideos || rawProject?.siteVideos,
     configurations: seedProject?.configurations || rawProject?.configurations,
     amenities: seedProject?.amenities || rawProject?.amenities,
     specifications: seedProject?.specifications || rawProject?.specifications
@@ -157,69 +160,154 @@ export const ProjectDetailPage = () => {
         </div>
       </div>
 
-      {/* 2. Cinematic Panoramic Hero Section */}
+      {/* 2. Transparent Full Background Cover Hero Section */}
       <section style={{
         position: 'relative',
         color: '#FFF',
-        padding: '9rem 0 5.5rem',
+        padding: '9.5rem 0 6rem',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-        background: `linear-gradient(180deg, rgba(10, 17, 32, 0.75) 0%, rgba(10, 17, 32, 0.5) 45%, rgba(10, 17, 32, 0.88) 100%), url(${currentHeroImg}) center/cover no-repeat`,
-        transition: 'background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-        overflow: 'hidden',
-        minHeight: '620px',
+        minHeight: '660px',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        overflow: 'hidden',
+        background: 'transparent'
       }}>
+        {/* Full-Bleed Background Image Cover */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `url(${currentHeroImg})`,
+          backgroundPosition: 'center 25%',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          transition: 'background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+          transform: 'scale(1.02)'
+        }} />
+
+        {/* Ultra-Light Transparent Gradient Scrim */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.45) 100%)',
+          pointerEvents: 'none'
+        }} />
+
         {/* Subtle Luxury Pattern Overlay */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none'
         }} />
 
+        {/* Top-Right Perspective & Fullscreen Pill */}
+        <div style={{
+          position: 'absolute',
+          top: '7.5rem',
+          right: '2rem',
+          zIndex: 3,
+          display: 'flex',
+          gap: '0.6rem',
+          alignItems: 'center'
+        }}>
+          <span style={{
+            background: 'rgba(15, 23, 42, 0.5)',
+            color: '#FFF',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            padding: '0.35rem 0.85rem',
+            borderRadius: 'var(--r-pill)',
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem'
+          }}>
+            <Sparkles size={12} color="var(--gold)" />
+            {heroSlideIndex + 1} / {heroImages.length} Perspectives
+          </span>
+
+          <button
+            type="button"
+            onClick={() => openLightbox(currentHeroImg, `${project.title} — Perspective ${heroSlideIndex + 1}`, 'Hero Perspective')}
+            style={{
+              background: 'rgba(15, 23, 42, 0.5)',
+              color: '#FFF',
+              border: '1px solid rgba(255, 255, 255, 0.25)',
+              borderRadius: 'var(--r-pill)',
+              padding: '0.35rem 0.85rem',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              cursor: 'pointer',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            <ZoomIn size={13} /> Fullscreen
+          </button>
+        </div>
+
         <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
 
           {/* Breadcrumb Navigation */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#94A3B8', marginBottom: '1.75rem', textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
-            <Link to="/" style={{ color: '#CBD5E1' }}>Home</Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#CBD5E1', marginBottom: '1.25rem', textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
+            <Link to="/" style={{ color: '#F1F5F9' }}>Home</Link>
             <ChevronRight size={13} />
-            <Link to="/projects" style={{ color: '#CBD5E1' }}>Projects</Link>
+            <Link to="/projects" style={{ color: '#F1F5F9' }}>Projects</Link>
             <ChevronRight size={13} />
             <span style={{ color: 'var(--gold)', fontWeight: 600 }}>{project.title}</span>
           </div>
 
-          <div style={{ maxWidth: '900px' }}>
-            {/* Authority Badges */}
-            <div style={{ display: 'flex', gap: '0.65rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-              <span className="badge badge-brand" style={{ padding: '0.4rem 0.9rem', fontSize: '0.78rem', letterSpacing: '0.06em' }}>
+          {/* Transparent Content Area */}
+          <div style={{ maxWidth: '850px' }}>
+            {/* Transparent Authority Badges */}
+            <div style={{ display: 'flex', gap: '0.65rem', marginBottom: '1.25rem', flexWrap: 'wrap', alignItems: 'center' }}>
+              <span style={{
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#FFFFFF',
+                border: '1px solid rgba(255, 255, 255, 0.28)',
+                padding: '0.45rem 1.1rem',
+                borderRadius: 'var(--r-pill)',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
+              }}>
                 {project.category.toUpperCase()}
               </span>
               <span style={{
-                background: 'rgba(34, 197, 94, 0.2)',
+                background: 'rgba(34, 197, 94, 0.12)',
                 color: '#4ADE80',
-                border: '1px solid rgba(74, 222, 128, 0.35)',
-                padding: '0.35rem 0.85rem',
+                border: '1px solid rgba(74, 222, 128, 0.4)',
+                padding: '0.45rem 1.1rem',
                 borderRadius: 'var(--r-pill)',
                 fontSize: '0.75rem',
                 fontWeight: 700,
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.35rem',
-                backdropFilter: 'blur(8px)'
+                gap: '0.45rem',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
               }}>
                 <ShieldCheck size={14} /> UP-RERA VERIFIED
               </span>
               <span style={{
-                background: 'rgba(255, 255, 255, 0.12)',
+                background: 'rgba(255, 255, 255, 0.08)',
                 color: '#F8FAFC',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                padding: '0.35rem 0.85rem',
+                border: '1px solid rgba(255, 255, 255, 0.28)',
+                padding: '0.45rem 1.1rem',
                 borderRadius: 'var(--r-pill)',
                 fontSize: '0.75rem',
                 fontWeight: 600,
-                backdropFilter: 'blur(8px)'
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
               }}>
                 {project.status.toUpperCase()}
               </span>
@@ -227,63 +315,97 @@ export const ProjectDetailPage = () => {
 
             {/* Display Title */}
             <h1 style={{
-              fontSize: 'clamp(2.8rem, 5vw, 4.2rem)',
+              fontSize: 'clamp(2.8rem, 5.2vw, 4.4rem)',
               color: '#FFFFFF',
               marginBottom: '0.75rem',
               fontFamily: 'var(--font-heading)',
               lineHeight: 1.12,
               letterSpacing: '-0.02em',
-              textShadow: '0 4px 20px rgba(0, 0, 0, 0.85)'
+              textShadow: '0 4px 25px rgba(0, 0, 0, 0.9)'
             }}>
               {project.title}
             </h1>
 
             {/* Location & Tagline */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--gold)', fontSize: '1.2rem', marginBottom: '2.5rem', fontWeight: 600, textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--gold)', fontSize: '1.2rem', marginBottom: '1.75rem', fontWeight: 600, textShadow: '0 2px 12px rgba(0, 0, 0, 0.85)' }}>
               <MapPin size={20} />
               <span>{project.fullAddress || project.locationName}</span>
             </div>
 
-            {/* Action Buttons */}
+            {/* Transparent Action Buttons */}
             <div style={{ display: 'flex', gap: '1.1rem', flexWrap: 'wrap', alignItems: 'center' }}>
               <button
-                className="btn btn-primary btn-lg"
+                type="button"
                 onClick={() => openSiteVisitModal(project.title)}
                 style={{
                   borderRadius: 'var(--r-pill)',
                   padding: '0.9rem 2rem',
-                  fontSize: '1rem',
-                  fontWeight: 700,
-                  boxShadow: '0 8px 25px -3px rgba(224, 84, 43, 0.6)'
+                  fontSize: '0.95rem',
+                  fontWeight: 600,
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#FFFFFF',
+                  border: '1px solid rgba(255, 255, 255, 0.35)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.35)';
                 }}
               >
                 <Car size={18} /> Book VIP Chauffeur Tour
               </button>
 
               <button
-                className="btn btn-ghost-warm btn-lg"
+                type="button"
                 onClick={() => openEnquiryModal(project.title, 'Brochure Dossier')}
                 style={{
                   borderRadius: 'var(--r-pill)',
                   padding: '0.9rem 1.85rem',
-                  fontSize: '1rem',
+                  fontSize: '0.95rem',
                   fontWeight: 600,
-                  background: 'rgba(15, 23, 42, 0.7)',
+                  background: 'rgba(255, 255, 255, 0.08)',
                   color: '#FFFFFF',
-                  borderColor: 'rgba(255, 255, 255, 0.25)',
-                  backdropFilter: 'blur(8px)'
+                  border: '1px solid rgba(255, 255, 255, 0.35)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.35)';
                 }}
               >
                 <Download size={18} /> Instant E-Brochure (PDF)
               </button>
 
-              {(project.videoWalkthroughUrl || project.videoUrl) && (
+              {(project.videoWalkthroughUrl || project.videoUrl || (project.siteVideos && project.siteVideos.length > 0)) && (
                 <button
                   type="button"
                   onClick={() => scrollToAnchor('walkthrough-video')}
                   style={{
-                    background: 'transparent',
-                    border: 'none',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.25)',
+                    borderRadius: 'var(--r-pill)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
                     color: '#FFF',
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -291,20 +413,29 @@ export const ProjectDetailPage = () => {
                     cursor: 'pointer',
                     fontSize: '0.92rem',
                     fontWeight: 600,
-                    padding: '0.5rem 1rem'
+                    padding: '0.5rem 1.1rem',
+                    transition: 'all 0.25s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
                   }}
                 >
                   <span style={{
-                    width: '36px',
-                    height: '36px',
+                    width: '32px',
+                    height: '32px',
                     borderRadius: '50%',
-                    background: 'rgba(224, 84, 43, 0.85)',
+                    background: 'rgba(224, 84, 43, 0.8)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 0 15px rgba(224, 84, 43, 0.5)'
+                    boxShadow: '0 0 12px rgba(224, 84, 43, 0.4)'
                   }}>
-                    <Play size={16} fill="#FFF" />
+                    <Play size={15} fill="#FFF" />
                   </span>
                   <span>Watch Walkthrough Film</span>
                 </button>
@@ -313,7 +444,7 @@ export const ProjectDetailPage = () => {
           </div>
         </div>
 
-        {/* Hero Slider Controls */}
+        {/* Hero Slider Edge Controls */}
         {heroImages.length > 1 && (
           <>
             <button
@@ -324,7 +455,7 @@ export const ProjectDetailPage = () => {
                 left: '1.5rem',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                background: 'rgba(15, 23, 42, 0.75)',
+                background: 'rgba(15, 23, 42, 0.8)',
                 color: '#FFF',
                 border: '1px solid rgba(255, 255, 255, 0.25)',
                 borderRadius: '50%',
@@ -334,7 +465,7 @@ export const ProjectDetailPage = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                backdropFilter: 'blur(8px)',
+                backdropFilter: 'blur(10px)',
                 zIndex: 3,
                 transition: 'all 0.2s ease',
                 boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
@@ -351,7 +482,7 @@ export const ProjectDetailPage = () => {
                 right: '1.5rem',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                background: 'rgba(15, 23, 42, 0.75)',
+                background: 'rgba(15, 23, 42, 0.8)',
                 color: '#FFF',
                 border: '1px solid rgba(255, 255, 255, 0.25)',
                 borderRadius: '50%',
@@ -361,7 +492,7 @@ export const ProjectDetailPage = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                backdropFilter: 'blur(8px)',
+                backdropFilter: 'blur(10px)',
                 zIndex: 3,
                 transition: 'all 0.2s ease',
                 boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
@@ -379,11 +510,11 @@ export const ProjectDetailPage = () => {
               display: 'flex',
               gap: '0.5rem',
               zIndex: 3,
-              background: 'rgba(15, 23, 42, 0.75)',
+              background: 'rgba(15, 23, 42, 0.8)',
               padding: '0.4rem 0.9rem',
               borderRadius: 'var(--r-pill)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.15)'
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.18)'
             }}>
               {heroImages.map((_, idx) => (
                 <button
@@ -556,30 +687,20 @@ export const ProjectDetailPage = () => {
         {/* 8. Curated World-Class Amenities Grid */}
         <AmenitiesGrid amenities={project.amenities} />
 
-        {/* 9. Cinematic 4K Walkthrough Video Showcase */}
-        {/* 9. Official Guided Walkthrough Film — Single Frame Cinema Showcase */}
-        {(project.videoWalkthroughUrl || project.videoUrl) && (
+        {/* 9. Cinematic 4K Walkthrough & Live Site Video Showcase */}
+        {(project.videoWalkthroughUrl || project.videoUrl || (project.siteVideos && project.siteVideos.length > 0)) && (
           <section
             id="walkthrough-video"
             style={{
-<<<<<<< HEAD
-              background: '#FFFFFF',
-              borderRadius: 'var(--r-2xl, 24px)',
-              padding: '3rem',
-              border: '1px solid rgba(226, 232, 240, 0.9)',
-              boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)',
-              marginBottom: '3rem'
-=======
               background: 'linear-gradient(135deg, #091527 0%, #0F294A 60%, #153A66 100%)',
               borderRadius: '20px',
-              padding: '1.85rem 2.25rem',
+              padding: '2.25rem',
               border: '1px solid rgba(197, 160, 89, 0.35)',
               boxShadow: '0 20px 50px -10px rgba(11, 19, 42, 0.45)',
               marginBottom: '3rem',
               color: '#FFFFFF',
               position: 'relative',
               overflow: 'hidden'
->>>>>>> 4fa1685b67c3f57ef78ce7c95b735f02fe4dcbab
             }}
           >
             {/* Top Champagne Gold Accent Line */}
@@ -592,13 +713,75 @@ export const ProjectDetailPage = () => {
               background: 'linear-gradient(90deg, #C5A059 0%, #F5E7C8 50%, #C5A059 100%)'
             }} />
 
+            <div style={{ marginBottom: '2rem', borderBottom: '1px solid rgba(255, 255, 255, 0.12)', paddingBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(197, 160, 89, 0.16)', color: '#F5E7C8', border: '1px solid rgba(197, 160, 89, 0.35)', padding: '0.25rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+                  <Video size={13} /> {project.siteVideos?.length ? 'On-Site Drone & Ground Video Footage' : '4K Guided Tour'}
+                </div>
+                <h3 style={{ fontSize: '2.2rem', color: '#FFFFFF', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
+                  {project.slug === 'pratham' ? 'Pratham Site Inspection & Real Footage' : `${project.title} Video Showcase`}
+                </h3>
+                <p style={{ fontSize: '0.95rem', color: '#CBD5E1', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
+                  {project.slug === 'pratham' 
+                    ? 'Watch official on-ground and aerial video footage captured directly at the Pratham site in Lucknow.' 
+                    : `Take an immersive cinematic flight through ${project.title}'s elevation, floor plates, landscaping, and infrastructure.`}
+                </p>
+              </div>
+
+              {project.slug === 'pratham' && (
+                <div style={{ background: 'rgba(34, 197, 94, 0.15)', color: '#4ADE80', border: '1px solid rgba(74, 222, 128, 0.4)', padding: '0.5rem 1rem', borderRadius: 'var(--r-pill)', fontSize: '0.8rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem', backdropFilter: 'blur(8px)' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22C55E' }}></span>
+                  VERIFIED REAL SITE VIDEO
+                </div>
+              )}
+            </div>
+
+            {/* Video Playlist Clips Switcher (if multiple clips present) */}
+            {project.siteVideos && project.siteVideos.length > 1 && (
+              <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.75rem' }}>
+                {project.siteVideos.map((clip, cIdx) => {
+                  const isCurrent = (selectedVideoUrl || project.siteVideos[0].url) === clip.url;
+                  return (
+                    <button
+                      key={cIdx}
+                      type="button"
+                      onClick={() => setSelectedVideoUrl(clip.url)}
+                      style={{
+                        padding: '0.55rem 1.15rem',
+                        borderRadius: 'var(--r-pill)',
+                        fontSize: '0.82rem',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        border: isCurrent ? '1px solid var(--gold)' : '1px solid rgba(255, 255, 255, 0.2)',
+                        background: isCurrent ? 'var(--gold)' : 'rgba(255, 255, 255, 0.08)',
+                        color: isCurrent ? '#0F172A' : '#FFF',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.45rem',
+                        backdropFilter: 'blur(8px)'
+                      }}
+                    >
+                      <Play size={12} fill={isCurrent ? '#0F172A' : '#FFF'} />
+                      <span>{clip.title}</span>
+                      {clip.tag && (
+                        <span style={{ opacity: 0.8, fontSize: '0.72rem', background: isCurrent ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.15)', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
+                          {clip.tag}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
               gap: '2rem',
               alignItems: 'center'
             }}>
-              {/* Left: Cinema Video Player (Constrained 16:9) */}
+              {/* Left: Cinema Video Player */}
               <div>
                 <div style={{
                   borderRadius: '14px',
@@ -651,7 +834,7 @@ export const ProjectDetailPage = () => {
 
                   <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
                     {(() => {
-                      const currentUrl = project.videoWalkthroughUrl || project.videoUrl;
+                      const currentUrl = selectedVideoUrl || project.siteVideos?.[0]?.url || project.videoWalkthroughUrl || project.videoUrl;
                       const isDirectVideo = currentUrl && (currentUrl.endsWith('.mp4') || currentUrl.includes('.mp4') || currentUrl.startsWith('/'));
 
                       if (isDirectVideo) {

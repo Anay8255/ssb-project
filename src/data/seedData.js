@@ -529,34 +529,102 @@ export const SEED_DATA = {
       locationName: "High-Visibility Growth Corridor, Lucknow, Uttar Pradesh",
       fullAddress: "Prime High-Visibility Corridor, Lucknow, Uttar Pradesh",
       googleMapUrl: "https://maps.google.com/?q=Lucknow,+Uttar+Pradesh",
-      googleMapEmbedUrl: "https://maps.google.com/maps?q=Lucknow,+Uttar+Pradesh&t=&z=13&ie=UTF8&iwloc=&output=embed",
       geoCoordinates: { lat: 26.8467, lng: 80.9462 },
       totalLandArea: "15 Acres Commercial Hub",
       totalUnitsCount: 220,
       featuredImage: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
       heroImages: [
         "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
-        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948582911-v22xe8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODI5MTEtdjIyeGU4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODQsImV4cCI6MjEwMjMwODU4NH0.hlPTwpmgqlaFfIy2i5UGA0rNaWkDFrVBbEc9UKvHMQo",
-        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948584190-vtay4g.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODQxOTAtdnRheTRnLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.3hXbNSUYhuCt-ICFEf7OQD74bpGQ4rFH0oX1dREue_Y",
-        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948585742-fo2d1f.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODU3NDItZm8yZDFmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.J808qhVvhKp3uqb7FgKBniWPr-753v5naViIzSfza8g"
+        "/projects/pratham/pratham-site-real-1.jpeg",
+        "/projects/pratham/pratham-site-real-6.jpeg",
+        "/projects/pratham/pratham-site-real-7.jpeg",
+        "/projects/pratham/pratham-site-real-2.jpeg",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948582911-v22xe8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODI5MTEtdjIyeGU4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODQsImV4cCI6MjEwMjMwODU4NH0.hlPTwpmgqlaFfIy2i5UGA0rNaWkDFrVBbEc9UKvHMQo"
       ],
       masterPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948585742-fo2d1f.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODU3NDItZm8yZDFmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.J808qhVvhKp3uqb7FgKBniWPr-753v5naViIzSfza8g",
-      videoWalkthroughUrl: "https://drive.google.com/file/d/16std2Yp3EChiqsSCFdEkTxiSqyYS79Pu/preview",
+      videoWalkthroughUrl: "/projects/pratham/pratham-real-site-video.mp4",
+      siteVideos: [
+        {
+          title: "Pratham Real On-Site Progress & Aerial Footage (Official)",
+          url: "/projects/pratham/pratham-real-site-video.mp4",
+          originalFile: "WhatsApp Video 2026-04-24 at 5.11.45 PM (1).mp4",
+          tag: "Live Site Video",
+          date: "Official Site Capture"
+        },
+        {
+          title: "Pratham Site Perspective & Land Demarcation — Clip 2",
+          url: "/projects/pratham/WhatsApp Video 2026-04-24 at 5.11.45 PM (2).mp4",
+          tag: "Site Inspection",
+          date: "Site Capture"
+        },
+        {
+          title: "Pratham Ground Work & Plot Survey — Clip 3",
+          url: "/projects/pratham/WhatsApp Video 2026-04-24 at 5.11.45 PM (3).mp4",
+          tag: "Ground Work",
+          date: "Site Capture"
+        },
+        {
+          title: "Pratham Corridor View & Frontage — Clip 4",
+          url: "/projects/pratham/WhatsApp Video 2026-04-24 at 5.28.28 PM (1).mp4",
+          tag: "Frontage View",
+          date: "Site Capture"
+        }
+      ],
       gallery: [
+        {
+          url: "/projects/pratham/pratham-site-real-1.jpeg",
+          title: "Actual Pratham Site Progress — Ground Reality & Boundary",
+          category: "Actual Site Photos"
+        },
+        {
+          url: "/projects/pratham/pratham-site-real-2.jpeg",
+          title: "Actual Site Demarcation & Infrastructure Works",
+          category: "Actual Site Photos"
+        },
+        {
+          url: "/projects/pratham/pratham-site-real-3.jpeg",
+          title: "Frontage Road Access & On-Ground Inspection",
+          category: "Actual Site Photos"
+        },
+        {
+          url: "/projects/pratham/pratham-site-real-4.jpeg",
+          title: "Site Development & Land Survey View",
+          category: "Actual Site Photos"
+        },
+        {
+          url: "/projects/pratham/pratham-site-real-5.jpeg",
+          title: "Field Excavation & Plot Preparation",
+          category: "Actual Site Photos"
+        },
+        {
+          url: "/projects/pratham/pratham-site-real-6.jpeg",
+          title: "Panoramic Real Site Layout Overview",
+          category: "Actual Site Photos"
+        },
+        {
+          url: "/projects/pratham/pratham-site-real-7.jpeg",
+          title: "Corridor Connectivity & Approach Road",
+          category: "Actual Site Photos"
+        },
+        {
+          url: "/projects/pratham/pratham-site-real-8.jpeg",
+          title: "Site Landmark & Geographical Alignment",
+          category: "Actual Site Photos"
+        },
         {
           url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
           title: "Grand Exterior Elevation & High-Street Retail Facade",
-          category: "Exterior"
+          category: "Architectural 3D"
         },
         {
           url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948582911-v22xe8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODI5MTEtdjIyeGU4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODQsImV4cCI6MjEwMjMwODU4NH0.hlPTwpmgqlaFfIy2i5UGA0rNaWkDFrVBbEc9UKvHMQo",
           title: "Commercial Promenade & Multi-Story Frontage",
-          category: "Exterior"
+          category: "Architectural 3D"
         },
         {
           url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948584190-vtay4g.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODQxOTAtdnRheTRnLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.3hXbNSUYhuCt-ICFEf7OQD74bpGQ4rFH0oX1dREue_Y",
           title: "Modern Architectural Complex Perspective",
-          category: "Exterior"
+          category: "Architectural 3D"
         },
         {
           url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948585742-fo2d1f.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODU3NDItZm8yZDFmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.J808qhVvhKp3uqb7FgKBniWPr-753v5naViIzSfza8g",

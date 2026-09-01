@@ -10,9 +10,9 @@ import { ProjectGallery } from '../components/project/ProjectGallery';
 import { MilestoneTracker } from '../components/project/MilestoneTracker';
 import { AmenitiesGrid } from '../components/project/AmenitiesGrid';
 import { ProjectLocationMap } from '../components/project/ProjectLocationMap';
-import { 
-  MapPin, ShieldCheck, Car, Download, ArrowLeft, CheckCircle2, 
-  ChevronRight, ChevronLeft, Phone, Play, Sparkles, Building2, 
+import {
+  MapPin, ShieldCheck, Car, Download, ArrowLeft, CheckCircle2,
+  ChevronRight, ChevronLeft, Phone, Play, Sparkles, Building2,
   Ruler, Calendar, Award, Compass, Layers, Video, FileText, Check
 } from 'lucide-react';
 
@@ -26,10 +26,10 @@ export const ProjectDetailPage = () => {
 
   const rawProject = getProjectBySlug(slug);
   const seedProject = SEED_DATA.projects.find(p => p.slug === slug || p.id === slug || p.id === rawProject?.id);
-  const project = rawProject ? { 
-    ...seedProject, 
-    ...rawProject, 
-    gallery: seedProject?.gallery || rawProject?.gallery, 
+  const project = rawProject ? {
+    ...seedProject,
+    ...rawProject,
+    gallery: seedProject?.gallery || rawProject?.gallery,
     heroImages: seedProject?.heroImages || rawProject?.heroImages,
     masterPlanUrl: seedProject?.masterPlanUrl || rawProject?.masterPlanUrl,
     videoWalkthroughUrl: seedProject?.videoWalkthroughUrl || rawProject?.videoWalkthroughUrl,
@@ -83,9 +83,9 @@ export const ProjectDetailPage = () => {
 
   return (
     <div className="fade-in" style={{ paddingBottom: '6rem' }}>
-      
+
       {/* 1. Ultra-Luxury Sticky Sub-Navigation Bar */}
-      <div 
+      <div
         style={{
           position: 'fixed',
           top: isStickyNavVisible ? '0' : '-80px',
@@ -145,8 +145,8 @@ export const ProjectDetailPage = () => {
 
           {/* Quick CTA */}
           <div style={{ display: 'flex', gap: '0.65rem' }}>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-primary btn-sm"
               onClick={() => openSiteVisitModal(project.title)}
               style={{ borderRadius: 'var(--r-pill)', fontWeight: 600, fontSize: '0.82rem' }}
@@ -158,10 +158,10 @@ export const ProjectDetailPage = () => {
       </div>
 
       {/* 2. Cinematic Panoramic Hero Section */}
-      <section style={{ 
-        position: 'relative', 
-        color: '#FFF', 
-        padding: '9rem 0 5.5rem', 
+      <section style={{
+        position: 'relative',
+        color: '#FFF',
+        padding: '9rem 0 5.5rem',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
         background: `linear-gradient(180deg, rgba(10, 17, 32, 0.75) 0%, rgba(10, 17, 32, 0.5) 45%, rgba(10, 17, 32, 0.88) 100%), url(${currentHeroImg}) center/cover no-repeat`,
         transition: 'background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -180,7 +180,7 @@ export const ProjectDetailPage = () => {
         }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-          
+
           {/* Breadcrumb Navigation */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#94A3B8', marginBottom: '1.75rem', textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
             <Link to="/" style={{ color: '#CBD5E1' }}>Home</Link>
@@ -196,44 +196,44 @@ export const ProjectDetailPage = () => {
               <span className="badge badge-brand" style={{ padding: '0.4rem 0.9rem', fontSize: '0.78rem', letterSpacing: '0.06em' }}>
                 {project.category.toUpperCase()}
               </span>
-              <span style={{ 
-                background: 'rgba(34, 197, 94, 0.2)', 
-                color: '#4ADE80', 
-                border: '1px solid rgba(74, 222, 128, 0.35)', 
-                padding: '0.35rem 0.85rem', 
-                borderRadius: 'var(--r-pill)', 
-                fontSize: '0.75rem', 
-                fontWeight: 700, 
-                display: 'inline-flex', 
-                alignItems: 'center', 
+              <span style={{
+                background: 'rgba(34, 197, 94, 0.2)',
+                color: '#4ADE80',
+                border: '1px solid rgba(74, 222, 128, 0.35)',
+                padding: '0.35rem 0.85rem',
+                borderRadius: 'var(--r-pill)',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                display: 'inline-flex',
+                alignItems: 'center',
                 gap: '0.35rem',
-                backdropFilter: 'blur(8px)' 
+                backdropFilter: 'blur(8px)'
               }}>
                 <ShieldCheck size={14} /> UP-RERA VERIFIED
               </span>
-              <span style={{ 
-                background: 'rgba(255, 255, 255, 0.12)', 
-                color: '#F8FAFC', 
-                border: '1px solid rgba(255, 255, 255, 0.2)', 
-                padding: '0.35rem 0.85rem', 
-                borderRadius: 'var(--r-pill)', 
-                fontSize: '0.75rem', 
+              <span style={{
+                background: 'rgba(255, 255, 255, 0.12)',
+                color: '#F8FAFC',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                padding: '0.35rem 0.85rem',
+                borderRadius: 'var(--r-pill)',
+                fontSize: '0.75rem',
                 fontWeight: 600,
-                backdropFilter: 'blur(8px)' 
+                backdropFilter: 'blur(8px)'
               }}>
                 {project.status.toUpperCase()}
               </span>
             </div>
 
             {/* Display Title */}
-            <h1 style={{ 
-              fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', 
-              color: '#FFFFFF', 
-              marginBottom: '0.75rem', 
-              fontFamily: 'var(--font-heading)', 
-              lineHeight: 1.12, 
+            <h1 style={{
+              fontSize: 'clamp(2.8rem, 5vw, 4.2rem)',
+              color: '#FFFFFF',
+              marginBottom: '0.75rem',
+              fontFamily: 'var(--font-heading)',
+              lineHeight: 1.12,
               letterSpacing: '-0.02em',
-              textShadow: '0 4px 20px rgba(0, 0, 0, 0.85)' 
+              textShadow: '0 4px 20px rgba(0, 0, 0, 0.85)'
             }}>
               {project.title}
             </h1>
@@ -246,27 +246,27 @@ export const ProjectDetailPage = () => {
 
             {/* Action Buttons */}
             <div style={{ display: 'flex', gap: '1.1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-              <button 
-                className="btn btn-primary btn-lg" 
+              <button
+                className="btn btn-primary btn-lg"
                 onClick={() => openSiteVisitModal(project.title)}
-                style={{ 
-                  borderRadius: 'var(--r-pill)', 
-                  padding: '0.9rem 2rem', 
-                  fontSize: '1rem', 
-                  fontWeight: 700, 
-                  boxShadow: '0 8px 25px -3px rgba(224, 84, 43, 0.6)' 
+                style={{
+                  borderRadius: 'var(--r-pill)',
+                  padding: '0.9rem 2rem',
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  boxShadow: '0 8px 25px -3px rgba(224, 84, 43, 0.6)'
                 }}
               >
                 <Car size={18} /> Book VIP Chauffeur Tour
               </button>
-              
-              <button 
-                className="btn btn-ghost-warm btn-lg" 
+
+              <button
+                className="btn btn-ghost-warm btn-lg"
                 onClick={() => openEnquiryModal(project.title, 'Brochure Dossier')}
-                style={{ 
-                  borderRadius: 'var(--r-pill)', 
-                  padding: '0.9rem 1.85rem', 
-                  fontSize: '1rem', 
+                style={{
+                  borderRadius: 'var(--r-pill)',
+                  padding: '0.9rem 1.85rem',
+                  fontSize: '1rem',
                   fontWeight: 600,
                   background: 'rgba(15, 23, 42, 0.7)',
                   color: '#FFFFFF',
@@ -294,13 +294,13 @@ export const ProjectDetailPage = () => {
                     padding: '0.5rem 1rem'
                   }}
                 >
-                  <span style={{ 
-                    width: '36px', 
-                    height: '36px', 
-                    borderRadius: '50%', 
-                    background: 'rgba(224, 84, 43, 0.85)', 
-                    display: 'flex', 
-                    alignItems: 'center', 
+                  <span style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    background: 'rgba(224, 84, 43, 0.85)',
+                    display: 'flex',
+                    alignItems: 'center',
                     justifyContent: 'center',
                     boxShadow: '0 0 15px rgba(224, 84, 43, 0.5)'
                   }}>
@@ -409,17 +409,17 @@ export const ProjectDetailPage = () => {
 
       {/* 3. Main Luxury Content Canvas */}
       <div className="container" style={{ paddingTop: '3.5rem' }}>
-        
+
         {/* Floating Glass Executive Metric HUD */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', 
-          gap: '1.25rem', 
-          background: '#FFFFFF', 
-          padding: '2rem 2.25rem', 
-          borderRadius: 'var(--r-2xl, 24px)', 
-          border: '1px solid rgba(226, 232, 240, 0.9)', 
-          boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+          gap: '1.25rem',
+          background: '#FFFFFF',
+          padding: '2rem 2.25rem',
+          borderRadius: 'var(--r-2xl, 24px)',
+          border: '1px solid rgba(226, 232, 240, 0.9)',
+          boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)',
           marginBottom: '3rem',
           transform: 'translateY(-2rem)'
         }}>
@@ -464,15 +464,15 @@ export const ProjectDetailPage = () => {
         </div>
 
         {/* Overview & Project Architectural Philosophy */}
-        <section 
-          id="overview" 
-          style={{ 
-            background: '#FFFFFF', 
-            borderRadius: 'var(--r-2xl, 24px)', 
-            padding: '3rem', 
-            border: '1px solid rgba(226, 232, 240, 0.9)', 
-            boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
-            marginBottom: '3rem' 
+        <section
+          id="overview"
+          style={{
+            background: '#FFFFFF',
+            borderRadius: 'var(--r-2xl, 24px)',
+            padding: '3rem',
+            border: '1px solid rgba(226, 232, 240, 0.9)',
+            boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)',
+            marginBottom: '3rem'
           }}
         >
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.35fr) minmax(0, 1fr)', gap: '3rem', alignItems: 'center' }}>
@@ -486,7 +486,7 @@ export const ProjectDetailPage = () => {
               <p style={{ fontSize: '1.05rem', color: 'var(--ink)', marginTop: '1.25rem', lineHeight: 1.7, fontWeight: 400 }}>
                 {project.description || `${project.title} represents a premier hallmark in contemporary real estate, engineered for sustainable high-value appreciation, pristine living, and master-planned connectivity.`}
               </p>
-              
+
               {/* Highlight Pillars */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginTop: '2rem' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
@@ -522,14 +522,14 @@ export const ProjectDetailPage = () => {
               <p style={{ fontSize: '0.9rem', color: '#94A3B8', lineHeight: 1.6, marginBottom: '1.75rem' }}>
                 Over 18+ years of engineering benchmark delivery across eastern Uttar Pradesh, committed to RCC structural strength, timely handovers, and transparent customer trust.
               </p>
-              
+
               <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
                   <span style={{ fontSize: '0.72rem', color: '#94A3B8', textTransform: 'uppercase' }}>Direct VIP Desk</span>
                   <strong style={{ display: 'block', fontSize: '1rem', color: '#FFF' }}>+91 98189 28893</strong>
                 </div>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className="btn btn-primary btn-sm"
                   onClick={() => openSiteVisitModal(project.title)}
                   style={{ borderRadius: 'var(--r-pill)' }}
@@ -557,45 +557,168 @@ export const ProjectDetailPage = () => {
         <AmenitiesGrid amenities={project.amenities} />
 
         {/* 9. Cinematic 4K Walkthrough Video Showcase */}
+        {/* 9. Official Guided Walkthrough Film — Single Frame Cinema Showcase */}
         {(project.videoWalkthroughUrl || project.videoUrl) && (
-          <section 
-            id="walkthrough-video" 
-            style={{ 
-              background: '#FFFFFF', 
-              borderRadius: 'var(--r-2xl, 24px)', 
-              padding: '3rem', 
-              border: '1px solid rgba(226, 232, 240, 0.9)', 
-              boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
-              marginBottom: '3rem' 
+          <section
+            id="walkthrough-video"
+            style={{
+              background: 'linear-gradient(135deg, #091527 0%, #0F294A 60%, #153A66 100%)',
+              borderRadius: '20px',
+              padding: '1.85rem 2.25rem',
+              border: '1px solid rgba(197, 160, 89, 0.35)',
+              boxShadow: '0 20px 50px -10px rgba(11, 19, 42, 0.45)',
+              marginBottom: '3rem',
+              color: '#FFFFFF',
+              position: 'relative',
+              overflow: 'hidden'
             }}
           >
-            <div style={{ marginBottom: '2.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.75rem' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.08)', color: 'var(--brand)', padding: '0.35rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                <Video size={13} /> 4K Cinematic Experience
-              </div>
-              <h3 style={{ fontSize: '2.2rem', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
-                Official Guided Walkthrough Film
-              </h3>
-              <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
-                Take an immersive cinematic flight through {project.title}'s elevation, floor plates, landscaping, and infrastructure.
-              </p>
-            </div>
+            {/* Top Champagne Gold Accent Line */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '3px',
+              background: 'linear-gradient(90deg, #C5A059 0%, #F5E7C8 50%, #C5A059 100%)'
+            }} />
 
-            <div style={{ 
-              borderRadius: 'var(--r-xl, 18px)', 
-              overflow: 'hidden', 
-              border: '1px solid rgba(255, 255, 255, 0.12)', 
-              background: '#000',
-              boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.4)'
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '2rem',
+              alignItems: 'center'
             }}>
-              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
-                <iframe
-                  src={project.videoWalkthroughUrl || project.videoUrl}
-                  title={`${project.title} Walkthrough Video`}
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                />
+              {/* Left: Cinema Video Player (Constrained 16:9) */}
+              <div>
+                <div style={{
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  border: '1.5px solid rgba(197, 160, 89, 0.35)',
+                  background: '#000',
+                  boxShadow: '0 14px 32px -6px rgba(0, 0, 0, 0.6), 0 0 15px rgba(197, 160, 89, 0.15)',
+                  position: 'relative'
+                }}>
+                  {/* Status Badges */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '0.6rem',
+                    left: '0.65rem',
+                    right: '0.65rem',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    zIndex: 10,
+                    pointerEvents: 'none'
+                  }}>
+                    <span style={{
+                      background: 'rgba(15, 23, 42, 0.85)',
+                      backdropFilter: 'blur(8px)',
+                      color: '#F5E7C8',
+                      border: '1px solid rgba(197, 160, 89, 0.4)',
+                      padding: '0.15rem 0.5rem',
+                      borderRadius: '5px',
+                      fontSize: '0.68rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.06em'
+                    }}>
+                      4K UHD 60FPS
+                    </span>
+                    <span style={{
+                      background: 'rgba(239, 68, 68, 0.9)',
+                      color: '#FFF',
+                      padding: '0.15rem 0.5rem',
+                      borderRadius: '5px',
+                      fontSize: '0.66rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.06em',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.25rem'
+                    }}>
+                      <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#FFF' }} /> OFFICIAL
+                    </span>
+                  </div>
+
+                  <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                    <iframe
+                      src={project.videoWalkthroughUrl || project.videoUrl}
+                      title={`${project.title} Official Walkthrough Video`}
+                      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Walkthrough Details & Fast Action */}
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(197, 160, 89, 0.16)', color: '#F5E7C8', border: '1px solid rgba(197, 160, 89, 0.35)', padding: '0.2rem 0.65rem', borderRadius: '9999px', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
+                  <Video size={12} /> 4K Guided Tour
+                </div>
+
+                <h3 style={{ fontSize: '1.6rem', color: '#FFFFFF', margin: 0, fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                  Official Guided Walkthrough Film
+                </h3>
+
+                <p style={{ fontSize: '0.86rem', color: '#CBD5E1', margin: '0.4rem 0 1rem', lineHeight: 1.5 }}>
+                  Take a flight through {project.title}'s elevation, floor plates, landscaping, and master plan connectivity in high-definition video.
+                </p>
+
+                {/* 2 Quick Highlights */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '0.5rem 0.8rem', borderRadius: '9px' }}>
+                    <div style={{ width: '26px', height: '26px', borderRadius: '7px', background: 'rgba(197, 160, 89, 0.2)', color: '#F5E7C8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Building2 size={14} />
+                    </div>
+                    <strong style={{ fontSize: '0.8rem', color: '#FFF' }}>Exterior Elevation & Campus Infrastructure</strong>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '0.5rem 0.8rem', borderRadius: '9px' }}>
+                    <div style={{ width: '26px', height: '26px', borderRadius: '7px', background: 'rgba(197, 160, 89, 0.2)', color: '#F5E7C8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Compass size={14} />
+                    </div>
+                    <strong style={{ fontSize: '0.8rem', color: '#FFF' }}>Sample Flat Architecture & Internal Layouts</strong>
+                  </div>
+                </div>
+
+                {/* Dual CTAs */}
+                <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={() => openSiteVisitModal(project.title)}
+                    style={{
+                      background: 'linear-gradient(135deg, #C5A059 0%, #E8D5B5 50%, #C5A059 100%)',
+                      color: '#0F172A',
+                      fontWeight: 700,
+                      fontSize: '0.82rem',
+                      padding: '0.55rem 1.15rem',
+                      borderRadius: '9999px',
+                      border: 'none',
+                      boxShadow: '0 4px 14px rgba(197, 160, 89, 0.35)'
+                    }}
+                  >
+                    <Car size={14} /> Book In-Person VIP Tour
+                  </button>
+
+                  <button
+                    type="button"
+                    className="btn btn-outline btn-sm"
+                    onClick={() => openEnquiryModal(project.title, 'Walkthrough Video HD')}
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: '#FFFFFF',
+                      borderColor: 'rgba(255, 255, 255, 0.25)',
+                      fontSize: '0.82rem',
+                      padding: '0.55rem 1rem',
+                      borderRadius: '9999px'
+                    }}
+                  >
+                    <Download size={14} /> WhatsApp Full Video
+                  </button>
+                </div>
               </div>
             </div>
           </section>
@@ -606,15 +729,15 @@ export const ProjectDetailPage = () => {
 
         {/* 11. Certified Architectural Specifications Section */}
         {project.specifications && (
-          <section 
-            id="specifications" 
-            style={{ 
-              background: '#FFFFFF', 
-              borderRadius: 'var(--r-2xl, 24px)', 
-              padding: '3rem', 
-              border: '1px solid rgba(226, 232, 240, 0.9)', 
-              boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
-              marginBottom: '3rem' 
+          <section
+            id="specifications"
+            style={{
+              background: '#FFFFFF',
+              borderRadius: 'var(--r-2xl, 24px)',
+              padding: '3rem',
+              border: '1px solid rgba(226, 232, 240, 0.9)',
+              boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)',
+              marginBottom: '3rem'
             }}
           >
             <div style={{ marginBottom: '2.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.75rem' }}>
@@ -704,11 +827,11 @@ export const ProjectDetailPage = () => {
         </div>
 
         {/* 13. VIP Chauffeur Tour & Booking Action Banner */}
-        <div style={{ 
-          background: 'linear-gradient(135deg, #0A1120 0%, #1E293B 100%)', 
-          color: '#FFF', 
-          padding: '4rem 3rem', 
-          borderRadius: 'var(--r-2xl, 24px)', 
+        <div style={{
+          background: 'linear-gradient(135deg, #0A1120 0%, #1E293B 100%)',
+          color: '#FFF',
+          padding: '4rem 3rem',
+          borderRadius: 'var(--r-2xl, 24px)',
           textAlign: 'center',
           position: 'relative',
           overflow: 'hidden',
@@ -738,20 +861,20 @@ export const ProjectDetailPage = () => {
               Inspect ongoing structural work, sample apartment layouts, and private campus surroundings with a complimentary chauffeur pickup.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-              <button 
-                className="btn btn-primary btn-lg" 
+              <button
+                className="btn btn-primary btn-lg"
                 onClick={() => openSiteVisitModal(project.title)}
                 style={{ borderRadius: 'var(--r-pill)', padding: '0.9rem 2.25rem', fontWeight: 700, fontSize: '1rem' }}
               >
                 <Car size={18} /> Schedule VIP Chauffeur Tour
               </button>
-              <a 
-                href="tel:+919818928893" 
-                className="btn btn-ghost-warm btn-lg" 
-                style={{ 
+              <a
+                href="tel:+919818928893"
+                className="btn btn-ghost-warm btn-lg"
+                style={{
                   borderRadius: 'var(--r-pill)',
-                  background: 'rgba(255,255,255,0.08)', 
-                  color: '#FFF', 
+                  background: 'rgba(255,255,255,0.08)',
+                  color: '#FFF',
                   borderColor: 'rgba(255,255,255,0.2)',
                   padding: '0.9rem 2rem',
                   fontSize: '1rem'

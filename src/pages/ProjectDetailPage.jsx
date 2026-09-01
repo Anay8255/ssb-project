@@ -557,45 +557,208 @@ export const ProjectDetailPage = () => {
         <AmenitiesGrid amenities={project.amenities} />
 
         {/* 9. Cinematic 4K Walkthrough Video Showcase */}
+        {/* 9. Official Guided Walkthrough Film — Single Frame Cinema Showcase */}
         {(project.videoWalkthroughUrl || project.videoUrl) && (
           <section
             id="walkthrough-video"
             style={{
+<<<<<<< HEAD
               background: '#FFFFFF',
               borderRadius: 'var(--r-2xl, 24px)',
               padding: '3rem',
               border: '1px solid rgba(226, 232, 240, 0.9)',
               boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)',
               marginBottom: '3rem'
+=======
+              background: 'linear-gradient(135deg, #091527 0%, #0F294A 60%, #153A66 100%)',
+              borderRadius: '20px',
+              padding: '1.85rem 2.25rem',
+              border: '1px solid rgba(197, 160, 89, 0.35)',
+              boxShadow: '0 20px 50px -10px rgba(11, 19, 42, 0.45)',
+              marginBottom: '3rem',
+              color: '#FFFFFF',
+              position: 'relative',
+              overflow: 'hidden'
+>>>>>>> 4fa1685b67c3f57ef78ce7c95b735f02fe4dcbab
             }}
           >
-            <div style={{ marginBottom: '2.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.75rem' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.08)', color: 'var(--brand)', padding: '0.35rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                <Video size={13} /> 4K Cinematic Experience
-              </div>
-              <h3 style={{ fontSize: '2.2rem', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
-                Official Guided Walkthrough Film
-              </h3>
-              <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
-                Take an immersive cinematic flight through {project.title}'s elevation, floor plates, landscaping, and infrastructure.
-              </p>
-            </div>
+            {/* Top Champagne Gold Accent Line */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '3px',
+              background: 'linear-gradient(90deg, #C5A059 0%, #F5E7C8 50%, #C5A059 100%)'
+            }} />
 
             <div style={{
-              borderRadius: 'var(--r-xl, 18px)',
-              overflow: 'hidden',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              background: '#000',
-              boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.4)'
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '2rem',
+              alignItems: 'center'
             }}>
-              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
-                <iframe
-                  src={project.videoWalkthroughUrl || project.videoUrl}
-                  title={`${project.title} Walkthrough Video`}
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                />
+              {/* Left: Cinema Video Player (Constrained 16:9) */}
+              <div>
+                <div style={{
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  border: '1.5px solid rgba(197, 160, 89, 0.35)',
+                  background: '#000',
+                  boxShadow: '0 14px 32px -6px rgba(0, 0, 0, 0.6), 0 0 15px rgba(197, 160, 89, 0.15)',
+                  position: 'relative'
+                }}>
+                  {/* Status Badges */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '0.6rem',
+                    left: '0.65rem',
+                    right: '0.65rem',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    zIndex: 10,
+                    pointerEvents: 'none'
+                  }}>
+                    <span style={{
+                      background: 'rgba(15, 23, 42, 0.85)',
+                      backdropFilter: 'blur(8px)',
+                      color: '#F5E7C8',
+                      border: '1px solid rgba(197, 160, 89, 0.4)',
+                      padding: '0.15rem 0.5rem',
+                      borderRadius: '5px',
+                      fontSize: '0.68rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.06em'
+                    }}>
+                      4K UHD 60FPS
+                    </span>
+                    <span style={{
+                      background: 'rgba(239, 68, 68, 0.9)',
+                      color: '#FFF',
+                      padding: '0.15rem 0.5rem',
+                      borderRadius: '5px',
+                      fontSize: '0.66rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.06em',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.25rem'
+                    }}>
+                      <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#FFF' }} /> OFFICIAL
+                    </span>
+                  </div>
+
+                  <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                    {(() => {
+                      const currentUrl = project.videoWalkthroughUrl || project.videoUrl;
+                      const isDirectVideo = currentUrl && (currentUrl.endsWith('.mp4') || currentUrl.includes('.mp4') || currentUrl.startsWith('/'));
+
+                      if (isDirectVideo) {
+                        return (
+                          <video
+                            key={currentUrl}
+                            src={currentUrl}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            poster={project.featuredImage || heroImages[0]}
+                            style={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'contain',
+                              backgroundColor: '#000'
+                            }}
+                          >
+                            Your browser does not support HTML5 video streaming.
+                          </video>
+                        );
+                      }
+
+                      return (
+                        <iframe
+                          src={currentUrl}
+                          title={`${project.title} Official Walkthrough Video`}
+                          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                          allowFullScreen
+                        />
+                      );
+                    })()}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Walkthrough Details & Fast Action */}
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(197, 160, 89, 0.16)', color: '#F5E7C8', border: '1px solid rgba(197, 160, 89, 0.35)', padding: '0.2rem 0.65rem', borderRadius: '9999px', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
+                  <Video size={12} /> 4K Guided Tour
+                </div>
+
+                <h3 style={{ fontSize: '1.6rem', color: '#FFFFFF', margin: 0, fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                  Official Guided Walkthrough Film
+                </h3>
+
+                <p style={{ fontSize: '0.86rem', color: '#CBD5E1', margin: '0.4rem 0 1rem', lineHeight: 1.5 }}>
+                  Take a flight through {project.title}'s elevation, floor plates, landscaping, and master plan connectivity in high-definition video.
+                </p>
+
+                {/* 2 Quick Highlights */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '0.5rem 0.8rem', borderRadius: '9px' }}>
+                    <div style={{ width: '26px', height: '26px', borderRadius: '7px', background: 'rgba(197, 160, 89, 0.2)', color: '#F5E7C8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Building2 size={14} />
+                    </div>
+                    <strong style={{ fontSize: '0.8rem', color: '#FFF' }}>Exterior Elevation & Campus Infrastructure</strong>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '0.5rem 0.8rem', borderRadius: '9px' }}>
+                    <div style={{ width: '26px', height: '26px', borderRadius: '7px', background: 'rgba(197, 160, 89, 0.2)', color: '#F5E7C8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Compass size={14} />
+                    </div>
+                    <strong style={{ fontSize: '0.8rem', color: '#FFF' }}>Sample Flat Architecture & Internal Layouts</strong>
+                  </div>
+                </div>
+
+                {/* Dual CTAs */}
+                <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={() => openSiteVisitModal(project.title)}
+                    style={{
+                      background: 'linear-gradient(135deg, #C5A059 0%, #E8D5B5 50%, #C5A059 100%)',
+                      color: '#0F172A',
+                      fontWeight: 700,
+                      fontSize: '0.82rem',
+                      padding: '0.55rem 1.15rem',
+                      borderRadius: '9999px',
+                      border: 'none',
+                      boxShadow: '0 4px 14px rgba(197, 160, 89, 0.35)'
+                    }}
+                  >
+                    <Car size={14} /> Book In-Person VIP Tour
+                  </button>
+
+                  <button
+                    type="button"
+                    className="btn btn-outline btn-sm"
+                    onClick={() => openEnquiryModal(project.title, 'Walkthrough Video HD')}
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: '#FFFFFF',
+                      borderColor: 'rgba(255, 255, 255, 0.25)',
+                      fontSize: '0.82rem',
+                      padding: '0.55rem 1rem',
+                      borderRadius: '9999px'
+                    }}
+                  >
+                    <Download size={14} /> WhatsApp Full Video
+                  </button>
+                </div>
               </div>
             </div>
           </section>

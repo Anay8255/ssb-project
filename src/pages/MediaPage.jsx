@@ -7,25 +7,58 @@ export const MediaPage = () => {
 
   const news = [
     {
-      title: "SSB Group Unveils Sai Gaon Township on Varanasi Growth Corridor",
-      publication: "Dainik Jagran / Real Estate Bureau",
+      title: "Pratham: SSB Group's Signature Mixed-Use Commercial Destination in Lucknow",
+      publication: "Commercial Real Estate Digest",
+      date: "September 2026",
+      summary: "Pratham marks SSB Group's strategic capital expansion into Lucknow with a state-of-the-art mixed-use commercial development designed for massive pedestrian footfall, high-visibility retail frontage, high-speed lift lobbies, and world-class glass facade architecture.",
+      image: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
+      tag: "Commercial Expansion",
+      author: "SSB Corporate Communications"
+    },
+    {
+      title: "Architectural Layout & High-Street Retail Spaces Unveiled for Pratham Lucknow",
+      publication: "Uttar Pradesh Infra & Retail Journal",
       date: "August 2026",
-      summary: "SSB Group has launched its signature eco-residential community featuring monolithic aluminium formwork construction, 70% open green landscapes, and world-class sports amenities.",
-      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
+      summary: "SSB Group has unveiled the master circulation layout and floor plans for Pratham Lucknow, featuring prime ground & first floor anchor retail showrooms (850 Sq. Ft.) and corporate executive suites (1,250 Sq. Ft.) on a prime growth corridor.",
+      image: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948584190-vtay4g.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODQxOTAtdnRheTRnLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.3hXbNSUYhuCt-ICFEf7OQD74bpGQ4rFH0oX1dREue_Y",
+      tag: "Architecture & Blueprints",
+      author: "Nishant Shekhar, Chief Architect"
     },
     {
-      title: "Over 120 Families Receive Possession at Shree Sai City Affordable Housing",
-      publication: "Hindustan Live",
+      title: "Shree Sai City: Varanasi's First Monolithic Aluminium Formwork Green Township",
+      publication: "Construction & Infrastructure Times",
+      date: "August 2026",
+      summary: "SSB Infra Projects is the very first in Varanasi to incorporate the monolithic Aluminum Formwork System into multi-storied RCC construction. Pouring walls and slabs simultaneously eliminates masonry, guarantees zero water seepage, resists seismic tremors, and delivers acoustic insulation across 18 acres.",
+      image: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948497295-9v1551.png",
+      tag: "Engineering & Innovation",
+      author: "SSB Technical Desk"
+    },
+    {
+      title: "Refined by Nature's Opulence: Inside Shree Sai City Group Housing Floor Plans & Architecture",
+      publication: "Varanasi Real Estate Review",
+      date: "July 2026",
+      summary: "Explore the VDA-approved and UP RERA registered (UPRERAPRJ923469) 2 BHK (1,100.08 Sq. Ft.) and 3 BHK (1,351.31 Sq. Ft.) residences designed with 100% Vastu compliance, cross-ventilation, panoramic decks, and microclimate-controlled evergreen landscaping.",
+      image: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948517426-765q1q.png",
+      tag: "Architecture & Design",
+      author: "Nishant Shekhar, Chief Architect"
+    },
+    {
+      title: "Proposed SSB Amusement Park & Luxury Resort Announced at Shree Sai City Harhua",
+      publication: "Uttar Pradesh Hospitality & Tourism",
       date: "June 2026",
-      summary: "Shree Sai Baba Infra Projects Pvt. Ltd. successfully concluded the handover ceremony for its PMAY-aligned affordable housing phase in Harhua, Varanasi.",
-      image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80"
+      summary: "Adding to the premier lifestyle at Shree Sai City, SSB Group announced the proposed SSB Amusement Park and Luxury Resort on campus, complementing the luxury Club House, Olympic-sized swimming pool, tennis court, and rooftop sky gardens.",
+      image: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948520399-r81hq7.png",
+      tag: "Township Lifestyle",
+      author: "SSB Lifestyle Desk"
     },
     {
-      title: "SSB Group Expands into Commercial Sector with Landmark Lucknow Project",
-      publication: "The Economic Times Realty",
-      date: "April 2026",
-      summary: "Marking strategic expansion beyond Varanasi, SSB Group breaks ground on 'Pratham', a state-of-the-art commercial and retail hub in Lucknow.",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+      title: "316 KLD Sustainable Water Management & 80% Recycling Pioneered at Shree Sai City",
+      publication: "Eco Living & Green Built Environment",
+      date: "May 2026",
+      summary: "With a homegrown domestic water capacity of 316.687 KLD, Shree Sai City incorporates an advanced Sewage Treatment Plant (STP) recovering 80% water, alongside extensive rainwater harvesting and dual power supply with rooftop solar.",
+      image: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948529276-aspkwi.png",
+      tag: "Sustainability",
+      author: "Environmental Engineering Team"
     }
   ];
 
@@ -94,6 +127,22 @@ export const MediaPage = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+            <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
+              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, background: '#000' }}>
+                <iframe 
+                  src="https://drive.google.com/file/d/16std2Yp3EChiqsSCFdEkTxiSqyYS79Pu/preview" 
+                  title="Pratham Lucknow Walkthrough Film"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div style={{ padding: '1.25rem' }}>
+                <strong style={{ fontSize: '1.1rem', color: 'var(--ink)', display: 'block' }}>Pratham (Lucknow) — Official Architectural Walkthrough Film</strong>
+                <span style={{ fontSize: '0.85rem', color: 'var(--ink-muted)' }}>High-Visibility Commercial Growth Corridor, Lucknow</span>
+              </div>
+            </div>
+
             <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
               <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, background: '#000' }}>
                 <iframe 

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { SEED_DATA } from '../data/seedData';
 
-const STORAGE_KEY = 'ssb_group_official_v3';
+const STORAGE_KEY = 'ssb_group_official_v20';
 
 const StoreContext = createContext(null);
 
@@ -12,7 +12,23 @@ export const StoreProvider = ({ children }) => {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed && parsed.company && parsed.projects && parsed.journey && parsed.leadership) {
-          return parsed;
+          // Always ensure latest project assets, specs, gallery and seed definitions are merged in
+          const mergedProjects = SEED_DATA.projects.map(seedP => {
+            const savedP = parsed.projects.find(p => p.id === seedP.id || p.slug === seedP.slug);
+            return savedP ? { 
+              ...savedP, 
+              ...seedP,
+              featuredImage: seedP.featuredImage, 
+              heroImages: seedP.heroImages, 
+              gallery: seedP.gallery,
+              masterPlanUrl: seedP.masterPlanUrl, 
+              videoWalkthroughUrl: seedP.videoWalkthroughUrl,
+              configurations: seedP.configurations,
+              specifications: seedP.specifications,
+              amenities: seedP.amenities
+            } : seedP;
+          });
+          return { ...parsed, projects: mergedProjects, leadership: SEED_DATA.leadership };
         }
       }
     } catch (e) {

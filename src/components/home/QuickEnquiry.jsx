@@ -41,46 +41,46 @@ export const QuickEnquiry = () => {
   };
 
   return (
-    <section style={{ padding: '4.5rem 0', background: 'linear-gradient(135deg, #18181B 0%, #27272A 100%)', color: '#FFF' }}>
+    <section className="quick-enquiry-section" id="quick-enquiry-section">
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+        <div className="quick-enquiry-grid">
+          <div className="quick-enquiry-info">
+            <div className="quick-enquiry-eyebrow-row">
               <Sparkles size={18} style={{ color: 'var(--gold)' }} />
               <span className="eyebrow" style={{ color: 'var(--gold)', margin: 0 }}>CONNECT WITH ADVISORS</span>
             </div>
-            <h2 style={{ fontSize: '2.2rem', color: '#FFF', marginBottom: '1rem', lineHeight: '1.25' }}>
+            <h2 className="quick-enquiry-heading">
               Find Your Ideal Home in Varanasi & Lucknow
             </h2>
-            <p style={{ color: '#A1A1AA', fontSize: '1rem', lineHeight: '1.65', marginBottom: '1.5rem' }}>
+            <p className="quick-enquiry-subtext">
               Get verified RERA documentation, real-time inventory pricing, personalized payment plans, and zero-brokerage direct builder advantages.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.9rem', color: '#D4D4D8' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle2 size={18} style={{ color: 'var(--brand)' }} />
+            <div className="quick-enquiry-features">
+              <div className="quick-enquiry-feature-item">
+                <CheckCircle2 size={18} style={{ color: 'var(--brand)', flexShrink: 0 }} />
                 <span>Complimentary Chauffeur Cab Pick & Drop in Varanasi</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle2 size={18} style={{ color: 'var(--brand)' }} />
+              <div className="quick-enquiry-feature-item">
+                <CheckCircle2 size={18} style={{ color: 'var(--brand)', flexShrink: 0 }} />
                 <span>100% UP-RERA Registered & Title Clear Land Parcels</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle2 size={18} style={{ color: 'var(--brand)' }} />
+              <div className="quick-enquiry-feature-item">
+                <CheckCircle2 size={18} style={{ color: 'var(--brand)', flexShrink: 0 }} />
                 <span>Approved by SBI, HDFC, ICICI, Bank of Baroda & PNB</span>
               </div>
             </div>
           </div>
 
-          <div style={{ background: '#FFF', padding: '2.5rem', borderRadius: 'var(--r-xl)', boxShadow: 'var(--shadow-lg)', color: 'var(--ink)' }}>
-            <h3 style={{ fontSize: '1.4rem', marginBottom: '0.35rem', color: 'var(--ink)' }}>
+          <div className="quick-enquiry-card">
+            <h3 className="quick-enquiry-card-title">
               Request Priority Callback
             </h3>
-            <p style={{ fontSize: '0.85rem', color: 'var(--ink-muted)', marginBottom: '1.5rem' }}>
+            <p className="quick-enquiry-card-subtitle">
               Average response time under 5 minutes during working hours.
             </p>
 
             {submitted ? (
-              <div style={{ padding: '2rem 1rem', textAlign: 'center', background: 'var(--sand-muted)', borderRadius: 'var(--r-md)' }}>
+              <div className="quick-enquiry-success-box">
                 <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>✅</div>
                 <h4 style={{ fontSize: '1.2rem', marginBottom: '0.25rem', color: 'var(--brand)' }}>Request Submitted!</h4>
                 <p style={{ fontSize: '0.85rem', color: 'var(--ink-muted)' }}>
@@ -101,7 +101,7 @@ export const QuickEnquiry = () => {
                   />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="quick-enquiry-form-row">
                   <div className="form-group">
                     <label className="form-label">Phone Number *</label>
                     <input 
@@ -129,7 +129,7 @@ export const QuickEnquiry = () => {
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem' }}>
+                <button type="submit" className="btn btn-primary quick-enquiry-submit-btn">
                   <Send size={16} /> Request Instant Callback
                 </button>
               </form>

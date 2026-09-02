@@ -1,79 +1,124 @@
 import React from 'react';
-import { HardHat, CheckCircle2, Clock } from 'lucide-react';
+import { HardHat, CheckCircle2, Clock, Activity } from 'lucide-react';
 
 export const MilestoneTracker = ({ project }) => {
   if (!project) return null;
 
   const milestones = project.milestones || [
-    { name: "Foundation & Excavation", pct: 100, status: "COMPLETED" },
-    { name: "RCC Structure", pct: 85, status: "IN_PROGRESS" },
-    { name: "Brickwork & Plaster", pct: 60, status: "IN_PROGRESS" },
-    { name: "MEP & Finishing", pct: 30, status: "IN_PROGRESS" }
+    { name: "Foundation & Deep Piling", pct: 100, status: "COMPLETED" },
+    { name: "RCC Superstructure & Slabs", pct: 85, status: "IN_PROGRESS" },
+    { name: "Brickwork & Internal Plaster", pct: 60, status: "IN_PROGRESS" },
+    { name: "MEP, Lift Installation & Facade", pct: 30, status: "IN_PROGRESS" }
   ];
 
   const overallPct = project.overallProgressPct || 75;
 
   return (
-    <div className="timeline-module" style={{ background: '#FFF', borderRadius: 'var(--r-xl)', padding: '2.5rem', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)', marginBottom: '2.5rem' }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+    <section 
+      id="construction-milestones" 
+      className="timeline-module" 
+      style={{ 
+        background: '#FFFFFF', 
+        borderRadius: 'var(--r-2xl, 24px)', 
+        padding: '3rem', 
+        border: '1px solid rgba(226, 232, 240, 0.9)', 
+        boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
+        marginBottom: '3rem',
+        position: 'relative'
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '2.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.75rem', flexWrap: 'wrap', gap: '1.5rem' }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
-            <HardHat size={18} style={{ color: 'var(--brand)' }} />
-            <span className="eyebrow" style={{ margin: 0 }}>ENGINEERING AUDIT</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.08)', color: 'var(--brand)', padding: '0.35rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+            <Activity size={13} /> Engineering Transparency Audit
           </div>
-          <h3 style={{ fontSize: '1.8rem', color: 'var(--ink)', margin: 0 }}>Live Construction Progress</h3>
-          <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginTop: '0.25rem' }}>
-            Verified on-site civil engineering inspection metrics as of <strong>August 2026</strong>
+          <h3 style={{ fontSize: '2.2rem', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
+            Live Construction Progress & Velocity
+          </h3>
+          <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
+            Real-time on-site structural milestone tracking and material quality auditing updated as of <strong>August 2026</strong>.
           </p>
         </div>
-        <span className="badge badge-success" style={{ fontSize: '0.85rem', padding: '0.5rem 1rem' }}>
-          🟢 On-Schedule for Delivery
-        </span>
+
+        <div style={{ 
+          background: 'rgba(34, 197, 94, 0.12)', 
+          color: '#16A34A', 
+          border: '1px solid rgba(34, 197, 94, 0.3)', 
+          padding: '0.5rem 1.25rem', 
+          borderRadius: 'var(--r-pill)',
+          fontSize: '0.85rem',
+          fontWeight: 700,
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.4rem'
+        }}>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16A34A', display: 'inline-block' }}></span>
+          <span>ON-SCHEDULE DELIVERY</span>
+        </div>
       </div>
 
-      {/* Velocity Bar */}
-      <div style={{ marginBottom: '2.5rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.95rem' }}>
-          <span style={{ color: 'var(--ink)' }}>Overall Project Completion Velocity</span>
-          <span style={{ color: 'var(--brand)', fontSize: '1.15rem', fontWeight: 800 }}>{overallPct}% Completed</span>
+      {/* Main Velocity Bar */}
+      <div style={{ background: '#F8FAFC', padding: '1.75rem 2rem', borderRadius: 'var(--r-xl, 18px)', border: '1px solid var(--border)', marginBottom: '2.25rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <span style={{ color: 'var(--ink)', fontWeight: 700, fontSize: '1rem' }}>Overall Construction Completion Velocity</span>
+          <span style={{ color: 'var(--brand)', fontSize: '1.35rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
+            {overallPct}% Completed
+          </span>
         </div>
-        <div style={{ width: '100%', height: '14px', background: 'var(--sand-muted)', borderRadius: 'var(--r-pill)', overflow: 'hidden', border: '1px solid var(--border)' }}>
-          <div style={{ width: `${overallPct}%`, height: '100%', background: 'linear-gradient(90deg, var(--brand) 0%, #10B981 100%)', borderRadius: 'var(--r-pill)', transition: 'width 1s ease' }}></div>
+        <div style={{ width: '100%', height: '12px', background: '#E2E8F0', borderRadius: 'var(--r-pill)', overflow: 'hidden' }}>
+          <div style={{ 
+            width: `${overallPct}%`, 
+            height: '100%', 
+            background: 'linear-gradient(90deg, var(--brand) 0%, #22C55E 100%)', 
+            borderRadius: 'var(--r-pill)', 
+            transition: 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)' 
+          }} />
         </div>
       </div>
 
-      {/* Milestones Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+      {/* Stage Breakdown Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
         {milestones.map((m, idx) => {
           const isDone = m.pct === 100;
           return (
             <div 
               key={idx}
               style={{
-                background: 'var(--sand-muted)',
-                padding: '1.25rem',
-                borderRadius: 'var(--r-md)',
-                border: isDone ? '1.5px solid var(--brand)' : '1px solid var(--border)'
+                background: isDone ? '#FFFFFF' : '#F8FAFC',
+                padding: '1.5rem',
+                borderRadius: 'var(--r-xl, 16px)',
+                border: isDone ? '1px solid rgba(34, 197, 94, 0.4)' : '1px solid var(--border)',
+                boxShadow: isDone ? '0 4px 15px rgba(34, 197, 94, 0.08)' : '0 2px 6px rgba(0,0,0,0.02)'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <h5 style={{ fontSize: '0.95rem', color: 'var(--ink)', margin: 0 }}>{m.name}</h5>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                <h5 style={{ fontSize: '0.98rem', color: 'var(--ink)', margin: 0, fontWeight: 700 }}>{m.name}</h5>
                 {isDone ? (
-                  <CheckCircle2 size={16} style={{ color: 'var(--brand)' }} />
+                  <CheckCircle2 size={18} style={{ color: '#16A34A', flexShrink: 0 }} />
                 ) : (
-                  <Clock size={16} style={{ color: 'var(--gold)' }} />
+                  <Clock size={18} style={{ color: 'var(--brand)', flexShrink: 0 }} />
                 )}
               </div>
-              <div style={{ width: '100%', height: '6px', background: '#E2E8F0', borderRadius: 'var(--r-pill)', overflow: 'hidden', marginBottom: '0.5rem' }}>
-                <div style={{ width: `${m.pct}%`, height: '100%', background: isDone ? 'var(--brand)' : 'var(--gold)', borderRadius: 'var(--r-pill)' }}></div>
+              <div style={{ width: '100%', height: '6px', background: '#E2E8F0', borderRadius: 'var(--r-pill)', overflow: 'hidden', marginBottom: '0.65rem' }}>
+                <div style={{ 
+                  width: `${m.pct}%`, 
+                  height: '100%', 
+                  background: isDone ? '#16A34A' : 'linear-gradient(90deg, var(--brand) 0%, #EA580C 100%)', 
+                  borderRadius: 'var(--r-pill)' 
+                }} />
               </div>
-              <span style={{ fontSize: '0.8rem', fontWeight: 700, color: isDone ? 'var(--brand)' : 'var(--gold)' }}>
-                {m.pct}% Complete
-              </span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--ink-muted)' }}>
+                  {isDone ? 'Phase Certified' : 'Active Progress'}
+                </span>
+                <span style={{ fontSize: '0.85rem', fontWeight: 800, color: isDone ? '#16A34A' : 'var(--brand)' }}>
+                  {m.pct}%
+                </span>
+              </div>
             </div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };

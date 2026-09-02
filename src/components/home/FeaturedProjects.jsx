@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStore } from '../../context/StoreContext';
 import { useModal } from '../../context/ModalContext';
-import { ArrowRight, MapPin, CheckCircle2, ShieldCheck, Download } from 'lucide-react';
+import { ArrowRight, MapPin, CheckCircle2, ShieldCheck, Download, Sparkles, Building2 } from 'lucide-react';
 
 export const FeaturedProjects = () => {
   const { projects } = useStore();
@@ -15,21 +15,23 @@ export const FeaturedProjects = () => {
     : projects.filter(p => p.category.toUpperCase() === filter || p.status.toUpperCase() === filter);
 
   return (
-    <section className="featured-section" style={{ padding: '5rem 0', background: 'var(--sand)' }}>
+    <section className="featured-section" id="featured-projects-section">
       <div className="container">
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '3rem' }}>
-          <span className="eyebrow">OUR MASTERPIECES</span>
-          <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-heading)', color: 'var(--ink)', marginBottom: '1rem' }}>
-            Featured Developments
+        <div className="featured-header-box">
+          <div className="featured-badge-pill">
+            <Sparkles size={13} /> CURATED ARCHITECTURAL LANDMARKS
+          </div>
+          <h2 className="featured-main-heading">
+            Signature Real Estate Developments
           </h2>
-          <p style={{ maxWidth: '640px', color: 'var(--ink-muted)', fontSize: '1.05rem' }}>
-            Explore our RERA-approved gated communities, high-rise luxury towers, and prime commercial destinations across Eastern Uttar Pradesh.
+          <p className="featured-sub-heading">
+            Explore our UP-RERA verified master-planned townships, modern high-street retail arcades, and luxury residential towers.
           </p>
 
           {/* Filter Pills */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginTop: '1.75rem' }}>
+          <div className="featured-filter-pills-row">
             {[
-              { id: 'ALL', label: 'All Projects' },
+              { id: 'ALL', label: 'All Developments' },
               { id: 'RESIDENTIAL', label: 'Residential' },
               { id: 'COMMERCIAL', label: 'Commercial' },
               { id: 'ONGOING', label: 'Under Construction' },
@@ -37,9 +39,9 @@ export const FeaturedProjects = () => {
             ].map(tab => (
               <button
                 key={tab.id}
+                type="button"
                 onClick={() => setFilter(tab.id)}
-                className={`btn btn-sm ${filter === tab.id ? 'btn-primary' : 'btn-ghost-warm'}`}
-                style={{ borderRadius: 'var(--r-pill)' }}
+                className={`featured-filter-btn ${filter === tab.id ? 'active' : ''}`}
               >
                 {tab.label}
               </button>
@@ -48,90 +50,92 @@ export const FeaturedProjects = () => {
         </div>
 
         {/* Project Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '2rem' }}>
+        <div className="featured-projects-grid">
           {filteredProjects.map((project) => (
             <div 
               key={project.id} 
               className="project-card"
               onClick={() => navigate(`/projects/${project.slug}`)}
-              style={{
-                background: 'var(--surface)',
-                borderRadius: 'var(--r-lg)',
-                overflow: 'hidden',
-                border: '1px solid var(--border)',
-                boxShadow: 'var(--shadow-sm)',
-                display: 'flex',
-                flexDirection: 'column',
-                cursor: 'pointer',
-                transition: 'transform var(--dur-norm) var(--ease), box-shadow var(--dur-norm) var(--ease)'
-              }}
             >
               {/* Image & Badges */}
-              <div style={{ position: 'relative', height: '240px', overflow: 'hidden' }}>
+              <div className="project-card-img-wrap">
                 <img 
                   src={project.featuredImage} 
                   alt={project.title} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                  loading="lazy"
                   className="project-card-image"
                 />
-                <div style={{ position: 'absolute', top: '1rem', left: '1rem', display: 'flex', gap: '0.5rem' }}>
-                  <span className={`badge ${project.status === 'Completed' ? 'badge-success' : 'badge-brand'}`}>
+                
+                <div className="project-card-overlay-gradient" />
+
+                <div className="project-card-top-badges">
+                  <span className="badge badge-brand">
                     {project.status.toUpperCase()}
                   </span>
-                  <span className="badge badge-ink">
+                  <span className="project-card-cat-badge">
                     {project.category}
                   </span>
                 </div>
-                <div style={{ position: 'absolute', bottom: '0.75rem', right: '0.75rem', background: 'rgba(24, 24, 27, 0.85)', backdropFilter: 'blur(8px)', color: '#FFF', padding: '0.35rem 0.75rem', borderRadius: 'var(--r-sm)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <ShieldCheck size={14} style={{ color: 'var(--gold)' }} />
-                  <span>RERA Approved</span>
+                
+                <div className="project-card-rera-badge">
+                  <ShieldCheck size={13} color="var(--gold)" />
+                  <span>RERA: {project.reraNumber}</span>
                 </div>
               </div>
 
               {/* Content */}
-              <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--brand)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.35rem' }}>
-                  <MapPin size={14} />
-                  <span>{project.locationName}</span>
+              <div className="project-card-content">
+                <div>
+                  <div className="project-card-location">
+                    <MapPin size={13} />
+                    <span>{project.locationName}</span>
+                  </div>
+
+                  <h3 className="project-card-title">
+                    {project.title}
+                  </h3>
+
+                  <p className="project-card-tagline">
+                    {project.tagline || project.description?.substring(0, 115) + '...'}
+                  </p>
                 </div>
 
-                <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: 'var(--ink)' }}>
-                  {project.title}
-                </h3>
-
-                <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', lineHeight: '1.6', marginBottom: '1.25rem', flexGrow: 1 }}>
-                  {project.tagline}
-                </p>
-
-                {/* Configurations Strip */}
-                <div style={{ padding: '0.8rem 1rem', background: 'var(--sand-muted)', borderRadius: 'var(--r-md)', marginBottom: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div>
-                    <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--ink-muted)', display: 'block', fontWeight: 600 }}>Starting Price</span>
-                    <strong style={{ fontSize: '1.1rem', color: 'var(--brand)' }}>{project.priceDisplay}</strong>
+                <div>
+                  {/* Configurations Strip */}
+                  <div className="project-config-strip">
+                    <div>
+                      <span className="project-config-label">Starting Price</span>
+                      <strong className="project-config-price">{project.priceDisplay || 'On Request'}</strong>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <span className="project-config-label">Land Area</span>
+                      <strong className="project-config-area">{project.totalLandArea || 'Master Planned'}</strong>
+                    </div>
                   </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--ink-muted)', display: 'block', fontWeight: 600 }}>Land Area</span>
-                    <strong style={{ fontSize: '0.95rem', color: 'var(--ink)' }}>{project.totalLandArea}</strong>
-                  </div>
-                </div>
 
-                {/* CTA Buttons */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem' }}>
-                  <div className="btn btn-primary btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
-                    <span>Explore Project</span>
-                    <ArrowRight size={14} />
+                  {/* CTA Buttons */}
+                  <div className="project-cta-grid">
+                    <button 
+                      type="button"
+                      className="btn btn-primary project-btn-explore"
+                    >
+                      <span>Explore Project & Plans</span>
+                      <ArrowRight size={14} />
+                    </button>
+                    
+                    <button 
+                      type="button"
+                      className="btn btn-outline project-btn-brochure" 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openEnquiryModal(project.title, 'Brochure Download');
+                      }}
+                      title="Download Brochure"
+                      aria-label="Download Brochure"
+                    >
+                      <Download size={15} />
+                    </button>
                   </div>
-                  <button 
-                    className="btn btn-outline btn-sm" 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openEnquiryModal(project.title, 'Brochure Download');
-                    }}
-                    title="Download Brochure"
-                    aria-label="Download Brochure"
-                  >
-                    <Download size={15} />
-                  </button>
                 </div>
               </div>
             </div>

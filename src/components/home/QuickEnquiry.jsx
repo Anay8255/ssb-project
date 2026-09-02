@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useStore } from '../../context/StoreContext';
 import { useModal } from '../../context/ModalContext';
-import { Send, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Send, Sparkles, CheckCircle2, User, Phone, Building2, Clock, ShieldCheck, Check } from 'lucide-react';
 
 export const QuickEnquiry = () => {
   const { addLead, projects } = useStore();
@@ -42,96 +42,151 @@ export const QuickEnquiry = () => {
 
   return (
     <section className="quick-enquiry-section" id="quick-enquiry-section">
+      <div className="quick-enquiry-glow-bg" />
       <div className="container">
         <div className="quick-enquiry-grid">
+          {/* Left Column: Key Highlights & Guarantee */}
           <div className="quick-enquiry-info">
             <div className="quick-enquiry-eyebrow-row">
-              <Sparkles size={18} style={{ color: 'var(--gold)' }} />
-              <span className="eyebrow" style={{ color: 'var(--gold)', margin: 0 }}>CONNECT WITH ADVISORS</span>
+              <Sparkles size={14} className="quick-enquiry-gold-sparkle" />
+              <span className="quick-enquiry-eyebrow">DIRECT BUILDER ADVISORY</span>
             </div>
+
             <h2 className="quick-enquiry-heading">
               Find Your Ideal Home in Varanasi & Lucknow
             </h2>
+
             <p className="quick-enquiry-subtext">
-              Get verified RERA documentation, real-time inventory pricing, personalized payment plans, and zero-brokerage direct builder advantages.
+              Direct builder allotment with verified UP-RERA documentation, transparent price sheets, customized EMI schedules, and zero brokerage.
             </p>
+
             <div className="quick-enquiry-features">
               <div className="quick-enquiry-feature-item">
-                <CheckCircle2 size={18} style={{ color: 'var(--brand)', flexShrink: 0 }} />
-                <span>Complimentary Chauffeur Cab Pick & Drop in Varanasi</span>
+                <div className="quick-enquiry-feature-icon">
+                  <Check size={14} strokeWidth={3} />
+                </div>
+                <div>
+                  <strong>Complimentary Chauffeur Cab</strong>
+                  <p>Pick & drop facility for personalized Varanasi site visits</p>
+                </div>
               </div>
+
               <div className="quick-enquiry-feature-item">
-                <CheckCircle2 size={18} style={{ color: 'var(--brand)', flexShrink: 0 }} />
-                <span>100% UP-RERA Registered & Title Clear Land Parcels</span>
+                <div className="quick-enquiry-feature-icon">
+                  <Check size={14} strokeWidth={3} />
+                </div>
+                <div>
+                  <strong>100% UP-RERA Registered</strong>
+                  <p>VDA approved & title-clear freehold land parcels</p>
+                </div>
               </div>
+
               <div className="quick-enquiry-feature-item">
-                <CheckCircle2 size={18} style={{ color: 'var(--brand)', flexShrink: 0 }} />
-                <span>Approved by SBI, HDFC, ICICI, Bank of Baroda & PNB</span>
+                <div className="quick-enquiry-feature-icon">
+                  <Check size={14} strokeWidth={3} />
+                </div>
+                <div>
+                  <strong>Pre-Approved Bank Home Loans</strong>
+                  <p>Instant approvals by SBI, HDFC, ICICI, BOB & PNB</p>
+                </div>
               </div>
             </div>
           </div>
 
+          {/* Right Column: High-End Priority Form Card */}
           <div className="quick-enquiry-card">
-            <h3 className="quick-enquiry-card-title">
-              Request Priority Callback
-            </h3>
-            <p className="quick-enquiry-card-subtitle">
-              Average response time under 5 minutes during working hours.
-            </p>
+            <div className="quick-enquiry-card-header">
+              <span className="quick-enquiry-pill-badge">
+                <Clock size={12} />
+                <span>Response in &lt; 5 mins</span>
+              </span>
+              <h3 className="quick-enquiry-card-title">
+                Request Priority Callback
+              </h3>
+              <p className="quick-enquiry-card-subtitle">
+                Fill details below to get immediate allotment assistance & brochures.
+              </p>
+            </div>
 
             {submitted ? (
               <div className="quick-enquiry-success-box">
-                <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>✅</div>
-                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.25rem', color: 'var(--brand)' }}>Request Submitted!</h4>
-                <p style={{ fontSize: '0.85rem', color: 'var(--ink-muted)' }}>
-                  Our sales lead Rajesh Sharma has received your enquiry and is preparing the tailored property dossier.
+                <div className="quick-enquiry-success-icon">
+                  <CheckCircle2 size={44} color="#10B981" />
+                </div>
+                <h4>Request Received!</h4>
+                <p>
+                  Our senior property advisor is reviewing your request and will call you at <strong>{formData.phone}</strong> shortly.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label className="form-label">Your Name *</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    required 
-                    placeholder="Enter your full name"
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  />
-                </div>
-
-                <div className="quick-enquiry-form-row">
-                  <div className="form-group">
-                    <label className="form-label">Phone Number *</label>
+              <form onSubmit={handleSubmit} className="quick-enquiry-form">
+                {/* Full Name Field */}
+                <div className="quick-form-group">
+                  <label className="quick-form-label">
+                    Full Name <span className="req-star">*</span>
+                  </label>
+                  <div className="quick-input-wrap">
+                    <User size={16} className="quick-field-icon" />
                     <input 
-                      type="tel" 
-                      className="form-input" 
+                      type="text" 
+                      className="quick-form-input" 
                       required 
-                      placeholder="+91 98189 28893"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="e.g. Anay Sharma"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     />
                   </div>
+                </div>
 
-                  <div className="form-group">
-                    <label className="form-label">Interested Project</label>
-                    <select 
-                      className="form-select"
-                      value={formData.projectId}
-                      onChange={(e) => setFormData({ ...formData, projectId: e.target.value })}
-                    >
-                      <option value="">Select Project</option>
-                      {projects.map(p => (
-                        <option key={p.id} value={p.id}>{p.title}</option>
-                      ))}
-                    </select>
+                {/* 2-Column Row for Phone & Project */}
+                <div className="quick-enquiry-form-row">
+                  <div className="quick-form-group">
+                    <label className="quick-form-label">
+                      Phone Number <span className="req-star">*</span>
+                    </label>
+                    <div className="quick-input-wrap">
+                      <Phone size={16} className="quick-field-icon" />
+                      <input 
+                        type="tel" 
+                        className="quick-form-input" 
+                        required 
+                        placeholder="+91 98189 28893"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="quick-form-group">
+                    <label className="quick-form-label">
+                      Interested Project
+                    </label>
+                    <div className="quick-input-wrap">
+                      <Building2 size={16} className="quick-field-icon" />
+                      <select 
+                        className="quick-form-select"
+                        value={formData.projectId}
+                        onChange={(e) => setFormData({ ...formData, projectId: e.target.value })}
+                      >
+                        <option value="">All Projects</option>
+                        {projects.map(p => (
+                          <option key={p.id} value={p.id}>{p.title}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary quick-enquiry-submit-btn">
-                  <Send size={16} /> Request Instant Callback
+                {/* Submit Action Button */}
+                <button type="submit" className="quick-enquiry-submit-btn">
+                  <Send size={15} />
+                  <span>Request Instant Callback</span>
                 </button>
+
+                <div className="quick-form-privacy">
+                  <ShieldCheck size={13} />
+                  <span>Your information is strictly protected &amp; never shared.</span>
+                </div>
               </form>
             )}
           </div>

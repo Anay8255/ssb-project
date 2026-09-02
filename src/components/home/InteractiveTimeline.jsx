@@ -60,17 +60,17 @@ export const InteractiveTimeline = () => {
   }, [items]);
 
   return (
-    <section className="timeline-scroll-section" style={{ padding: '6rem 0', background: '#F8FAFC', position: 'relative' }}>
+    <section className="timeline-scroll-section" id="timeline-journey-section">
       <div className="container" ref={containerRef}>
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
-          <span className="eyebrow" style={{ color: '#C5A059', fontWeight: '700', letterSpacing: '0.15em', fontSize: '0.85rem' }}>
+        <div className="timeline-section-header">
+          <span className="eyebrow timeline-eyebrow">
             OUR MILESTONES
           </span>
-          <h2 style={{ fontSize: '2.75rem', color: '#0F172A', fontFamily: 'var(--font-heading, "Cinzel", serif)', marginTop: '0.4rem', fontWeight: '700' }}>
+          <h2 className="timeline-heading">
             The Journey From 2013 to Today
           </h2>
-          <p style={{ color: '#64748B', maxWidth: '620px', margin: '0.75rem auto 0', fontSize: '1.05rem', lineHeight: '1.6' }}>
+          <p className="timeline-subheading">
             Over a decade of landmark development, structural excellence, and timely handovers across Eastern Uttar Pradesh.
           </p>
         </div>

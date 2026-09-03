@@ -31,32 +31,24 @@ export const ProjectGallery = ({ project }) => {
   return (
     <section 
       id="gallery" 
-      style={{ 
-        background: '#FFFFFF', 
-        borderRadius: 'var(--r-2xl, 24px)', 
-        padding: '3rem', 
-        border: '1px solid rgba(226, 232, 240, 0.9)', 
-        boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
-        marginBottom: '3rem',
-        position: 'relative'
-      }}
+      className="project-section-card"
     >
       {/* Header Bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.75rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.25rem', marginBottom: '2rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.5rem' }}>
         <div>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.08)', color: 'var(--brand)', padding: '0.35rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
             <ImageIcon size={13} /> High-Resolution Visual Showcase
           </div>
-          <h3 style={{ fontSize: '2.2rem', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
+          <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.2rem)', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
             Architectural Gallery & Drone Perspectives
           </h3>
-          <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
+          <p style={{ fontSize: '0.92rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
             Browse certified project elevations, aerial drone photography, blueprint schematics, and construction finishes ({galleryItems.length} curated images).
           </p>
         </div>
 
         {/* Category Filter Pills */}
-        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap' }}>
           {categories.map(cat => {
             const count = cat === 'All' ? galleryItems.length : galleryItems.filter(i => i.category === cat).length;
             const isActive = activeCategory === cat;
@@ -67,9 +59,9 @@ export const ProjectGallery = ({ project }) => {
                 onClick={() => setActiveCategory(cat)}
                 style={{
                   borderRadius: 'var(--r-pill)',
-                  fontSize: '0.82rem',
+                  fontSize: '0.8rem',
                   fontWeight: 600,
-                  padding: '0.5rem 1.1rem',
+                  padding: '0.45rem 0.95rem',
                   cursor: 'pointer',
                   transition: 'all 0.25s ease',
                   border: isActive ? '1px solid var(--brand)' : '1px solid var(--border)',
@@ -78,7 +70,7 @@ export const ProjectGallery = ({ project }) => {
                   boxShadow: isActive ? '0 4px 12px rgba(224, 84, 43, 0.3)' : 'none'
                 }}
               >
-                {cat} <span style={{ opacity: 0.8, marginLeft: '0.25rem', fontSize: '0.75rem' }}>({count})</span>
+                {cat} <span style={{ opacity: 0.8, marginLeft: '0.2rem', fontSize: '0.72rem' }}>({count})</span>
               </button>
             );
           })}
@@ -88,8 +80,8 @@ export const ProjectGallery = ({ project }) => {
       {/* Editorial Responsive Grid */}
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))', 
-        gap: '1.5rem' 
+        gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', 
+        gap: '1.25rem' 
       }}>
         {filteredItems.map((item, idx) => (
           <div
@@ -144,14 +136,14 @@ export const ProjectGallery = ({ project }) => {
             {item.category && (
               <div style={{
                 position: 'absolute',
-                top: '0.85rem',
-                left: '0.85rem',
+                top: '0.75rem',
+                left: '0.75rem',
                 background: 'rgba(15, 23, 42, 0.85)',
                 color: '#FFF',
                 backdropFilter: 'blur(8px)',
-                padding: '0.25rem 0.75rem',
+                padding: '0.2rem 0.65rem',
                 borderRadius: 'var(--r-pill)',
-                fontSize: '0.72rem',
+                fontSize: '0.7rem',
                 fontWeight: 700,
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 letterSpacing: '0.04em'
@@ -163,9 +155,9 @@ export const ProjectGallery = ({ project }) => {
             {/* Bottom Details Bar */}
             <div style={{
               position: 'absolute',
-              bottom: '0.85rem',
-              left: '0.85rem',
-              right: '0.85rem',
+              bottom: '0.75rem',
+              left: '0.75rem',
+              right: '0.75rem',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
@@ -173,7 +165,7 @@ export const ProjectGallery = ({ project }) => {
             }}>
               <p style={{
                 color: '#FFFFFF',
-                fontSize: '0.9rem',
+                fontSize: '0.86rem',
                 fontWeight: 600,
                 margin: 0,
                 textShadow: '0 2px 6px rgba(0,0,0,0.8)',
@@ -189,15 +181,15 @@ export const ProjectGallery = ({ project }) => {
                 background: 'linear-gradient(135deg, var(--brand) 0%, #C4431C 100%)',
                 color: '#FFF',
                 borderRadius: '50%',
-                width: '32px',
-                height: '32px',
+                width: '28px',
+                height: '28px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 boxShadow: '0 4px 12px rgba(224, 84, 43, 0.5)',
                 flexShrink: 0
               }}>
-                <ZoomIn size={14} />
+                <ZoomIn size={13} />
               </span>
             </div>
           </div>

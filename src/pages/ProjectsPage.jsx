@@ -36,8 +36,8 @@ export const ProjectsPage = () => {
         </div>
       </section>
 
-      {/* Filter & Search Toolbar */}
-      <div style={{ background: '#FFFFFF', borderBottom: '1px solid var(--border)', padding: '1.5rem 0', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', position: 'sticky', top: '70px', zIndex: 40 }}>
+      {/* Filter & Search Toolbar (Natural scrolling, not sticky) */}
+      <div style={{ background: '#FFFFFF', borderBottom: '1px solid var(--border)', padding: '1.5rem 0', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1.25rem' }}>
           {/* Category Tabs */}
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>

@@ -16,26 +16,17 @@ export const MilestoneTracker = ({ project }) => {
   return (
     <section 
       id="construction-milestones" 
-      className="timeline-module" 
-      style={{ 
-        background: '#FFFFFF', 
-        borderRadius: 'var(--r-2xl, 24px)', 
-        padding: '3rem', 
-        border: '1px solid rgba(226, 232, 240, 0.9)', 
-        boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
-        marginBottom: '3rem',
-        position: 'relative'
-      }}
+      className="project-section-card"
     >
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '2.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.75rem', flexWrap: 'wrap', gap: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '2rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.5rem', flexWrap: 'wrap', gap: '1.25rem' }}>
         <div>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.08)', color: 'var(--brand)', padding: '0.35rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
             <Activity size={13} /> Engineering Transparency Audit
           </div>
-          <h3 style={{ fontSize: '2.2rem', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
+          <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.2rem)', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
             Live Construction Progress & Velocity
           </h3>
-          <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
+          <p style={{ fontSize: '0.92rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '650px', lineHeight: 1.5 }}>
             Real-time on-site structural milestone tracking and material quality auditing updated as of <strong>August 2026</strong>.
           </p>
         </div>
@@ -44,28 +35,28 @@ export const MilestoneTracker = ({ project }) => {
           background: 'rgba(34, 197, 94, 0.12)', 
           color: '#16A34A', 
           border: '1px solid rgba(34, 197, 94, 0.3)', 
-          padding: '0.5rem 1.25rem', 
+          padding: '0.45rem 1.15rem', 
           borderRadius: 'var(--r-pill)',
-          fontSize: '0.85rem',
+          fontSize: '0.82rem',
           fontWeight: 700,
           display: 'inline-flex',
           alignItems: 'center',
           gap: '0.4rem'
         }}>
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16A34A', display: 'inline-block' }}></span>
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#16A34A', display: 'inline-block' }}></span>
           <span>ON-SCHEDULE DELIVERY</span>
         </div>
       </div>
 
       {/* Main Velocity Bar */}
-      <div style={{ background: '#F8FAFC', padding: '1.75rem 2rem', borderRadius: 'var(--r-xl, 18px)', border: '1px solid var(--border)', marginBottom: '2.25rem' }}>
+      <div style={{ background: '#F8FAFC', padding: '1.25rem 1.5rem', borderRadius: 'var(--r-xl, 18px)', border: '1px solid var(--border)', marginBottom: '2rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-          <span style={{ color: 'var(--ink)', fontWeight: 700, fontSize: '1rem' }}>Overall Construction Completion Velocity</span>
-          <span style={{ color: 'var(--brand)', fontSize: '1.35rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
+          <span style={{ color: 'var(--ink)', fontWeight: 700, fontSize: '0.95rem' }}>Overall Construction Completion Velocity</span>
+          <span style={{ color: 'var(--brand)', fontSize: '1.25rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
             {overallPct}% Completed
           </span>
         </div>
-        <div style={{ width: '100%', height: '12px', background: '#E2E8F0', borderRadius: 'var(--r-pill)', overflow: 'hidden' }}>
+        <div style={{ width: '100%', height: '10px', background: '#E2E8F0', borderRadius: 'var(--r-pill)', overflow: 'hidden' }}>
           <div style={{ 
             width: `${overallPct}%`, 
             height: '100%', 
@@ -77,7 +68,7 @@ export const MilestoneTracker = ({ project }) => {
       </div>
 
       {/* Stage Breakdown Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
         {milestones.map((m, idx) => {
           const isDone = m.pct === 100;
           return (
@@ -85,21 +76,21 @@ export const MilestoneTracker = ({ project }) => {
               key={idx}
               style={{
                 background: isDone ? '#FFFFFF' : '#F8FAFC',
-                padding: '1.5rem',
+                padding: '1.25rem',
                 borderRadius: 'var(--r-xl, 16px)',
                 border: isDone ? '1px solid rgba(34, 197, 94, 0.4)' : '1px solid var(--border)',
                 boxShadow: isDone ? '0 4px 15px rgba(34, 197, 94, 0.08)' : '0 2px 6px rgba(0,0,0,0.02)'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                <h5 style={{ fontSize: '0.98rem', color: 'var(--ink)', margin: 0, fontWeight: 700 }}>{m.name}</h5>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.65rem' }}>
+                <h5 style={{ fontSize: '0.92rem', color: 'var(--ink)', margin: 0, fontWeight: 700 }}>{m.name}</h5>
                 {isDone ? (
-                  <CheckCircle2 size={18} style={{ color: '#16A34A', flexShrink: 0 }} />
+                  <CheckCircle2 size={16} style={{ color: '#16A34A', flexShrink: 0 }} />
                 ) : (
-                  <Clock size={18} style={{ color: 'var(--brand)', flexShrink: 0 }} />
+                  <Clock size={16} style={{ color: 'var(--brand)', flexShrink: 0 }} />
                 )}
               </div>
-              <div style={{ width: '100%', height: '6px', background: '#E2E8F0', borderRadius: 'var(--r-pill)', overflow: 'hidden', marginBottom: '0.65rem' }}>
+              <div style={{ width: '100%', height: '5px', background: '#E2E8F0', borderRadius: 'var(--r-pill)', overflow: 'hidden', marginBottom: '0.55rem' }}>
                 <div style={{ 
                   width: `${m.pct}%`, 
                   height: '100%', 
@@ -108,10 +99,10 @@ export const MilestoneTracker = ({ project }) => {
                 }} />
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--ink-muted)' }}>
+                <span style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--ink-muted)' }}>
                   {isDone ? 'Phase Certified' : 'Active Progress'}
                 </span>
-                <span style={{ fontSize: '0.85rem', fontWeight: 800, color: isDone ? '#16A34A' : 'var(--brand)' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 800, color: isDone ? '#16A34A' : 'var(--brand)' }}>
                   {m.pct}%
                 </span>
               </div>

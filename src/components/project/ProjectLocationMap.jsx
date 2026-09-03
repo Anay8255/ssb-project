@@ -27,7 +27,7 @@ export const ProjectLocationMap = ({ project }) => {
     {
       id: 'airport',
       category: 'transit',
-      icon: <Plane size={18} className="text-amber-500" />,
+      icon: <Plane size={17} className="text-amber-500" />,
       title: "Lal Bahadur Shastri International Airport",
       time: "15 Mins",
       detail: "Direct 4-Lane Babatpur Airport Expressway (NH-56)"
@@ -35,15 +35,15 @@ export const ProjectLocationMap = ({ project }) => {
     {
       id: 'ringroad',
       category: 'transit',
-      icon: <Compass size={18} className="text-emerald-500" />,
+      icon: <Compass size={17} className="text-emerald-500" />,
       title: "Harhua Crossing & Varanasi Ring Road",
       time: "5 Mins",
-      detail: "Seamless seamless bypass transit across eastern UP"
+      detail: "Seamless bypass transit across eastern UP"
     },
     {
       id: 'railway',
       category: 'transit',
-      icon: <Train size={18} className="text-blue-500" />,
+      icon: <Train size={17} className="text-blue-500" />,
       title: "Varanasi Cantt Railway Junction",
       time: "20 Mins",
       detail: "Direct high-speed arterial corridor connectivity"
@@ -51,7 +51,7 @@ export const ProjectLocationMap = ({ project }) => {
     {
       id: 'hospital',
       category: 'health',
-      icon: <Hospital size={18} className="text-rose-500" />,
+      icon: <Hospital size={17} className="text-rose-500" />,
       title: "Heritage & Apex Multi-Speciality Hospitals",
       time: "10 Mins",
       detail: "24x7 emergency medical trauma care access"
@@ -59,7 +59,7 @@ export const ProjectLocationMap = ({ project }) => {
     {
       id: 'education',
       category: 'education',
-      icon: <GraduationCap size={18} className="text-purple-500" />,
+      icon: <GraduationCap size={17} className="text-purple-500" />,
       title: "SHEAT Engineering & Sunbeam Academy",
       time: "8 Mins",
       detail: "Renowned educational and collegiate institutions"
@@ -73,16 +73,7 @@ export const ProjectLocationMap = ({ project }) => {
   return (
     <section 
       id="location-hub"
-      className="project-map-section"
-      style={{ 
-        background: '#FFFFFF', 
-        padding: '3rem', 
-        borderRadius: 'var(--r-2xl, 24px)', 
-        border: '1px solid rgba(226, 232, 240, 0.9)', 
-        boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.05)', 
-        marginBottom: '3rem',
-        position: 'relative'
-      }}
+      className="project-section-card"
     >
       {/* Header Bar */}
       <div style={{ 
@@ -90,19 +81,19 @@ export const ProjectLocationMap = ({ project }) => {
         justifyContent: 'space-between', 
         alignItems: 'flex-start', 
         flexWrap: 'wrap', 
-        gap: '1.5rem', 
-        marginBottom: '2.25rem',
+        gap: '1.25rem', 
+        marginBottom: '2rem',
         borderBottom: '1px solid var(--border)',
-        paddingBottom: '1.75rem'
+        paddingBottom: '1.5rem'
       }}>
         <div>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.08)', color: 'var(--brand)', padding: '0.35rem 0.85rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
             <MapPin size={13} /> Strategic Growth Corridor
           </div>
-          <h3 style={{ fontSize: '2.2rem', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
+          <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.2rem)', color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
             Strategic Location & Transit Hub
           </h3>
-          <p style={{ fontSize: '0.95rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '680px', lineHeight: 1.5 }}>
+          <p style={{ fontSize: '0.92rem', color: 'var(--ink-muted)', marginTop: '0.35rem', maxWidth: '680px', lineHeight: 1.5 }}>
             {project.fullAddress || project.locationName || 'High-visibility arterial corridor with direct access to expressways, airports, and premier civic infrastructure.'}
           </p>
         </div>
@@ -117,19 +108,19 @@ export const ProjectLocationMap = ({ project }) => {
             display: 'inline-flex', 
             alignItems: 'center', 
             gap: '0.45rem',
-            padding: '0.5rem 1.15rem',
-            fontSize: '0.85rem',
+            padding: '0.45rem 1.1rem',
+            fontSize: '0.82rem',
             fontWeight: 600,
             border: '1px solid var(--border)'
           }}
         >
-          {copied ? <Check size={16} color="var(--success)" /> : <Copy size={16} />}
-          <span>{copied ? 'Address Copied!' : 'Copy Full Address'}</span>
+          {copied ? <Check size={15} color="var(--success)" /> : <Copy size={15} />}
+          <span>{copied ? 'Address Copied!' : 'Copy Address'}</span>
         </button>
       </div>
 
       {/* Main Grid: Interactive Map + Categorized Transit Access */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem', alignItems: 'stretch' }}>
+      <div className="location-commute-grid">
         
         {/* Modern Map Container */}
         <div style={{ 
@@ -139,34 +130,37 @@ export const ProjectLocationMap = ({ project }) => {
           overflow: 'hidden', 
           border: '1px solid var(--border)', 
           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
-          background: '#F8FAFC'
+          background: '#F8FAFC',
+          minHeight: '340px'
         }}>
           <div style={{
             background: '#F1F5F9',
-            padding: '0.75rem 1.25rem',
+            padding: '0.65rem 1.15rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            borderBottom: '1px solid var(--border)'
+            borderBottom: '1px solid var(--border)',
+            flexWrap: 'wrap',
+            gap: '0.4rem'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
               <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22C55E', display: 'inline-block' }} />
-              <strong style={{ fontSize: '0.82rem', color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                Live GPS Coordinates Pinpoint
+              <strong style={{ fontSize: '0.78rem', color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                Live GPS Pinpoint
               </strong>
             </div>
-            <span style={{ fontSize: '0.75rem', color: 'var(--ink-muted)', fontWeight: 500 }}>
+            <span style={{ fontSize: '0.72rem', color: 'var(--ink-muted)', fontWeight: 500 }}>
               {project.geoCoordinates ? `${project.geoCoordinates.lat}° N, ${project.geoCoordinates.lng}° E` : 'Varanasi, UP'}
             </span>
           </div>
 
-          <div style={{ position: 'relative', flex: 1, minHeight: '380px' }}>
+          <div style={{ position: 'relative', flex: 1, minHeight: '300px' }}>
             <iframe
               title={`${project.title} Map Location`}
               src={embedSrc}
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: '380px', display: 'block', width: '100%', height: '100%' }}
+              style={{ border: 0, minHeight: '300px', display: 'block', width: '100%', height: '100%' }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -175,10 +169,10 @@ export const ProjectLocationMap = ({ project }) => {
         </div>
 
         {/* Transit & Commute Section */}
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '1.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '1.25rem' }}>
           <div>
             {/* Category Filter Pills */}
-            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
+            <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap', marginBottom: '1.15rem' }}>
               {[
                 { id: 'all', label: 'All Destinations' },
                 { id: 'transit', label: 'Transit & Airport' },
@@ -193,9 +187,9 @@ export const ProjectLocationMap = ({ project }) => {
                     border: activeCategory === cat.id ? '1px solid var(--brand)' : '1px solid var(--border)',
                     background: activeCategory === cat.id ? 'var(--brand)' : 'var(--sand-muted)',
                     color: activeCategory === cat.id ? '#FFFFFF' : 'var(--ink)',
-                    padding: '0.35rem 0.85rem',
+                    padding: '0.3rem 0.75rem',
                     borderRadius: 'var(--r-pill)',
-                    fontSize: '0.8rem',
+                    fontSize: '0.76rem',
                     fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.2s ease'
@@ -207,27 +201,27 @@ export const ProjectLocationMap = ({ project }) => {
             </div>
 
             {/* Commute Cards List */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
               {filteredTransit.map(item => (
                 <div 
                   key={item.id} 
                   style={{ 
                     background: '#FAFAFA', 
-                    padding: '0.9rem 1.15rem', 
+                    padding: '0.8rem 1rem', 
                     borderRadius: 'var(--r-md)', 
                     border: '1px solid var(--border)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    gap: '1rem',
+                    gap: '0.75rem',
                     transition: 'all 0.2s ease',
                     boxShadow: '0 1px 3px rgba(0,0,0,0.02)'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <div style={{ 
-                      width: '36px', 
-                      height: '36px', 
+                      width: '32px', 
+                      height: '32px', 
                       borderRadius: '8px', 
                       background: '#FFF', 
                       border: '1px solid var(--border)', 
@@ -239,10 +233,10 @@ export const ProjectLocationMap = ({ project }) => {
                       {item.icon}
                     </div>
                     <div>
-                      <strong style={{ display: 'block', fontSize: '0.92rem', color: 'var(--ink)', fontWeight: 600 }}>
+                      <strong style={{ display: 'block', fontSize: '0.88rem', color: 'var(--ink)', fontWeight: 600 }}>
                         {item.title}
                       </strong>
-                      <span style={{ fontSize: '0.78rem', color: 'var(--ink-muted)', display: 'block', marginTop: '0.1rem' }}>
+                      <span style={{ fontSize: '0.75rem', color: 'var(--ink-muted)', display: 'block', marginTop: '0.05rem' }}>
                         {item.detail}
                       </span>
                     </div>
@@ -251,9 +245,9 @@ export const ProjectLocationMap = ({ project }) => {
                   <span style={{ 
                     background: 'var(--sand-muted)', 
                     color: 'var(--brand)', 
-                    padding: '0.3rem 0.75rem', 
+                    padding: '0.25rem 0.65rem', 
                     borderRadius: 'var(--r-pill)', 
-                    fontSize: '0.82rem', 
+                    fontSize: '0.78rem', 
                     fontWeight: 700, 
                     border: '1px solid var(--border)',
                     whiteSpace: 'nowrap'
@@ -268,24 +262,24 @@ export const ProjectLocationMap = ({ project }) => {
           {/* Complimentary Chauffeur Site Tour Card */}
           <div style={{ 
             background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)', 
-            padding: '1.25rem 1.5rem', 
+            padding: '1.15rem 1.25rem', 
             borderRadius: 'var(--r-lg)', 
             color: '#FFF', 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'space-between', 
             flexWrap: 'wrap', 
-            gap: '1rem' 
+            gap: '0.85rem' 
           }}>
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--gold)', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase' }}>
-                <ShieldCheck size={14} /> VIP Site Visit
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: 'var(--gold)', fontSize: '0.72rem', fontWeight: 600, textTransform: 'uppercase' }}>
+                <ShieldCheck size={13} /> VIP Site Visit
               </div>
-              <strong style={{ display: 'block', fontSize: '1rem', color: '#FFF', marginTop: '0.2rem' }}>
+              <strong style={{ display: 'block', fontSize: '0.95rem', color: '#FFF', marginTop: '0.15rem' }}>
                 Inspect the campus in person
               </strong>
-              <span style={{ fontSize: '0.82rem', color: '#94A3B8' }}>
-                Complimentary pickup & drop in an AC Chauffeur Cab.
+              <span style={{ fontSize: '0.78rem', color: '#94A3B8' }}>
+                Complimentary pickup & drop in an AC Cab.
               </span>
             </div>
 
@@ -297,12 +291,12 @@ export const ProjectLocationMap = ({ project }) => {
                 borderRadius: 'var(--r-pill)',
                 display: 'inline-flex', 
                 alignItems: 'center', 
-                gap: '0.45rem',
-                padding: '0.55rem 1.25rem',
-                fontSize: '0.85rem'
+                gap: '0.4rem',
+                padding: '0.5rem 1.15rem',
+                fontSize: '0.82rem'
               }}
             >
-              <Car size={15} /> Book Free Cab
+              <Car size={14} /> Book Free Cab
             </button>
           </div>
 

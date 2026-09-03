@@ -7,33 +7,15 @@ export const ReraHub = ({ project }) => {
   return (
     <section 
       id="rera-compliance"
-      className="rera-hub-card" 
-      style={{ 
-        background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)', 
-        border: '1px solid rgba(224, 84, 43, 0.25)', 
-        borderRadius: 'var(--r-2xl, 24px)', 
-        padding: '2.25rem 2.5rem', 
-        boxShadow: '0 15px 35px -10px rgba(224, 84, 43, 0.08)', 
-        marginBottom: '3rem',
-        position: 'relative'
-      }}
+      className="rera-hub-section"
     >
-      <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: '2rem', alignItems: 'center' }}>
+      <div className="rera-hub-grid">
         {/* QR Code with Golden Frame */}
-        <div style={{ 
-          background: '#FFFFFF', 
-          padding: '0.85rem', 
-          borderRadius: 'var(--r-xl, 16px)', 
-          border: '1px solid rgba(226, 232, 240, 0.9)', 
-          boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center' 
-        }}>
+        <div className="rera-qr-box">
           <img 
             src={project.reraQrUrl || "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://up-rera.in"} 
             alt={`RERA QR Code for ${project.title}`} 
-            style={{ width: '96px', height: '96px', objectFit: 'contain' }}
+            style={{ width: '92px', height: '92px', objectFit: 'contain' }}
           />
           <span style={{ fontSize: '0.68rem', color: 'var(--brand)', marginTop: '0.45rem', fontWeight: 700, letterSpacing: '0.06em' }}>
             SCAN FOR RERA
@@ -41,8 +23,8 @@ export const ReraHub = ({ project }) => {
         </div>
 
         {/* Text Details & Certifications */}
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+        <div className="rera-content-box">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.6rem', flexWrap: 'wrap' }}>
             <span style={{ 
               display: 'inline-flex', 
               alignItems: 'center', 
@@ -51,11 +33,11 @@ export const ReraHub = ({ project }) => {
               color: '#16A34A', 
               padding: '0.25rem 0.75rem', 
               borderRadius: 'var(--r-pill)', 
-              fontSize: '0.75rem', 
+              fontSize: '0.72rem', 
               fontWeight: 700, 
               letterSpacing: '0.04em' 
             }}>
-              <ShieldCheck size={14} /> 100% REGULATORY SANCTIONED
+              <ShieldCheck size={13} /> 100% REGULATORY SANCTIONED
             </span>
             <span style={{ 
               display: 'inline-flex', 
@@ -65,23 +47,23 @@ export const ReraHub = ({ project }) => {
               color: 'var(--brand)', 
               padding: '0.25rem 0.75rem', 
               borderRadius: 'var(--r-pill)', 
-              fontSize: '0.75rem', 
+              fontSize: '0.72rem', 
               fontWeight: 700 
             }}>
               CLEAR TITLE LAND PARCEL
             </span>
           </div>
 
-          <h4 style={{ fontSize: '1.45rem', color: 'var(--ink)', margin: '0 0 0.35rem 0', fontFamily: 'var(--font-heading)', letterSpacing: '-0.01em' }}>
-            UP-RERA Registration: <strong style={{ color: 'var(--brand)' }}>{project.reraNumber}</strong>
+          <h4 style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.45rem)', color: 'var(--ink)', margin: '0 0 0.4rem 0', fontFamily: 'var(--font-heading)', letterSpacing: '-0.01em', lineHeight: 1.25 }}>
+            UP-RERA Registration: <strong style={{ color: 'var(--brand)', wordBreak: 'break-word' }}>{project.reraNumber}</strong>
           </h4>
-          <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', margin: 0, lineHeight: 1.5, maxWidth: '750px' }}>
+          <p style={{ fontSize: '0.88rem', color: 'var(--ink-muted)', margin: 0, lineHeight: 1.5, maxWidth: '750px' }}>
             Registered and certified under the {project.reraAuthority || 'Uttar Pradesh Real Estate Regulatory Authority'}. All architectural layouts, statutory approvals, environmental clearances, and escrow accounts are publicly verified.
           </p>
         </div>
 
         {/* Action Link Button */}
-        <div>
+        <div className="rera-action-box">
           <a 
             href={`https://up-rera.in/ProjectSummary?id=${project.reraNumber}`} 
             target="_blank" 
@@ -96,7 +78,8 @@ export const ReraHub = ({ project }) => {
               fontWeight: 600,
               fontSize: '0.85rem',
               background: '#FFFFFF',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
+              boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
+              textDecoration: 'none'
             }}
           >
             <span>Verify on UP-RERA</span>

@@ -1,234 +1,181 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { 
   Sparkles, ShieldCheck, Camera, Droplets, Zap, Car, Building2, 
   Flame, Compass, Users, Waves, Trophy, Trees, 
   GraduationCap, ShoppingBag, ArrowUpCircle, Layers, CheckCircle2,
-  Leaf, HeartHandshake, Home, Store
+  Store, Eye, Shield, Check
 } from 'lucide-react';
 
 export const AmenitiesGrid = ({ amenities }) => {
-  const [activeCategory, setActiveCategory] = useState('ALL');
-
   if (!amenities || amenities.length === 0) return null;
 
-  // Smart high-precision Lucide icon mapper
+  // High-precision Lucide icon mapper
   const getAmenityIcon = (name = '', category = '') => {
     const text = (name + ' ' + category).toLowerCase();
     
-    if (text.includes('cctv') || text.includes('camera') || text.includes('surveillance')) return <Camera size={19} strokeWidth={2.2} />;
-    if (text.includes('security') || text.includes('rfid') || text.includes('gating') || text.includes('approval') || text.includes('vda') || text.includes('rera') || text.includes('verified')) return <ShieldCheck size={19} strokeWidth={2.2} />;
-    if (text.includes('fire') || text.includes('hydrant') || text.includes('safety') || text.includes('fighting')) return <Flame size={19} strokeWidth={2.2} />;
-    if (text.includes('water') || text.includes('stp') || text.includes('recycling') || text.includes('rainwater') || text.includes('drainage') || text.includes('plumbing')) return <Droplets size={19} strokeWidth={2.2} />;
-    if (text.includes('power') || text.includes('backup') || text.includes('solar') || text.includes('electricity') || text.includes('dual-source')) return <Zap size={19} strokeWidth={2.2} />;
-    if (text.includes('parking') || text.includes('car') || text.includes('visitor parking')) return <Car size={19} strokeWidth={2.2} />;
-    if (text.includes('swimming') || text.includes('pool') || text.includes('deck')) return <Waves size={19} strokeWidth={2.2} />;
-    if (text.includes('tennis') || text.includes('sports') || text.includes('court') || text.includes('arena') || text.includes('gym') || text.includes('fitness')) return <Trophy size={19} strokeWidth={2.2} />;
-    if (text.includes('garden') || text.includes('park') || text.includes('terrace') || text.includes('green') || text.includes('landscaping') || text.includes('plantation')) return <Trees size={19} strokeWidth={2.2} />;
-    if (text.includes('amusement') || text.includes('resort') || text.includes('club house') || text.includes('clubhouse') || text.includes('atrium') || text.includes('boulevard')) return <Sparkles size={19} strokeWidth={2.2} />;
-    if (text.includes('school') || text.includes('education') || text.includes('college') || text.includes('campus')) return <GraduationCap size={19} strokeWidth={2.2} />;
-    if (text.includes('retail') || text.includes('arcade') || text.includes('store') || text.includes('showroom') || text.includes('commercial') || text.includes('shopping')) return <ShoppingBag size={19} strokeWidth={2.2} />;
-    if (text.includes('lift') || text.includes('elevator') || text.includes('escalator')) return <ArrowUpCircle size={19} strokeWidth={2.2} />;
-    if (text.includes('road') || text.includes('infrastructure') || text.includes('connectivity') || text.includes('corridor')) return <Layers size={19} strokeWidth={2.2} />;
-    if (text.includes('vastu') || text.includes('direction') || text.includes('layout')) return <Compass size={19} strokeWidth={2.2} />;
-    if (text.includes('management') || text.includes('community') || text.includes('center') || text.includes('estate')) return <HeartHandshake size={19} strokeWidth={2.2} />;
-    if (text.includes('structure') || text.includes('earthquake') || text.includes('rcc') || text.includes('formwork') || text.includes('monolithic') || text.includes('facade') || text.includes('building') || text.includes('housing')) return <Building2 size={19} strokeWidth={2.2} />;
-
-    return <Sparkles size={19} strokeWidth={2.2} />;
+    if (text.includes('cctv') || text.includes('camera') || text.includes('surveillance')) return <Camera size={20} strokeWidth={2} />;
+    if (text.includes('security') || text.includes('rfid') || text.includes('gating') || text.includes('guard')) return <ShieldCheck size={20} strokeWidth={2} />;
+    if (text.includes('fire') || text.includes('hydrant') || text.includes('safety')) return <Flame size={20} strokeWidth={2} />;
+    if (text.includes('water') || text.includes('stp') || text.includes('rainwater') || text.includes('drainage')) return <Droplets size={20} strokeWidth={2} />;
+    if (text.includes('power') || text.includes('backup') || text.includes('electricity') || text.includes('generator')) return <Zap size={20} strokeWidth={2} />;
+    if (text.includes('parking') || text.includes('car') || text.includes('vehicle')) return <Car size={20} strokeWidth={2} />;
+    if (text.includes('swimming') || text.includes('pool') || text.includes('deck')) return <Waves size={20} strokeWidth={2} />;
+    if (text.includes('gym') || text.includes('fitness') || text.includes('sports') || text.includes('court')) return <Trophy size={20} strokeWidth={2} />;
+    if (text.includes('garden') || text.includes('park') || text.includes('green') || text.includes('landscaping')) return <Trees size={20} strokeWidth={2} />;
+    if (text.includes('atrium') || text.includes('boulevard') || text.includes('plaza') || text.includes('lobby')) return <Sparkles size={20} strokeWidth={2} />;
+    if (text.includes('retail') || text.includes('store') || text.includes('showroom') || text.includes('commercial') || text.includes('frontage')) return <Store size={20} strokeWidth={2} />;
+    if (text.includes('lift') || text.includes('elevator') || text.includes('escalator')) return <ArrowUpCircle size={20} strokeWidth={2} />;
+    if (text.includes('facade') || text.includes('glass') || text.includes('architecture') || text.includes('lighting')) return <Building2 size={20} strokeWidth={2} />;
+    if (text.includes('road') || text.includes('circulation') || text.includes('infrastructure')) return <Layers size={20} strokeWidth={2} />;
+    
+    return <CheckCircle2 size={20} strokeWidth={2} />;
   };
 
-  // Group into categories
-  const categories = useMemo(() => {
-    const set = new Set(amenities.map(a => a.category).filter(Boolean));
-    return ['ALL', ...Array.from(set)];
-  }, [amenities]);
-
-  const filteredAmenities = activeCategory === 'ALL' 
-    ? amenities 
-    : amenities.filter(a => a.category === activeCategory);
+  // Helper for subtitle descriptions
+  const getAmenitySubtitle = (name = '', category = '') => {
+    const text = (name + ' ' + category).toLowerCase();
+    if (text.includes('frontage') || text.includes('retail')) return 'Ground & first floor double-height display';
+    if (text.includes('parking')) return 'Wide 40ft circulation & dedicated bays';
+    if (text.includes('power') || text.includes('backup')) return 'Uninterrupted 100% dual-source system';
+    if (text.includes('lift') || text.includes('elevator')) return 'High-capacity elevators & smart escalators';
+    if (text.includes('fire')) return 'Certified multi-tier pressure hydrant network';
+    if (text.includes('cctv') || text.includes('security')) return '24×7 high-definition perimeter surveillance';
+    if (text.includes('atrium') || text.includes('boulevard')) return 'Grand entrance with designer landscape';
+    if (text.includes('facade') || text.includes('glass')) return 'Energy-efficient glazing & LED lighting';
+    return 'Built to verified statutory standards';
+  };
 
   return (
     <section 
       id="amenities" 
-      className="project-section-card"
+      className="editorial-card-section"
+      style={{ padding: '2.5rem 2rem' }}
     >
-      {/* Header */}
-      <div style={{ marginBottom: '1.75rem', borderBottom: '1px solid #F1F5F9', paddingBottom: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(197, 160, 89, 0.12)', color: 'var(--gold, #C5A059)', border: '1px solid rgba(197, 160, 89, 0.3)', padding: '0.25rem 0.85rem', borderRadius: '9999px', fontSize: '0.74rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', width: 'fit-content' }}>
-          <Sparkles size={12} /> Curated Lifestyle & Ecosystem
+      {/* Header Bar */}
+      <div style={{ marginBottom: '2rem', borderBottom: '1px solid #E2E8F0', paddingBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(197, 160, 89, 0.12)', color: 'var(--gold, #C5A059)', border: '1px solid rgba(197, 160, 89, 0.3)', padding: '0.25rem 0.85rem', borderRadius: '9999px', fontSize: '0.74rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', width: 'fit-content' }}>
+          <Sparkles size={12} /> Strategic Commercial Infrastructure
         </div>
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem', marginTop: '0.2rem' }}>
           <div>
-            <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.1rem)', color: '#0F172A', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em', fontWeight: 700 }}>
-              World-Class Amenities & Infrastructure
+            <h3 style={{ fontSize: 'clamp(1.6rem, 3.2vw, 2.1rem)', color: '#0F172A', margin: 0, fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em', fontWeight: 700 }}>
+              Campus Amenities & Engineering Provisions
             </h3>
             <p style={{ fontSize: '0.92rem', color: '#64748B', marginTop: '0.35rem', maxWidth: '680px', lineHeight: 1.5 }}>
-              Engineered for generational durability, sustainable health & wellness, active recreation, and 24x7 smart multi-tier security.
+              Engineered for high pedestrian footfall, seamless corporate mobility, uninterrupted power, and smart multi-tier security.
             </p>
           </div>
 
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#F8FAFC', padding: '0.35rem 0.85rem', borderRadius: '10px', border: '1px solid #E2E8F0', fontSize: '0.8rem', color: '#334155', fontWeight: 600 }}>
-            <CheckCircle2 size={15} style={{ color: 'var(--success, #10B981)' }} />
-            <span><strong>{amenities.length} Verified</strong> Landmark Features</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: '#F8FAFC', padding: '0.4rem 0.95rem', borderRadius: '12px', border: '1px solid #E2E8F0', fontSize: '0.8rem', color: '#334155', fontWeight: 600 }}>
+            <CheckCircle2 size={16} style={{ color: '#10B981' }} />
+            <span><strong>{amenities.length} Verified</strong> Specifications</span>
           </div>
         </div>
-
-        {/* Interactive Category Filter Pills */}
-        {categories.length > 2 && (
-          <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap', marginTop: '1rem', paddingTop: '0.85rem', borderTop: '1px dashed #E2E8F0' }}>
-            {categories.map((cat) => {
-              const count = cat === 'ALL' ? amenities.length : amenities.filter(a => a.category === cat).length;
-              const isSelected = activeCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setActiveCategory(cat)}
-                  style={{
-                    padding: '0.35rem 0.85rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.78rem',
-                    fontWeight: isSelected ? 700 : 600,
-                    cursor: 'pointer',
-                    transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                    background: isSelected ? 'var(--brand, #0F294A)' : '#F8FAFC',
-                    color: isSelected ? '#FFFFFF' : '#475569',
-                    border: isSelected ? '1px solid var(--brand, #0F294A)' : '1px solid #E2E8F0',
-                    boxShadow: isSelected ? '0 4px 12px rgba(15, 41, 74, 0.25)' : 'none',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.35rem'
-                  }}
-                >
-                  <span>{cat === 'ALL' ? 'All Amenities' : cat}</span>
-                  <span style={{ 
-                    fontSize: '0.68rem', 
-                    background: isSelected ? 'rgba(255, 255, 255, 0.2)' : '#E2E8F0',
-                    color: isSelected ? '#FFFFFF' : '#64748B',
-                    padding: '0.1rem 0.4rem',
-                    borderRadius: '9999px',
-                    fontWeight: 700
-                  }}>
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        )}
       </div>
 
-      {/* Modern Luxury Amenities Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '0.85rem' }}>
-        {filteredAmenities.map((item, idx) => {
-          const iconElement = getAmenityIcon(item.name, item.category);
+      {/* 2x4 on Mobile / 4-Column on Desktop Luxury Card Grid */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
+        gap: '1.15rem' 
+      }}>
+        {amenities.map((item, idx) => {
+          const icon = getAmenityIcon(item.name, item.category);
+          const subtitle = getAmenitySubtitle(item.name, item.category);
 
           return (
             <div 
               key={idx} 
               style={{
                 display: 'flex',
-                alignItems: 'center',
-                gap: '0.85rem',
-                padding: '0.95rem 1.1rem',
-                background: '#F8FAFC',
-                borderRadius: '12px',
-                border: '1.5px solid #E2E8F0',
-                boxShadow: '0 2px 6px rgba(15, 23, 42, 0.02)',
+                alignItems: 'flex-start',
+                gap: '0.95rem',
+                padding: '1.25rem 1.15rem',
+                background: '#FFFFFF',
+                borderRadius: '16px',
+                border: '1px solid #E2E8F0',
+                boxShadow: '0 4px 15px rgba(15, 23, 42, 0.03)',
                 transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
-                cursor: 'default',
                 position: 'relative',
                 overflow: 'hidden'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.background = '#FFFFFF';
+                e.currentTarget.style.transform = 'translateY(-3px)';
                 e.currentTarget.style.borderColor = 'var(--gold, #C5A059)';
-                e.currentTarget.style.boxShadow = '0 10px 20px -4px rgba(15, 41, 74, 0.1), 0 0 0 1px rgba(197, 160, 89, 0.25)';
+                e.currentTarget.style.boxShadow = '0 12px 25px -4px rgba(15, 41, 74, 0.12)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.background = '#F8FAFC';
                 e.currentTarget.style.borderColor = '#E2E8F0';
-                e.currentTarget.style.boxShadow = '0 2px 6px rgba(15, 23, 42, 0.02)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(15, 23, 42, 0.03)';
               }}
             >
-              {/* Luxury Icon Badge */}
-              <div 
-                className="amenity-icon-badge"
-                style={{ 
-                  width: '40px', 
-                  height: '40px', 
-                  borderRadius: '10px', 
-                  background: 'linear-gradient(135deg, #091527 0%, #0F294A 60%, #173B68 100%)', 
-                  color: '#F5E7C8', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  boxShadow: '0 3px 8px rgba(15, 41, 74, 0.2)',
-                  border: '1.2px solid rgba(197, 160, 89, 0.35)',
-                  flexShrink: 0
-                }}
-              >
-                {iconElement}
+              {/* Gold Top Accent Line on Hover */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '3px',
+                background: 'linear-gradient(90deg, #0F294A 0%, var(--gold, #C5A059) 100%)',
+                opacity: 0.8
+              }} />
+
+              {/* Obsidian Luxury Icon Box */}
+              <div style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #0F294A 0%, #1E3A5F 100%)',
+                color: 'var(--gold, #C5A059)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                boxShadow: '0 4px 12px rgba(15, 41, 74, 0.2)'
+              }}>
+                {icon}
               </div>
 
-              {/* Text content */}
+              {/* Content */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                {item.category && (
-                  <span style={{ 
-                    display: 'block', 
-                    fontSize: '0.66rem', 
-                    color: 'var(--gold, #C5A059)', 
-                    textTransform: 'uppercase', 
-                    fontWeight: 700, 
-                    letterSpacing: '0.08em',
-                    lineHeight: 1.2,
-                    marginBottom: '0.1rem'
-                  }}>
-                    {item.category}
-                  </span>
-                )}
-                <strong style={{ 
-                  display: 'block', 
-                  fontSize: '0.88rem', 
-                  color: '#0F172A', 
-                  fontWeight: 700, 
-                  lineHeight: 1.3 
+                <span style={{
+                  fontSize: '0.68rem',
+                  textTransform: 'uppercase',
+                  color: 'var(--gold, #C5A059)',
+                  fontWeight: 700,
+                  letterSpacing: '0.07em',
+                  display: 'block',
+                  marginBottom: '0.2rem'
+                }}>
+                  {item.category || 'INFRASTRUCTURE'}
+                </span>
+                
+                <h4 style={{
+                  fontSize: '0.94rem',
+                  color: '#0F172A',
+                  fontWeight: 700,
+                  margin: '0 0 0.25rem 0',
+                  lineHeight: 1.25,
+                  fontFamily: 'var(--font-heading)'
                 }}>
                   {item.name}
-                </strong>
+                </h4>
+
+                <p style={{
+                  fontSize: '0.78rem',
+                  color: '#64748B',
+                  margin: 0,
+                  lineHeight: 1.45,
+                  fontWeight: 400
+                }}>
+                  {subtitle}
+                </p>
               </div>
             </div>
           );
         })}
-      </div>
-
-      {/* Bottom Assurance Strip */}
-      <div style={{ 
-        marginTop: '1.75rem', 
-        padding: '0.85rem 1.25rem', 
-        background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)', 
-        borderRadius: '12px', 
-        border: '1px solid #E2E8F0',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap',
-        gap: '0.75rem'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', fontWeight: 600, color: '#334155' }}>
-          <ShieldCheck size={15} style={{ color: 'var(--success, #10B981)' }} />
-          <span>VDA & UP-RERA Authorized Standards</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', fontWeight: 600, color: '#334155' }}>
-          <Leaf size={15} style={{ color: 'var(--success, #10B981)' }} />
-          <span>Eco-Conscious Green Architecture</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', fontWeight: 600, color: '#334155' }}>
-          <Zap size={15} style={{ color: 'var(--gold, #C5A059)' }} />
-          <span>24x7 Multi-Grid Power Infrastructure</span>
-        </div>
       </div>
     </section>
   );

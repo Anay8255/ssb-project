@@ -230,23 +230,22 @@ export const SEED_DATA = {
     {
       id: "prj_sai_city_housing",
       slug: "shree-sai-city-group-housing",
-      title: "Shree Sai City",
+      title: "Shree Sai City Group Housing",
       city: "Varanasi, Uttar Pradesh",
       category: "Residential",
       status: "Ongoing",
-      tagline: "Refined by Nature's Opulence — Life of Wellness. Monolithic Aluminium Formwork multi-storied green township.",
+      tagline: "Refined by Nature's Opulence — Life of Wellness. Group housing built with modern Aluminium Formwork Monolithic Construction.",
       reraNumber: "UPRERAPRJ923469",
       reraAuthority: "Uttar Pradesh Real Estate Regulatory Authority (VDA Approved)",
       reraQrUrl: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://up-rera.in/ProjectSummary?id=UPRERAPRJ923469",
-      startingPrice: null,
-      priceDisplay: "Price on Request",
-      locationName: "Panchkosi Road, Harhua, Varanasi",
-      fullAddress: "SHREE SAI CITY, 24.0M Wide Panchkosi Road, Near Harhua Crossing & Airport Road, Varanasi, UP 221105",
+      startingPrice: 5600000,
+      priceDisplay: "₹56 Lakhs Onwards",
+      locationName: "Dasepur, Harhua, Varanasi",
+      fullAddress: "SHREE SAI CITY Mega Town Ship, Dasepur, Harhua, Varanasi, Uttar Pradesh 221105",
       googleMapUrl: "https://maps.app.goo.gl/UhJ9xeTP4r6G7HPF9?g_st=ic",
       googleMapEmbedUrl: "https://maps.google.com/maps?q=SHREE+SAI+CITY+Mega+Town+Ship,+Dasepur,+Harhua,+Varanasi,+Uttar+Pradesh+221105&t=&z=15&ie=UTF8&iwloc=&output=embed",
       geoCoordinates: { lat: 25.3789, lng: 82.9362 },
-      approvalStatus: "VDA Approved (Varanasi Development Authority) | UP RERA: UPRERAPRJ923469",
-      totalLandArea: "18 Acres Integrated Township (S+16 High-Rise Towers)",
+      totalLandArea: "18 Acres Integrated Township",
       totalUnitsCount: 520,
       featuredImage: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948497295-9v1551.png",
       heroImages: [
@@ -268,7 +267,7 @@ export const SEED_DATA = {
         },
         {
           url: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948520399-r81hq7.png",
-          title: "Township Master Layout & Site Plan",
+          title: "Township Master Layout Plan",
           category: "Master Layout"
         },
         {
@@ -283,36 +282,35 @@ export const SEED_DATA = {
         },
         {
           url: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948529276-aspkwi.png",
-          title: "Township Architectural Perspective & Aerial View",
+          title: "Township Architectural Perspective",
           category: "Exterior"
         }
       ],
-      description: "Shree Sai City is a prestigious VDA-approved and UP-RERA registered (UPRERAPRJ923469) residential township in Varanasi, refined by nature's opulence and designed for a life of wellness. SSB Infra Projects is the very first in Varanasi to incorporate the advanced monolithic Aluminum Formwork System into multi-storied RCC load-bearing construction. By pouring walls and slabs simultaneously in a single operation, the structure achieves superior strength, an exquisite smooth concrete finish, complete resistance to water seepage and moisture hazards, high seismic resilience, acoustic insulation, and eliminates the need for masonry. The eco-planned township is designed around nature's microclimate with lush evergreen landscaping, 316.687 KLD water management with 80% recycling through a scientifically engineered on-site Sewage Treatment Plant (STP), rainwater drainage framework, 24x7 gated security with boundary wall, safety officers, CCTV and resident-authorized visitor access, 24x7 electricity supply with dual-power reinforcement and solar energy, a luxury Club House with swimming pool & wooden sun deck, tennis court, water siphoning stations, rooftop sky gardens, proposed community school, and a proposed SSB Amusement Park with luxury resort.",
+      description: "Shree Sai City Group Housing in Varanasi is the very first in the region to incorporate the advanced monolithic Aluminum Formwork System into multi-storied RCC load-bearing construction. By pouring walls and slabs simultaneously, the structure achieves superior strength, an exquisite smooth concrete finish, complete resistance to water seepage and moisture hazards, high seismic resilience, and acoustic insulation. The eco-planned township is designed around nature's microclimate with lush evergreen landscaping, 316.687 KLD water management with 80% recycling through an on-site Sewage Treatment Plant (STP), rainwater harvesting, 24x7 gated security with RFID visitor validation, dual power backup, rooftop solar power, a luxury Club House with swimming pool and wooden sun deck, rooftop sky gardens, tennis court, community school, and a proposed SSB Amusement Park with luxury resort.",
       specifications: {
-        structure: "Earthquake Resistance R.C.C. Frame Structure (Monolithic Aluminium Formwork System — walls & slabs poured in single operation, no masonry needed, water seepage & tremor resistant)",
-        rooms: "Premium Vitrified Tiles flooring in all rooms; Vastu-friendly all-round ventilated format for natural breeze & light",
+        structure: "Earthquake Resistance R.C.C. Frame Structure (Advanced Aluminium Formwork monolithic system — walls and slabs cast in single operation)",
+        rooms: "Premium Vitrified Tiles flooring in living, dining, and all bedrooms",
         commonArea: "Ceramic Tiles flooring in common corridors, lift lobbies and building passages",
-        kitchen: "Ceramic Tiles flooring; Granite Counter with Ceramic Tiles up to 2'-0\" HT above counter; Stainless Steel Sink; Oil Bound Distemper in balance area",
-        toiletBathroom: "Anti-skid Ceramic Tiles flooring; Designer Ceramic Wall Tiles up to 7'-0\" HT; Low Level PVC Cistern with European Toilet Seat; Premium C.P. Fittings; PVC/CPVC plumbing pipes",
+        kitchen: "Ceramic Tiles flooring, Granite Counter with Ceramic Tiles up to 2'-0\" HT above counter, Stainless Steel Sink, Oil Bound Distemper in balance area",
+        toiletBathroom: "Anti-skid Ceramic Tiles flooring, Designer Ceramic Wall Tiles up to 7'-0\" HT, Low Level PVC Cistern with European Toilet Seat, ISI standard CP fittings",
         staircase: "Granite / Vitrified Tiles with heavy-duty safety handrails",
         doorWindow: "External UPVC Doors & Windows with 5mm Toughened Glass; Internal door frames of seasoned Marandi Wood with laminated flush door shutters; ISI marked standard fittings & mortise locks",
-        plumbing: "PVC / CPVC Pipe for plumbing piping works, premium C.P. Fittings, Stainless Steel Sink in kitchen",
+        plumbing: "PVC / CPVC Pipe for plumbing piping works, premium C.P. Fittings",
         sanitary: "Low Level PVC Cistern with European WC, Stainless Steel Sink in kitchen, premium ISI sanitary fittings",
-        electrical: "Fire Resistant I.S.I. Mark Copper Concealed Wiring, Modular Switches & Sockets as per ISI Standard, All materials as per ISI standard",
+        electrical: "Fire Resistant I.S.I. Mark Copper Concealed Wiring, Modular Switches & Sockets as per ISI Standard",
         finishing: "Weather Coat Texture Paint on outside walls, Oil Bound Distemper on interior walls"
       },
       configurations: [
         {
           id: "cfg_sc_2bhk",
-          title: "2 BHK Unit Plan",
+          title: "2 BHK Premium Residence",
           bhkType: "2 BHK",
           superBuiltupArea: 1100.08,
-          totalArea: 1100.08,
           carpetArea: 605.58,
           coveredArea: 682.22,
           balconyArea: 116.68,
           commonArea: 170.28,
-          servicesArea: 107.64,
+          servicesArea: 170.64,
           utilitiesArea: 23.25,
           carpetAreaSqM: 56.26,
           coveredAreaSqM: 63.38,
@@ -321,24 +319,23 @@ export const SEED_DATA = {
           bedrooms: 2,
           bathrooms: 2,
           balconies: 2,
-          highlight: "Living/Dining (11'-4\" x 16'-0\"), Master Bed (11'-8\" x 10'-2\"), Bedroom 2 (11'-2\" x 10'-8\"), Kitchen (7'-9\" x 7'-2\"), Entrance Lobby (4'-2\" x 5'-10\"), 2 Toilets (7'-2\" x 5'-0\" & 5'-1\" x 7'-1\"), 1800mm Wide Balconies, Vastu Compliant",
+          highlight: "Living/Dining (11'-4\" x 16'-0\"), Master Bed (11'-8\" x 10'-2\"), Bed 2 (11'-2\" x 10'-8\"), Kitchen (7'-9\" x 7'-2\"), 2 private balconies, Vastu compliant",
           floorPlanUrl: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948528227-7x3nua.png",
           floorPlanImages: [
             "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948528227-7x3nua.png"
           ],
-          priceEstimate: "Price on Request"
+          priceEstimate: "₹56 - ₹62 Lakhs"
         },
         {
           id: "cfg_sc_3bhk",
-          title: "3 BHK Unit Plan",
+          title: "3 BHK Grand Presidential",
           bhkType: "3 BHK",
           superBuiltupArea: 1351.31,
-          totalArea: 1351.31,
           carpetArea: 815.80,
           coveredArea: 897.50,
           balconyArea: 152.63,
           commonArea: 107.28,
-          servicesArea: 107.64,
+          servicesArea: 170.64,
           utilitiesArea: 23.25,
           carpetAreaSqM: 75.79,
           coveredAreaSqM: 83.38,
@@ -347,35 +344,34 @@ export const SEED_DATA = {
           bedrooms: 3,
           bathrooms: 2,
           balconies: 3,
-          highlight: "Living/Dining (13'-8\" x 19'-4\"), Master Bed (10'-5\" x 13'-10\"), Bedroom 2 (10'-0\" x 10'-4\"), Bedroom 3 (10'-0\" x 10'-4\"), Kitchen (7'-2\" x 10'-6\"), 2 Toilets (5'-0\" x 7'-6\" & 5'-1\" x 7'-6\"), 1800mm Wide Balconies, 3-Side Open Layout",
+          highlight: "Living/Dining (13'-8\" x 19'-4\"), Master Bed (10'-5\" x 13'-10\"), Bed 2 (10'-0\" x 10'-4\"), Bed 3 (10'-0\" x 10'-4\"), Kitchen (7'-2\" x 10'-6\"), 3 balconies, 3-side open layout",
           floorPlanUrl: "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948527122-9nyeu4.png",
           floorPlanImages: [
             "https://pub-8c92dc28c0514f96887bbf235d670445.r2.dev/sai%20city%20image/shree-sai-city-group-housing/1786948527122-9nyeu4.png"
           ],
-          priceEstimate: "Price on Request"
+          priceEstimate: "₹78 - ₹88 Lakhs"
         }
       ],
       amenities: [
         { name: "Monolithic Aluminium Formwork Green Tech", category: "Engineering", icon: "🏗️" },
-        { name: "316.687 KLD STP with 80% Water Recycling", category: "Eco Utilities", icon: "💧" },
-        { name: "The Club House & Sports Facilities", category: "Leisure", icon: "🏛️" },
+        { name: "316 KLD STP with 80% Water Recycling", category: "Eco Utilities", icon: "💧" },
+        { name: "The Club House & Sports Center", category: "Leisure", icon: "🏛️" },
         { name: "Swimming Pool with Wooden Sun Deck", category: "Health & Sports", icon: "🏊" },
         { name: "Tennis Court & Open Sports Arena", category: "Sports", icon: "🎾" },
         { name: "Rooftop Sky Gardens & Terrace Seating", category: "Leisure", icon: "🌴" },
-        { name: "Proposed SSB Amusement Park & Luxury Resort", category: "Entertainment", icon: "🎡" },
-        { name: "Rainwater Removal & Drainage System", category: "Eco Utilities", icon: "🌧️" },
-        { name: "24x7 Gated Security with CCTV & Resident Authorization", category: "Security", icon: "🛡️" },
-        { name: "Dual-Source Power & Rooftop Solar Energy", category: "Utilities", icon: "⚡" },
-        { name: "Water Siphoning Stations & Reinforcement", category: "Utilities", icon: "🚰" },
-        { name: "Proposed Dedicated Community School on Campus", category: "Education", icon: "🏫" },
-        { name: "Direct 24.0M Wide Panchkosi Road & 12.0M Internal Road", category: "Convenience", icon: "🛣️" }
+        { name: "Proposed SSB Amusement Park & Resort", category: "Entertainment", icon: "🎡" },
+        { name: "Rainwater Harvesting & Drainage System", category: "Eco Utilities", icon: "🌧️" },
+        { name: "24x7 Security with CCTV & RFID Gating", category: "Security", icon: "🛡️" },
+        { name: "Dual-Source Power & Rooftop Solar", category: "Utilities", icon: "⚡" },
+        { name: "Dedicated Community School on Campus", category: "Education", icon: "🏫" },
+        { name: "Commercial Retail Arcade on 12m/24m Road", category: "Convenience", icon: "🛍️" }
       ],
-      overallProgressPct: 90,
+      overallProgressPct: 65,
       milestones: [
-        { name: "VDA Approval, Land Development & Foundation Groundwork", pct: 100, status: "COMPLETED" },
-        { name: "Monolithic Aluminium Formwork Superstructure (S+16)", pct: 100, status: "COMPLETED" },
-        { name: "Internal MEP, Plumbing, Electrical & Toughened UPVC", pct: 90, status: "IN_PROGRESS" },
-        { name: "Exterior Weather Coat Texture, Sky Gardens & Club House", pct: 75, status: "IN_PROGRESS" }
+        { name: "VDA Approvals & Foundation Groundwork", pct: 100, status: "COMPLETED" },
+        { name: "Aluminium Formwork Monolithic Superstructure", pct: 85, status: "IN_PROGRESS" },
+        { name: "Internal MEP, Plumbing & Electrical Conduits", pct: 60, status: "IN_PROGRESS" },
+        { name: "Facade Texture, Club House & Finishing", pct: 40, status: "IN_PROGRESS" }
       ]
     },
     {
@@ -518,7 +514,7 @@ export const SEED_DATA = {
       slug: "pratham",
       title: "Pratham",
       city: "Lucknow, Uttar Pradesh",
-      category: "Residential",
+      category: "Commercial",
       status: "Upcoming",
       tagline: "Pratham marks the group's flagship entry into the Lucknow commercial & mixed-use market.",
       reraNumber: "UPRERAPRJ519082",
@@ -529,102 +525,33 @@ export const SEED_DATA = {
       locationName: "High-Visibility Growth Corridor, Lucknow, Uttar Pradesh",
       fullAddress: "Prime High-Visibility Corridor, Lucknow, Uttar Pradesh",
       googleMapUrl: "https://maps.google.com/?q=Lucknow,+Uttar+Pradesh",
+      googleMapEmbedUrl: "https://maps.google.com/maps?q=Lucknow,+Uttar+Pradesh&t=&z=13&ie=UTF8&iwloc=&output=embed",
       geoCoordinates: { lat: 26.8467, lng: 80.9462 },
       totalLandArea: "15 Acres Commercial Hub",
       totalUnitsCount: 220,
       featuredImage: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
       heroImages: [
         "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
-        "/projects/pratham/pratham-site-real-1.jpeg",
-        "/projects/pratham/pratham-site-real-6.jpeg",
-        "/projects/pratham/pratham-site-real-7.jpeg",
-        "/projects/pratham/pratham-site-real-2.jpeg",
-        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948582911-v22xe8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODI5MTEtdjIyeGU4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODQsImV4cCI6MjEwMjMwODU4NH0.hlPTwpmgqlaFfIy2i5UGA0rNaWkDFrVBbEc9UKvHMQo"
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948582911-v22xe8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODI5MTEtdjIyeGU4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODQsImV4cCI6MjEwMjMwODU4NH0.hlPTwpmgqlaFfIy2i5UGA0rNaWkDFrVBbEc9UKvHMQo",
+        "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948584190-vtay4g.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODQxOTAtdnRheTRnLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.3hXbNSUYhuCt-ICFEf7OQD74bpGQ4rFH0oX1dREue_Y"
       ],
       masterPlanUrl: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948585742-fo2d1f.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODU3NDItZm8yZDFmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.J808qhVvhKp3uqb7FgKBniWPr-753v5naViIzSfza8g",
-      videoWalkthroughUrl: "/projects/pratham/pratham-real-site-video.mp4",
-      siteVideos: [
-        {
-          title: "Pratham Real On-Site Progress & Aerial Footage (Official)",
-          url: "/projects/pratham/pratham-real-site-video.mp4",
-          originalFile: "WhatsApp Video 2026-04-24 at 5.11.45 PM (1).mp4",
-          tag: "Live Site Video",
-          date: "Official Site Capture"
-        },
-        {
-          title: "Pratham Site Perspective & Land Demarcation — Clip 2",
-          url: "/projects/pratham/WhatsApp Video 2026-04-24 at 5.11.45 PM (2).mp4",
-          tag: "Site Inspection",
-          date: "Site Capture"
-        },
-        {
-          title: "Pratham Ground Work & Plot Survey — Clip 3",
-          url: "/projects/pratham/WhatsApp Video 2026-04-24 at 5.11.45 PM (3).mp4",
-          tag: "Ground Work",
-          date: "Site Capture"
-        },
-        {
-          title: "Pratham Corridor View & Frontage — Clip 4",
-          url: "/projects/pratham/WhatsApp Video 2026-04-24 at 5.28.28 PM (1).mp4",
-          tag: "Frontage View",
-          date: "Site Capture"
-        }
-      ],
+      videoWalkthroughUrl: "https://drive.google.com/file/d/16std2Yp3EChiqsSCFdEkTxiSqyYS79Pu/preview",
       gallery: [
-        {
-          url: "/projects/pratham/pratham-site-real-1.jpeg",
-          title: "Actual Pratham Site Progress — Ground Reality & Boundary",
-          category: "Actual Site Photos"
-        },
-        {
-          url: "/projects/pratham/pratham-site-real-2.jpeg",
-          title: "Actual Site Demarcation & Infrastructure Works",
-          category: "Actual Site Photos"
-        },
-        {
-          url: "/projects/pratham/pratham-site-real-3.jpeg",
-          title: "Frontage Road Access & On-Ground Inspection",
-          category: "Actual Site Photos"
-        },
-        {
-          url: "/projects/pratham/pratham-site-real-4.jpeg",
-          title: "Site Development & Land Survey View",
-          category: "Actual Site Photos"
-        },
-        {
-          url: "/projects/pratham/pratham-site-real-5.jpeg",
-          title: "Field Excavation & Plot Preparation",
-          category: "Actual Site Photos"
-        },
-        {
-          url: "/projects/pratham/pratham-site-real-6.jpeg",
-          title: "Panoramic Real Site Layout Overview",
-          category: "Actual Site Photos"
-        },
-        {
-          url: "/projects/pratham/pratham-site-real-7.jpeg",
-          title: "Corridor Connectivity & Approach Road",
-          category: "Actual Site Photos"
-        },
-        {
-          url: "/projects/pratham/pratham-site-real-8.jpeg",
-          title: "Site Landmark & Geographical Alignment",
-          category: "Actual Site Photos"
-        },
         {
           url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/content/1787284193395-14t94m.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9jb250ZW50LzE3ODcyODQxOTMzOTUtMTR0OTRtLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcyODQxOTUsImV4cCI6MjEwMjY0NDE5NX0.tsndMES8gtKIpCCZVl34NRQefdmJSxg97yG8UJK1_DM",
           title: "Grand Exterior Elevation & High-Street Retail Facade",
-          category: "Architectural 3D"
+          category: "Exterior"
         },
         {
           url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948582911-v22xe8.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODI5MTEtdjIyeGU4LnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODQsImV4cCI6MjEwMjMwODU4NH0.hlPTwpmgqlaFfIy2i5UGA0rNaWkDFrVBbEc9UKvHMQo",
           title: "Commercial Promenade & Multi-Story Frontage",
-          category: "Architectural 3D"
+          category: "Exterior"
         },
         {
           url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948584190-vtay4g.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODQxOTAtdnRheTRnLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.3hXbNSUYhuCt-ICFEf7OQD74bpGQ4rFH0oX1dREue_Y",
           title: "Modern Architectural Complex Perspective",
-          category: "Architectural 3D"
+          category: "Exterior"
         },
         {
           url: "https://msntutkwceqmbjlauaea.supabase.co/storage/v1/object/sign/site-assets/gallery/1786948585742-fo2d1f.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZTU5NjdiNS01NWViLTRhNDQtYmU0OS01NDU3NDZiNTkxMzAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaXRlLWFzc2V0cy9nYWxsZXJ5LzE3ODY5NDg1ODU3NDItZm8yZDFmLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODY5NDg1ODYsImV4cCI6MjEwMjMwODU4Nn0.J808qhVvhKp3uqb7FgKBniWPr-753v5naViIzSfza8g",
@@ -713,7 +640,7 @@ export const SEED_DATA = {
         { name: "Grand Designer Atrium & Public Boulevard", category: "Leisure", icon: "🏛️" },
         { name: "Modern Glass Facade & Architectural Lighting", category: "Engineering", icon: "🏢" }
       ],
-      overallProgressPct: 20,
+      overallProgressPct: 15,
       milestones: [
         { name: "Land Planning & Regulatory Approvals", pct: 100, status: "COMPLETED" },
         { name: "Site Groundbreaking & Earthwork", pct: 50, status: "IN_PROGRESS" },
@@ -740,7 +667,7 @@ export const SEED_DATA = {
     { year: "2018", status: "Completed", title: "Accessible Housing Milestone", desc: "Delivered the dedicated affordable housing sector under the Shree Sai City EWS / PMAY initiative." },
     { year: "2021", status: "Ongoing", title: "Monolithic Formwork Era", desc: "Launched Shree Sai City Group Housing with advanced aluminum formwork for rapid, seismic-resilient construction." },
     { year: "2024", status: "Ongoing", title: "Flagship Township: Sai Gaon", desc: "Unveiled an eco-planned gated township strategically situated along Varanasi's premier development corridor." },
-    { year: "2026", status: "Upcoming", title: "Capital Expansion: Lucknow", desc: "Marked strategic growth into Lucknow with 'Pratham', a prestigious 2 BHK to 4 BHK residential gated community on Amar Shaheed Path." }
+    { year: "2026", status: "Upcoming", title: "Capital Expansion: Lucknow", desc: "Marked strategic growth into Lucknow with 'Pratham', a state-of-the-art mixed-use commercial destination." }
   ],
 
   // Official Leadership & Key Team (From Official Brochure)

@@ -1,18 +1,42 @@
 import React, { useState } from 'react';
 import { useStore } from '../context/StoreContext';
 import { useModal } from '../context/ModalContext';
-import { MapPin, Phone, Mail, Clock, Send, Car, Check } from 'lucide-react';
+import { 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Clock, 
+  Send, 
+  Car, 
+  Check, 
+  Building2, 
+  Calendar, 
+  User, 
+  Sparkles, 
+  ShieldCheck, 
+  ExternalLink,
+  MessageSquare,
+  Users
+} from 'lucide-react';
 
 export const ContactPage = () => {
   const { company, projects, addLead } = useStore();
   const { showToast } = useModal();
 
+  const getTomorrowDate = () => {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return d.toISOString().split('T')[0];
+  };
+
+  const todayStr = new Date().toISOString().split('T')[0];
+
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
     email: '',
-    projectId: '',
-    scheduledDate: '',
+    projectId: projects[0]?.id || '',
+    scheduledDate: getTomorrowDate(),
     timeSlot: '11:00 AM - 12:30 PM',
     cabRequired: true,
     pickupAddress: '',
@@ -24,221 +48,484 @@ export const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.phone) {
-      showToast('Please provide your name and phone number.', 'error');
+    if (!formData.fullName.trim() || !formData.phone.trim()) {
+      showToast('Please provide your full name and phone number.', 'error');
       return;
     }
 
     setSubmitting(true);
-    const selectedProj = projects.find(p => p.id === formData.projectId) || projects[0];
+    const selectedProj = projects.find(p => p.id === formData.projectId) || projects[0] || { id: 'ssb-project', title: 'SSB Flagship Development' };
 
     addLead({
-      fullName: formData.fullName,
-      phone: formData.phone,
-      email: formData.email,
+      fullName: formData.fullName.trim(),
+      phone: formData.phone.trim(),
+      email: formData.email.trim(),
       projectId: selectedProj.id,
       projectName: selectedProj.title,
-      scheduledDate: formData.scheduledDate,
+      scheduledDate: formData.scheduledDate || todayStr,
       timeSlot: formData.timeSlot,
       cabRequired: formData.cabRequired,
-      pickupAddress: formData.cabRequired ? (formData.pickupAddress || 'Varanasi City Pickup') : 'Self Travel',
+      pickupAddress: formData.cabRequired ? (formData.pickupAddress.trim() || 'Varanasi City Pickup') : 'Self Travel',
       visitors: formData.visitors,
       source: 'CONTACT_PAGE_FORM',
-      message: formData.message || `Contact enquiry with ${formData.cabRequired ? 'Chauffeur Cab requested' : 'Self travel'}.`
+      message: formData.message.trim() || `VIP Site Visit booked for ${selectedProj.title} on ${formData.scheduledDate || 'upcoming date'}. ${formData.cabRequired ? 'Chauffeur Cab requested at ' + (formData.pickupAddress || 'Varanasi City') : 'Self travel'}.`
     });
 
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
-      showToast(`Thank you ${formData.fullName}! Your enquiry and site visit request have been received.`, 'success');
-    }, 400);
+      showToast(`Thank you ${formData.fullName}! Your site visit request has been confirmed.`, 'success');
+    }, 450);
   };
 
   return (
-    <div className="fade-in" style={{ paddingBottom: '5rem' }}>
-      {/* Header */}
+    <div className="fade-in">
+      {/* Subpage Hero Section */}
       <section className="subpage-hero">
         <div className="container">
-          <span className="eyebrow" style={{ color: 'var(--gold)' }}>CONNECT WITH US</span>
+          <span className="eyebrow" style={{ color: 'var(--gold)' }}>
+            ✨ PREMIER PROPERTY CONCIERGE
+          </span>
           <h1 className="subpage-hero-title">
-            Contact & Headquarters
+            Contact &amp; Headquarters
           </h1>
           <p className="subpage-hero-desc">
-            Visit our registered corporate office in Cantonment Varanasi or schedule an on-site property tour with complimentary chauffeur pickup.
+            Visit our registered corporate office in Cantonment Varanasi, or book a VIP on-site property inspection with complimentary chauffeur transportation.
           </p>
+
+          <div className="contact-quick-stats-strip">
+            <div className="contact-quick-stat-pill">
+              <MapPin size={14} className="text-gold" />
+              <span>Mall Road, Cantonment Varanasi</span>
+            </div>
+            <div className="contact-quick-stat-pill">
+              <Car size={14} className="text-emerald" />
+              <span>Complimentary VIP Chauffeur Service</span>
+            </div>
+            <div className="contact-quick-stat-pill">
+              <Clock size={14} className="text-gold" />
+              <span>15-Minute Response Time</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div className="container" style={{ paddingTop: '4rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '3rem' }}>
-          {/* Office Contact Info */}
-          <div>
-            <h3 style={{ fontSize: '1.8rem', color: 'var(--ink)', marginBottom: '1.5rem' }}>Registered Headquarters</h3>
+      {/* Main Content Grid */}
+      <section className="contact-section-wrap">
+        <div className="container">
+          <div className="contact-grid">
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
-              <div style={{ display: 'flex', gap: '1rem', background: '#FFF', padding: '1.5rem', borderRadius: 'var(--r-lg)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-xs)' }}>
-                <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'var(--brand-subtle)', color: 'var(--brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <MapPin size={22} />
-                </div>
-                <div>
-                  <strong style={{ display: 'block', fontSize: '1.05rem', color: 'var(--ink)', marginBottom: '0.25rem' }}>Corporate Office</strong>
-                  <p style={{ color: 'var(--ink-muted)', fontSize: '0.9rem', lineHeight: '1.6', margin: 0 }}>
-                    {company.address}
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '1rem', background: '#FFF', padding: '1.5rem', borderRadius: 'var(--r-lg)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-xs)' }}>
-                <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'var(--brand-subtle)', color: 'var(--brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <Phone size={22} />
-                </div>
-                <div>
-                  <strong style={{ display: 'block', fontSize: '1.05rem', color: 'var(--ink)', marginBottom: '0.25rem' }}>Phone Helplines</strong>
-                  <p style={{ color: 'var(--ink-muted)', fontSize: '0.9rem', lineHeight: '1.6', margin: 0 }}>
-                    <a href="tel:+919818928893" style={{ color: 'var(--brand)', fontWeight: 700 }}>+91 98189 28893</a><br />
-                    <span>Office: 07080201752 · 0542-2500657</span>
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '1rem', background: '#FFF', padding: '1.5rem', borderRadius: 'var(--r-lg)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-xs)' }}>
-                <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'var(--brand-subtle)', color: 'var(--brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <Mail size={22} />
-                </div>
-                <div>
-                  <strong style={{ display: 'block', fontSize: '1.05rem', color: 'var(--ink)', marginBottom: '0.25rem' }}>Official Email</strong>
-                  <p style={{ color: 'var(--ink-muted)', fontSize: '0.9rem', margin: 0 }}>
-                    <a href={`mailto:${company.email}`} style={{ color: 'var(--brand)', fontWeight: 600 }}>{company.email}</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact & Site Visit Form */}
-          <div style={{ background: '#FFF', padding: '2.5rem', borderRadius: 'var(--r-xl)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}>
-            <span className="eyebrow">ONLINE BOOKING</span>
-            <h3 style={{ fontSize: '1.6rem', color: 'var(--ink)', marginBottom: '0.5rem' }}>Book a Chauffeur Site Visit</h3>
-            <p style={{ fontSize: '0.85rem', color: 'var(--ink-muted)', marginBottom: '1.5rem' }}>
-              Complimentary pickup and drop across Varanasi for sample flat & construction site inspections.
-            </p>
-
-            {submitted ? (
-              <div style={{ padding: '2.5rem 1.5rem', textAlign: 'center', background: 'var(--sand-muted)', borderRadius: 'var(--r-md)' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🎉</div>
-                <h4 style={{ fontSize: '1.3rem', color: 'var(--brand)', marginBottom: '0.5rem' }}>Booking Confirmed!</h4>
-                <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginBottom: '1.5rem' }}>
-                  Our logistics desk has assigned your booking. We will send the driver contact and vehicle details via SMS to <strong>{formData.phone}</strong>.
+            {/* Left Column: Registered HQ & Contact Cards */}
+            <div className="contact-hq-section">
+              <div className="contact-hq-header">
+                <span className="eyebrow text-brand">OFFICIAL PRESENCE</span>
+                <h2 className="contact-hq-heading">Registered Headquarters</h2>
+                <p className="contact-hq-subtext">
+                  Direct contact channels for project enquiries, legal documentation, investor relations, and site appointments.
                 </p>
-                <button className="btn btn-outline btn-sm" onClick={() => setSubmitted(false)}>
-                  Submit Another Enquiry
-                </button>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label className="form-label">Full Name *</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    required 
-                    placeholder="e.g. Alok Srivastava"
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+
+              {/* Card 1: Corporate Office */}
+              <div className="contact-info-card">
+                <div className="contact-card-icon-box brand-icon">
+                  <MapPin size={24} />
+                </div>
+                <div className="contact-card-body">
+                  <div className="contact-card-top">
+                    <h3 className="contact-card-title">Corporate Headquarters</h3>
+                    <span className="contact-card-badge">REGISTERED OFFICE</span>
+                  </div>
+                  <p className="contact-card-desc">
+                    {company.address || '20/51-5 and 20/52-4, Sri Das Foundation Building, Cantonment, Mall Road, Varanasi, Uttar Pradesh 221002'}
+                  </p>
+                  <div className="contact-card-actions-row">
+                    <a 
+                      href="https://maps.google.com/?q=Sri+Das+Foundation+Building+Cantonment+Mall+Road+Varanasi" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="contact-action-btn secondary"
+                    >
+                      <span>Open on Google Maps</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: Phone Helplines */}
+              <div className="contact-info-card">
+                <div className="contact-card-icon-box emerald-icon">
+                  <Phone size={24} />
+                </div>
+                <div className="contact-card-body">
+                  <div className="contact-card-top">
+                    <h3 className="contact-card-title">Executive Helplines</h3>
+                    <span className="contact-card-badge" style={{ background: '#ECFDF5', color: '#059669' }}>DIRECT CONNECT</span>
+                  </div>
+                  <p className="contact-card-desc">
+                    <strong style={{ color: '#0F172A', fontSize: '1.05rem', display: 'block', marginBottom: '0.2rem' }}>
+                      +91 98189 28893
+                    </strong>
+                    <span>Office: 07080201752 · Board: 0542-2500657</span>
+                    <br />
+                    <span style={{ fontSize: '0.8rem', color: '#64748B' }}>Mon – Sat: 9:30 AM – 7:30 PM (IST)</span>
+                  </p>
+                  <div className="contact-card-actions-row">
+                    <a href="tel:+919818928893" className="contact-action-btn primary">
+                      <Phone size={13} />
+                      <span>Call Executive Helpline</span>
+                    </a>
+                    <a 
+                      href="https://wa.me/919818928893?text=Hello%20SSB%20Group,%20I%20would%20like%20to%20enquire%20about%20your%20developments." 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="contact-action-btn secondary"
+                    >
+                      <MessageSquare size={13} className="text-emerald" />
+                      <span>WhatsApp Chat</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: Official Email */}
+              <div className="contact-info-card">
+                <div className="contact-card-icon-box gold-icon">
+                  <Mail size={24} />
+                </div>
+                <div className="contact-card-body">
+                  <div className="contact-card-top">
+                    <h3 className="contact-card-title">Official Email Desk</h3>
+                    <span className="contact-card-badge" style={{ background: '#FFFBEB', color: '#D97706' }}>FAST RESPONSE</span>
+                  </div>
+                  <p className="contact-card-desc">
+                    <a href={`mailto:${company.email || 'info@ssbinfraproject.com'}`} style={{ color: 'var(--brand)', fontWeight: 700, fontSize: '0.98rem' }}>
+                      {company.email || 'info@ssbinfraproject.com'}
+                    </a>
+                    <br />
+                    <span>For project brochures, legal queries, NRI investments &amp; official correspondence.</span>
+                  </p>
+                  <div className="contact-card-actions-row">
+                    <a href={`mailto:${company.email || 'info@ssbinfraproject.com'}`} className="contact-action-btn secondary">
+                      <Mail size={13} />
+                      <span>Compose Email</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Interactive Office Map Card */}
+              <div className="contact-map-card">
+                <div className="contact-map-header">
+                  <span className="contact-map-status">
+                    <span className="contact-live-dot" />
+                    <span>Corporate Office Open Today (Visitors Welcome)</span>
+                  </span>
+                  <span style={{ fontSize: '0.76rem', color: '#64748B', fontWeight: 600 }}>
+                    Cantonment, Varanasi
+                  </span>
+                </div>
+                <div className="contact-map-frame-wrap">
+                  <iframe 
+                    title="SSB Group Corporate Headquarters"
+                    src="https://maps.google.com/maps?q=Sri+Das+Foundation+Building,+Cantonment,+Mall+Road,+Varanasi,+Uttar+Pradesh&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    loading="lazy"
                   />
                 </div>
+              </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div className="form-group">
-                    <label className="form-label">Phone Number *</label>
-                    <input 
-                      type="tel" 
-                      className="form-input" 
-                      required 
-                      placeholder="+91 98189 28893"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    />
-                  </div>
+            </div>
 
-                  <div className="form-group">
-                    <label className="form-label">Project of Interest</label>
-                    <select 
-                      className="form-select"
-                      value={formData.projectId}
-                      onChange={(e) => setFormData({ ...formData, projectId: e.target.value })}
-                    >
-                      <option value="">Select Project</option>
-                      {projects.map(p => (
-                        <option key={p.id} value={p.id}>{p.title}</option>
-                      ))}
-                    </select>
+            {/* Right Column: Ultra-Luxury VIP Site Visit Form */}
+            <div className="contact-form-luxury-card">
+              <span className="contact-form-badge">
+                <Sparkles size={12} />
+                <span>COMPLIMENTARY VIP TOUR</span>
+              </span>
+              <h2 className="contact-form-title">
+                Book a Chauffeur Site Visit
+              </h2>
+              <p className="contact-form-desc">
+                Complimentary door-to-door AC cab pickup &amp; drop across Varanasi for sample flat walkthroughs and construction progress tours.
+              </p>
+
+              {submitted ? (
+                <div className="contact-success-box">
+                  <div className="contact-success-icon-wrap">
+                    <Check size={32} />
                   </div>
+                  <h3 className="contact-success-title">Site Visit Confirmed!</h3>
+                  <p className="contact-success-desc">
+                    Thank you <strong>{formData.fullName}</strong>. Our logistics desk has reserved your inspection on <strong>{formData.scheduledDate}</strong> ({formData.timeSlot}).
+                    <br /><br />
+                    We will send driver assignment, vehicle registration number, and concierge contact via SMS/WhatsApp to <strong>{formData.phone}</strong>.
+                  </p>
+                  <button 
+                    type="button" 
+                    className="btn btn-outline" 
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({
+                        fullName: '',
+                        phone: '',
+                        email: '',
+                        projectId: projects[0]?.id || '',
+                        scheduledDate: getTomorrowDate(),
+                        timeSlot: '11:00 AM - 12:30 PM',
+                        cabRequired: true,
+                        pickupAddress: '',
+                        visitors: '2',
+                        message: ''
+                      });
+                    }}
+                  >
+                    Schedule Another Visit
+                  </button>
                 </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div className="form-group">
-                    <label className="form-label">Preferred Date</label>
-                    <input 
-                      type="date" 
-                      className="form-input" 
-                      value={formData.scheduledDate}
-                      onChange={(e) => setFormData({ ...formData, scheduledDate: e.target.value })}
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">Time Slot</label>
-                    <select 
-                      className="form-select"
-                      value={formData.timeSlot}
-                      onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}
-                    >
-                      <option value="10:00 AM - 11:30 AM">10:00 AM - 11:30 AM</option>
-                      <option value="11:00 AM - 12:30 PM">11:00 AM - 12:30 PM</option>
-                      <option value="02:00 PM - 03:30 PM">02:00 PM - 03:30 PM</option>
-                      <option value="04:00 PM - 05:30 PM">04:00 PM - 05:30 PM</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-group" style={{ background: 'var(--sand-muted)', padding: '1rem', borderRadius: 'var(--r-md)', border: '1px solid var(--border)' }}>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer', fontWeight: 600, color: 'var(--ink)' }}>
-                    <input 
-                      type="checkbox" 
-                      checked={formData.cabRequired}
-                      onChange={(e) => setFormData({ ...formData, cabRequired: e.target.checked })}
-                      style={{ width: '18px', height: '18px', accentColor: 'var(--brand)' }}
-                    />
-                    <span>🚗 Need AC Chauffeur Cab Pickup in Varanasi</span>
-                  </label>
-
-                  {formData.cabRequired && (
-                    <div style={{ marginTop: '0.8rem' }}>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  
+                  {/* Full Name */}
+                  <div className="contact-input-field">
+                    <label className="contact-input-label">
+                      <span>Full Name *</span>
+                      <span style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 500 }}>Required</span>
+                    </label>
+                    <div className="contact-input-wrapper">
+                      <span className="contact-input-icon">
+                        <User size={16} />
+                      </span>
                       <input 
                         type="text" 
-                        className="form-input" 
-                        placeholder="Enter pickup address / hotel in Varanasi"
-                        value={formData.pickupAddress}
-                        onChange={(e) => setFormData({ ...formData, pickupAddress: e.target.value })}
+                        className="contact-form-control" 
+                        required 
+                        placeholder="e.g. Alok Srivastava"
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       />
                     </div>
-                  )}
-                </div>
+                  </div>
 
-                <button 
-                  type="submit" 
-                  className="btn btn-primary" 
-                  style={{ width: '100%', marginTop: '0.5rem' }}
-                  disabled={submitting}
-                >
-                  <Send size={16} /> {submitting ? 'Submitting...' : 'Confirm Site Visit Request'}
-                </button>
-              </form>
-            )}
+                  {/* Phone & Email Row */}
+                  <div className="contact-form-row">
+                    <div className="contact-input-field">
+                      <label className="contact-input-label">
+                        <span>Phone Number *</span>
+                        <span style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 500 }}>SMS Updates</span>
+                      </label>
+                      <div className="contact-input-wrapper">
+                        <span className="contact-input-icon">
+                          <Phone size={16} />
+                        </span>
+                        <input 
+                          type="tel" 
+                          className="contact-form-control" 
+                          required 
+                          placeholder="+91 98189 28893"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="contact-input-field">
+                      <label className="contact-input-label">
+                        <span>Email Address</span>
+                        <span style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 500 }}>Optional</span>
+                      </label>
+                      <div className="contact-input-wrapper">
+                        <span className="contact-input-icon">
+                          <Mail size={16} />
+                        </span>
+                        <input 
+                          type="email" 
+                          className="contact-form-control" 
+                          placeholder="alok@example.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project of Interest */}
+                  <div className="contact-input-field">
+                    <label className="contact-input-label">
+                      <span>Development of Interest</span>
+                      <span style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 500 }}>Select Site</span>
+                    </label>
+                    <div className="contact-input-wrapper">
+                      <span className="contact-input-icon">
+                        <Building2 size={16} />
+                      </span>
+                      <select 
+                        className="contact-form-control"
+                        value={formData.projectId}
+                        onChange={(e) => setFormData({ ...formData, projectId: e.target.value })}
+                      >
+                        {projects.map(p => (
+                          <option key={p.id} value={p.id}>
+                            {p.title} — {p.category} ({p.status || 'Active'})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Preferred Date & Time Slot */}
+                  <div className="contact-form-row">
+                    <div className="contact-input-field">
+                      <label className="contact-input-label">
+                        <span>Preferred Date</span>
+                        <span style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 500 }}>Inspection</span>
+                      </label>
+                      <div className="contact-input-wrapper">
+                        <span className="contact-input-icon">
+                          <Calendar size={16} />
+                        </span>
+                        <input 
+                          type="date" 
+                          min={todayStr}
+                          className="contact-form-control" 
+                          value={formData.scheduledDate}
+                          onChange={(e) => setFormData({ ...formData, scheduledDate: e.target.value })}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="contact-input-field">
+                      <label className="contact-input-label">
+                        <span>Preferred Time Slot</span>
+                        <span style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 500 }}>Flexible</span>
+                      </label>
+                      <div className="contact-input-wrapper">
+                        <span className="contact-input-icon">
+                          <Clock size={16} />
+                        </span>
+                        <select 
+                          className="contact-form-control"
+                          value={formData.timeSlot}
+                          onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}
+                        >
+                          <option value="10:00 AM - 11:30 AM">Morning: 10:00 AM – 11:30 AM</option>
+                          <option value="11:00 AM - 12:30 PM">Midday: 11:00 AM – 12:30 PM</option>
+                          <option value="02:00 PM - 03:30 PM">Afternoon: 02:00 PM – 03:30 PM</option>
+                          <option value="04:00 PM - 05:30 PM">Evening: 04:00 PM – 05:30 PM</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* VIP Chauffeur Switch Card */}
+                  <div className="contact-vip-chauffeur-box">
+                    <div 
+                      className="contact-vip-toggle-header"
+                      onClick={() => setFormData(prev => ({ ...prev, cabRequired: !prev.cabRequired }))}
+                    >
+                      <div className="contact-vip-title-wrap">
+                        <div className="contact-vip-icon-pill">
+                          <Car size={18} />
+                        </div>
+                        <div>
+                          <h4 className="contact-vip-title">
+                            Complimentary AC Chauffeur Cab
+                          </h4>
+                          <p className="contact-vip-subtitle">
+                            Free pickup &amp; drop from home, hotel, or Varanasi airport
+                          </p>
+                        </div>
+                      </div>
+
+                      <label className="contact-toggle-switch" onClick={(e) => e.stopPropagation()}>
+                        <input 
+                          type="checkbox" 
+                          checked={formData.cabRequired}
+                          onChange={(e) => setFormData({ ...formData, cabRequired: e.target.checked })}
+                        />
+                        <span className="contact-toggle-slider" />
+                      </label>
+                    </div>
+
+                    {formData.cabRequired && (
+                      <div className="contact-vip-address-field">
+                        <label className="contact-input-label" style={{ color: '#065F46', marginBottom: '0.35rem' }}>
+                          <span>Pickup Address / Location in Varanasi *</span>
+                        </label>
+                        <div className="contact-input-wrapper">
+                          <span className="contact-input-icon" style={{ color: '#10B981' }}>
+                            <MapPin size={16} />
+                          </span>
+                          <input 
+                            type="text" 
+                            className="contact-form-control" 
+                            placeholder="Enter residence address, hotel name, or airport arrival terminal"
+                            value={formData.pickupAddress}
+                            onChange={(e) => setFormData({ ...formData, pickupAddress: e.target.value })}
+                            style={{ background: '#FFFFFF', borderColor: '#A7F3D0' }}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Number of Visitors Selection */}
+                  <div className="contact-input-field">
+                    <label className="contact-input-label">
+                      <span>Party Size / Accompanying Guests</span>
+                      <span style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 500 }}>Seating</span>
+                    </label>
+                    <div className="contact-visitor-pills-row">
+                      {[
+                        { val: '1', label: '1–2 Guests', sub: 'Couples' },
+                        { val: '3', label: '3–4 Guests', sub: 'Family' },
+                        { val: '5', label: '5+ Guests', sub: 'Group' }
+                      ].map(v => (
+                        <button
+                          key={v.val}
+                          type="button"
+                          className={`contact-visitor-btn ${formData.visitors === v.val ? 'active' : ''}`}
+                          onClick={() => setFormData({ ...formData, visitors: v.val })}
+                        >
+                          <div>{v.label}</div>
+                          <small style={{ fontSize: '0.68rem', opacity: 0.8 }}>({v.sub})</small>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button 
+                    type="submit" 
+                    className="contact-submit-btn" 
+                    disabled={submitting}
+                  >
+                    <Send size={16} />
+                    <span>{submitting ? 'Confirming Reservation...' : 'Confirm VIP Site Visit Request'}</span>
+                  </button>
+
+                  {/* Trust Signals */}
+                  <div className="contact-trust-strip">
+                    <div className="contact-trust-item">
+                      <ShieldCheck size={14} className="text-gold" />
+                      <span>UP-RERA Verified</span>
+                    </div>
+                    <div className="contact-trust-item">
+                      <Car size={14} className="text-emerald" />
+                      <span>100% Free Transportation</span>
+                    </div>
+                    <div className="contact-trust-item">
+                      <Sparkles size={14} className="text-brand" />
+                      <span>Zero Obligation Tour</span>
+                    </div>
+                  </div>
+
+                </form>
+              )}
+            </div>
+
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

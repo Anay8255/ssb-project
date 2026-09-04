@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import L from 'leaflet';
-import { ArrowRight, ArrowUpRight, MapPin, Building2, CheckCircle2, Sparkles, Navigation, Layers } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, MapPin, Building2, CheckCircle2, Sparkles, Navigation } from 'lucide-react';
 
 const CITIES_DATA = [
   {
@@ -71,23 +71,105 @@ const CITIES_DATA = [
 ];
 
 export const PresenceMap = () => {
+  const sectionRef = useRef(null);
   const mapRef = useRef(null);
   const mapInstance = useRef(null);
   const markersRef = useRef({});
   const [activeCity, setActiveCity] = useState('ALL');
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [isInView, setIsInView] = useState(false);
+
+  // Scroll entrance state
+  const isVisibleRef = useRef(false);
+  const rafRef = useRef(null);
+  const targetEnterProg = useRef(0);
+  const currentEnterProg = useRef(0);
+
+  const [scrollAnim, setScrollAnim] = useState({
+    enterProgress: 0,
+    headerY: 40,
+    headerOpacity: 0,
+    mapX: -40,
+    mapY: 50,
+    mapScale: 0.95,
+    panelX: 40,
+    panelY: 50
+  });
 
   const allProjects = CITIES_DATA.flatMap(c => c.projects);
   const displayedProjects = activeCity === 'ALL'
     ? allProjects
     : allProjects.filter(p => p.city.toLowerCase() === activeCity.toLowerCase());
 
+  // 1. Viewport Visibility & Scroll Interpolation
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.05, rootMargin: '80px 0px' }
+    );
+
+    observer.observe(section);
+
+    const onScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      const enterDist = vh - rect.top;
+      const enterFull = vh * 0.65 + rect.height * 0.35;
+      const progress = Math.max(0, Math.min(1, enterDist / enterFull));
+      targetEnterProg.current = progress;
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+
+    // Smooth Lerp Loop
+    const tick = () => {
+      if (isVisibleRef.current) {
+        currentEnterProg.current += (targetEnterProg.current - currentEnterProg.current) * 0.09;
+        const p = currentEnterProg.current;
+        const inv = 1 - p;
+
+        setScrollAnim({
+          enterProgress: p,
+          headerY: inv * 35,
+          headerOpacity: Math.min(1, p * 1.6),
+          mapX: inv * -45,
+          mapY: inv * 55,
+          mapScale: 0.94 + (p * 0.06),
+          panelX: inv * 45,
+          panelY: inv * 55
+        });
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  // 2. Leaflet Map Initialization
   useEffect(() => {
     if (!mapRef.current) return;
     if (mapInstance.current) return;
 
     try {
-      // Initialize Leaflet with clean map fitted for single frame
       const map = L.map(mapRef.current, {
         center: [26.12, 82.0],
         zoom: 7.3,
@@ -98,13 +180,12 @@ export const PresenceMap = () => {
 
       mapInstance.current = map;
 
-      // Clean, watermark-free architectural styled tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
 
-      // Custom Pin Markers for Varanasi & Lucknow (No intrusive popups)
+      // Custom Pin Markers for Varanasi & Lucknow
       CITIES_DATA.forEach(city => {
         const customIcon = L.divIcon({
           className: `presence-custom-marker marker-${city.id}`,
@@ -134,7 +215,6 @@ export const PresenceMap = () => {
         const marker = L.marker(city.coords, { icon: customIcon }).addTo(map);
         markersRef.current[city.id] = marker;
 
-        // Click marker to filter corresponding city projects without popup
         marker.on('click', () => {
           handleCitySelect(city.name);
         });
@@ -142,7 +222,7 @@ export const PresenceMap = () => {
 
       setTimeout(() => {
         map.invalidateSize();
-      }, 350);
+      }, 400);
 
     } catch (e) {
       console.warn("Leaflet map initialization notice:", e);
@@ -162,14 +242,14 @@ export const PresenceMap = () => {
 
     if (cityName === 'ALL') {
       mapInstance.current.flyTo([26.12, 82.0], 7.3, {
-        duration: 1.0,
+        duration: 1.2,
         easeLinearity: 0.25
       });
     } else {
       const city = CITIES_DATA.find(c => c.name.toLowerCase() === cityName.toLowerCase());
       if (city) {
-        mapInstance.current.flyTo(city.coords, 10.5, {
-          duration: 1.0,
+        mapInstance.current.flyTo(city.coords, 10.8, {
+          duration: 1.2,
           easeLinearity: 0.25
         });
       }
@@ -182,7 +262,6 @@ export const PresenceMap = () => {
 
     const city = CITIES_DATA.find(c => c.name.toLowerCase() === project.city.toLowerCase());
     if (city) {
-      // Highlight marker subtly without opening any popup
       const markerEl = document.querySelector(`.marker-${city.id} .presence-marker-pin`);
       if (markerEl) {
         markerEl.classList.add('is-focused');
@@ -203,13 +282,23 @@ export const PresenceMap = () => {
   };
 
   return (
-    <section className="presence-section-luxury" id="presence-section-mount">
-      {/* Subtle architectural background texture */}
+    <section 
+      ref={sectionRef} 
+      className={`presence-section-luxury ${isInView ? 'is-in-view' : ''}`} 
+      id="presence-section-mount"
+    >
+      {/* Subtle architectural background texture & radial ambient glow */}
       <div className="presence-bg-glow" />
 
       <div className="container">
-        {/* Section Top Header */}
-        <div className="presence-top-header">
+        {/* Section Top Header with Scroll Reveal */}
+        <div 
+          className="presence-top-header"
+          style={{
+            transform: `translate3d(0, ${scrollAnim.headerY}px, 0)`,
+            opacity: scrollAnim.headerOpacity
+          }}
+        >
           <div className="presence-badge-chip">
             <MapPin size={13} className="text-brand" />
             <span>REGIONAL FOOTPRINT · EASTERN UTTAR PRADESH</span>
@@ -223,8 +312,14 @@ export const PresenceMap = () => {
         </div>
 
         <div className="presence-grid-luxury">
-          {/* Left Column: Ultra-Clean Architectural Map */}
-          <div className="presence-map-card">
+          {/* Left Column: Interactive Map Card scrolling into frame */}
+          <div 
+            className="presence-map-card"
+            style={{
+              transform: `translate3d(${scrollAnim.mapX}px, ${scrollAnim.mapY}px, 0) scale(${scrollAnim.mapScale})`,
+              opacity: Math.min(1, scrollAnim.enterProgress * 1.5)
+            }}
+          >
             {/* Interactive Top Floating Control Bar */}
             <div className="presence-map-topbar">
               <div className="presence-map-city-tabs">
@@ -277,8 +372,14 @@ export const PresenceMap = () => {
             </div>
           </div>
 
-          {/* Right Column: Executive Portfolio Cards */}
-          <div className="presence-portfolio-panel">
+          {/* Right Column: Executive Portfolio Cards scrolling in with Staggered Cascade */}
+          <div 
+            className="presence-portfolio-panel"
+            style={{
+              transform: `translate3d(${scrollAnim.panelX}px, ${scrollAnim.panelY}px, 0)`,
+              opacity: Math.min(1, scrollAnim.enterProgress * 1.5)
+            }}
+          >
             <div className="presence-portfolio-header">
               <div className="presence-portfolio-count">
                 <Building2 size={16} className="text-brand" />
@@ -290,11 +391,16 @@ export const PresenceMap = () => {
             </div>
 
             <div className="presence-cards-list">
-              {displayedProjects.map((project) => (
+              {displayedProjects.map((project, idx) => (
                 <Link
                   key={project.slug}
                   to={`/projects/${project.slug}`}
                   className={`presence-luxury-card ${hoveredProject === project.slug ? 'is-hovered' : ''}`}
+                  style={{
+                    animationDelay: `${idx * 0.1}s`,
+                    transform: isInView ? 'none' : 'translateY(20px)',
+                    opacity: isInView ? 1 : 0.2
+                  }}
                   onMouseEnter={() => handleProjectHover(project)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
@@ -354,7 +460,7 @@ export const PresenceMap = () => {
 
               <Link to="/projects" className="presence-explore-all-btn">
                 <span>Explore All Projects</span>
-                <ArrowRight size={15} />
+                <ArrowRight size={15} className="explore-arrow-icon" />
               </Link>
             </div>
           </div>
@@ -363,3 +469,4 @@ export const PresenceMap = () => {
     </section>
   );
 };
+

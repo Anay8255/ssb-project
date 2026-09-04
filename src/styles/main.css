@@ -1113,57 +1113,83 @@
   align-items: center;
   gap: 0.75rem;
   background: #FFFFFF;
-  padding: 0.55rem 0.95rem;
-  border-radius: 12px;
+  padding: 0.6rem 0.95rem;
+  border-radius: 14px;
   border: 1.5px solid #E2E8F0;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease,
+              background 0.25s ease,
+              opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.presence-luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.12), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.presence-luxury-card:hover::before,
+.presence-luxury-card.is-hovered::before {
+  left: 140%;
 }
 
 .presence-luxury-card:hover,
 .presence-luxury-card.is-hovered {
-  transform: translateX(4px);
+  transform: translateX(6px) !important;
   border-color: #C5A059;
-  box-shadow: 0 8px 20px -3px rgba(15, 41, 74, 0.1), 0 0 0 1px rgba(197, 160, 89, 0.25);
+  box-shadow: 0 10px 24px -4px rgba(15, 41, 74, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.3);
   background: #FFFFFF;
 }
 
 .presence-card-monogram {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading, 'Cinzel', serif);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 800;
   flex-shrink: 0;
-  transition: all 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
 }
 
 .presence-card-monogram.ongoing {
   background: linear-gradient(135deg, #0F294A 0%, #1E3A8A 100%);
   color: #F5E7C8;
-  border: 1px solid rgba(197, 160, 89, 0.3);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 2px 8px rgba(15, 41, 74, 0.2);
 }
 
 .presence-card-monogram.completed {
   background: linear-gradient(135deg, #064E3B 0%, #059669 100%);
   color: #ECFDF5;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
 }
 
 .presence-card-monogram.upcoming {
   background: linear-gradient(135deg, #78350F 0%, #B45309 100%);
   color: #FEF3C7;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 2px 8px rgba(180, 83, 9, 0.2);
 }
 
 .presence-luxury-card:hover .presence-card-monogram {
-  transform: scale(1.05);
+  transform: scale(1.1) rotate(2deg);
 }
 
 .presence-card-info {
@@ -1197,9 +1223,14 @@
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.12rem 0.45rem;
+  padding: 0.14rem 0.5rem;
   border-radius: 9999px;
   flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.presence-luxury-card:hover .presence-status-badge {
+  transform: scale(1.04);
 }
 
 .presence-status-badge.ongoing {
@@ -1257,13 +1288,19 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   background: #F1F5F9;
-  padding: 0.1rem 0.45rem;
-  border-radius: 5px;
+  padding: 0.12rem 0.48rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.presence-luxury-card:hover .presence-card-city-tag {
+  background: #0F294A;
+  color: #FFFFFF;
 }
 
 .presence-arrow-btn {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
@@ -1271,14 +1308,14 @@
   align-items: center;
   justify-content: center;
   color: #475569;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .presence-luxury-card:hover .presence-arrow-btn {
   background: var(--brand);
   color: #FFFFFF;
   border-color: var(--brand);
-  transform: translate(1px, -1px);
+  transform: translate(2px, -2px) scale(1.08);
 }
 
 /* Portfolio Footer */
@@ -1287,7 +1324,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.85rem;
-  padding-top: 0.5rem;
+  padding-top: 0.55rem;
   border-top: 1.5px solid #E2E8F0;
   margin-top: 0.15rem;
   flex-wrap: wrap;
@@ -1303,6 +1340,11 @@
   display: flex;
   flex-direction: column;
   line-height: 1.1;
+  transition: transform 0.2s ease;
+}
+
+.presence-trust-stat-item:hover {
+  transform: translateY(-2px);
 }
 
 .presence-trust-stat-item strong {
@@ -1328,24 +1370,49 @@
 .presence-explore-all-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   background: linear-gradient(135deg, #0F294A 0%, #173B68 100%);
   color: #FFFFFF;
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1.15rem;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   text-decoration: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 3px 10px rgba(15, 41, 74, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(15, 41, 74, 0.2);
   border: 1px solid rgba(197, 160, 89, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.presence-explore-all-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.6s ease;
+}
+
+.presence-explore-all-btn:hover::before {
+  left: 100%;
 }
 
 .presence-explore-all-btn:hover {
   background: linear-gradient(135deg, #091527 0%, #0F294A 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(15, 41, 74, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 41, 74, 0.35);
   border-color: #C5A059;
+}
+
+.presence-explore-all-btn .explore-arrow-icon {
+  transition: transform 0.25s ease;
+}
+
+.presence-explore-all-btn:hover .explore-arrow-icon {
+  transform: translateX(3px);
 }
 
 /* Responsive adjustments for Luxury Presence Map Section */
@@ -2103,11 +2170,11 @@
 }
 
 /* ==========================================================================
-   ROMA BUILDERS STYLE ABOUT US SECTION LAYOUT
+   ROMA BUILDERS STYLE ABOUT US SECTION LAYOUT & SCROLL ANIMATION
    ========================================================================== */
 .roma-about-section {
   position: relative;
-  padding: 6.5rem 0;
+  padding: 7rem 0;
   background: var(--sand);
   overflow: hidden;
 }
@@ -2115,118 +2182,181 @@
 .roma-about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 4.5rem;
   align-items: center;
   position: relative;
   z-index: 2;
 }
 
-/* Background Wireframe Grid Overlay */
+/* Background Wireframe Grid Overlay with Smooth Scroll Transitions */
 .wireframe-bg-tl {
   position: absolute;
   top: -40px;
   right: -40px;
-  width: 260px;
-  height: 260px;
+  width: 280px;
+  height: 280px;
   background-image: 
-    linear-gradient(to right, rgba(15, 59, 96, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 59, 96, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 59, 96, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 59, 96, 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: none;
   z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .wireframe-bg-br {
   position: absolute;
   bottom: -40px;
   left: -40px;
-  width: 260px;
-  height: 260px;
+  width: 280px;
+  height: 280px;
   background-image: 
-    linear-gradient(to right, rgba(15, 59, 96, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 59, 96, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 59, 96, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 59, 96, 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: none;
   z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
-/* Left Column: Floating Composite Image Collage */
 /* Left Column: Floating Composite Image Collage */
 .roma-collage-wrapper {
   position: relative;
   width: 100%;
   max-width: 530px;
-  height: 500px;
+  height: 520px;
   margin: 0 auto;
+  perspective: 1000px;
 }
 
+/* Common Image Box Wrapper for Shine & Smooth Transforms */
+.roma-img-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.roma-img-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+.roma-collage-wrapper:hover .roma-img-shine {
+  animation: sweepShine 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes sweepShine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* 1. Arch Image Box */
 .roma-arch-img-box {
   position: absolute;
   top: 30px;
   left: 0;
-  width: 250px;
-  height: 360px;
-  border-radius: 125px 125px 24px 24px;
+  width: 255px;
+  height: 370px;
+  border-radius: 130px 130px 28px 28px;
   overflow: hidden;
-  box-shadow: 0 18px 40px rgba(24, 24, 27, 0.12);
+  box-shadow: 0 24px 48px rgba(15, 59, 96, 0.16), 0 8px 20px rgba(0, 0, 0, 0.08);
   border: 4px solid #FFFFFF;
-  background: #F5F5F4;
+  background: #EAE6DF;
   z-index: 2;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.roma-arch-img-box:hover {
+  box-shadow: 0 32px 64px rgba(15, 59, 96, 0.24);
 }
 
 .roma-arch-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.roma-arch-img-box:hover .roma-arch-img {
+  transform: scale(1.06);
+}
+
+/* 2. Rectangular Image Box */
 .roma-rect-img-box {
   position: absolute;
   top: 0;
   right: 0;
-  width: 240px;
-  height: 330px;
-  border-radius: 24px;
+  width: 245px;
+  height: 340px;
+  border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 18px 40px rgba(24, 24, 27, 0.12);
+  box-shadow: 0 24px 48px rgba(15, 59, 96, 0.14), 0 8px 20px rgba(0, 0, 0, 0.08);
   border: 4px solid #FFFFFF;
-  background: #F5F5F4;
+  background: #EAE6DF;
   z-index: 1;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.roma-rect-img-box:hover {
+  box-shadow: 0 32px 64px rgba(15, 59, 96, 0.22);
 }
 
 .roma-rect-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Floating Circular Experience Badge */
+.roma-rect-img-box:hover .roma-rect-img {
+  transform: scale(1.06);
+}
+
+/* 3. Floating Circular Experience Badge */
 .roma-circular-badge {
   position: absolute;
   top: 42%;
   left: 48%;
   transform: translate(-50%, -50%);
-  width: 110px;
-  height: 110px;
+  width: 116px;
+  height: 116px;
   border-radius: 50%;
-  background: var(--brand);
+  background: linear-gradient(135deg, var(--brand) 0%, #0A2640 100%);
   border: 4px solid #FFFFFF;
-  box-shadow: 0 12px 32px rgba(15, 59, 96, 0.45);
+  box-shadow: 0 16px 36px rgba(15, 59, 96, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 6;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.roma-circular-badge:hover {
+  box-shadow: 0 20px 45px rgba(15, 59, 96, 0.6);
 }
 
 .circular-text-svg {
   position: absolute;
   inset: 0;
-  animation: rotateCircle 25s linear infinite;
-}
-
-@keyframes rotateCircle {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .circular-badge-center {
@@ -2237,93 +2367,150 @@
 
 .badge-years-num {
   font-family: var(--font-heading);
-  font-size: 1.95rem;
+  font-size: 2.05rem;
   font-weight: 800;
   line-height: 1;
   color: #FFFFFF;
+  letter-spacing: -0.02em;
 }
 
-/* Floating Rating Card (Bottom Right) */
+.badge-glow-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(200, 169, 110, 0.4);
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.08); opacity: 0.8; }
+}
+
+/* 4. Floating Rating Card (Bottom Right) */
 .roma-rating-card {
   position: absolute;
   bottom: 0px;
   right: 10px;
-  width: 225px;
-  background: #FFFFFF;
-  border-radius: 20px;
-  padding: 1.25rem 1rem;
-  box-shadow: 0 16px 40px rgba(24, 24, 27, 0.1);
-  border: 1px solid var(--border);
+  width: 235px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 22px;
+  padding: 1.25rem 1.15rem;
+  box-shadow: 0 20px 48px rgba(15, 59, 96, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   text-align: center;
   z-index: 5;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.roma-rating-card:hover {
+  box-shadow: 0 26px 54px rgba(15, 59, 96, 0.18);
+  transform: translateY(-4px) !important;
+}
+
+.rating-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.35rem;
 }
 
 .rating-num {
   font-family: var(--font-heading);
-  font-size: 2.25rem;
+  font-size: 2.35rem;
   font-weight: 800;
   color: var(--brand);
   line-height: 1;
-  margin-bottom: 0.35rem;
+}
+
+.rating-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(200, 169, 110, 0.15);
+  color: #8C6A1E;
+  padding: 3px 8px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid rgba(200, 169, 110, 0.35);
+}
+
+.rating-badge-pill .sparkle-icon {
+  color: #B38E2D;
 }
 
 .rating-avatars {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
 .avatar-img {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #FFFFFF;
   margin-left: -8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease;
 }
 
 .avatar-img:first-child {
   margin-left: 0;
 }
 
+.avatar-img:hover {
+  transform: scale(1.15) translateY(-2px);
+  z-index: 2;
+}
+
 .rating-stars {
-  color: var(--gold);
-  font-size: 0.85rem;
+  color: #E5A919;
+  font-size: 0.92rem;
   letter-spacing: 2px;
   margin-bottom: 0.25rem;
 }
 
 .rating-text {
   font-family: var(--font-body);
-  font-size: 0.825rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--ink);
 }
 
-/* Mini Gallery Thumbnails (Bottom Left) */
+/* 5. Mini Gallery Thumbnails (Bottom Left) */
 .roma-mini-gallery {
   position: absolute;
-  bottom: 10px;
+  bottom: 12px;
   left: 0;
   display: flex;
-  gap: 8px;
+  gap: 9px;
   z-index: 4;
 }
 
 .mini-thumb {
-  width: 58px;
-  height: 58px;
-  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
   object-fit: cover;
   border: 2px solid #FFFFFF;
-  box-shadow: 0 6px 16px rgba(24, 24, 27, 0.12);
-  background: #F5F5F4;
-  transition: transform 0.25s ease;
+  box-shadow: 0 8px 20px rgba(15, 59, 96, 0.15);
+  background: #EAE6DF;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .mini-thumb:hover {
-  transform: scale(1.1);
+  transform: scale(1.16) translateY(-4px);
+  box-shadow: 0 12px 26px rgba(15, 59, 96, 0.25);
+  z-index: 3;
 }
 
 /* Right Column: Content Text */
@@ -2334,89 +2521,148 @@
 .roma-eyebrow-line {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 0.85rem;
+  gap: 14px;
+  margin-bottom: 0.9rem;
 }
 
 .roma-eyebrow {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--brand);
 }
 
 .roma-accent-line {
-  width: 45px;
+  width: 50px;
   height: 3px;
-  background: var(--brand);
+  background: linear-gradient(90deg, var(--brand), var(--gold));
   border-radius: 99px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-revealed .roma-accent-line {
+  width: 65px;
 }
 
 .roma-heading {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.55rem;
+  font-weight: 800;
   color: var(--ink);
-  line-height: 1.2;
-  margin-bottom: 1.25rem;
+  line-height: 1.22;
+  margin-bottom: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.roma-heading-highlight {
+  position: relative;
+  display: inline-block;
+  color: var(--brand);
+}
+
+.roma-heading-highlight::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 6px;
+  background: rgba(200, 169, 110, 0.25);
+  border-radius: 4px;
+  z-index: -1;
 }
 
 .roma-desc {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--ink-muted);
-  line-height: 1.7;
-  margin-bottom: 1rem;
+  line-height: 1.75;
+  margin-bottom: 1.15rem;
 }
 
-.roma-quote {
+/* Luxury Hindi Quote Card */
+.roma-quote-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 16px 16px 0;
+  padding: 1.15rem 1.4rem;
+  margin: 1.4rem 0 1.6rem 0;
+  box-shadow: 0 8px 24px rgba(15, 59, 96, 0.05);
+}
+
+.quote-watermark {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  color: rgba(200, 169, 110, 0.2);
+  pointer-events: none;
+}
+
+.roma-quote-text {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-style: italic;
   font-weight: 700;
   color: var(--ink);
-  line-height: 1.6;
-  margin-top: 1.25rem;
-  margin-bottom: 1.5rem;
+  line-height: 1.65;
+  margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .roma-divider {
   height: 1px;
-  background: var(--border);
-  margin: 1.5rem 0;
+  background: linear-gradient(90deg, var(--border), transparent);
+  margin: 1.6rem 0;
 }
 
 .roma-features-list {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  margin-bottom: 1.75rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .roma-feature-item {
   display: flex;
   align-items: center;
   gap: 14px;
+  transition: transform 0.25s ease;
+}
+
+.roma-feature-item:hover {
+  transform: translateX(4px);
 }
 
 .roma-feature-icon {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: var(--brand-subtle);
+  background: rgba(15, 59, 96, 0.08);
   color: var(--brand);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 1px solid var(--brand-border);
+  border: 1px solid rgba(15, 59, 96, 0.15);
+  box-shadow: 0 4px 10px rgba(15, 59, 96, 0.06);
+  transition: all 0.3s ease;
+}
+
+.roma-feature-item:hover .roma-feature-icon {
+  background: var(--brand);
+  color: #FFFFFF;
+  transform: scale(1.08);
 }
 
 .roma-feature-text {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 600;
   color: var(--ink);
 }
@@ -2425,38 +2671,74 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--brand);
+  background: linear-gradient(135deg, var(--brand) 0%, #0A2640 100%);
   color: #FFFFFF;
-  padding: 0.85rem 2rem;
+  padding: 0.95rem 2.25rem;
   border-radius: 99px;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 0.925rem;
+  font-size: 0.95rem;
   text-decoration: none;
-  transition: all var(--dur-norm) var(--ease);
-  box-shadow: var(--shadow-brand);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(15, 59, 96, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.roma-know-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.6s ease;
+}
+
+.roma-know-more-btn:hover::before {
+  left: 100%;
 }
 
 .roma-know-more-btn:hover {
-  background: var(--brand-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px -2px rgba(15, 59, 96, 0.45);
+  background: linear-gradient(135deg, var(--brand-hover) 0%, var(--brand) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(15, 59, 96, 0.42);
 }
 
 .roma-know-more-btn .arrow-icon {
-  font-size: 1.1rem;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .roma-know-more-btn:hover .arrow-icon {
-  transform: translate(3px, -3px);
+  transform: translate(4px, -4px);
+}
+
+/* ==========================================================================
+   SCROLL REVEAL STAGGER ANIMATIONS
+   ========================================================================== */
+.scroll-reveal-stagger {
+  opacity: 0.15;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+.is-revealed .scroll-reveal-stagger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-revealed .animate-scroll-item {
+  opacity: 1;
 }
 
 /* Responsive adjustments for Roma About Section */
 @media (max-width: 992px) {
   .roma-about-grid {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 4rem;
   }
   .roma-collage-wrapper {
     min-height: 480px;
@@ -2472,80 +2754,80 @@
     height: 280px;
   }
   .roma-rating-card {
-    width: 200px;
+    width: 210px;
     right: 0;
   }
 }
 
 @media (max-width: 576px) {
   .roma-about-section {
-    padding: 4rem 0;
+    padding: 4.5rem 0;
   }
   .roma-heading {
-    font-size: 1.85rem;
+    font-size: 1.95rem;
     line-height: 1.25;
   }
   .roma-collage-wrapper {
-    min-height: 380px;
-    height: 380px;
+    min-height: 390px;
+    height: 390px;
   }
   .roma-arch-img-box {
-    width: 160px;
-    height: 240px;
+    width: 170px;
+    height: 250px;
   }
   .roma-rect-img-box {
-    width: 155px;
-    height: 210px;
+    width: 160px;
+    height: 220px;
   }
   .roma-circular-badge {
-    width: 80px;
-    height: 80px;
+    width: 84px;
+    height: 84px;
   }
   .badge-years-num {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   .roma-rating-card {
-    width: 160px;
-    padding: 0.75rem 0.6rem;
+    width: 170px;
+    padding: 0.85rem 0.75rem;
     bottom: -10px;
   }
   .rating-num {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   .rating-text {
-    font-size: 0.68rem;
+    font-size: 0.72rem;
   }
   .mini-thumb {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
   }
 }
 
 @media (max-width: 380px) {
   .roma-heading {
-    font-size: 1.6rem;
+    font-size: 1.65rem;
   }
   .roma-collage-wrapper {
-    min-height: 330px;
-    height: 330px;
+    min-height: 340px;
+    height: 340px;
   }
   .roma-arch-img-box {
-    width: 135px;
-    height: 205px;
+    width: 140px;
+    height: 210px;
   }
   .roma-rect-img-box {
-    width: 130px;
-    height: 180px;
+    width: 135px;
+    height: 185px;
   }
   .roma-circular-badge {
-    width: 70px;
-    height: 70px;
+    width: 72px;
+    height: 72px;
   }
   .badge-years-num {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
   .roma-rating-card {
-    width: 140px;
+    width: 145px;
   }
 }
 

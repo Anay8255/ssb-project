@@ -176,140 +176,74 @@ export const ProjectDetailPage = () => {
               </span>
             </div>
           </>
-        )}
+        )}        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
 
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-
-          {/* Breadcrumb Navigation */}
+          {/* Clean Breadcrumb Navigation */}
           <div className="editorial-breadcrumb">
             <Link to="/">Home</Link>
             <ChevronRight size={12} />
             <Link to="/projects">Projects</Link>
             <ChevronRight size={12} />
-            <span style={{ color: 'var(--gold, #C5A059)', fontWeight: 600 }}>{project.title}</span>
+            <span className="breadcrumb-current">{project.title}</span>
           </div>
 
-          {/* Unified Authority Ribbon */}
+          {/* Minimalist Authority & Status Badge */}
           <div className="editorial-authority-bar">
-            <span style={{ color: '#F5E7C8', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-              {project.category} LANDMARK
+            <span className="authority-category">
+              {project.category}
             </span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.4)', fontSize: '0.75rem' }}>·</span>
-            <span style={{ color: '#4ADE80', fontSize: '0.72rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
-              <ShieldCheck size={13} /> UP-RERA VERIFIED
+            <span className="authority-dot">·</span>
+            <span className="authority-rera">
+              <ShieldCheck size={12} /> UP-RERA Verified
             </span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.4)', fontSize: '0.75rem' }}>·</span>
-            <span style={{ color: '#CBD5E1', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase' }}>
+            <span className="authority-dot">·</span>
+            <span className="authority-status">
               {project.status}
             </span>
           </div>
 
-          {/* Title */}
+          {/* Project Title */}
           <h1 className="editorial-title">
             {project.title}
           </h1>
 
-          {/* Location */}
+          {/* Clean Minimal Location */}
           <div className="editorial-location">
-            <MapPin size={16} style={{ color: 'var(--gold, #C5A059)', flexShrink: 0 }} />
-            <span>{project.fullAddress || project.locationName}</span>
+            <MapPin size={14} className="location-pin-icon" />
+            <span>{project.locationName || project.city || project.fullAddress}</span>
           </div>
 
-          {/* Executive Action Deck (2x2 Compact Grid on Mobile, Row on Desktop) */}
+          {/* Streamlined Professional Action Deck */}
           <div className="editorial-action-deck">
             <button
-              className="btn btn-primary"
+              type="button"
+              className="editorial-btn-primary"
               onClick={() => openSiteVisitModal(project.title)}
-              style={{
-                borderRadius: 'var(--r-pill)',
-                padding: '0.82rem 1.65rem',
-                fontSize: '0.9rem',
-                fontWeight: 700,
-                background: 'linear-gradient(135deg, #C5A059 0%, #E8D5B5 50%, #C5A059 100%)',
-                color: '#0F172A',
-                border: 'none',
-                boxShadow: '0 6px 20px -4px rgba(197, 160, 89, 0.5)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem'
-              }}
             >
-              <Car size={16} /> VIP Site Tour
+              <Car size={15} />
+              <span>Book Site Visit</span>
             </button>
 
             {(project.videoWalkthroughUrl || project.videoUrl) && (
               <button
                 type="button"
-                className="btn"
+                className="editorial-btn-secondary"
                 onClick={() => setIsVideoModalOpen(true)}
-                style={{
-                  borderRadius: 'var(--r-pill)',
-                  padding: '0.82rem 1.65rem',
-                  fontSize: '0.9rem',
-                  fontWeight: 700,
-                  background: 'rgba(15, 23, 42, 0.9)',
-                  border: '1.5px solid var(--gold, #C5A059)',
-                  color: '#FFFFFF',
-                  boxShadow: '0 6px 20px -4px rgba(0, 0, 0, 0.5), 0 0 12px rgba(197, 160, 89, 0.25)',
-                  backdropFilter: 'blur(8px)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}
               >
-                <span style={{
-                  width: '22px',
-                  height: '22px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--gold, #C5A059) 0%, #E8D5B5 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <Play size={10} fill="#0F172A" color="#0F172A" style={{ marginLeft: '1px' }} />
+                <span className="play-icon-bubble">
+                  <Play size={10} fill="#0F172A" color="#0F172A" />
                 </span>
-                <span>Watch 3D Tour</span>
+                <span>3D Walkthrough</span>
               </button>
             )}
 
             <button
-              className="btn btn-outline"
+              type="button"
+              className="editorial-btn-glass"
               onClick={() => openEnquiryModal(project.title, 'Brochure Dossier')}
-              style={{
-                borderRadius: 'var(--r-pill)',
-                padding: '0.82rem 1.45rem',
-                fontSize: '0.9rem',
-                fontWeight: 600,
-                background: 'rgba(15, 23, 42, 0.8)',
-                borderColor: 'rgba(255, 255, 255, 0.25)',
-                color: '#FFFFFF',
-                backdropFilter: 'blur(8px)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem'
-              }}
             >
-              <Download size={15} /> E-Brochure (PDF)
-            </button>
-
-            <button
-              className="btn btn-ghost"
-              onClick={() => openEnquiryModal(project.title, 'WhatsApp Official Desk')}
-              style={{
-                borderRadius: 'var(--r-pill)',
-                padding: '0.82rem 1.45rem',
-                fontSize: '0.9rem',
-                fontWeight: 600,
-                background: 'rgba(37, 211, 102, 0.18)',
-                border: '1px solid rgba(37, 211, 102, 0.4)',
-                color: '#4ADE80',
-                backdropFilter: 'blur(8px)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem'
-              }}
-            >
-              <MessageSquare size={15} style={{ color: '#4ADE80' }} /> WhatsApp
+              <Download size={14} />
+              <span>Brochure</span>
             </button>
           </div>
 

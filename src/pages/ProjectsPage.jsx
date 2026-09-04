@@ -1,34 +1,79 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { useModal } from '../context/ModalContext';
 import { Search, X, MapPin, ShieldCheck, ArrowRight, Download, Sparkles, Building2, Layers } from 'lucide-react';
 
 export const ProjectsPage = () => {
   const { projects } = useStore();
-  const { openEnquiryModal, openSiteVisitModal } = useModal();
+  const { openEnquiryModal } = useModal();
   const navigate = useNavigate();
   const [filter, setFilter] = useState('ALL');
   const [search, setSearch] = useState('');
 
-  const filtered = projects.filter(p => {
-    const matchesFilter = filter === 'ALL' || p.category.toUpperCase() === filter || p.status.toUpperCase() === filter;
-    const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.city?.toLowerCase().includes(search.toLowerCase()) ||
-      p.locationName?.toLowerCase().includes(search.toLowerCase());
-    return matchesFilter && matchesSearch;
-  });
+  const filtered = useMemo(() => {
+    return projects.filter(p => {
+      const matchesFilter =
+        filter === 'ALL' ||
+        p.category?.toUpperCase() === filter ||
+        p.status?.toUpperCase() === filter;
+      const matchesSearch =
+        p.title?.toLowerCase().includes(search.toLowerCase()) ||
+        p.city?.toLowerCase().includes(search.toLowerCase()) ||
+        p.locationName?.toLowerCase().includes(search.toLowerCase());
+      return matchesFilter && matchesSearch;
+    });
+  }, [projects, filter, search]);
+
+  const tabCounts = useMemo(() => {
+    return {
+      ALL: projects.length,
+      RESIDENTIAL: projects.filter(p => p.category?.toUpperCase() === 'RESIDENTIAL').length,
+      COMMERCIAL: projects.filter(p => p.category?.toUpperCase() === 'COMMERCIAL').length,
+      ONGOING: projects.filter(p => p.status?.toUpperCase() === 'ONGOING').length,
+      COMPLETED: projects.filter(p => p.status?.toUpperCase() === 'COMPLETED').length
+    };
+  }, [projects]);
+
+  const getStatusBadge = (status) => {
+    const s = (status || '').toLowerCase();
+    if (s.includes('complete') || s.includes('delivered')) {
+      return (
+        <span className="luxury-status-badge status-delivered">
+          <span className="luxury-badge-dot dot-emerald" />
+          <span>Ready Possession</span>
+        </span>
+      );
+    }
+    if (s.includes('ongoing') || s.includes('construction')) {
+      return (
+        <span className="luxury-status-badge status-ongoing">
+          <span className="luxury-badge-dot dot-amber" />
+          <span>Under Construction</span>
+        </span>
+      );
+    }
+    return (
+      <span className="luxury-status-badge status-upcoming">
+        <span className="luxury-badge-dot dot-blue" />
+        <span>Upcoming Launch</span>
+      </span>
+    );
+  };
+
+  const formatPriceDisplay = (project) => {
+    if (project.priceDisplay && project.priceDisplay.toLowerCase().includes('delivered')) {
+      return { label: 'STATUS', value: 'Delivered & Handed Over', isHighlight: true };
+    }
+    if (project.priceDisplay && project.priceDisplay.toLowerCase().includes('request')) {
+      return { label: 'PRICING', value: 'Price on Request', isHighlight: false };
+    }
+    return { label: 'STARTING AT', value: project.priceDisplay || '₹56 Lakhs Onwards', isHighlight: true };
+  };
 
   return (
     <div className="fade-in" style={{ paddingBottom: '6rem' }}>
-<<<<<<< HEAD
-      {/* Editorial Luxury Hero */}
-      <section className="subpage-hero" style={{ padding: '7rem 0 4.5rem', background: 'transparent', color: '#FFF' }}>
-        <div className="container" style={{ textAlign: 'center', maxWidth: '850px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.15)', color: 'var(--gold)', padding: '0.35rem 0.95rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem', border: '1px solid rgba(224, 84, 43, 0.3)' }}>
-            <Sparkles size={13} /> 100% UP-RERA VERIFIED PORTFOLIO
-=======
-      {/* Hero Header with Exact Background Image */}
+      {/* Hero Header */}
       <section className="projects-hero">
         <img 
           src="/hero-sai-gaon.png" 
@@ -39,7 +84,10 @@ export const ProjectsPage = () => {
         <div className="projects-hero-grain"></div>
         <div className="container projects-hero-container">
           <div className="projects-hero-content">
-            <span className="projects-hero-eyebrow">OUR PROJECTS</span>
+            <div className="featured-badge-pill" style={{ background: 'rgba(220, 90, 50, 0.15)', color: '#FF7A50', border: '1px solid rgba(220, 90, 50, 0.3)' }}>
+              <Sparkles size={13} />
+              <span>PREMIER PROPERTY PORTFOLIO</span>
+            </div>
             <h1 className="projects-hero-title">
               Our Projects
             </h1>
@@ -56,11 +104,10 @@ export const ProjectsPage = () => {
                 <span className="about-hero-stat-lbl">UP-RERA Verified</span>
               </div>
               <div className="about-hero-stat-pill">
-                <span className="about-hero-stat-num">Varanasi & Lucknow</span>
+                <span className="about-hero-stat-num">Varanasi &amp; Lucknow</span>
                 <span className="about-hero-stat-lbl">Growth Corridors</span>
               </div>
             </div>
->>>>>>> 390f54d26f3a08eee326bcfe1d776ab352855367
           </div>
         </div>
       </section>
@@ -74,8 +121,8 @@ export const ProjectsPage = () => {
               { id: 'ALL', label: 'All Developments' },
               { id: 'RESIDENTIAL', label: 'Residential' },
               { id: 'COMMERCIAL', label: 'Commercial' },
-              { id: 'ONGOING', label: 'Ongoing Work' },
-              { id: 'COMPLETED', label: 'Completed' }
+              { id: 'ONGOING', label: 'Under Construction' },
+              { id: 'COMPLETED', label: 'Ready Possession' }
             ].map(tab => (
               <button
                 key={tab.id}
@@ -83,31 +130,21 @@ export const ProjectsPage = () => {
                 onClick={() => setFilter(tab.id)}
                 className={`project-filter-btn ${filter === tab.id ? 'active' : ''}`}
               >
-                {tab.label}
+                <span>{tab.label}</span>
+                {tabCounts[tab.id] > 0 && (
+                  <span className="project-filter-count">{tabCounts[tab.id]}</span>
+                )}
               </button>
             ))}
           </div>
 
-<<<<<<< HEAD
-          {/* Search Input Box */}
-          <div style={{ position: 'relative', minWidth: '280px' }}>
-            <Search size={16} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--ink-muted)' }} />
-            <input
-              type="text"
-              placeholder="Search by development or city..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="form-input"
-              style={{ paddingLeft: '2.6rem', fontSize: '0.88rem', borderRadius: 'var(--r-pill)', background: '#F8FAFC' }}
-            />
-=======
           {/* Luxury Search Input Box */}
           <div className="project-search-box">
             <div className="project-search-input-wrap">
-              <Search size={18} className="project-search-icon" />
+              <Search size={17} className="project-search-icon" />
               <input 
                 type="text" 
-                placeholder="Search by project, locality or city..."
+                placeholder="Search by project name or locality..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="project-search-input"
@@ -124,175 +161,154 @@ export const ProjectsPage = () => {
                 </button>
               )}
             </div>
->>>>>>> 390f54d26f3a08eee326bcfe1d776ab352855367
           </div>
         </div>
       </div>
 
       {/* Project Listings Grid */}
-      <div className="container" style={{ paddingTop: '3.5rem' }}>
+      <div className="container" style={{ paddingTop: '2.5rem' }}>
+        {/* Results Counter Sub-bar */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem' }}>
+          <span style={{ fontSize: '0.85rem', color: '#64748B', fontWeight: 600 }}>
+            Showing <strong style={{ color: '#0F172A' }}>{filtered.length}</strong> of {projects.length} Master-Planned Developments
+          </span>
+          {(filter !== 'ALL' || search) && (
+            <button
+              type="button"
+              onClick={() => { setFilter('ALL'); setSearch(''); }}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#DC5A32',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                textDecoration: 'underline'
+              }}
+            >
+              Clear Filters
+            </button>
+          )}
+        </div>
+
         {filtered.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '5rem 0', color: 'var(--ink-muted)' }}>
             <p style={{ fontSize: '1.2rem', marginBottom: '1.25rem' }}>No developments match your search or filter criteria.</p>
-            <button className="btn btn-primary" onClick={() => { setFilter('ALL'); setSearch(''); }} style={{ borderRadius: 'var(--r-pill)' }}>
+            <button
+              className="btn btn-primary"
+              onClick={() => { setFilter('ALL'); setSearch(''); }}
+              style={{ borderRadius: 'var(--r-pill)' }}
+            >
               Reset Filters
             </button>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '2.5rem' }}>
-            {filtered.map((project) => (
-              <div
-                key={project.id}
-                className="project-card"
-                onClick={() => navigate(`/projects/${project.slug}`)}
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: 'var(--r-2xl, 24px)',
-                  overflow: 'hidden',
-                  border: '1px solid rgba(226, 232, 240, 0.9)',
-                  boxShadow: '0 10px 30px -10px rgba(15, 23, 42, 0.06)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  cursor: 'pointer',
-                  transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-6px)';
-                  e.currentTarget.style.boxShadow = '0 25px 45px -12px rgba(15, 23, 42, 0.15)';
-                  const img = e.currentTarget.querySelector('.project-card-image');
-                  if (img) img.style.transform = 'scale(1.06)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 10px 30px -10px rgba(15, 23, 42, 0.06)';
-                  const img = e.currentTarget.querySelector('.project-card-image');
-                  if (img) img.style.transform = 'scale(1)';
-                }}
-              >
-                {/* Visual Image Header */}
-                <div style={{ position: 'relative', height: '280px', overflow: 'hidden', background: '#0F172A' }}>
-                  <img
-                    src={project.featuredImage}
-                    alt={project.title}
-                    loading="lazy"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }}
-                    className="project-card-image"
-                  />
+          <div className="projects-grid-layout">
+            {filtered.map((project) => {
+              const priceInfo = formatPriceDisplay(project);
+              return (
+                <div
+                  key={project.id}
+                  className="luxury-project-card"
+                  onClick={() => navigate(`/projects/${project.slug}`)}
+                >
+                  {/* Visual Image Header */}
+                  <div className="luxury-card-media">
+                    <img
+                      src={project.featuredImage}
+                      alt={project.title}
+                      loading="lazy"
+                      className="luxury-card-img"
+                      draggable={false}
+                    />
 
-                  {/* Subtle Gradient Scrim */}
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 40%, rgba(0,0,0,0.7) 100%)' }} />
+                    {/* Gradient Vignette Scrim */}
+                    <div className="luxury-card-gradient-overlay" />
 
-                  {/* Top Badges */}
-                  <div style={{ position: 'absolute', top: '1rem', left: '1rem', display: 'flex', gap: '0.5rem' }}>
-                    <span className="badge badge-brand" style={{ fontSize: '0.72rem', letterSpacing: '0.04em' }}>
-                      {project.status.toUpperCase()}
-                    </span>
-                    <span style={{
-                      background: 'rgba(15, 23, 42, 0.85)',
-                      color: '#FFF',
-                      backdropFilter: 'blur(8px)',
-                      padding: '0.25rem 0.7rem',
-                      borderRadius: 'var(--r-pill)',
-                      fontSize: '0.72rem',
-                      fontWeight: 600,
-                      border: '1px solid rgba(255, 255, 255, 0.2)'
-                    }}>
-                      {project.category}
-                    </span>
-                  </div>
-
-                  {/* Bottom RERA Badge */}
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '0.85rem',
-                    right: '0.85rem',
-                    background: 'rgba(15, 23, 42, 0.88)',
-                    backdropFilter: 'blur(8px)',
-                    color: '#FFF',
-                    padding: '0.35rem 0.75rem',
-                    borderRadius: 'var(--r-pill)',
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.35rem',
-                    border: '1px solid rgba(255, 255, 255, 0.15)'
-                  }}>
-                    <ShieldCheck size={13} color="var(--gold)" />
-                    <span>RERA: {project.reraNumber}</span>
-                  </div>
-                </div>
-
-                {/* Content & Specs */}
-                <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--brand)', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.35rem' }}>
-                      <MapPin size={13} />
-                      <span>{project.locationName}</span>
+                    {/* Top Badges */}
+                    <div className="luxury-card-top-bar">
+                      {getStatusBadge(project.status)}
+                      <span className="luxury-category-pill">
+                        {project.category}
+                      </span>
                     </div>
 
-                    <h3 style={{ fontSize: '1.65rem', marginBottom: '0.5rem', color: 'var(--ink)', fontFamily: 'var(--font-heading)', letterSpacing: '-0.01em' }}>
-                      {project.title}
-                    </h3>
-
-                    <p style={{ fontSize: '0.92rem', color: 'var(--ink-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                      {project.tagline || project.description?.substring(0, 120) + '...'}
-                    </p>
+                    {/* Bottom RERA Badge */}
+                    <div className="luxury-card-rera-pill">
+                      <ShieldCheck size={13} className="text-gold" />
+                      <span>RERA: {project.reraNumber?.split('/')[0] || project.reraNumber}</span>
+                    </div>
                   </div>
 
-                  <div>
-                    {/* Pricing & Area Highlight Bar */}
-                    <div style={{
-                      padding: '1rem 1.25rem',
-                      background: '#F8FAFC',
-                      borderRadius: 'var(--r-xl, 16px)',
-                      marginBottom: '1.5rem',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      border: '1px solid rgba(226, 232, 240, 0.9)'
-                    }}>
-                      <div>
-                        <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--ink-muted)', display: 'block', fontWeight: 700, letterSpacing: '0.04em' }}>Starting Price</span>
-                        <strong style={{ fontSize: '1.2rem', color: 'var(--brand)', fontFamily: 'var(--font-heading)' }}>{project.priceDisplay || 'On Request'}</strong>
+                  {/* Content & Specs Body */}
+                  <div className="luxury-card-body">
+                    <div className="luxury-card-info-top">
+                      {/* Location Row */}
+                      <div className="luxury-card-location">
+                        <MapPin size={13} className="luxury-loc-icon" />
+                        <span className="luxury-loc-text">{project.locationName}</span>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--ink-muted)', display: 'block', fontWeight: 700, letterSpacing: '0.04em' }}>Land Parcel</span>
-                        <strong style={{ fontSize: '1rem', color: 'var(--ink)' }}>{project.totalLandArea || 'Master Planned'}</strong>
-                      </div>
+
+                      {/* Title (Standardized 2-line height frame) */}
+                      <h3 className="luxury-card-title" title={project.title}>
+                        {project.title}
+                      </h3>
+
+                      {/* Tagline (Standardized 2-line height frame) */}
+                      <p className="luxury-card-tagline">
+                        {project.tagline || project.description?.substring(0, 110) + '...'}
+                      </p>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem' }}>
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        style={{ width: '100%', justifyContent: 'center', borderRadius: 'var(--r-pill)', padding: '0.75rem 1.25rem', fontWeight: 700 }}
-                      >
-                        <span>Explore Blueprint & Plans</span>
-                        <ArrowRight size={15} />
-                      </button>
+                    <div className="luxury-card-info-bottom">
+                      {/* Pricing & Area Highlight Bar */}
+                      <div className="luxury-specs-strip">
+                        <div className="luxury-spec-col">
+                          <span className="luxury-spec-label">{priceInfo.label}</span>
+                          <strong className={`luxury-spec-value ${priceInfo.isHighlight ? 'text-brand' : 'text-slate'}`}>
+                            {priceInfo.value}
+                          </strong>
+                        </div>
+                        <div className="luxury-spec-col text-right">
+                          <span className="luxury-spec-label">LAND PARCEL</span>
+                          <strong className="luxury-spec-value text-dark">
+                            {project.totalLandArea || 'Master Planned'}
+                          </strong>
+                        </div>
+                      </div>
 
-                      <button
-                        type="button"
-                        className="btn btn-outline"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openEnquiryModal(project.title, 'Official Brochure Download');
-                        }}
-                        style={{ borderRadius: 'var(--r-pill)', padding: '0.75rem 0.95rem', background: '#FFFFFF' }}
-                        title="Download Official Brochure (PDF)"
-                      >
-                        <Download size={16} />
-                      </button>
+                      {/* Action Buttons */}
+                      <div className="luxury-card-actions">
+                        <button
+                          type="button"
+                          className="luxury-explore-btn"
+                        >
+                          <span>Explore Blueprint &amp; Plans</span>
+                          <ArrowRight size={14} className="luxury-arrow-icon" />
+                        </button>
+
+                        <button
+                          type="button"
+                          className="luxury-brochure-icon-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openEnquiryModal(project.title, 'Official Brochure Download');
+                          }}
+                          title="Download Official Brochure (PDF)"
+                          aria-label="Download Official Brochure (PDF)"
+                        >
+                          <Download size={15} />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
     </div>
   );
 };
+

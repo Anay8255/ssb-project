@@ -4,6 +4,8 @@ import { useStore } from '../../context/StoreContext';
 import { useModal } from '../../context/ModalContext';
 import {
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   MapPin,
   ShieldCheck,
   Download,
@@ -45,7 +47,18 @@ export const FeaturedProjects = () => {
     return projects.filter(p => p.category?.toUpperCase() === filter || p.status?.toUpperCase() === filter);
   }, [filter, projects]);
 
-  // Construct pages of 3 cards at a time
+  // Tab count calculation
+  const tabCounts = useMemo(() => {
+    return {
+      ALL: projects.length,
+      RESIDENTIAL: projects.filter(p => p.category?.toUpperCase() === 'RESIDENTIAL').length,
+      COMMERCIAL: projects.filter(p => p.category?.toUpperCase() === 'COMMERCIAL').length,
+      ONGOING: projects.filter(p => p.status?.toUpperCase() === 'ONGOING').length,
+      COMPLETED: projects.filter(p => p.status?.toUpperCase() === 'COMPLETED').length
+    };
+  }, [projects]);
+
+  // Construct pages of cards
   const pages = useMemo(() => {
     if (!filteredProjects || filteredProjects.length === 0) return [];
 
@@ -71,14 +84,14 @@ export const FeaturedProjects = () => {
     setIsTransitioning(true);
   }, [filter]);
 
-  // Auto-scroll 3 cards at a time every 4 seconds (right to left, infinite forward loop)
+  // Auto-scroll cards every 4.5 seconds
   useEffect(() => {
     if (pages.length <= 1 || isPaused) return;
 
     const timer = setInterval(() => {
       setIsTransitioning(true);
       setCurrentPage(prev => prev + 1);
-    }, 4000);
+    }, 4500);
 
     return () => clearInterval(timer);
   }, [pages.length, isPaused]);
@@ -91,6 +104,16 @@ export const FeaturedProjects = () => {
     }
   }, [currentPage, pages.length]);
 
+  const handlePrev = () => {
+    setIsTransitioning(true);
+    setCurrentPage(prev => (prev <= 0 ? pages.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setIsTransitioning(true);
+    setCurrentPage(prev => prev + 1);
+  };
+
   // Touch swipe support for mobile
   const handleTouchStart = (e) => {
     setIsPaused(true);
@@ -102,13 +125,9 @@ export const FeaturedProjects = () => {
     const touchEnd = e.changedTouches[0].clientX;
     const distance = touchStart - touchEnd;
     if (distance > 45) {
-      // Swiped left: slide to next 3 cards
-      setIsTransitioning(true);
-      setCurrentPage(prev => prev + 1);
+      handleNext();
     } else if (distance < -45) {
-      // Swiped right: slide to previous 3 cards
-      setIsTransitioning(true);
-      setCurrentPage(prev => (prev <= 0 ? pages.length - 1 : prev - 1));
+      handlePrev();
     }
   };
 
@@ -118,7 +137,7 @@ export const FeaturedProjects = () => {
       return (
         <span className="luxury-status-badge status-delivered">
           <span className="luxury-badge-dot dot-emerald" />
-          <span>Delivered &amp; Ready</span>
+          <span>Ready Possession</span>
         </span>
       );
     }
@@ -150,11 +169,12 @@ export const FeaturedProjects = () => {
 
   // Render clone of page 0 at the end for continuous infinite forward sliding
   const renderedPages = pages.length > 1 ? [...pages, pages[0]] : pages;
+  const activeDisplayIndex = pages.length > 0 ? (currentPage % pages.length) : 0;
 
   return (
     <section className="featured-section" id="featured-projects-section">
       <div className="container">
-        {/* Section Top Header */}
+        {/* Section Top Header with Heading & Controls */}
         <div className="featured-header-box">
           <div className="featured-header-left">
             <div className="featured-badge-pill">
@@ -168,6 +188,37 @@ export const FeaturedProjects = () => {
               UP-RERA verified master-planned residential townships and prime commercial hubs in Varanasi &amp; Lucknow.
             </p>
           </div>
+
+          {/* Navigation Controls in Header */}
+          {pages.length > 1 && (
+            <div className="featured-header-nav-wrap">
+              <span className="featured-page-counter">
+                <strong>{String(activeDisplayIndex + 1).padStart(2, '0')}</strong>
+                <span>/</span>
+                <span>{String(pages.length).padStart(2, '0')}</span>
+              </span>
+              <div className="featured-nav-btn-group">
+                <button
+                  type="button"
+                  className="featured-nav-arrow-btn"
+                  onClick={handlePrev}
+                  aria-label="Previous developments"
+                  title="Previous"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  className="featured-nav-arrow-btn"
+                  onClick={handleNext}
+                  aria-label="Next developments"
+                  title="Next"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Category & Status Filter Tabs */}
@@ -186,7 +237,10 @@ export const FeaturedProjects = () => {
                 onClick={() => setFilter(tab.id)}
                 className={`featured-filter-btn ${filter === tab.id ? 'active' : ''}`}
               >
-                {tab.label}
+                <span>{tab.label}</span>
+                {tabCounts[tab.id] > 0 && (
+                  <span className="featured-filter-count">{tabCounts[tab.id]}</span>
+                )}
               </button>
             ))}
           </div>
@@ -246,32 +300,32 @@ export const FeaturedProjects = () => {
 
                           {/* Bottom RERA Pill */}
                           <div className="luxury-card-rera-pill">
-                            <ShieldCheck size={12} className="text-gold" />
+                            <ShieldCheck size={13} className="text-gold" />
                             <span>RERA: {project.reraNumber?.split('/')[0] || project.reraNumber}</span>
                           </div>
                         </div>
 
                         {/* Card Information Body */}
                         <div className="luxury-card-body">
-                          <div>
+                          <div className="luxury-card-info-top">
                             {/* Location Row */}
                             <div className="luxury-card-location">
-                              <MapPin size={13} className="text-brand flex-shrink-0" />
-                              <span className="truncate">{project.locationName}</span>
+                              <MapPin size={13} className="luxury-loc-icon" />
+                              <span className="luxury-loc-text">{project.locationName}</span>
                             </div>
 
-                            {/* Title */}
-                            <h3 className="luxury-card-title">
+                            {/* Title (Standardized 2-line height frame) */}
+                            <h3 className="luxury-card-title" title={project.title}>
                               {project.title}
                             </h3>
 
-                            {/* Tagline */}
+                            {/* Tagline (Standardized 2-line height frame) */}
                             <p className="luxury-card-tagline">
                               {project.tagline || project.description?.substring(0, 110) + '...'}
                             </p>
                           </div>
 
-                          <div>
+                          <div className="luxury-card-info-bottom">
                             {/* Specs Metric Strip */}
                             <div className="luxury-specs-strip">
                               <div className="luxury-spec-col">
@@ -329,13 +383,13 @@ export const FeaturedProjects = () => {
               <button
                 key={idx}
                 type="button"
-                className={`featured-dot-btn ${(currentPage % pages.length) === idx ? 'active' : ''}`}
+                className={`featured-dot-btn ${activeDisplayIndex === idx ? 'active' : ''}`}
                 onClick={() => {
                   setIsTransitioning(true);
                   setCurrentPage(idx);
                 }}
-                aria-label={`Go to page ${idx + 1}`}
-                title={`Page ${idx + 1}`}
+                aria-label={`Go to slide ${idx + 1}`}
+                title={`Slide ${idx + 1}`}
               />
             ))}
           </div>
@@ -344,3 +398,4 @@ export const FeaturedProjects = () => {
     </section>
   );
 };
+

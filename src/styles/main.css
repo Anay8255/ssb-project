@@ -352,6 +352,619 @@
 }
 
 /* ==========================================================================
+   WHY SSB PAGE HERO (MATCHING SSBINFRAPROJECT.COM/WHY-SSB)
+   ========================================================================== */
+.why-ssb-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #FFFFFF;
+  padding-top: 10rem;
+  padding-bottom: 4.5rem;
+  background-color: #0B1120;
+}
+
+.why-ssb-hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  transform: scale(1.02);
+  filter: brightness(1.06) contrast(1.04);
+  z-index: 1;
+}
+
+.why-ssb-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(10, 17, 32, 0.42) 0%, 
+    rgba(10, 17, 32, 0.12) 30%, 
+    rgba(10, 17, 32, 0.35) 60%,
+    rgba(10, 17, 32, 0.75) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.why-ssb-hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.2;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.why-ssb-hero-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.why-ssb-hero-content {
+  max-width: 840px;
+}
+
+.why-ssb-hero-eyebrow {
+  display: inline-block;
+  color: #F8D377;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.why-ssb-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.65);
+}
+
+.why-ssb-hero-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 680px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+}
+
+.why-ssb-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .why-ssb-hero {
+    min-height: 52vh;
+    padding-top: 8.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .why-ssb-hero-title {
+    font-size: 2.2rem;
+  }
+  .why-ssb-hero-desc {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   LEADERSHIP PAGE HERO (MATCHING SSBINFRAPROJECT.COM/LEADERSHIP)
+   ========================================================================== */
+.leadership-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #FFFFFF;
+  padding-top: 10rem;
+  padding-bottom: 4.5rem;
+  background-color: #0B1120;
+}
+
+.leadership-hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  transform: scale(1.02);
+  filter: brightness(1.06) contrast(1.04);
+  z-index: 1;
+}
+
+.leadership-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(10, 17, 32, 0.42) 0%, 
+    rgba(10, 17, 32, 0.12) 30%, 
+    rgba(10, 17, 32, 0.35) 60%,
+    rgba(10, 17, 32, 0.75) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.leadership-hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.2;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.leadership-hero-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.leadership-hero-content {
+  max-width: 840px;
+}
+
+.leadership-hero-eyebrow {
+  display: inline-block;
+  color: #F8D377;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.leadership-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.65);
+}
+
+.leadership-hero-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 680px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+}
+
+.leadership-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .leadership-hero {
+    min-height: 52vh;
+    padding-top: 8.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .leadership-hero-title {
+    font-size: 2.2rem;
+  }
+  .leadership-hero-desc {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   MEDIA PAGE HERO (MATCHING SSBINFRAPROJECT.COM/MEDIA)
+   ========================================================================== */
+.media-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #FFFFFF;
+  padding-top: 10rem;
+  padding-bottom: 4.5rem;
+  background-color: #0B1120;
+}
+
+.media-hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  transform: scale(1.02);
+  filter: brightness(1.06) contrast(1.04);
+  z-index: 1;
+}
+
+.media-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(10, 17, 32, 0.42) 0%, 
+    rgba(10, 17, 32, 0.12) 30%, 
+    rgba(10, 17, 32, 0.35) 60%,
+    rgba(10, 17, 32, 0.75) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.media-hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.2;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.media-hero-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.media-hero-content {
+  max-width: 840px;
+}
+
+.media-hero-eyebrow {
+  display: inline-block;
+  color: #F8D377;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.media-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.65);
+}
+
+.media-hero-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 680px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+}
+
+.media-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .media-hero {
+    min-height: 52vh;
+    padding-top: 8.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .media-hero-title {
+    font-size: 2.2rem;
+  }
+  .media-hero-desc {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   INVESTORS & NRI PAGE HERO (MATCHING SSBINFRAPROJECT.COM/INVESTORS-NRI)
+   ========================================================================== */
+.investor-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #FFFFFF;
+  padding-top: 10rem;
+  padding-bottom: 4.5rem;
+  background-color: #0B1120;
+}
+
+.investor-hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  transform: scale(1.02);
+  filter: brightness(1.06) contrast(1.04);
+  z-index: 1;
+}
+
+.investor-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(10, 17, 32, 0.42) 0%, 
+    rgba(10, 17, 32, 0.12) 30%, 
+    rgba(10, 17, 32, 0.35) 60%,
+    rgba(10, 17, 32, 0.75) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.investor-hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.2;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.investor-hero-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.investor-hero-content {
+  max-width: 840px;
+}
+
+.investor-hero-eyebrow {
+  display: inline-block;
+  color: #F8D377;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.investor-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.65);
+}
+
+.investor-hero-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 680px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+}
+
+.investor-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .investor-hero {
+    min-height: 52vh;
+    padding-top: 8.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .investor-hero-title {
+    font-size: 2.2rem;
+  }
+  .investor-hero-desc {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   CONTACT PAGE HERO (MATCHING SSBINFRAPROJECT.COM/CONTACT)
+   ========================================================================== */
+.contact-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #FFFFFF;
+  padding-top: 10rem;
+  padding-bottom: 4.5rem;
+  background-color: #0B1120;
+}
+
+.contact-hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  transform: scale(1.02);
+  filter: brightness(1.06) contrast(1.04);
+  z-index: 1;
+}
+
+.contact-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(10, 17, 32, 0.42) 0%, 
+    rgba(10, 17, 32, 0.12) 30%, 
+    rgba(10, 17, 32, 0.35) 60%,
+    rgba(10, 17, 32, 0.75) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.contact-hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.2;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.contact-hero-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.contact-hero-content {
+  max-width: 840px;
+}
+
+.contact-hero-eyebrow {
+  display: inline-block;
+  color: #F8D377;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.contact-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.65);
+}
+
+.contact-hero-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 680px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+}
+
+.contact-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    min-height: 52vh;
+    padding-top: 8.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .contact-hero-title {
+    font-size: 2.2rem;
+  }
+  .contact-hero-desc {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Leadership alternating cards */
+.leadership-showcase-card {
+  display: grid;
+  grid-template-columns: 0.65fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  padding: 3rem;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leadership-showcase-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.1);
+}
+
+.leadership-photo-wrap {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.1);
+}
+
+.leadership-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.leadership-showcase-card:hover .leadership-photo-img {
+  transform: scale(1.03);
+}
+
+.leadership-info-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 992px) {
+  .leadership-showcase-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+/* ==========================================================================
    PROJECTS FILTER & LUXURY SEARCH TOOLBAR
    ========================================================================== */
 .projects-filter-bar {

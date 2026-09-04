@@ -80,31 +80,41 @@ export const ContactPage = () => {
 
   return (
     <div className="fade-in">
-      {/* Subpage Hero Section */}
-      <section className="subpage-hero">
-        <div className="container">
-          <span className="eyebrow" style={{ color: 'var(--gold)' }}>
-            ✨ PREMIER PROPERTY CONCIERGE
-          </span>
-          <h1 className="subpage-hero-title">
-            Contact &amp; Headquarters
-          </h1>
-          <p className="subpage-hero-desc">
-            Visit our registered corporate office in Cantonment Varanasi, or book a VIP on-site property inspection with complimentary chauffeur transportation.
-          </p>
-
-          <div className="contact-quick-stats-strip">
-            <div className="contact-quick-stat-pill">
-              <MapPin size={14} className="text-gold" />
-              <span>Mall Road, Cantonment Varanasi</span>
-            </div>
-            <div className="contact-quick-stat-pill">
-              <Car size={14} className="text-emerald" />
-              <span>Complimentary VIP Chauffeur Service</span>
-            </div>
-            <div className="contact-quick-stat-pill">
-              <Clock size={14} className="text-gold" />
-              <span>15-Minute Response Time</span>
+      {/* Hero Header with Exact Background Image from ssbinfraproject.com/contact */}
+      <section className="contact-hero">
+        <img 
+          src="/hero-pratham.jpg" 
+          alt="Contact SSB Group" 
+          className="contact-hero-bg-img" 
+        />
+        <div className="contact-hero-scrim"></div>
+        <div className="contact-hero-grain"></div>
+        <div className="container contact-hero-container">
+          <div className="contact-hero-content">
+            <span className="contact-hero-eyebrow">CONTACT</span>
+            <h1 className="contact-hero-title">
+              Talk to our team
+            </h1>
+            <p className="contact-hero-desc">
+              Our Varanasi team is available seven days a week.
+            </p>
+            <div className="contact-hero-badges">
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">Varanasi HQ</span>
+                <span className="about-hero-stat-lbl">Mall Road</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">7 Days</span>
+                <span className="about-hero-stat-lbl">Team Support</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">15 Min</span>
+                <span className="about-hero-stat-lbl">Response Time</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">VIP</span>
+                <span className="about-hero-stat-lbl">Chauffeur Service</span>
+              </div>
             </div>
           </div>
         </div>

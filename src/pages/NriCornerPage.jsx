@@ -21,16 +21,43 @@ export const NriCornerPage = () => {
 
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
-      {/* Hero */}
-      <section className="subpage-hero">
-        <div className="container">
-          <span className="eyebrow" style={{ color: 'var(--gold)' }}>GLOBAL INVESTOR RELATIONS</span>
-          <h1 className="subpage-hero-title">
-            NRI & Overseas Investor Desk
-          </h1>
-          <p className="subpage-hero-desc">
-            Seamless foreign investment management, FEMA compliance, virtual video walkthroughs, and end-to-end rental management for non-resident Indians.
-          </p>
+      {/* Hero Header with Exact Background Image from ssbinfraproject.com/investors-nri */}
+      <section className="investor-hero">
+        <img 
+          src="/hero-pratham.jpg" 
+          alt="Investors & NRI Services — SSB Group" 
+          className="investor-hero-bg-img" 
+        />
+        <div className="investor-hero-scrim"></div>
+        <div className="investor-hero-grain"></div>
+        <div className="container investor-hero-container">
+          <div className="investor-hero-content">
+            <span className="investor-hero-eyebrow">INVESTORS &amp; NRI</span>
+            <h1 className="investor-hero-title">
+              Invest With Confidence
+            </h1>
+            <p className="investor-hero-desc">
+              A developer with an on-ground team, a delivered track record and documentation you can verify.
+            </p>
+            <div className="investor-hero-badges">
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">Est. 2013</span>
+                <span className="about-hero-stat-lbl">Presence in UP</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">100%</span>
+                <span className="about-hero-stat-lbl">RERA Registered</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">FEMA &amp; RBI</span>
+                <span className="about-hero-stat-lbl">Compliant</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">Virtual</span>
+                <span className="about-hero-stat-lbl">Site Visits</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -8,16 +8,43 @@ export const WhySsbPage = () => {
 
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
-      {/* Hero */}
-      <section className="subpage-hero">
-        <div className="container">
-          <span className="eyebrow" style={{ color: 'var(--gold)' }}>OUR DISTINCT ADVANTAGE</span>
-          <h1 className="subpage-hero-title">
-            Why Choose SSB Group
-          </h1>
-          <p className="subpage-hero-desc">
-            A legacy forged in Varanasi since 2013, founded upon uncompromising engineering standards, total regulatory transparency, and 100% on-time delivery guarantees.
-          </p>
+      {/* Hero with Exact Background Image */}
+      <section className="why-ssb-hero">
+        <img 
+          src="/hero-sai-gaon.png" 
+          alt="Why SSB Group — Trust, Quality & Locations" 
+          className="why-ssb-hero-bg-img" 
+        />
+        <div className="why-ssb-hero-scrim"></div>
+        <div className="why-ssb-hero-grain"></div>
+        <div className="container why-ssb-hero-container">
+          <div className="why-ssb-hero-content">
+            <span className="why-ssb-hero-eyebrow">WHY SSB</span>
+            <h1 className="why-ssb-hero-title">
+              Trust is the only thing we cannot rebuild.
+            </h1>
+            <p className="why-ssb-hero-desc">
+              Why families, investors and partners across Eastern Uttar Pradesh choose SSB Group.
+            </p>
+            <div className="why-ssb-hero-badges">
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">13+</span>
+                <span className="about-hero-stat-lbl">Years Trust</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">1200+</span>
+                <span className="about-hero-stat-lbl">Delivered Units</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">100%</span>
+                <span className="about-hero-stat-lbl">RERA Verified</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">ISO</span>
+                <span className="about-hero-stat-lbl">9001:2015</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

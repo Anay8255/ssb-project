@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { useModal } from '../context/ModalContext';
-import { Search, MapPin, ShieldCheck, ArrowRight, Download, Sparkles, Building2, Layers } from 'lucide-react';
+import { Search, X, MapPin, ShieldCheck, ArrowRight, Download, Sparkles, Building2, Layers } from 'lucide-react';
 
 export const ProjectsPage = () => {
   const { projects } = useStore();
@@ -21,26 +21,47 @@ export const ProjectsPage = () => {
 
   return (
     <div className="fade-in" style={{ paddingBottom: '6rem' }}>
-      {/* Editorial Luxury Hero */}
-      <section className="subpage-hero" style={{ padding: '7rem 0 4.5rem', background: 'linear-gradient(180deg, #0A1120 0%, #0F172A 100%)', color: '#FFF' }}>
-        <div className="container" style={{ textAlign: 'center', maxWidth: '850px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', background: 'rgba(224, 84, 43, 0.15)', color: 'var(--gold)', padding: '0.35rem 0.95rem', borderRadius: 'var(--r-pill)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem', border: '1px solid rgba(224, 84, 43, 0.3)' }}>
-            <Sparkles size={13} /> 100% UP-RERA VERIFIED PORTFOLIO
+      {/* Hero Header with Exact Background Image */}
+      <section className="projects-hero">
+        <img 
+          src="/hero-sai-gaon.png" 
+          alt="Our Projects — SSB Group" 
+          className="projects-hero-bg-img" 
+        />
+        <div className="projects-hero-scrim"></div>
+        <div className="projects-hero-grain"></div>
+        <div className="container projects-hero-container">
+          <div className="projects-hero-content">
+            <span className="projects-hero-eyebrow">OUR PROJECTS</span>
+            <h1 className="projects-hero-title">
+              Our Projects
+            </h1>
+            <p className="projects-hero-desc">
+              Residential neighbourhoods, group housing, affordable homes and commercial destinations across Eastern Uttar Pradesh.
+            </p>
+            <div className="projects-hero-badges">
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">4+</span>
+                <span className="about-hero-stat-lbl">Active Projects</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">100%</span>
+                <span className="about-hero-stat-lbl">UP-RERA Verified</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">Varanasi & Lucknow</span>
+                <span className="about-hero-stat-lbl">Growth Corridors</span>
+              </div>
+            </div>
           </div>
-          <h1 className="subpage-hero-title" style={{ fontSize: 'clamp(2.5rem, 4.5vw, 3.8rem)', color: '#FFFFFF', fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em', lineHeight: 1.15, marginBottom: '1rem' }}>
-            Flagship Landmarks & Living Spaces
-          </h1>
-          <p className="subpage-hero-desc" style={{ fontSize: '1.05rem', color: '#94A3B8', lineHeight: 1.6, margin: '0 auto' }}>
-            Explore our signature residential integrated townships, modern commercial complexes, and master-planned high-streets across Uttar Pradesh.
-          </p>
         </div>
       </section>
 
-      {/* Filter & Search Toolbar (Natural scrolling, not sticky) */}
-      <div style={{ background: '#FFFFFF', borderBottom: '1px solid var(--border)', padding: '1.5rem 0', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1.25rem' }}>
+      {/* Luxury Filter & Search Toolbar */}
+      <div className="projects-filter-bar">
+        <div className="container projects-filter-container">
           {/* Category Tabs */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <div className="projects-filter-tabs">
             {[
               { id: 'ALL', label: 'All Developments' },
               { id: 'RESIDENTIAL', label: 'Residential' },
@@ -52,35 +73,36 @@ export const ProjectsPage = () => {
                 key={tab.id}
                 type="button"
                 onClick={() => setFilter(tab.id)}
-                style={{
-                  borderRadius: 'var(--r-pill)',
-                  padding: '0.55rem 1.15rem',
-                  fontSize: '0.84rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  transition: 'all 0.25s ease',
-                  border: filter === tab.id ? '1px solid var(--brand)' : '1px solid var(--border)',
-                  background: filter === tab.id ? 'var(--brand)' : '#F8FAFC',
-                  color: filter === tab.id ? '#FFFFFF' : 'var(--ink)',
-                  boxShadow: filter === tab.id ? '0 4px 12px rgba(224, 84, 43, 0.3)' : 'none'
-                }}
+                className={`project-filter-btn ${filter === tab.id ? 'active' : ''}`}
               >
                 {tab.label}
               </button>
             ))}
           </div>
 
-          {/* Search Input Box */}
-          <div style={{ position: 'relative', minWidth: '280px' }}>
-            <Search size={16} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--ink-muted)' }} />
-            <input 
-              type="text" 
-              placeholder="Search by development or city..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="form-input"
-              style={{ paddingLeft: '2.6rem', fontSize: '0.88rem', borderRadius: 'var(--r-pill)', background: '#F8FAFC' }}
-            />
+          {/* Luxury Search Input Box */}
+          <div className="project-search-box">
+            <div className="project-search-input-wrap">
+              <Search size={18} className="project-search-icon" />
+              <input 
+                type="text" 
+                placeholder="Search by project, locality or city..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="project-search-input"
+              />
+              {search && (
+                <button 
+                  type="button" 
+                  onClick={() => setSearch('')}
+                  className="project-search-clear"
+                  title="Clear search"
+                  aria-label="Clear search query"
+                >
+                  <X size={14} />
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

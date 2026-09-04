@@ -64,16 +64,43 @@ export const MediaPage = () => {
 
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
-      {/* Header */}
-      <section className="subpage-hero">
-        <div className="container">
-          <span className="eyebrow" style={{ color: 'var(--gold)' }}>PRESS & UPDATES</span>
-          <h1 className="subpage-hero-title">
-            Media & Coverage
-          </h1>
-          <p className="subpage-hero-desc">
-            Official announcements, media coverage, foundation stones, and handover milestone celebrations from SSB Group.
-          </p>
+      {/* Hero Header with Exact Background Image from ssbinfraproject.com/media */}
+      <section className="media-hero">
+        <img 
+          src="/hero-sai-gaon.png" 
+          alt="Media & Press — SSB Group" 
+          className="media-hero-bg-img" 
+        />
+        <div className="media-hero-scrim"></div>
+        <div className="media-hero-grain"></div>
+        <div className="container media-hero-container">
+          <div className="media-hero-content">
+            <span className="media-hero-eyebrow">MEDIA</span>
+            <h1 className="media-hero-title">
+              SSB In The News
+            </h1>
+            <p className="media-hero-desc">
+              Coverage, launches, possession ceremonies and community initiatives.
+            </p>
+            <div className="media-hero-badges">
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">Press</span>
+                <span className="about-hero-stat-lbl">Releases</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">Video</span>
+                <span className="about-hero-stat-lbl">Library</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">National</span>
+                <span className="about-hero-stat-lbl">Coverage</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">Regional</span>
+                <span className="about-hero-stat-lbl">News</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

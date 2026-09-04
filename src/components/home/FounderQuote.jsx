@@ -9,7 +9,7 @@ export const FounderQuote = () => {
     name: "Mr. Ram Gopal Singh",
     designation: "Founder, Chairman & Managing Director",
     quote: "A home is not a transaction. It is a family's faith placed in your hands — and that faith must be honoured in every brick.",
-    photoUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+    photoUrl: "/ram-gopal-singh.jpg"
   };
 
   const sectionRef = useRef(null);

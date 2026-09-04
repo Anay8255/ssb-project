@@ -674,17 +674,17 @@ export const SEED_DATA = {
   leadership: [
     {
       name: "Mr. Ram Gopal Singh",
-      designation: "Managing Director",
-      bio: "Managing Director of SSB Group with over two decades in the real estate market. Dynamic and visionary pioneer who kick-started integrated township solutions in Varanasi under Pradhanmantri Yojna, combining world-class infrastructure with natural serenity.",
+      designation: "Founder, Chairman & Managing Director",
+      bio: "Founded SSB Group in Varanasi in 2013 with a philosophy centred on quality, innovation, professionalism and customer trust. Under his vision, the group has developed landmark residential and commercial projects across Eastern Uttar Pradesh.",
       quote: "हमारी दृढ़ता आपके सपनों को पूरा करने की प्रतिबद्धता खोखले वादों से दूर, आपके एक-एक पैसे की भरपूर लाभ देने की वचनबद्धता।",
-      photoUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+      photoUrl: "/ram-gopal-singh.jpg"
     },
     {
-      name: "Mr. Jitender Kumar Singh",
-      designation: "Director",
-      bio: "Director of SSB Group, young, energetic and a go-getter with demonstrable leadership in the Varanasi real estate market. Instrumental in operational planning, execution, and driving long-term strategic objectives.",
+      name: "Mr. Jitendra Kumar Singh",
+      designation: "Co-Founder & Director",
+      bio: "Varanasi-born and an MBA, with prior experience at Chadha Group and a background in the petroleum business. With SSB Group since 2012, driving operational execution, regional expansion, and client trust.",
       quote: "Building with material discipline, precision engineering, and transparent execution on every project.",
-      photoUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
+      photoUrl: "/jitendra-kumar-singh.jpg"
     },
     {
       name: "Mr. Satish Kumar Singh",

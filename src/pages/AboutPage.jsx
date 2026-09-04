@@ -11,16 +11,43 @@ export const AboutPage = () => {
 
   return (
     <div className="fade-in" style={{ paddingBottom: '5rem' }}>
-      {/* Hero Header */}
-      <section className="subpage-hero">
-        <div className="container">
-          <span className="eyebrow" style={{ color: 'var(--gold)' }}>SINCE 2013 · VARANASI</span>
-          <h1 className="subpage-hero-title">
-            Building Spaces. Creating Legacies.
-          </h1>
-          <p className="subpage-hero-desc">
-            Shree Sai Baba Infra Projects Pvt. Ltd. was founded on the sacred soil of Varanasi with a commitment to architectural excellence, statutory transparency, and unwavering customer trust.
-          </p>
+      {/* Hero Header with Exact Background Image */}
+      <section className="about-hero">
+        <img 
+          src="/hero-shree-sai-city.png" 
+          alt="About SSB Group — Shree Sai City" 
+          className="about-hero-bg-img" 
+        />
+        <div className="about-hero-scrim"></div>
+        <div className="about-hero-grain"></div>
+        <div className="container about-hero-container">
+          <div className="about-hero-content">
+            <span className="about-hero-eyebrow">ABOUT SSB GROUP</span>
+            <h1 className="about-hero-title">
+              About SSB Group
+            </h1>
+            <p className="about-hero-desc">
+              From a vision born in Varanasi to a growing real-estate presence across Eastern Uttar Pradesh.
+            </p>
+            <div className="about-hero-badges">
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">13+</span>
+                <span className="about-hero-stat-lbl">Years Legacy</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">1200+</span>
+                <span className="about-hero-stat-lbl">Delivered Units</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">100%</span>
+                <span className="about-hero-stat-lbl">RERA Compliant</span>
+              </div>
+              <div className="about-hero-stat-pill">
+                <span className="about-hero-stat-num">ISO</span>
+                <span className="about-hero-stat-lbl">9001:2015 Certified</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

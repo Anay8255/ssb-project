@@ -668,7 +668,7 @@ class AppRouter {
 
     this.appContainer.innerHTML = `
       <!-- Hero Header Banner with Full Cover Background Image (100vh Full Desktop Frame) -->
-      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.88) 100%), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; color: #FFF;">
+      <section class="page-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.72) 100%), url('/hero-shree-sai-city.png') center 20%/cover no-repeat; color: #FFF;">
         <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.4;"></div>
         
         <div class="container" style="position: relative; z-index: 2; width: 100%;">
